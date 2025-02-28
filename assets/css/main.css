@@ -571,11 +571,12 @@ video {
 /* Main Navigation */
 
 .main-navigation {
-  position: absolute;
+  position: relative; /* Anchor the submenu to the main navigation */
   left: 0px;
   z-index: 10;
   width: 100%;
   top: -999px;
+  overflow: visible; /* Ensure no overflow issues */
 }
 
 .main-navigation li > a {
@@ -662,17 +663,72 @@ video {
 }
 
 .main-navigation .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    background: white;
+    padding: 10px;
+    z-index: 10;
+}
+
+.main-navigation .submenu.menu-open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.main-navigation li:hover > .submenu,
+.main-navigation .submenu:hover {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.left-column, .center-column, .right-column {
+    flex: 1;
+    padding: 10px;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.3s linear;
+}
+
+.service-link.active + .right-column {
+  visibility: visible;
+  opacity: 1;
+}
+
+.main-navigation .submenu .sub-submenu {
+  display: none;
   position: absolute;
-  top: -999px;
+  left: 100%;
+  top: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateX(-10px);
+}
+
+.main-navigation .submenu .service-link:hover + .sub-submenu {
+  display: block;
+  opacity: 1;
+}
+
+.main-navigation .submenu .sub-submenu {
+  opacity: 0;
 }
 
 .main-navigation .submenu ul li > a::after {
   content: '';
-}
-
-.main-navigation .submenu.menu-open {
-  position: relative;
-  top: 0px;
 }
 
 .main-navigation a.no-arrow::after {
@@ -801,8 +857,24 @@ video {
   z-index: 1;
 }
 
-/* career carousel */
+/* Ensure carousel styles are scoped correctly */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+}
 
+.carousel-image {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.carousel-image:first-child {
+  display: block;
+}
+
+/* Ensure career carousel styles are scoped correctly */
 .career-carousel {
   position: relative;
   width: 100%;
@@ -814,10 +886,8 @@ video {
   position: absolute;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: bottom;
-     object-position: bottom;
+  object-fit: cover;
+  object-position: bottom;
   opacity: 0;
   transition: opacity 1s ease-in-out;
 }
@@ -2194,7 +2264,7 @@ figure > figcaption::before {
 
 .bg-white {
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-color: rgb(255 255 255 / var (--tw-bg-opacity));
 }
 
 .bg-gradient-to-b {
@@ -2911,10 +2981,6 @@ figure > figcaption::before {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.group:hover .group-hover\:opacity-100 {
-  opacity: 1;
-}
-
 .group:focus .group-focus\:scale-105 {
   --tw-scale-x: 1.05;
   --tw-scale-y: 1.05;
@@ -2950,6 +3016,10 @@ figure > figcaption::before {
   position: relative;
   width: 100%;
   height: auto;
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .video-carousel video {
@@ -2964,10 +3034,14 @@ figure > figcaption::before {
 }
 
 .hero-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: block;
+  visibility: visible;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 3rem 0;
+  background-color: #fff; /* Ensure it has a background color */
+  margin-top: 2rem; /* Add margin to separate from the video carousel */
 }
 
 .cta-button {
@@ -2979,14 +3053,42 @@ figure > figcaption::before {
   border-radius: 5px;
 }
 
-.customer-logos, .why-choose-us, .featured-projects, .careers-callout, .contact-cta {
+.customer-logos {
   text-align: center;
   margin: 20px 0;
 }
 
-.logo-carousel img, .service-cards .card {
+.logo-carousel img {
   display: inline-block;
   margin: 10px;
+}
+
+.hero-content {
+    display: block; /* Ensure it's not set to none */
+    visibility: visible; /* Ensure it's not hidden */
+    position: relative; /* Ensure it's not positioned off-screen */
+    z-index: 1; /* Ensure it's above other elements if necessary */
+    text-align: center;
+    padding: 3rem 0; /* Adjust padding as needed */
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.customer-logos {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.logo-carousel img {
+    display: inline-block;
+    margin: 10px;
 }
 
 @media (min-width: 768px) {
@@ -3980,4 +4082,59 @@ figure > figcaption::before {
   .\32xl\:max-h-\[38rem\] {
     max-height: 38rem;
   }
+}
+
+.main-menu .submenu {
+  display: flex;
+  transition: all 0.3s ease;
+}
+
+.main-menu .submenu .half {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-menu .submenu .sub-submenu {
+  display: none;
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+.main-menu .submenu .service-link:hover + .sub-submenu {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .main-menu .submenu {
+    flex-direction: column;
+  }
+}
+
+.submenu-item {
+  position: relative;
+}
+
+.sub-submenu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateX(-10px);
+}
+
+.submenu-item.active .sub-submenu {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+[data-main-menu] {
+    transition: top 0.3s ease-in-out;
 }

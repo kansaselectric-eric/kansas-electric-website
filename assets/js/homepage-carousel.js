@@ -1,43 +1,49 @@
-window.addEventListener("load", function() {
-  const homeCarousel = document.querySelector('[data-carousel]');
+window.addEventListener("load", function () {
+  const homeCarousel = document.querySelector(".video-carousel");
 
-  // if(heroImage !== null) {
-  //   heroImage.forEach(function(item) {
-  //     item.classList.add('fade-in');
-  //     item.classList.add('shift');
-  //     item.classList.remove('conceal');
-  //   });
-  // }
-
-  function rotateImg() {
-    // get the slides
-    const images = document.querySelector('[data-slides');
-    // get the 'active' slide
-    const activeSlide = images.querySelector('[data-active]');
-    // set offset to 1
-    const offset = 1;
-    // convert images (iterable object) children (the li) to an array with spread syntax (...)
-      // find the index of the active image
-      // add the offset to get the new index
-      let newIndex = [...images.children].indexOf(activeSlide) + offset;
-      // if the 'prev' button is clicked and the new index is less than 0
-      // subtract 1 from from the total number of children (li)
-      // if (newIndex < 0) {
-      //   newIndex = images.children.length - 1;
-      // }
-      // if the new index is greater than or equal to the number of slides
-      // set new index back to zero
-      if (newIndex >= images.children.length) {
-        newIndex = 0;
-      }
-      // add the dataset-active attribute to the current active slide
-      images.children[newIndex].dataset.active = true;
-      // use the 'delete' remove the dataset active attribute from the previous active slide
-      delete activeSlide.dataset.active;
-  }
+if (homeCarousel) {
+  homeCarousel.style.display = "block";
+  homeCarousel.style.opacity = "1";
+  homeCarousel.style.visibility = "visible";
+}
 
   if (homeCarousel) {
-    let interval = setInterval(rotateImg, 6000);
-  }
+    const slides = homeCarousel.querySelectorAll("video");
+    let currentIndex = 0;
+    const totalSlides = slides.length;
 
+    if (totalSlides > 0) {
+      slides.forEach((slide) => {
+        slide.style.opacity = "0";
+        slide.style.display = "none";
+      });
+      slides[0].style.opacity = "1";
+      slides[0].style.display = "block";
+    }    
+
+    setInterval(() => {
+      slides[currentIndex].style.opacity = "0";
+      slides[currentIndex].style.display = "none";
+      currentIndex = (currentIndex + 1) % totalSlides;
+      slides[currentIndex].style.opacity = "1";
+      slides[currentIndex].style.display = "block";
+    }, 6000);
+  }
+});
+
+// Handle submenu hover behavior for services
+document.querySelectorAll(".service-link").forEach((link) => {
+  link.addEventListener("mouseenter", function () {
+    const subSubmenu = this.nextElementSibling;
+    if (subSubmenu) {
+      subSubmenu.style.display = "flex";
+    }
+  });
+
+  link.addEventListener("mouseleave", function () {
+    const subSubmenu = this.nextElementSibling;
+    if (subSubmenu) {
+      subSubmenu.style.display = "none";
+    }
+  });
 });
