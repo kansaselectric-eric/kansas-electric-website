@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Fix Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .video-section {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+            background-color: #000;
+            margin-bottom: 20px;
+        }
+        #video-carousel {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            overflow: hidden !important;
+            z-index: 1 !important;
+            background-color: #000 !important;
+        }
+        #video-carousel video {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            opacity: 0 !important;
+            transition: opacity 1s ease-in-out !important;
+            visibility: hidden !important;
+            z-index: 1 !important;
+        }
+        #video-carousel video.active {
+            opacity: 1 !important;
+            visibility: visible !important;
+            z-index: 2 !important;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+        }
+        button {
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .explanation {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        .important {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>CSS Fix for Video Carousel</h1>
+        <p>Demonstrating the solution to the video display issue</p>
+    </div>
+    
+    <div class="container">
+        <div class="explanation">
+            <h2>The Problem</h2>
+            <p>The video carousel was not displaying properly because of CSS loading and timing issues. When you save/refresh from the CSS file, the carousel briefly appears, indicating a CSS specificity or timing problem.</p>
+            
+            <h2>The Solution</h2>
+            <p>We've implemented three key fixes:</p>
+            <ol>
+                <li>Added <code>!important</code> to all video carousel CSS properties to ensure they take precedence over any conflicting styles in main.css</li>
+                <li>Added a forced redraw mechanism in JavaScript to ensure the browser properly renders the videos</li>
+                <li>Added a delayed initialization to ensure the carousel is properly set up after all CSS has loaded</li>
+            </ol>
+            
+            <p class="important">Note: The CSS fix is the most critical part - ensuring that the video carousel styles have higher specificity than any conflicting styles in main.css.</p>
+        </div>
+        
+        <div class="video-section">
+            <div id="video-carousel">
+                <video muted loop playsinline preload="auto" class="active" width="100%" height="100%">
+                    <source src="./assets/videos/video1.mp4" type="video/mp4">
+                </video>
+                <video muted loop playsinline preload="none" width="100%" height="100%">
+                    <source src="./assets/videos/video2.mp4" type="video/mp4">
+                </video>
+                <video muted loop playsinline preload="none" width="100%" height="100%">
+                    <source src="./assets/videos/video3.mp4" type="video/mp4">
+                </video>
+            </div>
+            
+            <div class="controls">
+                <button id="prevBtn">Previous</button>
+                <button id="playPauseBtn">Pause</button>
+                <button id="nextBtn">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.getElementById('video-carousel');
+            const videos = carousel.querySelectorAll('video');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            
+            let currentIndex = 0;
+            let isPlaying = true;
+            let interval;
+            
+            // Force a redraw of the carousel to ensure videos are displayed
+            function forceRedraw(element) {
+                const display = element.style.display;
+                element.style.display = 'none';
+                void element.offsetHeight; // Force reflow
+                element.style.display = display;
+                console.log('Forced redraw');
+            }
+            
+            // Show a specific video
+            function showVideo(index) {
+                videos.forEach(v => {
+                    v.classList.remove('active');
+                    v.pause();
+                });
+                
+                currentIndex = index;
+                const video = videos[currentIndex];
+                video.classList.add('active');
+                
+                // Force a redraw to ensure the video is displayed
+                forceRedraw(video);
+                
+                if (isPlaying) {
+                    video.play();
+                }
+            }
+            
+            // Initialize autoplay
+            function startAutoplay() {
+                if (interval) clearInterval(interval);
+                interval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % videos.length;
+                    showVideo(currentIndex);
+                }, 6000);
+            }
+            
+            // Button event listeners
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+                showVideo(currentIndex);
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % videos.length;
+                showVideo(currentIndex);
+            });
+            
+            playPauseBtn.addEventListener('click', () => {
+                isPlaying = !isPlaying;
+                playPauseBtn.textContent = isPlaying ? 'Pause' : 'Play';
+                
+                if (isPlaying) {
+                    videos[currentIndex].play();
+                    startAutoplay();
+                } else {
+                    videos[currentIndex].pause();
+                    clearInterval(interval);
+                }
+            });
+            
+            // Initialize
+            showVideo(0);
+            startAutoplay();
+            
+            // Force a redraw after a short delay
+            setTimeout(() => {
+                forceRedraw(carousel);
+                videos.forEach(video => forceRedraw(video));
+            }, 100);
+            
+            // Additional initialization after CSS has fully loaded
+            setTimeout(() => {
+                forceRedraw(carousel);
+                const activeVideo = carousel.querySelector('video.active');
+                if (activeVideo) {
+                    activeVideo.style.opacity = '0.99';
+                    setTimeout(() => {
+                        activeVideo.style.opacity = '1';
+                    }, 50);
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html> 

@@ -36,51 +36,66 @@
 
   <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('Xbp1oaEWxyL7EdVj'); </script>
 
+  <!-- Critical CSS that must load after main.css -->
   <style>
+    /* Video carousel styles - consolidated and simplified */
+    /* Override fade-in class to ensure elements are visible */
+    .fade-in {
+      opacity: 1 !important;
+    }
     
-    .carousel-container {
-      position: relative;
-      overflow: visible;
-    } 
-
-    /*.carousel-image {
-      display: none;
+    section[data-home-slider] {
+      opacity: 1 !important; /* Ensure the section is always visible */
+    }
+    
+    #video-carousel {
       position: absolute;
       top: 0;
       left: 0;
-    } */
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 5;
+      background-color: #000;
+      opacity: 1 !important; /* Ensure the carousel is always visible */
+    }
 
-    .carousel-image:first-child {
-      display: block;
-    } 
+    #video-carousel video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+      visibility: hidden;
+    }
+
+    #video-carousel video.active {
+      opacity: 1;
+      visibility: visible;
+      z-index: 2;
+    }
+
+    /* Navigation styles */
+    .nav-item {
+      position: relative;
+    }
 
     .submenu {
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-    pointer-events: none; /* Prevent accidental hover flickering */
-}
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: white;
+      z-index: 100;
+    }
 
-.submenu.menu-open,
-.submenu:hover,
-[data-has-submenu]:hover .submenu {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0) !important;
-    pointer-events: auto;
-}
-
-.video-carousel {
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-}
-
+    .nav-item:hover .submenu {
+      display: block;
+    }
   </style>
 
   
@@ -109,8 +124,8 @@
       </a>
       <div class="w-full bg-white lg:bg-transparent px-0 pt-0 pb-6 lg:py-0 lg:flex lg:justify-between main-navigation closed shadow-md lg:shadow-none" data-main-menu>
         <ul class="lg:flex lg:space-x-6 lg:self-center">
-          <li class="lg:self-center py-0 border-t border-ke-gray-lighter lg:border-none">
-            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#" data-has-submenu="">Services</a>
+          <li class="lg:self-center py-0 border-t border-ke-gray-lighter lg:border-none nav-item">
+            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Services</a>
             <div class="submenu bg-ke-gray-light lg:px-8 lg:py-12 relative lg:absolute top-0 lg:top-[13.75rem] left-0 w-full lg:flex lg:justify-center lg:space-x-12 lg:pl-4 border-b-2 border-ke-blue">
               <div class="w-2/5 hidden lg:block left-column">
                 <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Electrical Services</p>
@@ -137,8 +152,8 @@
           <li class="lg:self-center border-t border-ke-gray-lighter lg:border-none">
             <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="./projects/">Projects</a>
           </li>
-          <li class="lg:self-center border-t border-ke-gray-lighter lg:border-none">
-            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#" data-has-submenu>About</a>
+          <li class="lg:self-center border-t border-ke-gray-lighter lg:border-none nav-item">
+            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">About</a>
             <div class="submenu bg-ke-gray-light lg:px-8 lg:py-12 relative lg:absolute top-0 lg:top-[13.75rem] left-0 w-full lg:flex lg:justify-center lg:space-x-12 lg:pl-4 border-b-2 border-ke-blue">
               <div class="w-2/5 hidden lg:block">
                 <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">About Us</p>
@@ -166,8 +181,8 @@
               </ul>
             </div>
           </li>
-          <li class="lg:self-center border-t border-b border-ke-gray-lighter lg:border-none">
-            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#" data-has-submenu>Careers</a>
+          <li class="lg:self-center border-t border-b border-ke-gray-lighter lg:border-none nav-item">
+            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Careers</a>
             <div class="submenu bg-ke-gray-light lg:px-8 lg:py-12 relative lg:absolute top-0 lg:top-[13.75rem] left-0 w-full lg:flex lg:justify-center lg:space-x-12 lg:pl-4 border-b-2 border-ke-blue">
               <div class="w-2/5 hidden lg:block">
                 <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Careers</p>
@@ -207,13 +222,30 @@
 
 <article class="overflow-hidden">
 
-  <section data-home-slider class="fade-in transition-1000 relative w-full max-w-[2560px] mx-auto min-h-[65vh] lg:min-h-[65vh] overflow-hidden bg-ke-gray-lightest">
-    <div class="carousel-container video-carousel">
-      <video class="carousel-image" src="./assets/videos/video1.mp4" autoplay loop muted></video>
-      <video class="carousel-image" src="./assets/videos/video2.mp4" autoplay loop muted></video>
-      <video class="carousel-image" src="./assets/videos/video3.mp4" autoplay loop muted></video>
-  </div>
-    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[rgba(0,0,0,0.9)] to-transparent pt-60 lg:pt-60 pb-6 lg:pb-10 z-[2]">
+  <section data-home-slider class="transition-1000 relative w-full max-w-[2560px] mx-auto min-h-[65vh] lg:min-h-[65vh] overflow-hidden bg-ke-gray-lightest">
+    <div id="video-carousel">
+      <video muted loop playsinline preload="auto" class="active">
+        <source src="./assets/videos/video1.mp4" type="video/mp4">
+      </video>
+      <video muted loop playsinline preload="none">
+        <source src="./assets/videos/video2.mp4" type="video/mp4">
+      </video>
+      <video muted loop playsinline preload="none">
+        <source src="./assets/videos/video3.mp4" type="video/mp4">
+      </video>
+    </div>
+    
+    <!-- Fallback image in case videos don't load -->
+    <div class="absolute top-0 left-0 w-full h-full" id="fallback-image" style="background-image: url('./assets/img/ke-logo-white.svg'); background-size: contain; background-position: center; background-repeat: no-repeat; background-color: #000; display: none; z-index: 15;">
+      <div style="position: absolute; bottom: 20%; left: 0; width: 100%; text-align: center; color: white; font-size: 18px; padding: 20px; background-color: rgba(0,0,0,0.7);">
+        <p>Video loading error. Please check browser console for details.</p>
+      </div>
+    </div>
+    
+    <!-- Debug button (only visible during development) -->
+    <button id="debug-video-btn" style="position: absolute; bottom: 10px; right: 10px; z-index: 100; background: rgba(0,0,0,0.5); color: white; padding: 5px 10px; font-size: 12px; border: none; cursor: pointer; display: none;">Debug Videos</button>
+    
+    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[rgba(0,0,0,0.9)] to-transparent pt-60 lg:pt-60 pb-6 lg:pb-10 z-[20]">
         <div class="max-w-screen-2xl flex flex-col items-center mx-auto lg:w-4/5 w-full px-6 lg:p-0">
             <div class="max-w-2xl flex mb-4 w-full">
                 <div class="relative w-3/5 lg:w-1/2 inline-block text-ke-light-gray uppercase tracking-widest">
@@ -305,8 +337,6 @@
 </article>
 <script src="./assets/js/project-posts-home.js"></script>
 
-
-<script src="./assets/js/homepage-carousel.js"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     const subtitleDecoration = document.querySelectorAll('[data-sub-title-decoration]');
@@ -327,24 +357,38 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Removed image carousel JavaScript
-  /* const carousels = document.querySelectorAll('.carousel-container');
-
-  carousels.forEach(carousel => {
-    let currentIndex = 0;
-    const images = carousel.querySelectorAll('.carousel-image');
-    const totalImages = images.length;
-
-    console.log('Total images:', totalImages);
-
-    setInterval(() => {
-      console.log('Hiding image index:', currentIndex);
-      images[currentIndex].style.display = 'none';
-      currentIndex = (currentIndex + 1) % totalImages;
-      console.log('Showing image index:', currentIndex);
-      images[currentIndex].style.display = 'block';
-    }, 3000); // Change image every 3 seconds
-  }); */
+  // Debug functionality for video carousel
+  const debugBtn = document.getElementById('debug-video-btn');
+  if (debugBtn) {
+    // Add keyboard shortcut to show debug button (press 'D' key)
+    document.addEventListener('keydown', function(e) {
+      if (e.key.toLowerCase() === 'd') {
+        debugBtn.style.display = debugBtn.style.display === 'block' ? 'none' : 'block';
+      }
+    });
+    
+    debugBtn.addEventListener('click', function() {
+      const videos = document.querySelectorAll('#video-carousel video');
+      let debugInfo = 'Video Debug Info:\n\n';
+      
+      videos.forEach((video, i) => {
+        const networkState = ['NETWORK_EMPTY', 'NETWORK_IDLE', 'NETWORK_LOADING', 'NETWORK_NO_SOURCE'][video.networkState];
+        const readyState = ['HAVE_NOTHING', 'HAVE_METADATA', 'HAVE_CURRENT_DATA', 'HAVE_FUTURE_DATA', 'HAVE_ENOUGH_DATA'][video.readyState];
+        
+        debugInfo += `Video ${i+1}:\n`;
+        debugInfo += `- Source: ${video.querySelector('source').src}\n`;
+        debugInfo += `- Network State: ${networkState} (${video.networkState})\n`;
+        debugInfo += `- Ready State: ${readyState} (${video.readyState})\n`;
+        debugInfo += `- Error: ${video.error ? video.error.code : 'None'}\n`;
+        debugInfo += `- Paused: ${video.paused}\n`;
+        debugInfo += `- Muted: ${video.muted}\n`;
+        debugInfo += `- Duration: ${video.duration || 'Unknown'}\n\n`;
+      });
+      
+      console.log(debugInfo);
+      alert(debugInfo);
+    });
+  }
 });
 </script>
 
@@ -474,24 +518,25 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   </footer>
   <script src="./assets/js/project-posts-footer-links.js"></script>
-
   
-<script src="./assets/js/homepage-carousel.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const subtitleDecoration = document.querySelectorAll('[data-sub-title-decoration]');
-    const subtitle = document.querySelectorAll('[data-subtitle]');
-    const logo = document.querySelector('[data-logo]');
-    // const hero = document.querySelector('[data-hero-image]');
-
-    subtitleDecoration.forEach((el) => {
-      el.classList.add('opacity-100');
+  <script>
+    // Animation for subtitle and logo
+    document.addEventListener('DOMContentLoaded', function() {
+      const subtitleDecoration = document.querySelectorAll('[data-sub-title-decoration]');
+      const subtitle = document.querySelectorAll('[data-subtitle]');
+      const logo = document.querySelector('[data-logo]');
+      
+      // Add opacity classes after a short delay to ensure CSS is fully loaded
+      setTimeout(function() {
+        subtitleDecoration.forEach((el) => {
+          el.classList.add('opacity-100');
+        });
+        subtitle.forEach((el) => {
+          el.classList.add('opacity-100');
+        });
+        logo.classList.add('opacity-100');
+      }, 100);
     });
-    subtitle.forEach((el) => {
-      el.classList.add('opacity-100');
-    });
-    logo.classList.add('opacity-100');
-    // hero.classList.add('opacity-75');
-  });
-</script></body>
+  </script>
+</body>
 </html>

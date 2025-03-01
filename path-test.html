@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Path Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        video {
+            max-width: 100%;
+            border: 1px solid #ccc;
+        }
+        .controls {
+            margin-top: 20px;
+        }
+        button {
+            padding: 8px 16px;
+            margin-right: 10px;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Video Path Test</h1>
+    <p>This page tests if the video files can be loaded and played directly.</p>
+    
+    <h2>Video 1 (Relative Path)</h2>
+    <video id="video1" controls width="640" height="360">
+        <source src="./assets/videos/video1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <h2>Video 1 (Absolute Path)</h2>
+    <video id="video2" controls width="640" height="360">
+        <source src="/assets/videos/video1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <div class="controls">
+        <button onclick="document.getElementById('video1').play()">Play Video 1</button>
+        <button onclick="document.getElementById('video2').play()">Play Video 2</button>
+        <button onclick="checkStatus()">Check Status</button>
+    </div>
+    
+    <div id="status" class="status">
+        Status information will appear here.
+    </div>
+    
+    <script>
+        // Log video events
+        const videos = document.querySelectorAll('video');
+        videos.forEach((video, index) => {
+            video.addEventListener('loadstart', () => logEvent(index, 'loadstart'));
+            video.addEventListener('loadedmetadata', () => logEvent(index, 'loadedmetadata'));
+            video.addEventListener('canplay', () => logEvent(index, 'canplay'));
+            video.addEventListener('playing', () => logEvent(index, 'playing'));
+            video.addEventListener('error', (e) => logError(index, e));
+        });
+        
+        function logEvent(videoIndex, event) {
+            console.log(`Video ${videoIndex + 1}: ${event}`);
+            updateStatus();
+        }
+        
+        function logError(videoIndex, error) {
+            console.error(`Video ${videoIndex + 1} error:`, error);
+            updateStatus();
+        }
+        
+        function checkStatus() {
+            updateStatus();
+        }
+        
+        function updateStatus() {
+            const statusDiv = document.getElementById('status');
+            let statusText = '<h3>Video Status:</h3>';
+            
+            videos.forEach((video, index) => {
+                const networkState = ['NETWORK_EMPTY', 'NETWORK_IDLE', 'NETWORK_LOADING', 'NETWORK_NO_SOURCE'][video.networkState];
+                const readyState = ['HAVE_NOTHING', 'HAVE_METADATA', 'HAVE_CURRENT_DATA', 'HAVE_FUTURE_DATA', 'HAVE_ENOUGH_DATA'][video.readyState];
+                
+                statusText += `<p><strong>Video ${index + 1}:</strong><br>`;
+                statusText += `- Source: ${video.querySelector('source').src}<br>`;
+                statusText += `- Network State: ${networkState} (${video.networkState})<br>`;
+                statusText += `- Ready State: ${readyState} (${video.readyState})<br>`;
+                statusText += `- Error: ${video.error ? video.error.code : 'None'}<br>`;
+                statusText += `- Paused: ${video.paused}<br>`;
+                statusText += `- Current Time: ${video.currentTime.toFixed(2)}<br>`;
+                statusText += `- Duration: ${isNaN(video.duration) ? 'Unknown' : video.duration.toFixed(2)}</p>`;
+            });
+            
+            statusDiv.innerHTML = statusText;
+        }
+        
+        // Initial status update
+        window.addEventListener('load', updateStatus);
+    </script>
+</body>
+</html> 
