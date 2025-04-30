@@ -1,0 +1,236 @@
+/* Mobile Hamburger Menu Styles
+ * Enhanced mobile navigation for screens under 768px
+ * Desktop navigation remains untouched
+ */
+
+@media (max-width: 767px) {
+  /* Hide the default mobile menu toggle button since we'll create our own */
+  [data-mobile-nav-toggle] {
+    display: none !important;
+  }
+  
+  /* Add our custom hamburger button */
+  .hamburger-toggle {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    z-index: 1000;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  
+  /* Hamburger button bars */
+  .hamburger-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #0076C5; /* Use the brand blue color */
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+  
+  /* Hamburger animation for open state */
+  .hamburger-toggle.open span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  
+  .hamburger-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger-toggle.open span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+  
+  /* Prevent body scrolling when menu is open */
+  body.menu-open {
+    overflow: hidden;
+  }
+  
+  /* Mobile navigation container */
+  .main-navigation {
+    position: fixed !important;
+    top: 0;
+    right: -100%;
+    width: 85% !important;
+    max-width: 350px !important;
+    height: 100vh !important;
+    background-color: white !important;
+    transition: right 0.3s ease !important;
+    z-index: 999 !important;
+    overflow-y: auto !important;
+    padding: 1rem !important;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1) !important;
+    display: block !important;
+  }
+  
+  /* Show the menu when open */
+  .main-navigation.open {
+    right: 0 !important;
+  }
+  
+  /* Style for the overlay behind the menu */
+  .mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+  
+  .mobile-menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* Mobile nav items styling */
+  .main-navigation ul {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  
+  .main-navigation .nav-item {
+    display: block !important;
+    width: 100% !important;
+    border-bottom: 1px solid #eee !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Make top-level links show submenu on click */
+  .main-navigation .nav-item > a {
+    position: relative !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 1rem 0 !important;
+    color: #333 !important;
+    font-weight: 600 !important;
+    width: 100% !important;
+  }
+  
+  /* Add dropdown indicator */
+  .main-navigation .nav-item > a::after {
+    content: '↓' !important;
+    display: inline-block !important;
+    margin-left: 0.5rem !important;
+    transition: transform 0.3s ease !important;
+  }
+  
+  /* Rotate arrow when submenu is open */
+  .main-navigation .nav-item.open > a::after {
+    transform: rotate(180deg) !important;
+  }
+  
+  /* Mobile submenu styling */
+  .main-navigation .submenu {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    display: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    padding: 0 0 0 1rem !important;
+    margin: 0 !important;
+    background-color: #f8f8f8 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease !important;
+  }
+  
+  /* Show submenu when parent is open */
+  .main-navigation .nav-item.open .submenu {
+    display: block !important;
+    max-height: 2000px; /* A large value to accommodate all content */
+  }
+  
+  /* Three-column menu mobile styles */
+  .main-navigation .submenu-container,
+  .main-navigation .three-column-menu {
+    display: block !important;
+    width: 100% !important;
+  }
+  
+  .main-navigation .menu-column {
+    width: 100% !important;
+    border: none !important;
+    padding: 0 !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Hide the first column on mobile (descriptions) */
+  .main-navigation .first-column {
+    display: none !important;
+  }
+  
+  /* Fix border and padding on mobile */
+  .main-navigation .second-column,
+  .main-navigation .third-column {
+    border-left: none !important;
+    padding-left: 0 !important;
+  }
+  
+  /* Special button positioning */
+  .main-navigation .blue-nav-button {
+    margin: 1rem 0 !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+  
+  /* Fix for submenus inside submenus */
+  .main-navigation .third-column-content {
+    padding-left: 1rem !important;
+  }
+  
+  /* Logo positioning */
+  .site-header .w-auto {
+    position: relative !important;
+    z-index: 1001 !important; /* Above the menu */
+  }
+  
+  /* Mobile menu header area */
+  .mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .mobile-menu-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+  
+  /* Ensure that the mobile CTA is visible */
+  .mobile-cta {
+    display: block !important;
+    margin-top: 1rem !important;
+    width: 100% !important;
+  }
+} 

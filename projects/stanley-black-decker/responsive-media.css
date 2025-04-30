@@ -1,0 +1,44 @@
+/* Responsive Media Styles
+ * Makes all images, videos, and iframes responsive on screens smaller than 768px
+ * Preserves original styling on larger screens
+ */
+
+@media (max-width: 767px) {
+  /* Make images responsive */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Make videos responsive */
+  video {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Make iframes responsive */
+  iframe {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Additional fixes for embedded content */
+  .video-container, 
+  .embed-container, 
+  .media-container {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Fix for any div that might contain media */
+  div[class*="media"], 
+  div[class*="video"], 
+  div[class*="image"], 
+  div[class*="img"],
+  .wp-block-image,
+  .wp-block-video,
+  .wp-block-embed {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+} 

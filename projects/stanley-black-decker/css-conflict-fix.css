@@ -1,0 +1,82 @@
+/* CSS Conflict Fix
+ * Resolves conflicts between responsive CSS files
+ * Ensures consistent behavior on mobile screens
+ */
+
+@media (max-width: 767px) {
+  /* Fix conflict between mobile-tap-targets.css and mobile-form-enhancements.css */
+  
+  /* Checkbox and radio styling - combine both files' intentions */
+  input[type="checkbox"],
+  input[type="radio"] {
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    margin: 0 12px 0 0 !important; /* Keep form enhancements spacing */
+    vertical-align: middle !important;
+  }
+  
+  /* Label styling - combine both files' intentions */
+  label[for] {
+    display: flex !important;
+    align-items: center !important;
+    min-height: 48px !important;
+    margin-bottom: 12px !important;
+    padding: 8px !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+  }
+  
+  /* Ensure submit buttons are properly styled with both tap target and form styling */
+  input[type="submit"],
+  button[type="submit"] {
+    min-height: 48px !important;
+    min-width: 48px !important;
+    padding: 12px 16px !important;
+    width: 100% !important; /* From form enhancements */
+    font-size: 16px !important;
+    margin-top: 8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  /* Ensure select elements are properly styled with both mobile-responsive and form styling */
+  select {
+    min-height: 48px !important;
+    padding: 12px 16px !important;
+    padding-right: 40px !important; /* For dropdown arrow */
+    background-position: right 16px center !important;
+    font-size: 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Ensure proper styling for search form buttons */
+  .search-form button,
+  form[role="search"] button,
+  [class*="search-form"] button {
+    min-height: 48px !important;
+    min-width: 48px !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Fix potential padding issues with inline links in paragraphs */
+  p a, li a, td a, th a {
+    display: inline !important; /* Override inline-block to avoid line breaks */
+    padding: 0 !important; /* Remove padding that might break text flow */
+  }
+  
+  /* Fix potential hamburger menu issues */
+  .hamburger-toggle {
+    min-height: 21px !important; /* Override the general toggle styles */
+    height: 21px !important;
+  }
+  
+  /* Fix menu toggle button conflicts */
+  .hamburger-toggle span {
+    min-height: 3px !important; /* Reset min-height for toggle spans */
+    height: 3px !important;
+  }
+} 

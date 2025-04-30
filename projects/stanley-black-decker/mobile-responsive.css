@@ -1,0 +1,504 @@
+/* Mobile Responsive Improvements
+ * This file contains mobile-specific CSS improvements
+ * Converting fixed pixel values to relative units for better responsiveness
+ */
+
+/* Mobile devices (phones, 767px and down) */
+@media (max-width: 767px) {
+  /* Base typography improvements */
+  body {
+    font-size: 16px; /* Base font size */
+    line-height: 1.5;
+  }
+  
+  /* Header and navigation fixes */
+  .site-header .md\:w-11\/12 > a:first-child {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  
+  /* Ensure the logo has appropriate sizing */
+  .site-header img.w-auto {
+    max-width: 80%;
+    height: auto !important;
+  }
+  
+  /* Mobile menu toggle improvements */
+  [data-mobile-nav-toggle] .line {
+    height: 0.125rem !important;
+    width: 1.5rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+  
+  /* Mobile navigation menu item spacing */
+  .nav-item {
+    border-width: 1px !important;
+  }
+  
+  .nav-item a.pages {
+    padding: 0.75rem 1rem !important; /* Convert 12px 16px to rem */
+    font-size: 0.9375rem !important; /* 15px to rem */
+  }
+  
+  /* Submenu improvements */
+  .submenu {
+    width: 100% !important;
+    padding: 1rem 0.5rem !important;
+  }
+  
+  /* Second and third column menu items */
+  .second-column-item, 
+  .third-column-content a {
+    padding-left: 0.25rem !important; /* Convert 4px to rem */
+    line-height: 1.5 !important;
+    padding-top: 0.5rem !important; /* Convert 8px to rem */
+    padding-bottom: 0.5rem !important; /* Convert 8px to rem */
+    font-size: 0.875rem !important; /* 14px */
+    min-height: 2.5rem !important; /* Ensure touch target height */
+    display: block !important; /* Ensure full width for touch */
+  }
+  
+  /* Menu columns spacing */
+  .menu-column {
+    margin-bottom: 1rem !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  
+  /* Reduce menu column headings */
+  .menu-column p.font-semibold,
+  .menu-column p.text-ke-gray {
+    font-size: 0.9375rem !important; /* 15px */
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Ticker improvements */
+  .ticker-container {
+    padding: 0.5rem 0 !important;
+  }
+  
+  .ticker-item {
+    padding: 0 0.9375rem !important; /* Convert 15px to rem */
+    font-size: 0.75rem !important; /* Convert 12px to rem */
+  }
+  
+  /* Support section styling */
+  .support-container {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  .support-label {
+    padding: 0.5rem !important; /* Convert 8px to rem */
+    font-size: 0.8125rem !important; /* 13px */
+  }
+  
+  .phone-button {
+    margin-left: -0.6875rem !important; /* Convert -11px to rem */
+    padding-left: 0.5rem !important; /* Convert 8px to rem */
+    padding-right: 0.5rem !important; /* Convert 8px to rem */
+    min-width: 10rem !important; /* Convert 160px to rem */
+    font-size: 0.8125rem !important; /* 13px */
+  }
+
+  /* Testimonial navigation */
+  .testimonial-nav {
+    padding: 0.5rem !important;
+  }
+  
+  .testimonial-nav svg {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+  
+  /* Footer improvements */
+  footer .md\:w-11\/12 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  footer h2,
+  footer a {
+    font-size: 0.875rem !important; /* Convert 14px to rem */
+    line-height: 1.4 !important;
+    margin-bottom: 0.75rem !important;
+    min-height: 2.25rem !important; /* Ensure touch target height */
+    display: inline-block !important;
+  }
+  
+  footer .py-12 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  footer .py-8 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  
+  footer .md\:flex {
+    display: block !important;
+  }
+  
+  footer .md\:space-x-8 > * {
+    margin-right: 0 !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Links and touch targets */
+  a {
+    transition: color 0.2s ease !important;
+  }
+  
+  a:active {
+    opacity: 0.7 !important; /* Visual feedback on tap */
+  }
+  
+  /* Make touch targets at least 44x44 pixels (2.75rem) */
+  a[href], 
+  button, 
+  input[type="submit"],
+  input[type="button"],
+  .clickable,
+  [role="button"] {
+    padding: 0.5rem !important;
+    min-height: 2.75rem !important;
+    min-width: 2.75rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  /* Fix for small icon buttons to maintain appearance */
+  a.icon-only {
+    padding: 0.5rem !important; 
+    height: 2.75rem !important;
+    width: 2.75rem !important;
+  }
+  
+  /* Main content improvements */
+  main {
+    overflow-x: hidden !important; /* Prevent horizontal scrolling */
+  }
+  
+  /* Main content padding */
+  main section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* General spacing */
+  .py-6 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  
+  .py-8 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  .py-12 {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+  
+  .py-16 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  
+  .my-6 {
+    margin-top: 1.5rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .my-8 {
+    margin-top: 2rem !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  .my-12 {
+    margin-top: 2.5rem !important;
+    margin-bottom: 2.5rem !important;
+  }
+  
+  .px-4, .px-6 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .mx-auto {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  /* Typography scaling */
+  h1, .text-3xl, .text-4xl {
+    font-size: 1.5rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  h2, .text-2xl {
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  h3, .text-xl {
+    font-size: 1.125rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 0.75rem !important;
+  }
+  
+  p, .text-base {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  .text-sm {
+    font-size: 0.875rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  .text-xs {
+    font-size: 0.75rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  /* Fix line height for headings with small text */
+  h1 small, 
+  h2 small, 
+  h3 small {
+    line-height: 1.3 !important;
+    display: inline-block !important;
+  }
+  
+  /* Buttons and interactive elements */
+  .blue-nav-button, 
+  a.blue-nav-button,
+  button, 
+  .button, 
+  a.button,
+  input[type="submit"] {
+    padding: 0.625rem 1rem !important; /* 10px 16px */
+    font-size: 0.875rem !important;
+    line-height: 1.4 !important;
+    width: auto !important;
+    display: inline-block !important;
+    text-align: center !important;
+    border-radius: 0.25rem !important; /* Ensure rounded corners */
+    min-height: 2.75rem !important; /* Ensure touch target height */
+  }
+  
+  /* Form elements */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea,
+  select {
+    padding: 0.5rem !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    height: auto !important;
+    min-height: 2.75rem !important; /* Ensure touch target height */
+    border-radius: 0.25rem !important;
+    width: 100% !important; /* Full width on mobile */
+  }
+  
+  /* Form layouts */
+  .form-group,
+  .form-row {
+    margin-bottom: 1rem !important;
+  }
+  
+  label {
+    display: block !important;
+    margin-bottom: 0.5rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  /* Improve form field spacing */
+  input + label,
+  select + label,
+  textarea + label {
+    margin-top: 1rem !important;
+  }
+  
+  /* Layout container widths */
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .max-w-4xl, .max-w-3xl, .max-w-2xl, .max-w-lg, .max-w-md, .max-w-sm {
+    max-width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Project cards and grid layouts */
+  .project-card {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  /* Ensure grid layouts stack properly */
+  .md\:grid, .lg\:grid {
+    display: block !important;
+    grid-template-columns: 1fr !important;
+  }
+  
+  .md\:grid-cols-2, .md\:grid-cols-3, .lg\:grid-cols-2, .lg\:grid-cols-3 {
+    display: block !important;
+  }
+  
+  /* Ensure flex layouts stack properly */
+  .md\:flex, .lg\:flex {
+    display: block !important;
+  }
+  
+  /* Fix sticky navigation on small screens */
+  .site-header {
+    position: relative !important;
+    z-index: 100 !important;
+  }
+  
+  /* Table improvements for mobile */
+  table {
+    display: block !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+  }
+  
+  th, td {
+    padding: 0.5rem !important;
+    font-size: 0.875rem !important;
+  }
+  
+  /* Image handling */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
+
+/* Very small devices (phones, 479px and down) */
+@media (max-width: 479px) {
+  /* Further compress spacing */
+  .py-16 {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+  }
+  
+  .py-12 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  .py-8 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  
+  /* Adjust typography even further */
+  h1, .text-3xl, .text-4xl {
+    font-size: 1.375rem !important;
+  }
+  
+  /* Smaller padding on buttons */
+  .blue-nav-button, 
+  button, 
+  .button, 
+  a.button,
+  input[type="submit"] {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.8125rem !important;
+    width: 100% !important; /* Full width buttons on very small screens */
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Make support contact block more compact */
+  .support-container {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .support-label {
+    border-radius: 4px !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .phone-button {
+    margin-left: 0 !important;
+    border-radius: 4px !important;
+    text-align: center !important;
+    width: 100% !important;
+  }
+  
+  /* Further reduce container padding */
+  .container,
+  main section, 
+  .px-4, 
+  .px-6 {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  
+  /* Stack items in the footer more compactly */
+  footer .md\:w-1\/5 {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  /* Reduce space around images */
+  .my-6 img, 
+  .my-8 img, 
+  .my-12 img {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+  }
+}
+
+/* Medium-sized devices (small tablets, 768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  /* Moderate adjustments for small tablets */
+  .py-16 {
+    padding-top: 3.5rem !important;
+    padding-bottom: 3.5rem !important;
+  }
+  
+  .container {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+  
+  /* Adjust font sizes */
+  h1, .text-3xl, .text-4xl {
+    font-size: 1.75rem !important;
+  }
+  
+  /* Improve grid layouts on small tablets */
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* Better spacing for touch targets on tablets */
+  a, button, .clickable {
+    padding: 0.625rem !important;
+  }
+  
+  /* Optimize form layouts for tablets */
+  .md\:w-1\/2 {
+    width: 100% !important;
+  }
+  
+  .md\:w-1\/3 {
+    width: 50% !important;
+  }
+} 
