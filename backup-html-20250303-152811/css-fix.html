@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Fix Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .video-section {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+            background-color: #000;
+            margin-bottom: 20px;
+        }
+        #video-carousel {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            overflow: hidden !important;
+            z-index: 1 !important;
+            background-color: #000 !important;
+        }
+        #video-carousel video {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            opacity: 0 !important;
+            transition: opacity 1s ease-in-out !important;
+            visibility: hidden !important;
+            z-index: 1 !important;
+        }
+        #video-carousel video.active {
+            opacity: 1 !important;
+            visibility: visible !important;
+            z-index: 2 !important;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+        }
+        button {
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .explanation {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        .important {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+    </style>
+  <script src="../assets/js/jquery-3.6.0.min.js"></script>
+  <script src="../assets/js/navigation-fixed.js" defer></script>
+</head>
+<body>
+<nav class="site-header relative z-10">
+    <!-- <a class="py-2 text-ke-gray-dark block bg-ke-yellow hover:bg-ke-yellow-dark transition duration-200 text-center text-lg font-semibold uppercase" href="../job-openings/">Now Hiring! <span class="block text-base normal-case font-normal">Click to fill out an application</span></a> -->
+    <!-- <a class="py-2 text-ke-gray-dark block bg-ke-yellow hover:bg-ke-yellow-dark transition duration-200 text-center text-lg font-semibold uppercase" href="https://www.indeed.com/cmp/Kansas-Electric/jobs">Now hiring experienced apprentices and electricians! <span class="block text-base normal-case font-normal">Click to fill out an application</span></a> -->
+    
+    <div class="bg-ke-blue">
+      <div class="md:w-11/12 mx-auto flex flex-row md:items-center">
+        <!-- News Ticker with flex-grow to take available space -->
+        <div class="ticker-container flex-grow">
+          <div class="ticker-wrapper">
+            <div class="ticker-scroll">
+              <span class="ticker-item">AI assistants like Microsoft's Factory Operations Agent are streamlining manufacturing processes. <a href="https://www.microsoft.com/en-us/industry/blog/manufacturing-and-mobility/2023/11/14/introducing-microsoft-factory-operations-agent-a-new-ai-assistant-for-manufacturing/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">These are the top 5 manufacturing automation trends that are shaping 2025. <a href="https://www.forbes.com/sites/bernardmarr/2023/11/13/the-top-5-manufacturing-trends-in-2024/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">The Department of Energy is funding projects that convert carbon emissions into value-added products. <a href="https://www.energy.gov/fecm/articles/doe-announces-17-million-convert-carbon-emissions-valuable-products" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">AI technologies are projected to nearly double global data center electricity usage by 2030. <a href="https://www.iea.org/reports/the-environmental-footprint-of-artificial-intelligence" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Meta plans a $35 billion data center fund, with Apollo Global in talks to lead the initiative. <a href="https://www.reuters.com/technology/meta-plans-35-billion-data-center-fund-apollo-talks-lead-it-sources-2023-11-14/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">U.S. Army completes new microgrids at Fort Hunter Liggett, Camp Arifjan, and Fort Cavazos, enhancing energy resilience. <a href="https://www.army.mil/article/269387/army_completes_new_microgrids_at_fort_hunter_liggett_camp_arifjan_and_fort_cavazos" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Scientists develop a new optimization model to improve microgrid operation, ensuring stable and efficient energy systems. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0306261923013648" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">The Department of Energy introduces the Community Microgrid Assistance Partnership to bolster energy resilience in remote communities. <a href="https://www.energy.gov/gdo/community-microgrid-assistance-partnership" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Fort Riley's solar installation reaches 16 MW, powering 40% of base housing. <a href="https://www.army.mil/article/269387/army_completes_new_microgrids_at_fort_hunter_liggett_camp_arifjan_and_fort_cavazos" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">The University of Kansas has a new Welcome Center. It's a 58 kW solar microgrid with battery storage. <a href="https://www.ku.edu/news/2023/11/15/ku-welcome-center-earns-leed-gold-certification-sustainability" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Google and Salesforce back carbon capture projects at paper mills and sewage plants to combat emissions. <a href="https://www.cnbc.com/2023/11/14/google-salesforce-back-carbon-capture-at-paper-mills-sewage-plants.html" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Eni is integrating carbon capture with data centers to boost its energy transition strategy. <a href="https://www.reuters.com/business/energy/italys-eni-eyes-carbon-capture-data-centres-energy-transition-push-2023-11-13/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">The Department of Energy is investing $101 million in new test centers to advance carbon capture technologies. <a href="https://www.energy.gov/articles/doe-announces-101-million-carbon-capture-test-centers" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">PERENfra's Perennial Infrastructure Fund 1 is investing $125 million in core water infrastructure projects in the United States. <a href="https://www.businesswire.com/news/home/20231114060457/en/PERENfra-Announces-Final-Close-of-Perennial-Infrastructure-Fund-I-at-125-Million" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Nashville invests $403 million to enhance the White Creek Wastewater Treatment Plant in a bid to boost capacity and efficiency. <a href="https://www.nashville.gov/departments/water/news/metro-water-services-breaks-ground-white-creek-wastewater-treatment-plant" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Veolia North America unveils major upgrades to improve air and water quality at Richmond's wastewater treatment facility. <a href="https://www.veolianorthamerica.com/news-events/media/press-releases/veolia-north-america-unveils-major-upgrades-richmonds-wastewater" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Los Angeles plans $740 million expansion of the Tillman Water Reclamation Plant to increase wastewater treatment capacity. <a href="https://www.lacitysan.org/san/faces/home/portal/s-lsh-wwd/s-lsh-wwd-cw/s-lsh-wwd-cw-p/s-lsh-wwd-cw-p-twerp" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+            </div>
+          </div>
+        </div>
+        <!-- 24/7 Support -->
+        <div class="flex-shrink-0 whitespace-nowrap">
+          <p class="text-white font-semibold flex items-center support-container">
+            <span class="support-label">24/7 Support:</span>
+            <a class="inline-block bg-ke-blue-dark font-semibold py-2 px-4 ml-2 text-white phone-button" href="tel:3162834750">(316) 283-4750</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="md:w-11/12 mx-auto flex lg:space-x-10 justify-between py-6 lg:py-0 px-4 md:px-0">
+      <a href="../" class="md:self-center">
+        <img class="w-auto h-8 md:h-10" src="../assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric" width="178" height="40">
+      </a>
+      <a class="block lg:hidden self-center" href="#" data-mobile-nav-toggle>
+        <span class="sr-only">Toggle mobile menu</span>
+        <span class="line block h-1 w-6 mb-1 bg-ke-gray rounded-full"></span>
+        <span class="line block h-1 w-6 mb-1 bg-ke-gray rounded-full"></span>
+        <span class="line block h-1 w-6 bg-ke-gray rounded-full"></span>
+      </a>
+      <div class="w-full bg-white lg:bg-transparent px-0 pt-0 pb-6 lg:py-0 lg:flex lg:justify-between main-navigation closed shadow-md lg:shadow-none" data-main-menu>
+        <ul class="lg:flex lg:space-x-6 lg:self-center">
+          <li class="lg:self-center py-0 border-t border-ke-gray-lighter lg:border-none nav-item">
+            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Services</a>
+            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
+              <div class="submenu-container three-column-menu">
+                <div class="hidden lg:block menu-column first-column">
+                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Electrical Services</p>
+                  <p class="text-ke-gray">Our job is to keep your lights on and production moving forward.</p>
+                </div>
+                <div class="lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
+                  <ul class="second-column-menu">
+                    <li>
+                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="industrial-electrical">Industrial Electrical Division</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="commercial-electrical">Commercial Electrical Division</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="service-maintenance">Service and Maintenance Division</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="automation-control">Automation and Control Systems Division</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
+                  <!-- Industrial Electrical Division (default) -->
+                  <ul class="third-column-content active" id="industrial-electrical">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/industrial/wastewater-treatment/">Wastewater & Water Treatment Plants</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/industrial/oil-gas/">Oil, Gas & Carbon Capture Pipelines</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/industrial/food-beverage/">Food & Beverage Manufacturing Plants</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/industrial/advanced-manufacturing/">Advanced Manufacturing Facilities</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/ul-certified-design-build/">Design-Build Electrical Services</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/industrial/microgrids/">Microgrids & Energy Management Systems</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Commercial Electrical Division -->
+                  <ul class="third-column-content" id="commercial-electrical">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/commercial/large-scale/">Large-Scale Commercial Construction</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/commercial/water-towers/">Water Towers & Municipal Infrastructure</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/commercial/airport/">Airport Electrical Infrastructure</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Service and Maintenance Division -->
+                  <ul class="third-column-content" id="service-maintenance">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/maintenance/ir-scans/">Infrared (IR) Scans & Predictive Maintenance</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/maintenance/arc-flash/">Arc Flash Studies & NFPA 70E Compliance</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/maintenance/nfpa-70b/">NFPA 70B & Electrical Maintenance Program Implementation</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/maintenance/breaker-testing/">Breaker Exercising & Power System Testing</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/maintenance/emergency/">24/7 Emergency Electrical Service</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Automation and Control Systems Division -->
+                  <ul class="third-column-content" id="automation-control">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/automation/ul508a/">UL508A Panel Building & Fabrication</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/automation/plc-programming/">PLC Programming & Industrial Automation</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/automation/troubleshooting/">Control Panel Troubleshooting & Upgrades</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/automation/remote-monitoring/">Remote Monitoring & Smart Factory Solutions</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="lg:self-center border-t border-ke-gray-lighter lg:border-none nav-item">
+            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Projects</a>
+            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
+              <div class="submenu-container three-column-menu">
+                <div class="w-1/4 hidden lg:block menu-column first-column">
+                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Our Projects</p>
+                  <p class="text-ke-gray">Explore our portfolio of completed electrical projects.</p>
+                </div>
+                <div class="w-1/4 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
+                  <ul class="second-column-menu">
+                    <li>
+                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="all-projects">All Projects</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="industrial-projects">Industrial Projects</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="commercial-projects">Commercial Projects</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="service-maintenance-projects">Service and Maintenance Projects</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="automation-projects">Automation and Control Systems Projects</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
+                  <!-- All Projects (default) -->
+                  <ul class="third-column-content active" id="all-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/stanley-black-decker/">Stanley Black & Decker - Network Upgrades</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/mkc-lyons/">MKC - Lyons</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/health-ministries/">Health Ministries Dental Clinic</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/bethel-college/">Bethel College Solar Grid</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/agco-hesston/">AGCO - Hesston</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/camso-control-panel/">Camso Control Panel</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Industrial Projects -->
+                  <ul class="third-column-content" id="industrial-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/industrial/project1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/industrial/project2/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/industrial/project3/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/industrial/project4/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/industrial/project5/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Commercial Projects -->
+                  <ul class="third-column-content" id="commercial-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/commercial/project1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/commercial/project2/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/commercial/project3/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/commercial/project4/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/commercial/project5/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Service and Maintenance Projects -->
+                  <ul class="third-column-content" id="service-maintenance-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/service/project1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/service/project2/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/service/project3/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/service/project4/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/service/project5/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Automation and Control Systems Projects -->
+                  <ul class="third-column-content" id="automation-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/automation/project1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/automation/project2/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/automation/project3/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/automation/project4/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../projects/automation/project5/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="lg:self-center border-t border-ke-gray-lighter lg:border-none nav-item">
+            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">About</a>
+            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
+              <div class="submenu-container three-column-menu">
+                <div class="w-1/4 hidden lg:block menu-column first-column">
+                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">About Us</p>
+                  <p class="text-ke-gray">Our job is to keep your lights on and production moving forward.</p>
+                </div>
+                <div class="w-1/4 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
+                  <ul class="second-column-menu">
+                    <li>
+                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="who-we-are">Who We Are</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="company-news">Company News</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
+                  <!-- Who We Are (default) -->
+                  <ul class="third-column-content active" id="who-we-are">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../about/">Who We Are</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../about/locations/">Locations</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../about/our-team/">Our Team</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Company News -->
+                  <ul class="third-column-content" id="company-news">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../company-news/">Company News</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../about/community/">Community Involvement</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="lg:self-center border-t border-b border-ke-gray-lighter lg:border-none nav-item">
+            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Careers</a>
+            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
+              <div class="submenu-container three-column-menu">
+                <div class="w-1/4 hidden lg:block menu-column first-column">
+                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Careers</p>
+                  <p class="text-ke-gray">We're always looking for talented people to join our team.</p>
+                </div>
+                <div class="w-1/4 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
+                  <ul class="second-column-menu">
+                    <li>
+                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="administrative">Administrative</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="project-management">Project Management</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="electricians">Electricians</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="engineering">Engineering</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="estimating">Estimating</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="apprenticeships">Apprenticeships</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
+                  <!-- Administrative (default) -->
+                  <ul class="third-column-content active" id="administrative">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../careers/administrative/position1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../careers/administrative/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Project Management -->
+                  <ul class="third-column-content" id="project-management">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../careers/project-management/position1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../careers/project-management/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Electricians -->
+                  <ul class="third-column-content" id="electricians">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../careers/electricians/position1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../careers/electricians/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Engineering -->
+                  <ul class="third-column-content" id="engineering">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../careers/engineering/position1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../careers/engineering/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Estimating -->
+                  <ul class="third-column-content" id="estimating">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../careers/estimating/position1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../careers/estimating/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Apprenticeships -->
+                  <ul class="third-column-content" id="apprenticeships">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../careers/apprenticeship/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../careers/apprenticeship/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <ul class="md:flex md:space-x-8 w-full justify-center">
+          <li class="mt-6 pl-4 md:pl-0 md:ml-4 lg:mt-0 md:self-center absolute right-0 lg:right-6">
+            <a class="blue-nav-button rounded-md" href="../contact/request-bid/">POWER UP YOUR PROJECT - LET'S TALK!</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <div class="header">
+        <h1>CSS Fix for Video Carousel</h1>
+        <p>Demonstrating the solution to the video display issue</p>
+    </div>
+    
+    <div class="container">
+        <div class="explanation">
+            <h2>The Problem</h2>
+            <p>The video carousel was not displaying properly because of CSS loading and timing issues. When you save/refresh from the CSS file, the carousel briefly appears, indicating a CSS specificity or timing problem.</p>
+            
+            <h2>The Solution</h2>
+            <p>We've implemented three key fixes:</p>
+            <ol>
+                <li>Added <code>!important</code> to all video carousel CSS properties to ensure they take precedence over any conflicting styles in main.css</li>
+                <li>Added a forced redraw mechanism in JavaScript to ensure the browser properly renders the videos</li>
+                <li>Added a delayed initialization to ensure the carousel is properly set up after all CSS has loaded</li>
+            </ol>
+            
+            <p class="important">Note: The CSS fix is the most critical part - ensuring that the video carousel styles have higher specificity than any conflicting styles in main.css.</p>
+        </div>
+        
+        <div class="video-section">
+            <div id="video-carousel">
+                <video muted loop playsinline preload="auto" class="active" width="100%" height="100%">
+                    <source src="./assets/videos/video1.mp4" type="video/mp4">
+                </video>
+                <video muted loop playsinline preload="none" width="100%" height="100%">
+                    <source src="./assets/videos/video2.mp4" type="video/mp4">
+                </video>
+                <video muted loop playsinline preload="none" width="100%" height="100%">
+                    <source src="./assets/videos/video3.mp4" type="video/mp4">
+                </video>
+            </div>
+            
+            <div class="controls">
+                <button id="prevBtn">Previous</button>
+                <button id="playPauseBtn">Pause</button>
+                <button id="nextBtn">Next</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.getElementById('video-carousel');
+            const videos = carousel.querySelectorAll('video');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const playPauseBtn = document.getElementById('playPauseBtn');
+            
+            let currentIndex = 0;
+            let isPlaying = true;
+            let interval;
+            
+            // Force a redraw of the carousel to ensure videos are displayed
+            function forceRedraw(element) {
+                const display = element.style.display;
+                element.style.display = 'none';
+                void element.offsetHeight; // Force reflow
+                element.style.display = display;
+                console.log('Forced redraw');
+            }
+            
+            // Show a specific video
+            function showVideo(index) {
+                videos.forEach(v => {
+                    v.classList.remove('active');
+                    v.pause();
+                });
+                
+                currentIndex = index;
+                const video = videos[currentIndex];
+                video.classList.add('active');
+                
+                // Force a redraw to ensure the video is displayed
+                forceRedraw(video);
+                
+                if (isPlaying) {
+                    video.play();
+                }
+            }
+            
+            // Initialize autoplay
+            function startAutoplay() {
+                if (interval) clearInterval(interval);
+                interval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % videos.length;
+                    showVideo(currentIndex);
+                }, 6000);
+            }
+            
+            // Button event listeners
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+                showVideo(currentIndex);
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % videos.length;
+                showVideo(currentIndex);
+            });
+            
+            playPauseBtn.addEventListener('click', () => {
+                isPlaying = !isPlaying;
+                playPauseBtn.textContent = isPlaying ? 'Pause' : 'Play';
+                
+                if (isPlaying) {
+                    videos[currentIndex].play();
+                    startAutoplay();
+                } else {
+                    videos[currentIndex].pause();
+                    clearInterval(interval);
+                }
+            });
+            
+            // Initialize
+            showVideo(0);
+            startAutoplay();
+            
+            // Force a redraw after a short delay
+            setTimeout(() => {
+                forceRedraw(carousel);
+                videos.forEach(video => forceRedraw(video));
+            }, 100);
+            
+            // Additional initialization after CSS has fully loaded
+            setTimeout(() => {
+                forceRedraw(carousel);
+                const activeVideo = carousel.querySelector('video.active');
+                if (activeVideo) {
+                    activeVideo.style.opacity = '0.99';
+                    setTimeout(() => {
+                        activeVideo.style.opacity = '1';
+                    }, 50);
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html> 
+
+
+
+
+
+

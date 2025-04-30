@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -31,7 +31,7 @@
   <link rel="manifest" href="./site.webmanifest">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="./assets/js/navigation.js" defer></script>
+  <script src="./assets/js/navigation-fixed.js" defer></script>
   <script src="./assets/js/homepage-carousel.js" defer></script>  
 
   <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('Xbp1oaEWxyL7EdVj'); </script>
@@ -46,8 +46,8 @@
     
     section[data-home-slider] {
       opacity: 1 !important; /* Ensure the section is always visible */
-    }
-    
+    } 
+
     #video-carousel {
       position: absolute;
       top: 0;
@@ -77,24 +77,673 @@
       visibility: visible;
       z-index: 2;
     }
-
+    
+    /* Logo overlay fix */
+    .video-logo-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20 !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: none;
+    }
+    
+    .video-logo-overlay .logo-container {
+      position: relative;
+      width: 50%;
+      max-width: 28rem;
+    }
+    
+    .video-logo-overlay .logo-bg {
+      display: none; /* Hide the gradient background */
+    }
+    
+    .video-logo-overlay img {
+      position: relative;
+      width: 100%;
+      padding: 1.5rem;
+      filter: drop-shadow(0 0 15px rgba(0,0,0,0.8)) drop-shadow(0 0 30px rgba(0,0,0,0.6)) drop-shadow(0 0 45px rgba(0,0,0,0.5));
+    }
+    
     /* Navigation styles */
     .nav-item {
       position: relative;
     }
+    
+    /* Ensure the logo is positioned at the far left */
+    .site-header .md\:w-11\/12 {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding-left: 0 !important; /* Remove left padding to position logo at the very left */
+      padding-right: 20px;
+    }
+    
+    /* Ensure the logo container has proper padding */
+    .site-header .md\:w-11\/12 > a:first-child {
+      padding-left: 0 !important; /* Remove padding to position logo at the very left edge */
+    }
+    
+    @media (min-width: 768px) {
+      .site-header .md\:w-11\/12 > a:first-child {
+        padding-left: 0 !important; /* Remove padding to position logo at the very left edge */
+      }
+    }
 
     .submenu {
       display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      background-color: white;
+    position: absolute;
+    top: 100%;
+    left: 0;
+      width: 100vw !important; /* Ensure full viewport width */
+      margin-left: 0 !important; /* Remove margin */
+      margin-right: 0 !important; /* Remove margin */
+      transform: none !important; /* Remove transform */
+    background-color: white;
       z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
 
+    @media (min-width: 1024px) {
+      /* Fix the header to ensure consistent positioning */
+      .site-header {
+        position: relative;
+        z-index: 101; /* Higher than submenu */
+      }
+      
+      /* Ensure the main navigation has proper height */
+      .site-header .lg\:py-0 {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+      }
+      
+      /* Ensure the nav items have proper height */
+      .nav-item .lg\:py-6 {
+        padding-top: 1.5rem !important; /* 6 tailwind units */
+        padding-bottom: 1.5rem !important; /* 6 tailwind units */
+      }
+      
+      /* Ensure the submenu is positioned correctly */
+      .submenu {
+        position: fixed !important; /* Change to fixed to break out of container */
+        top: var(--header-height, 80px) !important; /* Use CSS variable with fallback */
+        left: 0 !important; /* Start at the left edge of the screen */
+        right: 0 !important;
+        width: 100% !important; /* Full viewport width */
+        max-width: none !important; /* No max width */
+        transform: none !important;
+        margin: 0 !important; /* No margin */
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        border-top: none !important; /* Remove any border that might create a gap */
+      }
+      
+      /* Ensure the nav items have proper positioning */
+      .nav-item {
+        position: static !important;
+      }
+      
+      /* Ensure the main navigation has proper z-index */
+      .main-navigation {
+        position: relative;
+        z-index: 101;
+      }
+      
+      /* Ensure no gap between nav and submenu */
+      .nav-item:hover .submenu {
+        margin: 0 !important;
+        border-top: none !important;
+      }
+      
+      /* Ensure the submenu spans the full width */
+      .submenu::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: inherit;
+        z-index: -1;
+      }
+      
+      /* Ensure the submenu connects directly to the header */
+      .site-header::after {
+        content: '';
+        display: block;
+        height: 0;
+        clear: both;
+      }
+    }
+    
+    /* Add delay on mouseleave for smoother transitions */
+    .nav-item {
+      transition: background-color 0.2s ease;
+    }
+    
+    .nav-item .submenu {
+      transition: opacity 0.3s ease 0.1s, visibility 0.3s ease 0.1s; /* Added 0.1s delay */
+    }
+    
     .nav-item:hover .submenu {
       display: block;
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 0s; /* No delay on hover */
+    }
+    
+    /* Adjust the submenu content to be centered */
+    .submenu > div, 
+    .submenu > ul {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    /* Create a container for the submenu content */
+    .submenu-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      padding: 0 20px;
+      gap: 3rem;
+      width: 100%;
+    }
+    
+    @media (min-width: 1024px) {
+      .submenu-container {
+        padding: 0 40px;
+        width: 100%;
+      }
+    }
+    
+    /* Ensure the submenu has proper spacing */
+    .submenu {
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100vw !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+    
+    /* Ensure the video carousel stays visible and isn't affected by menu interactions */
+    #video-carousel, 
+    section[data-home-slider],
+    #video-carousel video.active {
+      z-index: 5;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+    /* Remove the dropdown arrow indicators */
+    /* .nav-item > a::after {
+      content: '';
+      display: inline-block;
+      width: 0;
+      height: 0;
+      margin-left: 0.5em;
+      vertical-align: middle;
+      border-top: 0.3em solid;
+      border-right: 0.3em solid transparent;
+      border-left: 0.3em solid transparent;
+    } */
+    
+    /* News Ticker Styles */
+    .ticker-container {
+      overflow: hidden;
+      padding: 8px 0;
+    }
+    
+    .ticker-wrapper {
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+    }
+    
+    .ticker-scroll {
+      display: inline-block;
+      white-space: nowrap;
+      padding-right: 100%;
+      animation: ticker 60s linear infinite;
+    }
+    
+    .ticker-scroll:hover {
+      animation-play-state: paused;
+    }
+    
+    .ticker-item {
+      display: inline-block;
+      padding: 0 30px;
+      font-size: 14px;
+      color: white;
+    }
+    
+    .ticker-item a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #FFD700;
+      transition: color 0.2s ease;
+    }
+    
+    .ticker-item a:hover {
+      color: #FFC107;
+    }
+    
+    @keyframes ticker {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .ticker-item {
+        padding: 0 15px;
+        font-size: 12px;
+      }
+      
+      /* Stack elements on mobile */
+      .bg-ke-blue .md\:w-11\/12 {
+        flex-direction: column;
+      }
+      
+      .flex-shrink-0 {
+        justify-content: center;
+        padding: 8px 0;
+      }
+    }
+
+    /* Integrated header layout */
+    .bg-ke-blue .md\:w-11\/12 {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+    }
+    
+    /* Make sure support text is properly aligned */
+    .flex-shrink-0 {
+      padding: 8px 15px;
+      display: flex;
+      align-items: center;
+    }
+    
+    /* Ensure the support text and phone number are on the same line */
+    .flex-shrink-0 p {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    /* Ensure the ticker and support section align properly */
+    @media (min-width: 768px) {
+      .ticker-container {
+        padding-right: 15px;
+      }
+      
+      .flex-shrink-0 {
+        min-width: 250px;
+        padding: 8px 0;
+        display: flex;
+        align-items: center;
+      }
+      
+      /* Ensure the ticker doesn't overflow on smaller screens */
+      .ticker-scroll {
+        animation-duration: 60s;
+      }
+    }
+
+    /* Support section styling */
+    .support-container {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    .support-label {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 8px;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      font-weight: 600;
+    }
+    
+    .phone-button {
+      margin-left: -11px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      transition: background-color 0.2s ease;
+      padding-left: 8px;
+      padding-right: 8px;
+      min-width: 160px;
+      text-align: left;
+    }
+    
+    .phone-button:hover {
+      background-color: #0a4a7a;
+    }
+    
+    @media (max-width: 768px) {
+      .support-container {
+        margin: 0 auto;
+      }
+    }
+
+    /* Testimonial Carousel Styles */
+    .testimonial-slide {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform: translateX(20px);
+    }
+
+    .testimonial-slide.active {
+      display: block;
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @media (max-width: 768px) {
+      .testimonial-nav {
+        padding: 0.5rem;
+      }
+      
+      .testimonial-nav svg {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+
+    /* Add swipe animation */
+    @keyframes slideInRight {
+      from { transform: translateX(50px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+      from { transform: translateX(-50px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes slideOutRight {
+      from { transform: translateX(0); opacity: 1; }
+      to { transform: translateX(50px); opacity: 0; }
+    }
+
+    @keyframes slideOutLeft {
+      from { transform: translateX(0); opacity: 1; }
+      to { transform: translateX(-50px); opacity: 0; }
+    }
+
+    .slide-in-right {
+      animation: slideInRight 0.5s forwards;
+    }
+
+    .slide-in-left {
+      animation: slideInLeft 0.5s forwards;
+    }
+
+    .slide-out-right {
+      animation: slideOutRight 0.5s forwards;
+    }
+
+    .slide-out-left {
+      animation: slideOutLeft 0.5s forwards;
+    }
+
+    /* Project Grid Styles */
+    .project-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      z-index: 1;
+    }
+    
+    .project-card:hover {
+      transform: scale(1.1);
+      z-index: 10;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Standardize all project card overlays */
+    .featured-projects .learn-more-overlay > div {
+      width: 75% !important;
+      max-width: 24rem !important;
+    }
+    
+    /* Position the overlay higher to avoid covering bottom text */
+    .featured-projects .learn-more-overlay {
+      align-items: flex-start !important;
+      padding-top: 4rem !important; /* Reduced from default pt-20 (5rem) */
+      height: 80% !important; /* Make overlay shorter */
+    }
+    
+    /* Three-Column Navigation Menu Styles */
+    .three-column-menu {
+      display: flex;
+      flex-wrap: nowrap;
+      width: 100%;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    
+    /* Ensure submenu container has proper layout */
+    .submenu-container {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .menu-column {
+      transition: all 0.3s ease;
+    }
+    
+    .first-column {
+      flex: 0 0 25%;
+    }
+    
+    .second-column {
+      flex: 0 0 25%;
+    }
+    
+    .third-column {
+      flex: 0 0 50%;
+      position: relative;
+      width: auto !important; /* Override any width classes */
+    }
+    
+    /* Fix for the w-1/2 class that's causing layout issues */
+    .submenu-container .w-1\/2 {
+      width: auto !important;
+    }
+    
+    /* More specific override */
+    .submenu-container .third-column.w-1\/2 {
+      width: auto !important;
+    }
+    
+    .second-column-item {
+      position: relative;
+      transition: color 0.3s ease, padding-left 0.2s ease;
+    }
+    
+    .second-column-item:hover, 
+    .second-column-item.active {
+      color: #0076C5 !important;
+      padding-left: 0.5rem;
+    }
+    
+    .second-column-item::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: #0076C5;
+      transition: width 0.3s ease;
+    }
+    
+    .second-column-item:hover::after,
+    .second-column-item.active::after {
+      width: 100%;
+    }
+    
+    .third-column-content {
+      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    .third-column-content.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Ensure at least one third column content is visible */
+    .third-column:not(:has(.third-column-content.active)) .third-column-content:first-child {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Fallback for browsers that don't support :has() */
+    .third-column.no-has-support .third-column-content:first-child:not(.active) {
+      display: none;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 1023px) {
+      .three-column-menu {
+        flex-direction: column;
+      }
+      
+      .menu-column {
+        width: 100% !important;
+        margin-bottom: 1rem;
+        flex: 0 0 100%;
+      }
+      
+      .third-column-content {
+        padding-left: 1rem;
+      }
+    }
+    
+    .project-overlay {
+      pointer-events: none;
+    }
+
+    /* Hero section animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .hero-content h1 {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .hero-content p {
+      animation: fadeInUp 0.8s ease-out 0.2s forwards;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    .hero-content .flex {
+      animation: scaleIn 0.8s ease-out 0.4s forwards;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    .hero-content .absolute.inset-0.opacity-5 {
+      animation: fadeIn 1.5s ease-out forwards;
+    }
+
+    /* Animation utility classes */
+    .transform-none {
+      transform: none !important;
+    }
+    
+    .opacity-100 {
+      opacity: 1 !important;
+    }
+    
+    .scale-x-100 {
+      transform: scaleX(1) !important;
+    }
+    
+    /* Ensure smooth animations */
+    [data-animate] * {
+      will-change: transform, opacity;
+    }
+
+    .tab.hover-effect {
+      transform: translateY(-2px);
+      background-color: var(--ke-blue, #0056b3);
+      color: white;
+      /* Removing the box-shadow as requested */
+    }
+
+    .testimonial-slide {
+      will-change: transform, opacity;
+    }
+
+    .tab-content {
+      transition: all 0.3s ease-in-out;
+    }
+
+    .tab-content.hidden {
+      display: none !important;
+    }
+
+    .tab-content img {
+      transition: transform 8s ease-in-out, filter 0.5s ease-in-out;
+    }
+
+    .tab-contents {
+      position: relative;
+      width: 100%;
+    }
+
+    /* Even more specific rule to override inline styles */
+    .project-card .learn-more-overlay.pt-20 {
+      padding-top: 3rem !important;
     }
   </style>
 
@@ -107,9 +756,40 @@
   <nav class="site-header relative z-10">
     <!-- <a class="py-2 text-ke-gray-dark block bg-ke-yellow hover:bg-ke-yellow-dark transition duration-200 text-center text-lg font-semibold uppercase" href="./job-openings/">Now Hiring! <span class="block text-base normal-case font-normal">Click to fill out an application</span></a> -->
     <!-- <a class="py-2 text-ke-gray-dark block bg-ke-yellow hover:bg-ke-yellow-dark transition duration-200 text-center text-lg font-semibold uppercase" href="https://www.indeed.com/cmp/Kansas-Electric/jobs">Now hiring experienced apprentices and electricians! <span class="block text-base normal-case font-normal">Click to fill out an application</span></a> -->
+    
     <div class="bg-ke-blue">
-      <div class="md:w-11/12 mx-auto flex justify-end">
-        <p class="text-white font-semibold">24/7 Support: <a class="inline-block bg-ke-blue-dark font-semibold py-2 px-4 ml-4 text-white" href="tel:3162834750">(316) 283-4750</a></p>
+      <div class="md:w-11/12 mx-auto flex flex-row md:items-center">
+        <!-- News Ticker with flex-grow to take available space -->
+        <div class="ticker-container flex-grow">
+          <div class="ticker-wrapper">
+            <div class="ticker-scroll">
+              <span class="ticker-item">AI assistants like Microsoft's Factory Operations Agent are streamlining manufacturing processes. <a href="https://www.microsoft.com/en-us/industry/blog/manufacturing-and-mobility/2023/11/14/introducing-microsoft-factory-operations-agent-a-new-ai-assistant-for-manufacturing/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">These are the top 5 manufacturing automation trends that are shaping 2025. <a href="https://www.forbes.com/sites/bernardmarr/2023/11/13/the-top-5-manufacturing-trends-in-2024/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">The Department of Energy is funding projects that convert carbon emissions into value-added products. <a href="https://www.energy.gov/fecm/articles/doe-announces-17-million-convert-carbon-emissions-valuable-products" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">AI technologies are projected to nearly double global data center electricity usage by 2030. <a href="https://www.iea.org/reports/the-environmental-footprint-of-artificial-intelligence" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Meta plans a $35 billion data center fund, with Apollo Global in talks to lead the initiative. <a href="https://www.reuters.com/technology/meta-plans-35-billion-data-center-fund-apollo-talks-lead-it-sources-2023-11-14/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">U.S. Army completes new microgrids at Fort Hunter Liggett, Camp Arifjan, and Fort Cavazos, enhancing energy resilience. <a href="https://www.army.mil/article/269387/army_completes_new_microgrids_at_fort_hunter_liggett_camp_arifjan_and_fort_cavazos" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Scientists develop a new optimization model to improve microgrid operation, ensuring stable and efficient energy systems. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0306261923013648" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">The Department of Energy introduces the Community Microgrid Assistance Partnership to bolster energy resilience in remote communities. <a href="https://www.energy.gov/gdo/community-microgrid-assistance-partnership" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Fort Riley's solar installation reaches 16 MW, powering 40% of base housing. <a href="https://www.army.mil/article/269387/army_completes_new_microgrids_at_fort_hunter_liggett_camp_arifjan_and_fort_cavazos" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">The University of Kansas has a new Welcome Center. It's a 58 kW solar microgrid with battery storage. <a href="https://www.ku.edu/news/2023/11/15/ku-welcome-center-earns-leed-gold-certification-sustainability" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Google and Salesforce back carbon capture projects at paper mills and sewage plants to combat emissions. <a href="https://www.cnbc.com/2023/11/14/google-salesforce-back-carbon-capture-at-paper-mills-sewage-plants.html" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Eni is integrating carbon capture with data centers to boost its energy transition strategy. <a href="https://www.reuters.com/business/energy/italys-eni-eyes-carbon-capture-data-centres-energy-transition-push-2023-11-13/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">The Department of Energy is investing $101 million in new test centers to advance carbon capture technologies. <a href="https://www.energy.gov/articles/doe-announces-101-million-carbon-capture-test-centers" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">PERENfra's Perennial Infrastructure Fund 1 is investing $125 million in core water infrastructure projects in the United States. <a href="https://www.businesswire.com/news/home/20231114060457/en/PERENfra-Announces-Final-Close-of-Perennial-Infrastructure-Fund-I-at-125-Million" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Nashville invests $403 million to enhance the White Creek Wastewater Treatment Plant in a bid to boost capacity and efficiency. <a href="https://www.nashville.gov/departments/water/news/metro-water-services-breaks-ground-white-creek-wastewater-treatment-plant" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Veolia North America unveils major upgrades to improve air and water quality at Richmond's wastewater treatment facility. <a href="https://www.veolianorthamerica.com/news-events/media/press-releases/veolia-north-america-unveils-major-upgrades-richmonds-wastewater" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Los Angeles plans $740 million expansion of the Tillman Water Reclamation Plant to increase wastewater treatment capacity. <a href="https://www.lacitysan.org/san/faces/home/portal/s-lsh-wwd/s-lsh-wwd-cw/s-lsh-wwd-cw-p/s-lsh-wwd-cw-p-twerp" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+            </div>
+          </div>
+        </div>
+        <!-- 24/7 Support -->
+        <div class="flex-shrink-0 whitespace-nowrap">
+          <p class="text-white font-semibold flex items-center support-container">
+            <span class="support-label">24/7 Support:</span>
+            <a class="inline-block bg-ke-blue-dark font-semibold py-2 px-4 ml-2 text-white phone-button" href="tel:3162834750">(316) 283-4750</a>
+          </p>
+        </div>
       </div>
     </div>
     <div class="md:w-11/12 mx-auto flex lg:space-x-10 justify-between py-6 lg:py-0 px-4 md:px-0">
@@ -126,91 +806,374 @@
         <ul class="lg:flex lg:space-x-6 lg:self-center">
           <li class="lg:self-center py-0 border-t border-ke-gray-lighter lg:border-none nav-item">
             <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Services</a>
-            <div class="submenu bg-ke-gray-light lg:px-8 lg:py-12 relative lg:absolute top-0 lg:top-[13.75rem] left-0 w-full lg:flex lg:justify-center lg:space-x-12 lg:pl-4 border-b-2 border-ke-blue">
-              <div class="w-2/5 hidden lg:block left-column">
-                <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Electrical Services</p>
-                <p class="text-ke-gray">Our job is to keep your lights on and production moving forward.</p>
-              </div>
-              <div class="half center-column">
-                <ul>
-                  <li class="service-link">
-                    <a href="#">Automation</a>
-                  </li>
-                  <li class="service-link">
-                    <a href="#">Industrial Electrical</a>
-                  </li>
-                  <li class="service-link">
-                    <a href="#">Commercial Electrical</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="half right-column">
-                <!-- Subcategories will be dynamically inserted here -->
+            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
+              <div class="submenu-container three-column-menu">
+                <div class="hidden lg:block menu-column first-column">
+                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Electrical Services</p>
+                  <p class="text-ke-gray">Our job is to keep your lights on and production moving forward.</p>
+                </div>
+                <div class="lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
+                  <ul class="second-column-menu">
+                    <li>
+                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="industrial-electrical">Industrial Electrical Division</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="commercial-electrical">Commercial Electrical Division</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="service-maintenance">Service and Maintenance Division</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="automation-control">Automation and Control Systems Division</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
+                  <!-- Industrial Electrical Division (default) -->
+                  <ul class="third-column-content active" id="industrial-electrical">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/industrial/wastewater-treatment/">Wastewater & Water Treatment Plants</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/industrial/oil-gas/">Oil, Gas & Carbon Capture Pipelines</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/industrial/food-beverage/">Food & Beverage Manufacturing Plants</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/industrial/advanced-manufacturing/">Advanced Manufacturing Facilities</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/ul-certified-design-build/">Design-Build Electrical Services</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/industrial/microgrids/">Microgrids & Energy Management Systems</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Commercial Electrical Division -->
+                  <ul class="third-column-content" id="commercial-electrical">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/commercial/large-scale/">Large-Scale Commercial Construction</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/commercial/water-towers/">Water Towers & Municipal Infrastructure</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/commercial/airport/">Airport Electrical Infrastructure</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Service and Maintenance Division -->
+                  <ul class="third-column-content" id="service-maintenance">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/maintenance/ir-scans/">Infrared (IR) Scans & Predictive Maintenance</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/maintenance/arc-flash/">Arc Flash Studies & NFPA 70E Compliance</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/maintenance/nfpa-70b/">NFPA 70B & Electrical Maintenance Program Implementation</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/maintenance/breaker-testing/">Breaker Exercising & Power System Testing</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/maintenance/emergency/">24/7 Emergency Electrical Service</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Automation and Control Systems Division -->
+                  <ul class="third-column-content" id="automation-control">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/automation/ul508a/">UL508A Panel Building & Fabrication</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/automation/plc-programming/">PLC Programming & Industrial Automation</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/automation/troubleshooting/">Control Panel Troubleshooting & Upgrades</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/automation/remote-monitoring/">Remote Monitoring & Smart Factory Solutions</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </li>
-          <li class="lg:self-center border-t border-ke-gray-lighter lg:border-none">
-            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="./projects/">Projects</a>
+          <li class="lg:self-center border-t border-ke-gray-lighter lg:border-none nav-item">
+            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Projects</a>
+            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
+              <div class="submenu-container three-column-menu">
+                <div class="w-1/4 hidden lg:block menu-column first-column">
+                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Our Projects</p>
+                  <p class="text-ke-gray">Explore our portfolio of completed electrical projects.</p>
+                </div>
+                <div class="w-1/4 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
+                  <ul class="second-column-menu">
+                    <li>
+                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="all-projects">All Projects</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="industrial-projects">Industrial Projects</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="commercial-projects">Commercial Projects</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="service-maintenance-projects">Service and Maintenance Projects</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="automation-projects">Automation and Control Systems Projects</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
+                  <!-- All Projects (default) -->
+                  <ul class="third-column-content active" id="all-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/stanley-black-decker/">Stanley Black & Decker - Network Upgrades</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/mkc-lyons/">MKC - Lyons</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/health-ministries/">Health Ministries Dental Clinic</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/bethel-college/">Bethel College Solar Grid</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/agco-hesston/">AGCO - Hesston</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/camso-control-panel/">Camso Control Panel</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Industrial Projects -->
+                  <ul class="third-column-content" id="industrial-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/industrial/project1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/industrial/project2/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/industrial/project3/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/industrial/project4/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/industrial/project5/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Commercial Projects -->
+                  <ul class="third-column-content" id="commercial-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/commercial/project1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/commercial/project2/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/commercial/project3/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/commercial/project4/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/commercial/project5/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Service and Maintenance Projects -->
+                  <ul class="third-column-content" id="service-maintenance-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/service/project1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/service/project2/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/service/project3/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/service/project4/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/service/project5/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Automation and Control Systems Projects -->
+                  <ul class="third-column-content" id="automation-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/automation/project1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/automation/project2/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/automation/project3/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/automation/project4/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/automation/project5/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </li>
           <li class="lg:self-center border-t border-ke-gray-lighter lg:border-none nav-item">
             <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">About</a>
-            <div class="submenu bg-ke-gray-light lg:px-8 lg:py-12 relative lg:absolute top-0 lg:top-[13.75rem] left-0 w-full lg:flex lg:justify-center lg:space-x-12 lg:pl-4 border-b-2 border-ke-blue">
-              <div class="w-2/5 hidden lg:block">
-                <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">About Us</p>
-                <p class="text-ke-gray">Our job is to keep your lights on and production moving forward.</p>
+            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
+              <div class="submenu-container three-column-menu">
+                <div class="w-1/4 hidden lg:block menu-column first-column">
+                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">About Us</p>
+                  <p class="text-ke-gray">Our job is to keep your lights on and production moving forward.</p>
+                </div>
+                <div class="w-1/4 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
+                  <ul class="second-column-menu">
+                    <li>
+                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="who-we-are">Who We Are</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="company-news">Company News</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
+                  <!-- Who We Are (default) -->
+                  <ul class="third-column-content active" id="who-we-are">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./about/">Who We Are</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./about/locations/">Locations</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./about/our-team/">Our Team</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Company News -->
+                  <ul class="third-column-content" id="company-news">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./company-news/">Company News</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./about/community/">Community Involvement</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <ul class="md:w-1/3 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8">
-                <li>
-                  <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./about/">Who We Are</a>
-                </li>
-                <li>
-                  <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./about/locations/">Locations</a>
-                </li>
-                <li>
-                  <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./about/our-team/">Our Team</a>
-                </li>
-                <li>
-                  <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./company-news/">Company News</a>
-                </li>
-                <li>
-                  <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./about/community/">Community Involvement</a>
-                </li>
-                <!-- <li>
-                  <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./about/credentials/">Safety Credentials</a>
-                </li> -->
-              </ul>
             </div>
           </li>
           <li class="lg:self-center border-t border-b border-ke-gray-lighter lg:border-none nav-item">
             <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Careers</a>
-            <div class="submenu bg-ke-gray-light lg:px-8 lg:py-12 relative lg:absolute top-0 lg:top-[13.75rem] left-0 w-full lg:flex lg:justify-center lg:space-x-12 lg:pl-4 border-b-2 border-ke-blue">
-              <div class="w-2/5 hidden lg:block">
-                <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Careers</p>
-                <p class="text-ke-gray">We're always looking for talented people to join our team.</p>
+            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
+              <div class="submenu-container three-column-menu">
+                <div class="w-1/4 hidden lg:block menu-column first-column">
+                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Careers</p>
+                  <p class="text-ke-gray">We're always looking for talented people to join our team.</p>
+                </div>
+                <div class="w-1/4 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
+                  <ul class="second-column-menu">
+                    <li>
+                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="administrative">Administrative</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="project-management">Project Management</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="electricians">Electricians</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="engineering">Engineering</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="estimating">Estimating</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="apprenticeships">Apprenticeships</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
+                  <!-- Administrative (default) -->
+                  <ul class="third-column-content active" id="administrative">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/administrative/position1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/administrative/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Project Management -->
+                  <ul class="third-column-content" id="project-management">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/project-management/position1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/project-management/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Electricians -->
+                  <ul class="third-column-content" id="electricians">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/electricians/position1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/electricians/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Engineering -->
+                  <ul class="third-column-content" id="engineering">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/engineering/position1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/engineering/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Estimating -->
+                  <ul class="third-column-content" id="estimating">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/estimating/position1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/estimating/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Apprenticeships -->
+                  <ul class="third-column-content" id="apprenticeships">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/apprenticeship/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/apprenticeship/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <ul class="md:w-1/3 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8">
-                <li>
-                  <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/">Careers</a>
-                </li>
-                <li>
-                  <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/apprenticeship/">Apprenticeships</a>
-                </li>
-                <!-- <li>
-                  <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/training/">Training Courses</a>
-                </li> -->
-              </ul>
             </div>
           </li>
         </ul>
-        <ul class="md:flex md:space-x-8">
-          <li class="mt-6 pl-4 md:pl-0 md:ml-4 lg:mt-0 flex space-x-6 md:self-center">
-            <a class="no-arrow relative group" href="https://www.facebook.com/Kansas.Electric.Electrical.Contractor" target="_blank" rel=”noopener”><span class="sr-only">Kansas Electric Facebook page</span><img class="social-icon opacity-100" src="./assets/img/facebook.svg" alt="Kansas Electric Facebook page" title="Kansas Electric Facebook page" width="20" height="20"><img class="social-icon absolute top-0 opacity-0 transition-opacity duration-200 ease-in-out group-hover:opacity-100 group-focus:opacity-100" src="./assets/img/facebook-blue.svg" alt="Kansas Electric Facebook page" title="Kansas Electric Facebook page" width="20" height="20"></a>
-            <a class="no-arrow relative group" href="https://twitter.com/inc_kansas" target="_blank" rel=”noopener”><span class="sr-only">Kansas Electric Twitter page</span><img class="social-icon opacity-100" src="./assets/img/twitter.svg" alt="Kansas Electric Twitter page" title="Kansas Electric Twitter page" width="20" height="20"><img class="social-icon absolute top-0 opacity-0 transition-opacity duration-200 ease-in-out group-hover:opacity-100 group-focus:opacity-100" src="./assets/img/twitter-blue.svg" alt="Kansas Electric Twitter page" title="Kansas Electric Twitter page" width="20" height="20"></a>
-            <a class="no-arrow relative group" href="https://www.instagram.com/kansaselectricinc/" target="_blank" rel=”noopener”><span class="sr-only">Kansas Electric Instagram page</span><img class="social-icon opacity-100" src="./assets/img/instagram.svg" alt="Kansas Electric Instagram page" title="Kansas Electric Instagram page" width="20" height="20"><img class="social-icon absolute top-0 opacity-0 transition-opacity duration-200 ease-in-out group-hover:opacity-100 group-focus:opacity-100" src="./assets/img/instagram-blue.svg" alt="Kansas Electric Instagram page" title="Kansas Electric Instagram page" width="20" height="20"></a>
-            <a class="no-arrow relative group" href="https://www.linkedin.com/company/kansas-electric-inc" target="_blank" rel=”noopener”><span class="sr-only">Kansas Electric LinkedIn page</span><img class="social-icon opacity-100" src="./assets/img/linkedin.svg" alt="Kansas Electric LinkedIn page" title="Kansas Electric LinkedIn page" width="20" height="20"><img class="social-icon absolute top-0 opacity-0 transition-opacity duration-200 ease-in-out group-hover:opacity-100 group-focus:opacity-100" src="./assets/img/linkedin-blue.svg" alt="Kansas Electric LinkedIn page" title="Kansas Electric LinkedIn page" width="20" height="20"></a>
-          </li>
-          <li class="mt-6 pl-4 md:pl-0 md:ml-4 lg:mt-0 md:self-center">
-            <a class="blue-nav-button" href="./contact/request-bid/">Request a Bid</a>
+        <ul class="md:flex md:space-x-8 w-full justify-center">
+          <li class="mt-6 pl-4 md:pl-0 md:ml-4 lg:mt-0 md:self-center absolute right-0 lg:right-6">
+            <a class="blue-nav-button rounded-md" href="./contact/request-bid/">POWER UP YOUR PROJECT - LET'S TALK!</a>
           </li>
         </ul>
       </div>
@@ -233,6 +1196,14 @@
       <video muted loop playsinline preload="none">
         <source src="./assets/videos/video3.mp4" type="video/mp4">
       </video>
+    </div>
+    
+    <!-- Kansas Electric Logo Overlay -->
+    <div class="video-logo-overlay">
+      <div class="logo-container">
+        <div class="logo-bg"></div>
+        <img src="./assets/img/ke-logo-white.svg" alt="Kansas Electric">
+      </div>
     </div>
     
     <!-- Fallback image in case videos don't load -->
@@ -258,13 +1229,147 @@
     </div>
 </section>
 
-<section class="hero-content text-center py-12">
-    <h1 class="text-4xl font-bold">Built for Power, Engineered for Excellence.</h1>
-    <p class="text-xl mt-6">Delivering high-performance electrical solutions for industrial, commercial, and automation projects.</p>
-    <a href="request-a-bid.html" class="cta-button mt-6 inline-block bg-ke-blue text-white py-3 px-6 rounded">Partner With Us</a>
+<!-- Clean, Modern Hero Section with Animation -->
+<section class="hero-content py-16 relative overflow-hidden" id="hero-section">
+    <!-- Simple clean background -->
+    <div class="absolute inset-0 bg-white"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-5xl mx-auto" data-animate="hero-container">
+            <!-- Main heading with reveal animation -->
+            <div class="overflow-hidden mb-8" data-animate="text-reveal">
+                <h1 class="text-4xl md:text-5xl font-bold text-ke-gray-dark text-center transform translate-y-full opacity-0 transition-all duration-700 ease-out">
+                    Built for Power, Engineered for Excellence.
+                </h1>
+            </div>
+            
+            <!-- Subheading with reveal animation -->
+            <div class="overflow-hidden mb-16" data-animate="text-reveal" data-delay="200">
+                <p class="text-xl md:text-2xl text-ke-gray-dark text-center transform translate-y-full opacity-0 transition-all duration-700 ease-out">
+                    Kansas Electric is your trusted partner for 
+                    <span class="font-semibold text-ke-blue">industrial</span>, 
+                    <span class="font-semibold text-ke-blue">commercial</span>, 
+                    <span class="font-semibold text-ke-blue">automation</span>, and 
+                    <span class="font-semibold text-ke-blue">electrical service</span> projects.
+                </p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section id="trusted" class="customer-logos py-12">
+<!-- Interactive Services Section -->
+<section class="services pt-0 pb-6 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="tabs flex flex-wrap justify-center gap-2 md:gap-4 mb-6">
+            <button class="tab active bg-ke-blue text-white font-semibold py-3 px-4 md:px-6 rounded transition duration-200" data-tab="industrial">Industrial Electrical Division</button>
+            <button class="tab bg-ke-gray-light hover:bg-ke-blue hover:text-white text-ke-gray-dark font-semibold py-3 px-4 md:px-6 rounded transition duration-200" data-tab="commercial">Commercial Electrical Division</button>
+            <button class="tab bg-ke-gray-light hover:bg-ke-blue hover:text-white text-ke-gray-dark font-semibold py-3 px-4 md:px-6 rounded transition duration-200" data-tab="service">Electrical Service Division</button>
+            <button class="tab bg-ke-gray-light hover:bg-ke-blue hover:text-white text-ke-gray-dark font-semibold py-3 px-4 md:px-6 rounded transition duration-200" data-tab="automation">Automation & Control Systems Division</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-contents max-w-6xl mx-auto relative">
+            <!-- Industrial Electrical -->
+            <div class="tab-content active rounded shadow-lg overflow-hidden" id="industrial" style="position: relative; min-height: 600px;">
+                <img src="./assets/img/mkclyons.jpg" alt="Industrial Electrical Division" class="absolute inset-0 w-full h-full object-cover">
+                <!-- Strong gradient overlay -->
+                <div class="absolute inset-0 flex flex-col justify-end" style="background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%);">
+                    <div class="p-6 md:p-8 text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Large-Scale Power for Heavy Industry</h2>
+                        <p class="text-white text-xl md:text-2xl leading-relaxed font-light">We specialize in <span class="font-semibold text-ke-yellow">wastewater treatment facilities, oil/gas and carbon capture pipelines, and manufacturing plants.</span> Our electrical engineering expertise ensures that high-demand industrial environments stay operational, efficient, and future-ready.</p>
+                    </div>
+                </div>
+                <!-- Hover overlay -->
+                <div class="learn-more-overlay absolute inset-0 flex items-start justify-center opacity-0 transition-opacity duration-500 pointer-events-none pt-20">
+                    <div class="w-1/2 max-w-md bg-gradient-to-br from-black via-black to-gray-900 bg-opacity-95 rounded-lg flex flex-col items-center justify-center shadow-2xl py-6 px-4">
+                        <img src="./assets/img/ke-logo-white.svg" alt="Kansas Electric" class="w-32 mb-4 transform scale-0 transition-transform duration-700">
+                        <div class="text-center transform translate-y-10 transition-transform duration-700">
+                            <p class="text-white text-xl font-bold mb-2">Learn more about our</p>
+                            <p class="text-white text-2xl font-bold mb-4">Industrial Electrical Division</p>
+                            <a href="./services/industrial/" class="inline-block bg-ke-blue hover:bg-ke-blue-dark text-white font-semibold py-2 px-6 rounded transition duration-300 transform scale-100 hover:scale-105">Explore Services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commercial Electrical -->
+            <div class="tab-content hidden rounded shadow-lg overflow-hidden" id="commercial" style="position: relative; min-height: 600px;">
+                <img src="./assets/img/commercial1.jpg" alt="Commercial Electrical Division" class="absolute inset-0 w-full h-full object-cover">
+                <!-- Strong gradient overlay -->
+                <div class="absolute inset-0 flex flex-col justify-end" style="background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%);">
+                    <div class="p-6 md:p-8 text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Commercial Electrical Expertise</h2>
+                        <p class="text-white text-xl md:text-2xl leading-relaxed font-light">Kansas Electric powers <span class="font-semibold text-ke-yellow">large-scale commercial construction projects</span> in retail, healthcare, corporate campuses, and multi-site rollouts. We are a preferred partner for <span class="font-semibold text-ke-yellow">general contractors</span>, delivering reliable, high-performance electrical installations.</p>
+                    </div>
+                </div>
+                <!-- Hover overlay -->
+                <div class="learn-more-overlay absolute inset-0 flex items-start justify-center opacity-0 transition-opacity duration-500 pointer-events-none pt-20">
+                    <div class="w-1/2 max-w-md bg-gradient-to-br from-black via-black to-gray-900 bg-opacity-95 rounded-lg flex flex-col items-center justify-center shadow-2xl py-6 px-4">
+                        <img src="./assets/img/ke-logo-white.svg" alt="Kansas Electric" class="w-32 mb-4 transform scale-0 transition-transform duration-700">
+                        <div class="text-center transform translate-y-10 transition-transform duration-700">
+                            <p class="text-white text-xl font-bold mb-2">Learn more about our</p>
+                            <p class="text-white text-2xl font-bold mb-4">Commercial Electrical Division</p>
+                            <a href="./services/commercial/" class="inline-block bg-ke-blue hover:bg-ke-blue-dark text-white font-semibold py-2 px-6 rounded transition duration-300 transform scale-100 hover:scale-105">Explore Services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Automation & Control -->
+            <div class="tab-content hidden rounded shadow-lg overflow-hidden" id="automation" style="position: relative; min-height: 600px;">
+                <img src="./assets/img/automation1.jpg" alt="Automation & Control Systems Division" class="absolute inset-0 w-full h-full object-cover">
+                <!-- Strong gradient overlay -->
+                <div class="absolute inset-0 flex flex-col justify-end" style="background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%);">
+                    <div class="p-6 md:p-8 text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Smart Automation Solutions</h2>
+                        <p class="text-white text-xl md:text-2xl leading-relaxed font-light">As <span class="font-semibold text-ke-yellow">certified system integrators for Allen-Bradley and Ignition,</span> we provide advanced automation, SCADA, and PLC solutions. Our <span class="font-semibold text-ke-yellow">UL508A panel shop</span> fabricates custom control panels, while our <span class="font-semibold text-ke-yellow">AI-powered predictive maintenance</span> prevents costly downtime.</p>
+                    </div>
+                </div>
+                <!-- Hover overlay -->
+                <div class="learn-more-overlay absolute inset-0 flex items-start justify-center opacity-0 transition-opacity duration-500 pointer-events-none pt-20">
+                    <div class="w-1/2 max-w-md bg-gradient-to-br from-black via-black to-gray-900 bg-opacity-95 rounded-lg flex flex-col items-center justify-center shadow-2xl py-6 px-4">
+                        <img src="./assets/img/ke-logo-white.svg" alt="Kansas Electric" class="w-32 mb-4 transform scale-0 transition-transform duration-700">
+                        <div class="text-center transform translate-y-10 transition-transform duration-700">
+                            <p class="text-white text-xl font-bold mb-2">Learn more about our</p>
+                            <p class="text-white text-2xl font-bold mb-4">Automation & Control Systems Division</p>
+                            <a href="./services/automation/" class="inline-block bg-ke-blue hover:bg-ke-blue-dark text-white font-semibold py-2 px-6 rounded transition duration-300 transform scale-100 hover:scale-105">Explore Services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Electrical Service -->
+            <div class="tab-content hidden rounded shadow-lg overflow-hidden" id="service" style="position: relative; min-height: 600px;">
+                <img src="./assets/img/industrial-service.jpg" alt="Electrical Service Division" class="absolute inset-0 w-full h-full object-cover">
+                <!-- Strong gradient overlay -->
+                <div class="absolute inset-0 flex flex-col justify-end" style="background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%);">
+                    <div class="p-6 md:p-8 text-center">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">24/7 Electrical Service & Preventative Maintenance</h2>
+                        <p class="text-white text-xl md:text-2xl leading-relaxed font-light">Our service division offers <span class="font-semibold text-ke-yellow">24/7 emergency response</span> and <span class="font-semibold text-ke-yellow">preventative maintenance</span> services such as <span class="font-semibold text-ke-yellow">IR scans, arc flash studies, breaker exercising, and system diagnostics</span> to maximize uptime and safety.</p>
+                    </div>
+                </div>
+                <!-- Hover overlay -->
+                <div class="learn-more-overlay absolute inset-0 flex items-start justify-center opacity-0 transition-opacity duration-500 pointer-events-none pt-20">
+                    <div class="w-1/2 max-w-md bg-gradient-to-br from-black via-black to-gray-900 bg-opacity-95 rounded-lg flex flex-col items-center justify-center shadow-2xl py-6 px-4">
+                        <img src="./assets/img/ke-logo-white.svg" alt="Kansas Electric" class="w-32 mb-4 transform scale-0 transition-transform duration-700">
+                        <div class="text-center transform translate-y-10 transition-transform duration-700">
+                            <p class="text-white text-xl font-bold mb-2">Learn more about our</p>
+                            <p class="text-white text-2xl font-bold mb-4">Electrical Service Division</p>
+                            <a href="./services/electrical-service/" class="inline-block bg-ke-blue hover:bg-ke-blue-dark text-white font-semibold py-2 px-6 rounded transition duration-300 transform scale-100 hover:scale-105">Explore Services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Buttons moved here from hero section -->
+        <div class="cta-buttons mt-12 text-center">
+            <a href="./contact/request-bid/" class="btn-primary bg-ke-blue text-white font-semibold py-3 px-6 rounded mr-4 inline-block hover:bg-ke-blue-dark transition duration-200">Partner With Us</a>
+        </div>
+    </div>
+</section>
+
+<section id="trusted" class="customer-logos pt-8 pb-0">
     <h2 class="text-3xl font-bold text-center">Trusted by Industry Leaders</h2>
     <div class="logo-carousel flex justify-center items-center mt-4" style="margin-top: -20px;">
         <img src="./assets/img/svg logos/adm2.png" alt="ADM Logo" class="mx-4 h-12 w-auto">
@@ -277,65 +1382,315 @@
         <img src="./assets/img/svg logos/tyson2.png" alt="Tyson Foods Logo" class="mx-4 h-20 w-auto">
         <img src="./assets/img/svg logos/southernstar2.png" alt="Southern Star Logo" class="mx-4 h-22 w-auto" style="margin-top: -10px; margin-bottom: -10px;">
     </div>
+
+    <!-- Testimonial and Project Grid Section -->
+    <div class="flex flex-col lg:flex-row max-w-7xl mx-auto mt-0 px-4 gap-8" style="margin-top: -4rem;">
+        <!-- Left Side: Testimonial Carousel -->
+        <div class="testimonial-carousel relative w-full">
+            <!-- Testimonial Slides -->
+            <div class="testimonial-slides">
+                <!-- Testimonial 1 -->
+<div class="testimonial-slide active">
+    <div class="bg-white p-8 rounded-lg shadow-lg relative" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        <svg class="absolute top-6 left-6 h-10 w-10 text-ke-blue opacity-20" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+        </svg>
+        <div class="pt-8 md:pt-4 md:pl-16">
+            <p class="text-lg text-gray-600 mb-4">Kansas Electric has been our go-to electrical contractor for over 15 years. Their team consistently delivers quality work, on time and on budget. They understand our business needs and provide solutions that keep our operations running smoothly.</p>
+            <div class="flex flex-col items-center">
+                <img src="./assets/img/svg logos/tyson2.png" alt="Tyson Foods" class="h-10 w-auto mb-2">
+                <div class="text-center">
+                    <p class="font-semibold text-ke-blue">John Smith</p>
+                    <p class="text-sm text-gray-500">Facility Manager, Tyson Foods</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonial 2 -->
+<div class="testimonial-slide">
+    <div class="bg-white p-8 rounded-lg shadow-lg relative" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        <svg class="absolute top-6 left-6 h-10 w-10 text-ke-blue opacity-20" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+        </svg>
+        <div class="pt-8 md:pt-4 md:pl-16">
+            <p class="text-lg text-gray-600 mb-4">The automation solutions provided by Kansas Electric have transformed our manufacturing process. Their expertise in PLC programming and control systems has increased our efficiency by 30% and significantly reduced downtime.</p>
+            <div class="flex flex-col items-center">
+                <img src="./assets/img/svg logos/agco2.png" alt="AGCO" class="h-10 w-auto mb-2">
+                <div class="text-center">
+                    <p class="font-semibold text-ke-blue">Sarah Johnson</p>
+                    <p class="text-sm text-gray-500">Operations Director, AGCO</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonial 3 -->
+<div class="testimonial-slide">
+    <div class="bg-white p-8 rounded-lg shadow-lg relative" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+        <svg class="absolute top-6 left-6 h-10 w-10 text-ke-blue opacity-20" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z" />
+        </svg>
+        <div class="pt-8 md:pt-4 md:pl-16">
+            <p class="text-lg text-gray-600 mb-4">Kansas Electric's 24/7 emergency service has been invaluable to our operations. Their quick response time and skilled technicians have saved us countless hours of downtime. We consider them a true partner in our business.</p>
+            <div class="flex flex-col items-center">
+                <img src="./assets/img/svg logos/michelin2.png" alt="Michelin" class="h-10 w-auto mb-2">
+                <div class="text-center">
+                    <p class="font-semibold text-ke-blue">Michael Chen</p>
+                    <p class="text-sm text-gray-500">Plant Manager, Michelin</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Testimonial Navigation -->
+            <div class="flex justify-between mt-4">
+                <button class="testimonial-nav prev bg-ke-gray-light hover:bg-ke-blue text-ke-blue hover:text-white rounded-full p-2 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                
+                <div class="testimonial-dots flex space-x-2">
+                    <button class="dot w-3 h-3 rounded-full bg-ke-blue"></button>
+                    <button class="dot w-3 h-3 rounded-full bg-ke-gray-light"></button>
+                    <button class="dot w-3 h-3 rounded-full bg-ke-gray-light"></button>
+                </div>
+                
+                <button class="testimonial-nav next bg-ke-gray-light hover:bg-ke-blue text-ke-blue hover:text-white rounded-full p-2 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Right Side: Project Grid removed -->
+    </div>
 </section>
 
- 
-
-  <section class="fade-in transition-1000 ke-corner-decoration relative max-w-screen-xl md:mx-auto mb-12 lg:mb-24 px-6 lg:px-8 border-t border-ke-gray-light pt-12 lg:pt-28 ">
-    <p class="text-lg lg:text-3xl lg:text-center max-w-3xl mx-auto text-gray-400 mb-12 lg:mb-24 leading-loose">We value our relationships and leverage our expertise to deliver innovative solutions that elevate your business.</p>
-
-    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <li class="md:mx-auto relative mb-8 lg:mb-0">
-        <div class="image-container">
-          <img class="block transform group-hover:scale-105 group-focus:scale-105 transition duration-200 ease-in-out shadow-lg w-full h-64 object-cover object-top" src="./assets/img/industrial1.jpg" alt="Industrial Service Image 1">
+<!-- Featured Projects Section -->
+<section class="featured-projects py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Featured Projects</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <!-- Project 1: MKC - Lyons, KS -->
+            <div class="project-card rounded-lg shadow-lg overflow-hidden" style="position: relative; min-height: 400px;">
+                <img src="./assets/img/mkclyons2.jpg" alt="MKC - Lyons, KS" class="absolute inset-0 w-full h-full object-cover transition-all duration-500">
+                <!-- Strong gradient overlay -->
+                <div class="absolute inset-0 flex flex-col justify-end" style="background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%);">
+                    <div class="p-6 md:p-8 text-center">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">MKC</h3>
+                        <p class="text-white text-lg md:text-xl leading-relaxed font-light">Lyons, KS</p>
+                    </div>
+                </div>
+                <!-- Hover overlay -->
+                <div class="learn-more-overlay absolute inset-0 flex items-start justify-center opacity-0 transition-opacity duration-500 pointer-events-none pt-20">
+                    <div class="w-1/2 max-w-md bg-gradient-to-br from-black via-black to-gray-900 bg-opacity-95 rounded-lg flex flex-col items-center justify-center shadow-2xl py-6 px-4">
+                        <img src="./assets/img/ke-logo-white.svg" alt="Kansas Electric" class="w-32 mb-4 transform scale-0 transition-transform duration-700">
+                        <div class="text-center transform translate-y-10 transition-transform duration-700">
+                            <p class="text-white text-xl font-bold mb-2">Learn more about</p>
+                            <p class="text-white text-2xl font-bold mb-4">MKC - Lyons, KS</p>
+                            <a href="./projects/" class="inline-block bg-ke-blue hover:bg-ke-blue-dark text-white font-semibold py-2 px-6 rounded transition duration-300 transform scale-100 hover:scale-105">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 2: Health Ministries Dental Clinic - Newton, KS -->
+            <div class="project-card rounded-lg shadow-lg overflow-hidden" style="position: relative; min-height: 400px;">
+                <img src="./assets/img/dentalclinicexteror.jpg" alt="Health Ministries Dental Clinic - Newton, KS" class="absolute inset-0 w-full h-full object-cover transition-all duration-500">
+                <!-- Strong gradient overlay -->
+                <div class="absolute inset-0 flex flex-col justify-end" style="background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%);">
+                    <div class="p-6 md:p-8 text-center">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Health Ministries Dental Clinic</h3>
+                        <p class="text-white text-lg md:text-xl leading-relaxed font-light">Newton, KS</p>
+                    </div>
+                </div>
+                <!-- Hover overlay -->
+                <div class="learn-more-overlay absolute inset-0 flex items-start justify-center opacity-0 transition-opacity duration-500 pointer-events-none pt-20">
+                    <div class="w-1/2 max-w-md bg-gradient-to-br from-black via-black to-gray-900 bg-opacity-95 rounded-lg flex flex-col items-center justify-center shadow-2xl py-6 px-4">
+                        <img src="./assets/img/ke-logo-white.svg" alt="Kansas Electric" class="w-32 mb-4 transform scale-0 transition-transform duration-700">
+                        <div class="text-center transform translate-y-10 transition-transform duration-700">
+                            <p class="text-white text-xl font-bold mb-2">Learn more about</p>
+                            <p class="text-white text-2xl font-bold mb-4">Health Ministries Dental Clinic</p>
+                            <a href="./projects/" class="inline-block bg-ke-blue hover:bg-ke-blue-dark text-white font-semibold py-2 px-6 rounded transition duration-300 transform scale-100 hover:scale-105">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 3: AGCO - Hesston, KS -->
+            <div class="project-card rounded-lg shadow-lg overflow-hidden" style="position: relative; min-height: 400px;">
+                <img src="./assets/img/agco-paint-facility.jpg" alt="AGCO - Hesston, KS" class="absolute inset-0 w-full h-full object-cover transition-all duration-500">
+                <!-- Strong gradient overlay -->
+                <div class="absolute inset-0 flex flex-col justify-end" style="background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%);">
+                    <div class="p-6 md:p-8 text-center">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">AGCO</h3>
+                        <p class="text-white text-lg md:text-xl leading-relaxed font-light">Hesston, KS</p>
+                    </div>
+                </div>
+                <!-- Hover overlay -->
+                <div class="learn-more-overlay absolute inset-0 flex items-start justify-center opacity-0 transition-opacity duration-500 pointer-events-none pt-20">
+                    <div class="w-1/2 max-w-md bg-gradient-to-br from-black via-black to-gray-900 bg-opacity-95 rounded-lg flex flex-col items-center justify-center shadow-2xl py-6 px-4">
+                        <img src="./assets/img/ke-logo-white.svg" alt="Kansas Electric" class="w-32 mb-4 transform scale-0 transition-transform duration-700">
+                        <div class="text-center transform translate-y-10 transition-transform duration-700">
+                            <p class="text-white text-xl font-bold mb-2">Learn more about</p>
+                            <p class="text-white text-2xl font-bold mb-4">AGCO - Hesston, KS</p>
+                            <a href="./projects/" class="inline-block bg-ke-blue hover:bg-ke-blue-dark text-white font-semibold py-2 px-6 rounded transition duration-300 transform scale-100 hover:scale-105">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 4: Bethel College Solar Grid - Newton, KS -->
+            <div class="project-card rounded-lg shadow-lg overflow-hidden" style="position: relative; min-height: 400px;">
+                <img src="./assets/img/projects-bethel-college.jpg" alt="Bethel College Solar Grid - Newton, KS" class="absolute inset-0 w-full h-full object-cover transition-all duration-500">
+                <!-- Strong gradient overlay -->
+                <div class="absolute inset-0 flex flex-col justify-end" style="background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.7) 40%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%);">
+                    <div class="p-6 md:p-8 text-center">
+                        <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Bethel College Solar Grid</h3>
+                        <p class="text-white text-lg md:text-xl leading-relaxed font-light">Newton, KS</p>
+                    </div>
+                </div>
+                <!-- Hover overlay -->
+                <div class="learn-more-overlay absolute inset-0 flex items-start justify-center opacity-0 transition-opacity duration-500 pointer-events-none pt-20">
+                    <div class="w-1/2 max-w-md bg-gradient-to-br from-black via-black to-gray-900 bg-opacity-95 rounded-lg flex flex-col items-center justify-center shadow-2xl py-6 px-4">
+                        <img src="./assets/img/ke-logo-white.svg" alt="Kansas Electric" class="w-32 mb-4 transform scale-0 transition-transform duration-700">
+                        <div class="text-center transform translate-y-10 transition-transform duration-700">
+                            <p class="text-white text-xl font-bold mb-2">Learn more about</p>
+                            <p class="text-white text-2xl font-bold mb-4">Bethel College Solar Grid</p>
+                            <a href="./projects/" class="inline-block bg-ke-blue hover:bg-ke-blue-dark text-white font-semibold py-2 px-6 rounded transition duration-300 transform scale-100 hover:scale-105">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="relative bg-white px-4 py-4 group-hover:bg-ke-blue group-focus:bg-ke-blue transition duration-200 ease-in-out flex justify-between">
-          <h3 class="leading-tight text-lg text-ke-gray group-hover:text-white group-focus:text-white transition duration-200 ease-in-out font-semibold">
-            <span class="block">Industrial</span> Electrical Services
-          </h3>
-          <div class="self-center group-hover:text-ke-gray-lighter group-focus:text-ke-gray-lighter text-2xl text-ke-blue">&#10132;</div>
-        </div>
-      </li>
-      <li class="md:mx-auto relative mb-8 lg:mb-0">
-        <div class="image-container">
-          <img class="block transform group-hover:scale-105 group-focus:scale-105 transition duration-200 ease-in-out shadow-lg w-full h-64 object-cover object-top" src="./assets/img/commercial-service.jpg" alt="Commercial Service Image 1">
-        </div>
-        <div class="relative bg-white px-4 py-4 group-hover:bg-ke-blue group-focus:bg-ke-blue transition duration-200 ease-in-out flex justify-between">
-          <h3 class="leading-tight text-lg text-ke-gray group-hover:text-white group-focus:text-white transition duration-200 ease-in-out font-semibold">
-            <span class="block">Commercial</span> Electrical Services
-          </h3>
-          <div class="self-center group-hover:text-ke-gray-lighter group-focus:text-ke-gray-lighter text-2xl text-ke-blue">&#10132;</div>
-        </div>
-      </li>
-      <li class="md:mx-auto relative mb-8 lg:mb-0">
-        <div class="image-container">
-          <img class="block transform group-hover:scale-105 group-focus:scale-105 transition duration-200 ease-in-out shadow-lg w-full h-64 object-cover object-top" src="./assets/img/automation1.jpg" alt="Automation Service Image 1">
-        </div>
-        <div class="relative bg-white px-4 py-4 group-hover:bg-ke-blue group-focus:bg-ke-blue transition duration-200 ease-in-out flex justify-between">
-          <h3 class="leading-tight text-lg text-ke-gray group-hover:text-white group-focus:text-white transition duration-200 ease-in-out font-semibold">
-            <span class="block">Automation</span> Services
-          </h3>
-          <div class="self-center group-hover:text-ke-gray-lighter group-focus:text-ke-gray-lighter text-2xl text-ke-blue">&#10132;</div>
-        </div>
-      </li>
-
-    </ul>
-  </section>
-
-  <section class="max-w-screen-xl md:mx-auto py-12 px-6 md:pb-24">
-    <div class="relative mb-10">
-      <h2 class="relative z-[1] font-semibold text-2xl md:text-3xl leading-tight text-ke-gray"><span class="inline-block bg-white pr-6">Recent Projects</span></h2>
-      <hr class="absolute w-full top-[50%]">
     </div>
-
-    <ul data-project-grid="" class="grid lg:grid-cols-3 gap-4"></ul>
-
-    <div class="text-center my-4 md:my-8">
-    </div>
-  </section>
+</section>
 
 </article>
-<script src="./assets/js/project-posts-home.js"></script>
+
+</main>
+
+<footer class="bg-ke-gray-dark">
+  <div class="md:w-11/12 md:mx-auto md:flex md:justify-between py-12 md:pb-12 md:pt-20 border-b border-ke-gray px-6 md:px-0">
+    <a href="./"><img class="w-auto h-12" src="./assets/img/ke-logo-white.svg" alt="Kansas Electric" width="300" height="60"></a>
+    <ul class="flex space-x-4 self-end mt-12 md:mt-0">
+      <li>
+        <a class="hover:-translate-y-2 focus:-translate-y-2 transition duration-200 ease-in-out block" href="https://www.linkedin.com/company/kansas-electric-inc" target="_blank" rel="noopener"><span class="sr-only">Kansas Electric LinkedIn page</span><img class="social-icon" src="./assets/img/linkedin.svg" alt="Kansas Electric LinkedIn page" title="Kansas Electric LinkedIn page" width="24" height="24"></a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="md:w-11/12 md:mx-auto md:flex md:flex-wrap md:justify-between py-8 md:py-12 px-6 md:px-0">
+    <div class="lg:w-1/4 pb-8 md:pb-0 md:mb-12">
+      <address class="not-italic text-ke-gray-light text-base md:text-sm tracking-wide mb-2">
+        <span class="block text-white uppercase font-semibold">Newton</span>
+        1420 NW 36th St.<br>
+        Newton, KS 67114
+      </address>
+      <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light text-sm transition duration-200 hover:text-ke-gray-lighter mb-6" href="tel:3162834750">(316) 283-4750</a>
+
+      <address class="not-italic text-ke-gray-light text-base md:text-sm tracking-wide mb-2">
+        <span class="block text-white uppercase font-semibold">Emporia</span>
+        817 E 6th Ave<br>
+        Emporia, KS 66801
+      </address>
+    </div>
+    <div class="lg:w-3/4 md:flex md:space-x-8 justify-between">
+      <div class="md:w-1/5 py-6 md:py-0 border-t border-ke-gray md:border-none">
+        <h2 class="mb-2 md:mb-6 uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 py-1 md:leading-normal md:py-0">Services</h2>
+        <ul class="text-base md:text-sm">
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./services/industrial/">Industrial Electrical Services</a>
+          </li>
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./services/commercial/">Commercial Electrical Services</a>
+          </li>
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./services/automation/">Automation</a>
+          </li>
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./services/kohler-generators/">Kohler Generator Installation</a>
+          </li>
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./services/nfpa-70b-electrical-maintenance-programs/">NFPA 70B and Electrical Maintenance Program</a>
+          </li>
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./services/automation/ul-certified-design-build/">UL Certified Design &amp; Build</a>
+          </li>
+        </ul>
+      </div>
+      <div class="md:w-1/5 py-6 md:py-0 border-t border-ke-gray md:border-none">
+        <h2 class="mb-2 md:mb-6"><a class="uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0" href="./projects/">Projects</a></h2>
+        <ul class="text-base md:text-sm" data-project-links=""></ul>
+      </div>
+      <div class="md:w-1/5 py-6 md:py-0 border-t border-ke-gray md:border-none">
+        <h2 class="mb-2 md:mb-6 uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 py-1 md:leading-normal md:py-0">About</h2>
+        <ul class="text-base md:text-sm">
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./about/">Who We Are</a>
+          </li>
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./about/locations/">Locations</a>
+          </li>
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./about/our-team/">Our Team</a>
+          </li>
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./company-news/">Company News</a>
+          </li>
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./about/community/">Community Involvement</a>
+          </li>
+        </ul>
+      </div>
+      <div class="md:w-1/5 py-6 md:py-0 border-t border-ke-gray md:border-none">
+        <h2 class="mb-2 md:mb-6 uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 py-1 md:leading-normal md:py-0">Careers</h2>
+        <ul class="text-base md:text-sm">
+          <li class="mb-2">
+            <a class="inline-block leading-4 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./careers/">Careers</a>
+          </li>
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./careers/apprenticeship/">Apprenticeship Program</a>
+          </li>
+        </ul>
+      </div>
+      <div class="md:w-1/5 border-t border-ke-gray md:border-none py-6 md:py-0">
+        <h2 class="mb-2 md:mb-6"><a class="uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0" href="./contact/">Contact</a></h2>
+        <ul class="text-base md:text-sm">
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./contact/request-bid/">Request a bid</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="md:w-11/12 md:mx-auto border-t border-ke-gray py-8 px-6 md:px-0 mt-8">
+    <ul class="md:flex md:justify-end md:space-x-8">
+      <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://inductiveautomation.com/"><img class="w-auto h-16" src="./assets/img/Ignition-Logo-LG.png" alt="Ignition by Inductive Automation" title="Ignition by Inductive Automation" width="600" height="314"></a></li>
+      <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://www.isnetworld.com/en/"><img class="w-auto h-12" src="./assets/img/isn-logo.png" alt="ISNetworld RAVS Plus Participant" title="ISNetworld RAVS Plus Participant" width="302" height="88"></a></li>
+      <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://www.fanucamerica.com/"><img class="w-auto h-20" src="./assets/img/fanuc-logo.png" alt="FANUC Authorized System Integrator" title="FANUC Authorized System Integrator" width="250" height="250"></a></li>
+    </ul>
+  </div>
+
+  <div class="md:w-11/12 md:mx-auto md:flex md:justify-between md:space-x-6 py-8 border-t border-ke-gray px-6 md:px-0">
+    <div class="text-ke-gray-light text-sm block mb-2 md:mb-0">&copy; 2025 Kansas Electric &nbsp;|&nbsp; <a class="hover:underline" href="./assets/documents/04.01.2022-kansas-electric-terms-and-conditions.pdf">Terms &amp; Conditions</a></div>
+    <div class="text-ke-gray-light text-sm"><a class="inline-block" href="https://flinthillsdesign.com"><span class="sr-only">Flint Hills Design</span><img class="h-3" src="./assets/img/state-of-kansas.svg" alt="State of Kansas" width="28" height="15"></a> <a class="ml-2 hover:text-white transition duration-200" href="https://flinthillswebdesign.com">Website by Flint Hills Web Design</a></div>
+  </div>
+</footer>
+
+<script src="./assets/js/project-posts-footer-links.js"></script>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -375,168 +1730,1042 @@ document.addEventListener('DOMContentLoaded', function() {
         const networkState = ['NETWORK_EMPTY', 'NETWORK_IDLE', 'NETWORK_LOADING', 'NETWORK_NO_SOURCE'][video.networkState];
         const readyState = ['HAVE_NOTHING', 'HAVE_METADATA', 'HAVE_CURRENT_DATA', 'HAVE_FUTURE_DATA', 'HAVE_ENOUGH_DATA'][video.readyState];
         
-        debugInfo += `Video ${i+1}:\n`;
-        debugInfo += `- Source: ${video.querySelector('source').src}\n`;
+        debugInfo += `Video ${i+1}: ${video.src.split('/').pop()}\n`;
         debugInfo += `- Network State: ${networkState} (${video.networkState})\n`;
         debugInfo += `- Ready State: ${readyState} (${video.readyState})\n`;
         debugInfo += `- Error: ${video.error ? video.error.code : 'None'}\n`;
+        debugInfo += `- Current Time: ${video.currentTime.toFixed(2)}s\n`;
+        debugInfo += `- Duration: ${video.duration.toFixed(2)}s\n`;
         debugInfo += `- Paused: ${video.paused}\n`;
-        debugInfo += `- Muted: ${video.muted}\n`;
-        debugInfo += `- Duration: ${video.duration || 'Unknown'}\n\n`;
+        debugInfo += `- Ended: ${video.ended}\n`;
+        debugInfo += `- Class: ${video.className}\n\n`;
       });
       
-      console.log(debugInfo);
       alert(debugInfo);
     });
+  }
+  
+  // Calculate and set header height for submenu positioning
+  function setHeaderHeight() {
+    const header = document.querySelector('.site-header');
+    if (header) {
+      const headerHeight = header.offsetHeight;
+      document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+    }
+  }
+  
+  // Set header height initially
+  setHeaderHeight();
+  
+  // Update header height on window resize
+  window.addEventListener('resize', setHeaderHeight);
+});
+</script>
+
+<!-- Ticker JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tickerContent = document.querySelector('.ticker-scroll');
+  if (tickerContent) {
+    // Clone ticker items for seamless scrolling
+    const originalItems = tickerContent.innerHTML;
+    tickerContent.innerHTML = originalItems + originalItems;
+    
+    // Calculate animation duration based on content width
+    const contentWidth = tickerContent.scrollWidth / 2;
+    const duration = contentWidth / 50; // Adjust speed factor as needed
+    tickerContent.style.animationDuration = duration + 's';
   }
 });
 </script>
 
-
-
-
-  </main>
-
-  <footer class="bg-ke-gray-dark">
-    <div class="md:w-11/12 md:mx-auto md:flex md:justify-between py-12 md:pb-12 md:pt-20 border-b border-ke-gray px-6 md:px-0">
-      <a href="./"><img class="w-auto h-12" src="./assets/img/ke-logo-white.svg" alt="Kansas Electric" width="300" height="60"></a>
-      <ul class="flex space-x-4 self-end mt-12 md:mt-0">
-        <li>
-          <a class="hover:-translate-y-2 focus:-translate-y-2 transition duration-200 ease-in-out block" href="https://www.facebook.com/Kansas.Electric.Electrical.Contractor" target="_blank" rel=”noopener”><span class="sr-only">Kansas Electric Facebook page</span><img class="social-icon" src="./assets/img/facebook.svg" alt="Kansas Electric Facebook page" title="Kansas Electric Facebook page" width="24" height="24"></a>
-        </li>
-        <li>
-          <a class="hover:-translate-y-2 focus:-translate-y-2 transition duration-200 ease-in-out block" href="https://twitter.com/inc_kansas" target="_blank" rel=”noopener”><span class="sr-only">Kansas Electric Twitter page</span><img class="social-icon" src="./assets/img/twitter.svg" alt="Kansas Electric Twitter page" title="Kansas Electric Twitter page" width="24" height="24"></a>
-        </li>
-        <li>
-          <a class="hover:-translate-y-2 focus:-translate-y-2 transition duration-200 ease-in-out block" href="https://www.instagram.com/kansaselectricinc/" target="_blank" rel=”noopener”><span class="sr-only">Kansas Electric Instagram page</span><img class="social-icon" src="./assets/img/instagram.svg" alt="Kansas Electric Instagram page" title="Kansas Electric Instagram page" width="24" height="24"></a>
-        </li>
-        <li>
-          <a class="hover:-translate-y-2 focus:-translate-y-2 transition duration-200 ease-in-out block" href="https://www.linkedin.com/company/kansas-electric-inc" target="_blank" rel=”noopener”><span class="sr-only">Kansas Electric LinkedIn page</span><img class="social-icon" src="./assets/img/linkedin.svg" alt="Kansas Electric LinkedIn page" title="Kansas Electric LinkedIn page" width="24" height="24"></a>
-        </li>
-      </ul>
-    </div>
-    <div class="md:w-11/12 md:mx-auto md:flex md:flex-wrap md:justify-between py-8 md:py-12 px-6 md:px-0">
-      <div class="lg:w-1/4 pb-8 md:pb-0 md:mb-12">
-        <address class="not-italic text-ke-gray-light text-base md:text-sm tracking-wide mb-2">
-          <span class="block text-white uppercase font-semibold">Newton</span>
-          1420 NW 36th St.<br>
-          Newton, KS 67114
-        </address>
-        <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light text-sm transition duration-200 hover:text-ke-gray-lighter mb-6" href="tel:3162834750">(316) 283-4750</a>
-
-        <address class="not-italic text-ke-gray-light text-base md:text-sm tracking-wide mb-2">
-          <span class="block text-white uppercase font-semibold">Emporia</span>
-          817 E 6th Ave<br>
-          Emporia, KS 66801
-        </address>
-
-      </div>
-      <div class="lg:w-3/4 md:flex md:space-x-8 justify-between">
-        <div class="md:w-1/5 py-6 md:py-0 border-t border-ke-gray md:border-none">
-          <h2 class="mb-2 md:mb-6 uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 py-1 md:leading-normal md:py-0">Services</h2>
-          <ul class="text-base md:text-sm">
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./services/industrial/">Industrial Electrical Services</a>
-            </li>
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./services/commercial/">Commercial Electrical Services</a>
-            </li>
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./services/automation/">Automation</a>
-            </li>
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./services/kohler-generators/">Kohler Generator Installation</a>
-            </li>
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./services/nfpa-70b-electrical-maintenance-programs/">NFPA 70B and Electrical Maintenance Program</a>
-            </li>
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./services/ul-certified-design-build/">UL Certified Design &amp; Build</a>
-            </li>
-          </ul>
-        </div>
-        <div class="md:w-1/5 py-6 md:py-0 border-t border-ke-gray md:border-none">
-          <h2 class="mb-2 md:mb-6"><a class="uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0" href="./projects/">Projects</a></h2>
-          <ul class="text-base md:text-sm" data-project-links=""></ul>
-        </div>
-        <div class="md:w-1/5 py-6 md:py-0 border-t border-ke-gray md:border-none">
-          <h2 class="mb-2 md:mb-6 uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 py-1 md:leading-normal md:py-0">About</h2>
-          <ul class="text-base md:text-sm">
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./about/">Who We Are</a>
-            </li>
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./about/locations/">Locations</a>
-            </li>
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./about/our-team/">Our Team</a>
-            </li>
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./company-news/">Company News</a>
-            </li>
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./about/community/">Community Involvement</a>
-            </li>
-            <!-- <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:text-ke-gray-lighter" href="./about/credentials/">Safety Credentials</a>
-            </li> -->
-          </ul>
-        </div>
-        <div class="md:w-1/5 py-6 md:py-0 border-t border-ke-gray md:border-none">
-          <h2 class="mb-2 md:mb-6 uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 py-1 md:leading-normal md:py-0">Careers</h2>
-          <ul class="text-base md:text-sm">
-            <li class="mb-2">
-              <a class="inline-block leading-4 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./careers/">Careers</a>
-            </li>
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./careers/apprenticeship/">Apprenticeship Program</a>
-            </li>
-          </ul>
-        </div>
-        <div class="md:w-1/5 border-t border-ke-gray md:border-none py-6 md:py-0">
-          <h2 class="mb-2 md:mb-6"><a class="uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0" href="./contact/">Contact</a></h2>
-          <ul class="text-base md:text-sm">
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="./contact/request-bid/">Request a bid</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="md:w-11/12 md:mx-auto border-t border-ke-gray py-8 px-6 md:px-0 mt-8">
-      <ul class="md:flex md:justify-end md:space-x-8">
-        <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://inductiveautomation.com/"><img class="w-auto h-16" src="./assets/img/Ignition-Logo-LG.png" alt="Ignition by Inductive Automation" title="Ignition by Inductive Automation" width="600" height="314"></a></li>
-        <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://www.isnetworld.com/en/"><img class="w-auto h-12" src="./assets/img/isn-logo.png" alt="ISNetworld RAVS Plus Participant" title="ISNetworld RAVS Plus Participant" width="302" height="88"></a></li>
-        <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://www.fanucamerica.com/"><img class="w-auto h-20" src="./assets/img/fanuc-logo.png" alt="FANUC Authorized System Integrator" title="FANUC Authorized System Integrator" width="250" height="250"></a></li>
-      </ul>
-    </div>
-
-    <div class="md:w-11/12 md:mx-auto md:flex md:justify-between md:space-x-6 py-8 border-t border-ke-gray px-6 md:px-0">
-      <div class="text-ke-gray-light text-sm block mb-2 md:mb-0">&copy; 2025 Kansas Electric &nbsp;|&nbsp; <a class="hover:underline" href="./assets/documents/04.01.2022-kansas-electric-terms-and-conditions.pdf">Terms &amp; Conditions</a></div>
-      <div class="text-ke-gray-light text-sm"><a class="inline-block" href="https://flinthillsdesign.com"><span class="sr-only">Flint Hills Design</span><img class="h-3" src="./assets/img/state-of-kansas.svg" alt="State of Kansas" width="28" height="15"></a> <a class="ml-2 hover:text-white transition duration-200" href="https://flinthillswebdesign.com">Website by Flint Hills Web Design</a></div>
-    </div>
-  </footer>
-  <script src="./assets/js/project-posts-footer-links.js"></script>
+<!-- Tab functionality script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tabs = document.querySelectorAll('.tab');
+  const tabContents = document.querySelectorAll('.tab-content');
   
-  <script>
-    // Animation for subtitle and logo
-    document.addEventListener('DOMContentLoaded', function() {
-      const subtitleDecoration = document.querySelectorAll('[data-sub-title-decoration]');
-      const subtitle = document.querySelectorAll('[data-subtitle]');
-      const logo = document.querySelector('[data-logo]');
+  // Initialize with a subtle entrance animation for the first tab
+  const activeContent = document.querySelector('.tab-content.active');
+  if (activeContent) {
+    activeContent.style.animation = 'fadeIn 0.8s ease-in-out';
+    
+    // Add a subtle zoom effect to the active tab's image
+    const activeImage = activeContent.querySelector('img');
+    if (activeImage) {
+      activeImage.classList.add('scale-active');
+    }
+  }
+  
+  // Set up hover effects for the "Learn More" overlays
+  tabContents.forEach(content => {
+    content.addEventListener('mouseenter', () => {
+      if (!content.classList.contains('active')) return;
       
-      // Add opacity classes after a short delay to ensure CSS is fully loaded
-      setTimeout(function() {
-        subtitleDecoration.forEach((el) => {
-          el.classList.add('opacity-100');
-        });
-        subtitle.forEach((el) => {
-          el.classList.add('opacity-100');
-        });
-        logo.classList.add('opacity-100');
-      }, 100);
+      const overlay = content.querySelector('.learn-more-overlay');
+      const logo = overlay.querySelector('img');
+      const textContent = overlay.querySelector('div div');
+      
+      overlay.classList.add('opacity-100');
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      logo.classList.add('scale-100');
+      logo.classList.remove('scale-0');
+      textContent.classList.add('translate-y-0');
+      textContent.classList.remove('translate-y-10');
+      
+      // Add a subtle zoom effect to the background image
+      const bgImage = content.querySelector('img');
+      bgImage.classList.add('scale-105', 'blur-sm');
     });
-  </script>
+    
+    content.addEventListener('mouseleave', () => {
+      if (!content.classList.contains('active')) return;
+      
+      const overlay = content.querySelector('.learn-more-overlay');
+      const logo = overlay.querySelector('img');
+      const textContent = overlay.querySelector('div div');
+      
+      overlay.classList.remove('opacity-100');
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      logo.classList.remove('scale-100');
+      logo.classList.add('scale-0');
+      textContent.classList.remove('translate-y-0');
+      textContent.classList.add('translate-y-10');
+      
+      // Remove the zoom effect from the background image
+      const bgImage = content.querySelector('img');
+      bgImage.classList.remove('scale-105', 'blur-sm');
+    });
+  });
+  
+  tabs.forEach(tab => {
+    // Add hover effect to tabs
+    tab.addEventListener('mouseenter', () => {
+      if (!tab.classList.contains('active')) {
+        tab.classList.add('hover-effect');
+        tab.classList.add('hover:bg-ke-blue', 'hover:text-white');
+      }
+    });
+    
+    tab.addEventListener('mouseleave', () => {
+      if (!tab.classList.contains('active')) {
+        tab.classList.remove('hover-effect');
+        tab.classList.remove('hover:bg-ke-blue', 'hover:text-white');
+      }
+    });
+    
+    tab.addEventListener('click', () => {
+      // Remove active class from all tabs
+      tabs.forEach(t => {
+        t.classList.remove('active', 'bg-ke-blue', 'text-white', 'hover-effect');
+        t.classList.add('bg-ke-gray-light', 'text-ke-gray-dark');
+        // Make sure hover classes are applied to non-active tabs
+        t.classList.add('hover:bg-ke-blue', 'hover:text-white');
+      });
+      
+      // Add active class to clicked tab
+      tab.classList.add('active', 'bg-ke-blue', 'text-white');
+      tab.classList.remove('bg-ke-gray-light', 'text-ke-gray-dark', 'hover-effect', 'hover:bg-ke-blue', 'hover:text-white');
+      
+      // Reset all image scales
+      document.querySelectorAll('.tab-content img').forEach(img => {
+        img.classList.remove('scale-active', 'scale-105', 'blur-sm');
+      });
+      
+      // Reset all overlays
+      document.querySelectorAll('.learn-more-overlay').forEach(overlay => {
+        overlay.classList.remove('opacity-100');
+        overlay.classList.add('opacity-0', 'pointer-events-none');
+        
+        const logo = overlay.querySelector('img');
+        const textContent = overlay.querySelector('div div');
+        
+        logo.classList.remove('scale-100');
+        logo.classList.add('scale-0');
+        textContent.classList.remove('translate-y-0');
+        textContent.classList.add('translate-y-10');
+      });
+      
+      // Hide all tab contents with a fade out effect
+      tabContents.forEach(content => {
+        if (content.classList.contains('active')) {
+          content.style.animation = 'fadeOut 0.3s ease-in-out forwards';
+          content.addEventListener('animationend', function handler() {
+            content.classList.add('hidden');
+            content.classList.remove('active');
+            content.style.animation = '';
+            content.removeEventListener('animationend', handler);
+          }, { once: true });
+        } else {
+          content.classList.add('hidden');
+          content.classList.remove('active');
+        }
+      });
+      
+      // Show the corresponding tab content with a fade in effect
+      const tabContentId = tab.getAttribute('data-tab');
+      const activeContent = document.getElementById(tabContentId);
+      if (activeContent) {
+        // Small delay for smoother transition between tabs
+        setTimeout(() => {
+          activeContent.classList.remove('hidden');
+          activeContent.classList.add('active');
+          activeContent.style.animation = 'fadeIn 0.5s ease-in-out';
+          
+          // Add zoom effect to the active tab's image
+          const activeImage = activeContent.querySelector('img');
+          if (activeImage) {
+            activeImage.classList.add('scale-active');
+          }
+        }, 300);
+      }
+    });
+  });
+  
+  // Add automatic tab rotation if desired
+  // Uncomment the following code to enable auto-rotation
+  /*
+  let currentTabIndex = 0;
+  const autoRotateTabs = () => {
+    currentTabIndex = (currentTabIndex + 1) % tabs.length;
+    tabs[currentTabIndex].click();
+  };
+  
+  // Change tabs every 8 seconds
+  const rotationInterval = setInterval(autoRotateTabs, 8000);
+  
+  // Stop rotation when user interacts with tabs
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      clearInterval(rotationInterval);
+    });
+  });
+  */
+
+  // Ensure the active tab has proper styling on page load
+  document.addEventListener('DOMContentLoaded', () => {
+    const activeTab = document.querySelector('.tab.active');
+    if (activeTab) {
+      activeTab.classList.add('bg-ke-blue', 'text-white');
+      activeTab.classList.remove('bg-ke-gray-light', 'text-ke-gray-dark', 'hover-effect', 'hover:bg-ke-blue', 'hover:text-white');
+    }
+    
+    // Make sure non-active tabs have hover classes
+    const nonActiveTabs = document.querySelectorAll('.tab:not(.active)');
+    nonActiveTabs.forEach(tab => {
+      tab.classList.add('hover:bg-ke-blue', 'hover:text-white');
+    });
+  });
+});
+</script>
+
+<!-- Add keyframe animations for effects -->
+<style>
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}
+
+.tab-content {
+  transition: all 0.3s ease-in-out;
+}
+
+.tab-content img {
+  transition: transform 8s ease-in-out, filter 0.5s ease-in-out;
+}
+
+.tab-content img.scale-active {
+  transform: scale(1.05);
+}
+
+.tab-content img.blur-sm {
+  filter: blur(3px);
+}
+
+.tab.hover-effect {
+  transform: translateY(-2px);
+  background-color: var(--ke-blue, #0056b3);
+  color: white;
+  /* Removing the box-shadow as requested */
+}
+
+.tabs .tab {
+  transition: all 0.3s ease;
+}
+
+.learn-more-overlay {
+  transition: opacity 0.5s ease-in-out;
+  z-index: 30;
+}
+
+.learn-more-overlay img,
+.learn-more-overlay div div {
+  transition: transform 0.7s ease-in-out;
+}
+
+.tab.active {
+  background-color: var(--ke-blue, #0056b3);
+  color: white;
+  /* Removed box-shadow */
+}
+
+/* Testimonial Carousel Styles */
+.testimonial-slide {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateX(20px);
+}
+
+.testimonial-slide.active {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .testimonial-nav {
+    padding: 0.5rem;
+  }
+
+  .testimonial-nav svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+/* Add swipe animation */
+@keyframes slideInRight {
+  from { transform: translateX(50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-50px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(50px); opacity: 0; }
+}
+
+@keyframes slideOutLeft {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(-50px); opacity: 0; }
+}
+
+.slide-in-right {
+  animation: slideInRight 0.5s forwards;
+}
+
+.slide-in-left {
+  animation: slideInLeft 0.5s forwards;
+}
+
+.slide-out-right {
+  animation: slideOutRight 0.5s forwards;
+}
+
+.slide-out-left {
+  animation: slideOutLeft 0.5s forwards;
+}
+
+/* Project Grid Styles */
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
+}
+
+.project-card:hover {
+  transform: scale(1.1);
+  z-index: 10;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.project-overlay {
+  pointer-events: none;
+}
+
+.aspect-w-4 {
+  position: relative;
+  padding-bottom: 75%; /* 4:3 Aspect Ratio */
+}
+
+.aspect-square {
+  position: relative;
+  padding-bottom: 100%; /* 1:1 Aspect Ratio (Square) */
+}
+
+.aspect-w-4 > *, .aspect-square > * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* Text shadow for readability */
+.text-shadow {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Responsive adjustments for project grid */
+@media (max-width: 1024px) {
+  .project-card:hover {
+    transform: scale(1.05); /* Smaller scale on tablet */
+  }
+}
+
+@media (max-width: 768px) {
+  [data-project-grid] > li {
+    width: 100% !important;
+    margin-bottom: 1rem;
+  }
+  
+  .project-card:hover {
+    transform: scale(1.05); /* Even smaller scale on mobile */
+  }
+}
+
+/* Enhance the hover effect for tabs */
+.tab:hover:not(.active) {
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+  background-color: var(--ke-blue, #0056b3);
+  color: white;
+}
+
+.tab.active {
+  /* Removed box-shadow */
+}
+
+/* Hero section animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.hero-content h1 {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.hero-content p {
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.hero-content .flex {
+  animation: scaleIn 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+.hero-content .absolute.inset-0.opacity-5 {
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+/* CSS-only hover effects for project cards */
+.project-card {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out !important;
+}
+
+.project-card:hover {
+  transform: scale(1.1) !important;
+  z-index: 10 !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+}
+
+.project-card:hover .learn-more-overlay {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+.project-card:hover .learn-more-overlay img {
+  transform: scale(1) !important;
+}
+
+.project-card:hover .learn-more-overlay div div {
+  transform: translateY(0) !important;
+}
+
+.project-card:hover > img {
+  transform: scale(1.05) !important;
+  filter: blur(3px) !important;
+}
+</style>
+
+<script>
+// Testimonial Carousel Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  // Wait for a short time to ensure all elements are properly loaded
+  setTimeout(() => {
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const dots = document.querySelectorAll('.testimonial-dots .dot');
+    const prevBtn = document.querySelector('.testimonial-nav.prev');
+    const nextBtn = document.querySelector('.testimonial-nav.next');
+    let currentIndex = 0;
+    let interval;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const slidesContainer = document.querySelector('.testimonial-slides');
+    
+    // Only proceed if we have slides and dots
+    if (!slides.length || !dots.length) {
+      console.log('Testimonial carousel elements not found');
+      return;
+    }
+    
+    console.log(`Found ${slides.length} testimonial slides`);
+    
+    // Initialize the carousel
+    function initCarousel() {
+      // Hide all slides initially
+      slides.forEach(slide => {
+        slide.style.display = 'none';
+        slide.classList.remove('active');
+      });
+      
+      // Show the first slide
+      slides[0].style.display = 'block';
+      setTimeout(() => {
+        slides[0].classList.add('active');
+      }, 10);
+      
+      // Set the first dot as active
+      dots[0].classList.add('active', 'bg-ke-blue');
+      dots[0].classList.remove('bg-ke-gray-light');
+      
+      // Start automatic sliding
+      startAutoSlide();
+      
+      // Add event listeners for navigation
+      if (prevBtn) prevBtn.addEventListener('click', showPrevSlide);
+      if (nextBtn) nextBtn.addEventListener('click', showNextSlide);
+      
+      // Add event listeners for dots
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          goToSlide(index);
+          resetAutoSlide();
+        });
+      });
+      
+      // Add touch event listeners for mobile swipe
+      if (slidesContainer) {
+        slidesContainer.addEventListener('touchstart', handleTouchStart, false);
+        slidesContainer.addEventListener('touchend', handleTouchEnd, false);
+      }
+      
+      // Pause auto-sliding when hovering over the carousel
+      const carousel = document.querySelector('.testimonial-carousel');
+      if (carousel) {
+        carousel.addEventListener('mouseenter', () => {
+          clearInterval(interval);
+        });
+        
+        carousel.addEventListener('mouseleave', () => {
+          startAutoSlide();
+        });
+      }
+    }
+    
+    // Go to a specific slide
+    function goToSlide(index, direction = null) {
+      // Ensure index is within bounds
+      if (index < 0) index = slides.length - 1;
+      if (index >= slides.length) index = 0;
+      
+      // If it's the same slide, do nothing
+      if (index === currentIndex) return;
+      
+      console.log(`Going to slide ${index} from ${currentIndex}`);
+      
+      // Hide all slides
+      slides.forEach(slide => {
+        slide.classList.remove('active', 'slide-in-right', 'slide-in-left', 'slide-out-right', 'slide-out-left');
+        slide.style.display = 'none';
+      });
+      
+      // Remove active class from all dots
+      dots.forEach(dot => {
+        dot.classList.remove('active', 'bg-ke-blue');
+        dot.classList.add('bg-ke-gray-light');
+      });
+      
+      // Add active class to current dot
+      dots[index].classList.add('active', 'bg-ke-blue');
+      dots[index].classList.remove('bg-ke-gray-light');
+      
+      // Add animation classes based on direction
+      if (direction === 'next') {
+        slides[currentIndex].classList.add('slide-out-left');
+        slides[index].classList.add('slide-in-right');
+      } else if (direction === 'prev') {
+        slides[currentIndex].classList.add('slide-out-right');
+        slides[index].classList.add('slide-in-left');
+      }
+      
+      // Show the current slide
+      slides[index].style.display = 'block';
+      
+      // After a short delay, add the active class to trigger the transition
+      setTimeout(() => {
+        slides[index].classList.add('active');
+      }, 10);
+      
+      // Update the current index
+      currentIndex = index;
+    }
+    
+    // Show the next slide
+    function showNextSlide() {
+      const nextIndex = (currentIndex + 1) % slides.length;
+      goToSlide(nextIndex, 'next');
+    }
+    
+    // Show the previous slide
+    function showPrevSlide() {
+      const prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+      goToSlide(prevIndex, 'prev');
+    }
+    
+    // Start automatic sliding
+    function startAutoSlide() {
+      // Clear any existing interval first
+      if (interval) clearInterval(interval);
+      
+      interval = setInterval(() => {
+        showNextSlide();
+      }, 8000); // Change slide every 8 seconds
+    }
+    
+    // Reset the auto-slide timer
+    function resetAutoSlide() {
+      clearInterval(interval);
+      startAutoSlide();
+    }
+    
+    // Handle touch start event for swipe
+    function handleTouchStart(event) {
+      touchStartX = event.changedTouches[0].screenX;
+    }
+    
+    // Handle touch end event for swipe
+    function handleTouchEnd(event) {
+      touchEndX = event.changedTouches[0].screenX;
+      handleSwipe();
+    }
+    
+    // Process the swipe gesture
+    function handleSwipe() {
+      const swipeThreshold = 50; // Minimum distance to register as a swipe
+      
+      if (touchEndX < touchStartX - swipeThreshold) {
+        // Swiped left, show next slide
+        showNextSlide();
+      } else if (touchEndX > touchStartX + swipeThreshold) {
+        // Swiped right, show previous slide
+        showPrevSlide();
+      }
+    }
+    
+    // Initialize the carousel
+    initCarousel();
+    
+    // Project Grid Functionality
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+      // Make the link only clickable after hover
+      const link = card.querySelector('a');
+      
+      card.addEventListener('mouseenter', () => {
+        // Make the link clickable
+        link.style.opacity = '1';
+        
+        // Reset other cards
+        projectCards.forEach(otherCard => {
+          if (otherCard !== card) {
+            otherCard.style.transform = 'scale(1)';
+            otherCard.style.zIndex = '1';
+          }
+        });
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        // Make the link not clickable
+        link.style.opacity = '0';
+      });
+    });
+    
+  }, 500); // Wait 500ms to ensure DOM is fully loaded
+});
+</script>
+
+<!-- Scroll Animation Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Function to check if element is in viewport
+  function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+      rect.bottom >= 0
+    );
+  }
+  
+  // Function to handle animations
+  function handleScrollAnimations() {
+    // Text reveal animations
+    document.querySelectorAll('[data-animate="text-reveal"]').forEach(container => {
+      if (isInViewport(container) && !container.classList.contains('animated')) {
+        const delay = container.getAttribute('data-delay') || 0;
+        const textElement = container.querySelector('h1, p');
+        
+        setTimeout(() => {
+          textElement.classList.add('transform-none', 'opacity-100');
+          container.classList.add('animated');
+        }, delay);
+      }
+    });
+  }
+  
+  // Run on scroll and on load
+  window.addEventListener('scroll', handleScrollAnimations);
+  window.addEventListener('resize', handleScrollAnimations);
+  
+  // Initial check
+  setTimeout(handleScrollAnimations, 100);
+});
+</script>
+
+<!-- Fix for tab hover effects and overlay -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize tab content visibility
+  const allTabContents = document.querySelectorAll('.tab-content');
+  const activeTab = document.querySelector('.tab.active');
+  const activeTabId = activeTab ? activeTab.getAttribute('data-tab') : null;
+  
+  allTabContents.forEach(content => {
+    if (content.id === activeTabId) {
+      content.classList.add('active');
+      content.classList.remove('hidden');
+    } else {
+      content.classList.remove('active');
+      content.classList.add('hidden');
+    }
+  });
+
+  // Get all tab buttons
+  const tabs = document.querySelectorAll('.tab');
+  
+  // Get all tab content elements
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  // Add hover classes to non-active tabs
+  tabs.forEach(tab => {
+    if (!tab.classList.contains('active')) {
+      tab.classList.add('hover:bg-ke-blue', 'hover:text-white');
+    }
+    
+    // Add hover effect on mouseenter
+    tab.addEventListener('mouseenter', () => {
+      if (!tab.classList.contains('active')) {
+        tab.classList.add('hover-effect');
+      }
+    });
+    
+    // Remove hover effect on mouseleave
+    tab.addEventListener('mouseleave', () => {
+      if (!tab.classList.contains('active')) {
+        tab.classList.remove('hover-effect');
+      }
+    });
+  });
+  
+  // Fix for logo overlay
+  tabContents.forEach(content => {
+    // Remove any existing event listeners by cloning and replacing
+    const newContent = content.cloneNode(true);
+    content.parentNode.replaceChild(newContent, content);
+    
+    // Add new event listeners
+    newContent.addEventListener('mouseenter', function() {
+      if (!this.classList.contains('active')) return;
+      
+      const overlay = this.querySelector('.learn-more-overlay');
+      if (!overlay) return;
+      
+      overlay.classList.add('opacity-100');
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      
+      const logo = overlay.querySelector('img');
+      if (logo) {
+        logo.classList.add('scale-100');
+        logo.classList.remove('scale-0');
+      }
+      
+      const textContent = overlay.querySelector('div div');
+      if (textContent) {
+        textContent.classList.add('translate-y-0');
+        textContent.classList.remove('translate-y-10');
+      }
+      
+      // Add a subtle zoom effect to the background image
+      const bgImage = this.querySelector('img');
+      if (bgImage) {
+        bgImage.classList.add('scale-105', 'blur-sm');
+      }
+    });
+    
+    newContent.addEventListener('mouseleave', function() {
+      if (!this.classList.contains('active')) return;
+      
+      const overlay = this.querySelector('.learn-more-overlay');
+      if (!overlay) return;
+      
+      overlay.classList.remove('opacity-100');
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      
+      const logo = overlay.querySelector('img');
+      if (logo) {
+        logo.classList.remove('scale-100');
+        logo.classList.add('scale-0');
+      }
+      
+      const textContent = overlay.querySelector('div div');
+      if (textContent) {
+        textContent.classList.remove('translate-y-0');
+        textContent.classList.add('translate-y-10');
+      }
+      
+      // Remove the zoom effect from the background image
+      const bgImage = this.querySelector('img');
+      if (bgImage) {
+        bgImage.classList.remove('scale-105', 'blur-sm');
+      }
+    });
+  });
+  
+  // Re-select tab contents after cloning
+  const updatedTabContents = document.querySelectorAll('.tab-content');
+  
+  // Update tab click handler to ensure proper initialization
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+      const tabId = this.getAttribute('data-tab');
+      const targetContent = document.getElementById(tabId);
+      
+      // First remove active class from all tabs and hide all contents
+      tabs.forEach(t => {
+        t.classList.remove('active', 'bg-ke-blue', 'text-white', 'hover-effect');
+        t.classList.add('bg-ke-gray-light', 'text-ke-gray-dark', 'hover:bg-ke-blue', 'hover:text-white');
+      });
+      
+      updatedTabContents.forEach(c => {
+        c.classList.remove('active');
+        c.classList.add('hidden');
+        
+        // Reset all overlays
+        const overlay = c.querySelector('.learn-more-overlay');
+        if (overlay) {
+          overlay.classList.remove('opacity-100');
+          overlay.classList.add('opacity-0', 'pointer-events-none');
+          
+          const logo = overlay.querySelector('img');
+          if (logo) {
+            logo.classList.remove('scale-100');
+            logo.classList.add('scale-0');
+          }
+          
+          const textContent = overlay.querySelector('div div');
+          if (textContent) {
+            textContent.classList.remove('translate-y-0');
+            textContent.classList.add('translate-y-10');
+          }
+        }
+        
+        // Reset all image scales
+        const img = c.querySelector('img');
+        if (img) {
+          img.classList.remove('scale-active', 'scale-105', 'blur-sm');
+        }
+      });
+      
+      // Then activate the clicked tab and show its content
+      this.classList.add('active', 'bg-ke-blue', 'text-white');
+      this.classList.remove('bg-ke-gray-light', 'text-ke-gray-dark', 'hover:bg-ke-blue', 'hover:text-white');
+      
+      if (targetContent) {
+        targetContent.classList.add('active');
+        targetContent.classList.remove('hidden');
+        
+        // Add scale effect to the active tab's image
+        const activeImage = targetContent.querySelector('img');
+        if (activeImage) {
+          activeImage.classList.add('scale-active');
+        }
+      }
+    });
+  });
+  
+  // Fix for video carousel logo overlay
+  function ensureVideoLogoOverlayVisible() {
+    const videoLogoOverlay = document.querySelector('.video-logo-overlay');
+    if (videoLogoOverlay) {
+      videoLogoOverlay.style.display = 'flex';
+      videoLogoOverlay.style.opacity = '1';
+      videoLogoOverlay.style.visibility = 'visible';
+      videoLogoOverlay.style.zIndex = '20';
+    }
+  }
+  
+  // Run immediately
+  ensureVideoLogoOverlayVisible();
+  
+  // Run periodically to ensure it stays visible
+  setInterval(ensureVideoLogoOverlayVisible, 500);
+  
+  // Run on window resize
+  window.addEventListener('resize', ensureVideoLogoOverlayVisible);
+  
+  // Run on scroll
+  window.addEventListener('scroll', ensureVideoLogoOverlayVisible);
+});
+</script>
+
+<!-- Project Cards Hover Effects -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Get all project cards
+  const projectCards = document.querySelectorAll('.project-card');
+  
+  // Add hover effects to project cards
+  projectCards.forEach(card => {
+    // Add mouseenter event
+    card.addEventListener('mouseenter', function() {
+      // Get the overlay element
+      const overlay = this.querySelector('.learn-more-overlay');
+      if (!overlay) return;
+      
+      // Show the overlay
+      overlay.classList.add('opacity-100');
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      
+      // Animate the logo
+      const logo = overlay.querySelector('img');
+      if (logo) {
+        logo.classList.add('scale-100');
+        logo.classList.remove('scale-0');
+      }
+      
+      // Animate the text content
+      const textContent = overlay.querySelector('div div');
+      if (textContent) {
+        textContent.classList.add('translate-y-0');
+        textContent.classList.remove('translate-y-10');
+      }
+      
+      // Add a subtle zoom effect to the background image
+      const bgImage = this.querySelector('img');
+      if (bgImage) {
+        bgImage.classList.add('scale-105', 'blur-sm');
+      }
+    });
+    
+    // Add mouseleave event
+    card.addEventListener('mouseleave', function() {
+      // Get the overlay element
+      const overlay = this.querySelector('.learn-more-overlay');
+      if (!overlay) return;
+      
+      // Hide the overlay
+      overlay.classList.remove('opacity-100');
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      
+      // Reset the logo animation
+      const logo = overlay.querySelector('img');
+      if (logo) {
+        logo.classList.remove('scale-100');
+        logo.classList.add('scale-0');
+      }
+      
+      // Reset the text content animation
+      const textContent = overlay.querySelector('div div');
+      if (textContent) {
+        textContent.classList.remove('translate-y-0');
+        textContent.classList.add('translate-y-10');
+      }
+      
+      // Remove the zoom effect from the background image
+      const bgImage = this.querySelector('img');
+      if (bgImage) {
+        bgImage.classList.remove('scale-105', 'blur-sm');
+      }
+    });
+  });
+});
+</script>
+
+<!-- Fix for project card hover effects -->
+<script>
+// This script runs after the previous one and removes the event listeners
+document.addEventListener('DOMContentLoaded', function() {
+  // We're using CSS-only hover effects now, so we'll disable the JavaScript ones
+  // by removing and re-adding the project cards to the DOM
+  const projectCards = document.querySelectorAll('.project-card');
+  projectCards.forEach(card => {
+    const parent = card.parentNode;
+    const clone = card.cloneNode(true);
+    parent.replaceChild(clone, card);
+  });
+});
+</script>
+
 </body>
+
+<style>
+/* Override project card overlay positioning */
+.featured-projects .learn-more-overlay {
+  padding-top: 1rem !important;
+  height: 65% !important;
+}
+
+/* Prevent text wrapping in overlay project titles */
+.featured-projects .learn-more-overlay p.text-2xl {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+}
+</style>
+
 </html>
+

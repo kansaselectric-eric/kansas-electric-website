@@ -75,4 +75,46 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+  
+  // Safeguard to ensure video carousel remains visible when interacting with navigation
+  function ensureCarouselVisibility() {
+    // Ensure carousel container is visible
+    if (carousel) {
+      carousel.style.opacity = '1';
+      carousel.style.visibility = 'visible';
+    }
+    
+    // Ensure parent section is visible
+    if (homeSlider) {
+      homeSlider.style.opacity = '1';
+      homeSlider.style.visibility = 'visible';
+    }
+    
+    // Ensure active video is visible
+    const activeVideo = carousel.querySelector('video.active');
+    if (activeVideo) {
+      activeVideo.style.opacity = '1';
+      activeVideo.style.visibility = 'visible';
+    }
+  }
+  
+  // Run the safeguard periodically
+  setInterval(ensureCarouselVisibility, 500);
+  
+  // Also run when interacting with navigation
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('mouseenter', ensureCarouselVisibility);
+    item.addEventListener('mouseleave', ensureCarouselVisibility);
+  });
+  
+  // Run when interacting with any part of the page
+  document.addEventListener('click', ensureCarouselVisibility);
+  document.addEventListener('mousemove', function() {
+    // Throttle to avoid excessive calls
+    if (!this.throttled) {
+      this.throttled = true;
+      ensureCarouselVisibility();
+      setTimeout(() => { this.throttled = false; }, 200);
+    }
+  });
 });
