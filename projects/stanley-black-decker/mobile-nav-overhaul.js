@@ -76,6 +76,30 @@ document.addEventListener('DOMContentLoaded', function() {
   // Handle second-level navigation items
   secondColumnItems.forEach(item => {
     item.addEventListener('click', function(e) {
+      // First check if this is a division link - if so, don't prevent default
+      if (this.classList.contains('division-nav-link')) {
+        return true; // Allow default action
+      }
+      
+      // Also check if this link has a direct onclick attribute
+      if (this.hasAttribute('onclick')) {
+        const onclickValue = this.getAttribute('onclick');
+        if (onclickValue.includes('window.location.href')) {
+          return true; // Allow the onclick handler to execute
+        }
+      }
+      
+      // Check if this is a division link by text - if so, allow default behavior
+      const text = this.textContent.trim();
+      if (text === 'Industrial Electrical Division' || 
+          text === 'Commercial Electrical Division' || 
+          text === 'Service and Maintenance Division' || 
+          text === 'Automation and Control Systems Division' ||
+          text === 'All Service Divisions') {
+        // Don't prevent default - let the link navigate
+        return true;
+      }
+      
       e.preventDefault();
       
       const targetId = this.getAttribute('data-target');
