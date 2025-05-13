@@ -1379,7 +1379,7 @@
     
     <!-- Testimonial and Project Grid Section -->
     <div class="flex flex-col lg:flex-row max-w-7xl mx-auto px-4 gap-8">
-        <!-- Left Side: Testimonial Carousel -->
+        <!-- Left Side: Testimonial Carousel with everything properly nested -->
         <div class="testimonial-carousel relative w-full">
             <!-- Testimonial Slides -->
             <div class="testimonial-slides">
@@ -1438,27 +1438,29 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- Testimonial Navigation -->
-        <div class="flex justify-between mt-4">
-            <button class="testimonial-nav prev bg-ke-gray-light hover:bg-ke-blue text-ke-blue hover:text-white rounded-full p-2 transition-colors duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
-            </button>
             
-            <div class="testimonial-dots flex space-x-2">
-                <button class="dot w-3 h-3 rounded-full bg-ke-blue"></button>
-                <button class="dot w-3 h-3 rounded-full bg-ke-gray-light"></button>
-                <button class="dot w-3 h-3 rounded-full bg-ke-gray-light"></button>
+            <!-- Testimonial Navigation now inside the testimonial-carousel div -->
+            <div class="testimonial-navigation mt-4">
+                <div class="flex justify-between items-center">
+                    <button class="testimonial-nav prev bg-ke-gray-light hover:bg-ke-blue text-ke-blue hover:text-white rounded-full p-2 transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                        </svg>
+                    </button>
+                    
+                    <div class="testimonial-dots flex space-x-2">
+                        <button class="dot w-3 h-3 rounded-full bg-ke-blue"></button>
+                        <button class="dot w-3 h-3 rounded-full bg-ke-gray-light"></button>
+                        <button class="dot w-3 h-3 rounded-full bg-ke-gray-light"></button>
+                    </div>
+                    
+                    <button class="testimonial-nav next bg-ke-gray-light hover:bg-ke-blue text-ke-blue hover:text-white rounded-full p-2 transition-colors duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-            
-            <button class="testimonial-nav next bg-ke-gray-light hover:bg-ke-blue text-ke-blue hover:text-white rounded-full p-2 transition-colors duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                </svg>
-            </button>
         </div>
     </div>
 </section>
@@ -1667,7 +1669,6 @@
     <ul class="md:flex md:justify-end md:space-x-8">
       <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://inductiveautomation.com/"><img class="w-auto h-16" src="./assets/img/Ignition-Logo-LG.png" alt="Ignition by Inductive Automation" title="Ignition by Inductive Automation" width="600" height="314"></a></li>
       <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://www.isnetworld.com/en/"><img class="w-auto h-12" src="./assets/img/isn-logo.png" alt="ISNetworld RAVS Plus Participant" title="ISNetworld RAVS Plus Participant" width="302" height="88"></a></li>
-      <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://www.fanucamerica.com/"><img class="w-auto h-20" src="./assets/img/fanuc-logo.png" alt="FANUC Authorized System Integrator" title="FANUC Authorized System Integrator" width="250" height="250"></a></li>
     </ul>
   </div>
 
