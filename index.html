@@ -24,7 +24,6 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="stylesheet" href="./assets/css/main.css">
-
   <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
@@ -33,10 +32,12 @@
   <link rel="stylesheet" href="projects/stanley-black-decker/mobile-hamburger.css">
   <link rel="stylesheet" href="projects/stanley-black-decker/css-conflict-fix.css">
   <link rel="stylesheet" href="projects/stanley-black-decker/mobile-nav-overhaul.css">
+  <link rel="stylesheet" href="projects/stanley-black-decker/ticker-styles.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="./assets/js/navigation-fixed.js" defer></script>
-  <script src="./assets/js/homepage-carousel.js" defer></script>  
+  <script src="./assets/js/homepage-carousel.js" defer></script>
+  <script src="./projects/stanley-black-decker/ticker.js" defer></script>
 
   <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('Xbp1oaEWxyL7EdVj'); </script>
 
@@ -1750,22 +1751,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- Ticker JavaScript -->
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const tickerContent = document.querySelector('.ticker-scroll');
-  if (tickerContent) {
-    // Clone ticker items for seamless scrolling
-    const originalItems = tickerContent.innerHTML;
-    tickerContent.innerHTML = originalItems + originalItems;
-    
-    // Calculate animation duration based on content width
-    const contentWidth = tickerContent.scrollWidth / 2;
-    const duration = contentWidth / 50; // Adjust speed factor as needed
-    tickerContent.style.animationDuration = duration + 's';
-  }
-});
-</script>
+<!-- Ticker script now loaded from external file: ./projects/stanley-black-decker/ticker.js -->
 
 <!-- Tab functionality script -->
 <script>

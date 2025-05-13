@@ -1,0 +1,194 @@
+/* News Ticker Styles */
+.ticker-container {
+  overflow: hidden;
+  padding: 8px 0;
+}
+
+.ticker-wrapper {
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker-scroll {
+  display: inline-block;
+  white-space: nowrap;
+  padding-right: 100%;
+  animation: ticker 60s linear infinite;
+  -webkit-animation: ticker 60s linear infinite;
+  -moz-animation: ticker 60s linear infinite;
+  width: auto;
+}
+
+.ticker-scroll:hover {
+  animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+  -moz-animation-play-state: paused;
+}
+
+.ticker-item {
+  display: inline-block;
+  padding: 0 30px;
+  font-size: 14px;
+  color: white;
+  vertical-align: middle;
+}
+
+.ticker-item a {
+  text-decoration: none;
+  font-weight: 600;
+  color: #FFD700;
+  transition: color 0.2s ease;
+}
+
+.ticker-item a:hover {
+  color: #FFC107;
+}
+
+@-webkit-keyframes ticker {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+@-moz-keyframes ticker {
+  0% {
+    -moz-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -moz-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes ticker {
+  0% {
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+}
+
+@media (max-width: 768px) {
+  .ticker-item {
+    padding: 0 15px;
+    font-size: 12px;
+  }
+  
+  /* Stack elements on mobile */
+  .bg-ke-blue .md\:w-11\/12 {
+    flex-direction: column;
+  }
+  
+  .flex-shrink-0 {
+    justify-content: center;
+    padding: 8px 0;
+  }
+}
+
+/* Integrated header layout */
+.bg-ke-blue .md\:w-11\/12 {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+/* Make sure support text is properly aligned */
+.flex-shrink-0 {
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+}
+
+/* Ensure the support text and phone number are on the same line */
+.flex-shrink-0 p {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Ensure the ticker and support section align properly */
+@media (min-width: 768px) {
+  .ticker-container {
+    padding-right: 15px;
+  }
+  
+  .flex-shrink-0 {
+    min-width: 250px;
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  /* Ensure the ticker doesn't overflow on smaller screens */
+  .ticker-scroll {
+    animation-duration: 60s;
+    -webkit-animation-duration: 60s;
+    -moz-animation-duration: 60s;
+  }
+}
+
+/* Fix for Safari and older browsers */
+@supports (-webkit-appearance:none) {
+  .ticker-scroll {
+    will-change: transform;
+  }
+}
+
+/* Support section styling */
+.support-container {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.support-label {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 8px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  font-weight: 600;
+}
+
+.phone-button {
+  display: inline-block;
+  background-color: #0a4a7a; /* Match the bg-ke-blue-dark color */
+  color: white;
+  font-weight: 600;
+  padding: 8px;
+  margin-left: -11px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  transition: background-color 0.2s ease;
+  padding-left: 8px;
+  padding-right: 8px;
+  min-width: 160px;
+  text-align: left;
+}
+
+.phone-button:hover {
+  background-color: #0a4a7a;
+}
+
+@media (max-width: 768px) {
+  .support-container {
+    margin: 0 auto;
+  }
+} 
