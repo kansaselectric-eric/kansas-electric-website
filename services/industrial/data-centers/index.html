@@ -33,6 +33,7 @@
   <link rel="stylesheet" href="../../../projects/stanley-black-decker/mobile-hamburger.css">
   <link rel="stylesheet" href="../../../projects/stanley-black-decker/css-conflict-fix.css">
   <link rel="stylesheet" href="../../../projects/stanley-black-decker/mobile-nav-overhaul.css">
+  <link rel="stylesheet" href="../../../projects/stanley-black-decker/ticker-styles.css">
   
   <!-- jQuery -->
   <script src="../../../assets/js/jquery-3.6.0.min.js"></script>
@@ -282,132 +283,6 @@
       }
     }
     
-    /* News Ticker Styles */
-    .ticker-container {
-      overflow: hidden;
-      padding: 0.5rem 0;
-      background-color: transparent;
-      width: 100%;
-    }
-    
-    .ticker-wrapper {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-    }
-    
-    .ticker-scroll {
-      display: inline-block;
-      white-space: nowrap;
-      padding-left: 100%;
-      animation: ticker 60s linear infinite;
-    }
-    
-    .ticker-scroll:hover {
-      animation-play-state: paused;
-    }
-    
-    .ticker-item {
-      display: inline-block;
-      padding: 0 2rem;
-      color: white;
-      font-size: 0.875rem;
-    }
-    
-    .ticker-item a {
-      color: var(--ke-yellow);
-      text-decoration: none;
-      transition: color 0.2s ease;
-      font-weight: 600;
-    }
-    
-    .ticker-item a:hover {
-      color: white;
-    }
-    
-    @keyframes ticker {
-      0% {
-        transform: translate3d(0, 0, 0);
-      }
-      100% {
-        transform: translate3d(-100%, 0, 0);
-      }
-    }
-    
-    /* Support section styles */
-    .ticker-item {
-      position: relative;
-    }
-    
-    .ticker-item:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      top: 25%;
-      right: 1rem;
-      height: 50%;
-      width: 1px;
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-    
-    .support-container {
-      padding: 0.5rem 0;
-      display: flex;
-      align-items: center;
-    }
-    
-    .support-label {
-      display: none;
-    }
-    
-    @media (min-width: 768px) {
-      .support-label {
-        display: inline;
-      }
-    }
-    
-    /* Ensure the ticker and support section align properly */
-    @media (min-width: 768px) {
-      .ticker-container {
-        margin-right: 1rem;
-      }
-    }
-    
-    /* Ensure the ticker doesn't overflow on smaller screens */
-    .ticker-scroll {
-      overflow: hidden;
-    }
-    
-    /* Phone button styles */
-    .phone-button {
-      position: relative;
-      overflow: hidden;
-      transition: background-color 0.3s ease;
-    }
-    
-    .phone-button:hover {
-      background-color: #001f3f;
-    }
-    
-    .phone-button::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 1px;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.3);
-      opacity: 0;
-      border-radius: 50%;
-      transform: scale(1, 1) translate(-50%);
-      transform-origin: 50% 50%;
-      transition: all 0.3s ease;
-    }
-    
-    .phone-button:hover::after {
-      transform: scale(100, 100) translate(-50%);
-      opacity: 0.3;
-    }
-    
     /* Integrated header layout */
     body {
       display: flex;
@@ -422,7 +297,7 @@
     }
 </style>
 </head>
-<body class="flex flex-col min-h-screen bg-white">
+<body class="font-poppins flex flex-col min-h-screen relative">
 
   <a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-ke-yellow inline-block"><span class="block py-2">Skip to content</span></a>
 
@@ -475,6 +350,220 @@
         <span class="line block h-1 w-6 mb-1 bg-ke-gray rounded-full"></span>
         <span class="line block h-1 w-6 bg-ke-gray rounded-full"></span>
       </a>
+      <div class="w-full bg-white lg:bg-transparent px-0 pt-0 pb-6 lg:py-0 lg:flex lg:justify-between main-navigation closed shadow-md lg:shadow-none" data-main-menu>
+        <ul class="lg:flex lg:space-x-6 lg:self-center">
+          <li class="lg:self-center py-0 border-t border-ke-gray-lighter lg:border-none nav-item">
+            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Services</a>
+            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
+              <div class="submenu-container three-column-menu">
+                <div class="hidden lg:block menu-column first-column">
+                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Electrical Services</p>
+                  <p class="text-ke-gray">Our job is to keep your lights on and production moving forward.</p>
+                </div>
+                <div class="lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
+                  <ul class="second-column-menu">
+                    <li>
+                      <a class="second-column-item division-nav-link active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../services/industrial/" data-target="industrial-electrical">Industrial Electrical Division</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item division-nav-link relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../services/commercial/" data-target="commercial-electrical">Commercial Electrical Division</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item division-nav-link relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../services/service-maintenance/" data-target="service-maintenance">Service and Maintenance Division</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item division-nav-link relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../services/automation-control/" data-target="automation-control">Automation and Control Systems Division</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
+                  <!-- Industrial Electrical Division (default) -->
+                  <ul class="third-column-content active" id="industrial-electrical">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../services/industrial/wastewater-treatment/">Wastewater & Water Treatment Plants</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../services/industrial/oil-gas/">Oil, Gas & Carbon Capture Pipelines</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../services/industrial/food-beverage/">Food & Beverage Manufacturing Plants</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../services/industrial/advanced-manufacturing/">Advanced Manufacturing Facilities</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../services/industrial/data-centers/">Data Centers & Mission Critical Facilities</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="lg:self-center border-t border-ke-gray-lighter lg:border-none nav-item">
+            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Projects</a>
+            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
+              <div class="submenu-container three-column-menu">
+                <div class="w-1/4 hidden lg:block menu-column first-column">
+                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Our Projects</p>
+                  <p class="text-ke-gray">Explore our portfolio of completed electrical projects.</p>
+                </div>
+                <div class="w-1/4 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
+                  <ul class="second-column-menu">
+                    <li>
+                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="all-projects">All Projects</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="industrial-projects">Industrial Projects</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="commercial-projects">Commercial Projects</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="service-maintenance-projects">Service and Maintenance Projects</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="automation-projects">Automation and Control Systems Projects</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
+                  <!-- All Projects (default) -->
+                  <ul class="third-column-content active" id="all-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/stanley-black-decker/">Stanley Black & Decker - Network Upgrades</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/mkc-lyons/">MKC - Lyons</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/health-ministries/">Health Ministries Dental Clinic</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/bethel-college/">Bethel College Solar Grid</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/agco-hesston/">AGCO - Hesston</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/camso-control-panel/">Camso Control Panel</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Industrial Projects -->
+                  <ul class="third-column-content" id="industrial-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/industrial/project1/">Industrial Project 1</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/industrial/project2/">Industrial Project 2</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Commercial Projects -->
+                  <ul class="third-column-content" id="commercial-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/commercial/project1/">Commercial Project 1</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/commercial/project2/">Commercial Project 2</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Service and Maintenance Projects -->
+                  <ul class="third-column-content" id="service-maintenance-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/service/project1/">Service Project 1</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/service/project2/">Service Project 2</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Automation and Control Systems Projects -->
+                  <ul class="third-column-content" id="automation-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/automation/project1/">Automation Project 1</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/automation/project2/">Automation Project 2</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="lg:self-center border-t border-ke-gray-lighter lg:border-none nav-item">
+            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">About</a>
+            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
+              <div class="submenu-container three-column-menu">
+                <div class="w-1/4 hidden lg:block menu-column first-column">
+                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">About Us</p>
+                  <p class="text-ke-gray">Our job is to keep your lights on and production moving forward.</p>
+                </div>
+                <div class="w-1/4 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
+                  <ul class="second-column-menu">
+                    <li>
+                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="who-we-are">Who We Are</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="company-news">Company News</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
+                  <!-- Who We Are (default) -->
+                  <ul class="third-column-content active" id="who-we-are">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../about/">Who We Are</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../about/locations/">Locations</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../about/our-team/">Our Team</a>
+                    </li>
+                  </ul>
+                  
+                  <!-- Company News -->
+                  <ul class="third-column-content" id="company-news">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../company-news/">Company News</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../about/community/">Community Involvement</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="lg:self-center border-t border-b border-ke-gray-lighter lg:border-none nav-item">
+            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Careers</a>
+            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
+              <div class="submenu-container three-column-menu">
+                <div class="w-1/4 hidden lg:block menu-column first-column">
+                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Careers</p>
+                  <p class="text-ke-gray">We're always looking for talented people to join our team.</p>
+                </div>
+                <div class="w-3/4 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
+                  <ul class="second-column-menu">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../careers/">Careers at Kansas Electric</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../careers/apprenticeship/">Apprenticeship Program</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../careers/job-openings/">Current Job Openings</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- Add other nav items if needed -->
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -685,7 +774,26 @@
     </div>
   </footer>
   
-  <!-- Ticker JavaScript -->
+  <!-- JavaScript -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Set header height dynamically
+    function setHeaderHeight() {
+      const header = document.querySelector('.site-header');
+      if (header) {
+        const headerHeight = header.offsetHeight;
+        document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+      }
+    }
+    
+    // Set header height initially
+    setHeaderHeight();
+    
+    // Update header height on window resize
+    window.addEventListener('resize', setHeaderHeight);
+  });
+  </script>
+  
   <script>
   document.addEventListener('DOMContentLoaded', function() {
     const tickerContent = document.querySelector('.ticker-scroll');
@@ -704,5 +812,6 @@
   
   <script src="../../../projects/stanley-black-decker/mobile-hamburger.js" defer></script>
   <script src="../../../projects/stanley-black-decker/mobile-nav-overhaul.js" defer></script>
+  <script src="../../../projects/stanley-black-decker/division-nav-fix.js" defer></script>
 </body>
 </html> 
