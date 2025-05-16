@@ -21,13 +21,12 @@
   <meta property="twitter:image" content="../../../assets/img/ke-social-share.jpg">
   
   <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/favicon/favicon-16x16.png">
-  <link rel="manifest" href="../../../assets/favicon/site.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../../favicon-16x16.png">
+  <link rel="manifest" href="../../../site.webmanifest">
   
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="../../../assets/css/styles.css">
   <link rel="stylesheet" href="../../../assets/css/main.css">
   <link rel="stylesheet" href="../../../projects/stanley-black-decker/mobile-responsive.css">
   <link rel="stylesheet" href="../../../projects/stanley-black-decker/mobile-hamburger.css">
@@ -36,10 +35,12 @@
   <link rel="stylesheet" href="../../../projects/stanley-black-decker/ticker-styles.css">
   
   <!-- jQuery -->
-  <script src="../../../assets/js/jquery-3.6.0.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   
-  <!-- navigation-debug.js -->
-  <script src="../../../assets/js/navigation-debug.js" defer></script>
+  <!-- Scripts -->
+  <script src="../../../assets/js/navigation-fixed.js" defer></script>
+  <script src="../../../assets/js/homepage-carousel.js" defer></script>
+  <script src="../../../projects/stanley-black-decker/ticker.js" defer></script>
   
 <style>
   :root {
@@ -217,6 +218,153 @@
       height: 2px;
     }
     
+    /* News Ticker Styles */
+    .ticker-container {
+      overflow: hidden;
+      padding: 8px 0;
+    }
+    
+    .ticker-wrapper {
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+    }
+    
+    .ticker-scroll {
+      display: inline-block;
+      white-space: nowrap;
+      padding-right: 100%;
+      animation: ticker 60s linear infinite;
+    }
+    
+    .ticker-scroll:hover {
+      animation-play-state: paused;
+    }
+    
+    .ticker-item {
+      display: inline-block;
+      padding: 0 30px;
+      font-size: 14px;
+      color: white;
+    }
+    
+    .ticker-item a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #FFD700;
+      transition: color 0.2s ease;
+    }
+    
+    .ticker-item a:hover {
+      color: #FFC107;
+    }
+    
+    @keyframes ticker {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .ticker-item {
+        padding: 0 15px;
+        font-size: 12px;
+      }
+      
+      /* Stack elements on mobile */
+      .bg-ke-blue .md\:w-11\/12 {
+        flex-direction: column;
+      }
+      
+      .flex-shrink-0 {
+        justify-content: center;
+        padding: 8px 0;
+      }
+    }
+
+    /* Integrated header layout */
+    .bg-ke-blue .md\:w-11\/12 {
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+    }
+    
+    /* Make sure support text is properly aligned */
+    .flex-shrink-0 {
+      padding: 8px 15px;
+      display: flex;
+      align-items: center;
+    }
+    
+    /* Ensure the support text and phone number are on the same line */
+    .flex-shrink-0 p {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    /* Ensure the ticker and support section align properly */
+    @media (min-width: 768px) {
+      .ticker-container {
+        padding-right: 15px;
+      }
+      
+      .flex-shrink-0 {
+        min-width: 250px;
+        padding: 8px 0;
+        display: flex;
+        align-items: center;
+      }
+      
+      /* Ensure the ticker doesn't overflow on smaller screens */
+      .ticker-scroll {
+        animation-duration: 60s;
+      }
+    }
+
+    /* Support section styling */
+    .support-container {
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    
+    .support-label {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 8px;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      font-weight: 600;
+    }
+    
+    .phone-button {
+      margin-left: -11px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      transition: background-color 0.2s ease;
+      padding-left: 8px;
+      padding-right: 8px;
+      min-width: 160px;
+      text-align: left;
+    }
+    
+    .phone-button:hover {
+      background-color: #0a4a7a;
+    }
+    
+    @media (max-width: 768px) {
+      .support-container {
+        margin: 0 auto;
+      }
+    }
+    
     /* Blue nav button */
     .blue-nav-button {
       display: inline-block;
@@ -257,43 +405,33 @@
       transform: translateY(-0.35rem) rotate(-45deg);
     }
     
-    /* Main navigation transitions */
+    /* Main navigation */
     .main-navigation {
-      transition: max-height 0.5s ease, opacity 0.3s ease, visibility 0.3s ease;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      border-top: 1px solid var(--ke-gray-lighter);
+      transform: translateY(-100%);
+      transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
+      opacity: 0;
+      visibility: hidden;
     }
     
-    @media (max-width: 1023px) {
+    .main-navigation.open {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    @media (min-width: 1024px) {
       .main-navigation {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        max-height: 0;
-        overflow: hidden;
-        visibility: hidden;
-        opacity: 0;
-        z-index: 998;
-      }
-      
-      .main-navigation.open {
-        max-height: 1000px;
-        overflow: auto;
-        visibility: visible;
+        position: relative;
+        transform: none;
         opacity: 1;
+        visibility: visible;
+        border-top: none;
       }
-    }
-    
-    /* Integrated header layout */
-    body {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    }
-    
-    main {
-      flex-grow: 1;
     }
 </style>
 </head>
@@ -390,6 +528,12 @@
                     </li>
                     <li>
                       <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../services/industrial/advanced-manufacturing/">Advanced Manufacturing Facilities</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../services/ul-certified-design-build/">Design-Build Electrical Services</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../services/industrial/microgrids/">Microgrids & Energy Management Systems</a>
                     </li>
                     <li>
                       <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../services/industrial/data-centers/">Data Centers & Mission Critical Facilities</a>
