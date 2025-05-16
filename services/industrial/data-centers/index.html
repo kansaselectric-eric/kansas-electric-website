@@ -950,6 +950,15 @@
       const contentWidth = tickerContent.scrollWidth / 2;
       const duration = contentWidth / 50; // Adjust speed factor as needed
       tickerContent.style.animationDuration = duration + 's';
+      
+      // Add explicit mouse events to ensure hover pause works correctly
+      tickerContent.addEventListener('mouseenter', function() {
+        this.style.animationPlayState = 'paused';
+      });
+      
+      tickerContent.addEventListener('mouseleave', function() {
+        this.style.animationPlayState = 'running';
+      });
     }
   });
   </script>
