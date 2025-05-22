@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Test Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .video-container {
+      margin-bottom: 40px;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    video {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .controls {
+      margin-top: 10px;
+    }
+    button {
+      padding: 8px 16px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+    .log {
+      margin-top: 10px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      background-color: #f9f9f9;
+      height: 100px;
+      overflow-y: auto;
+      font-family: monospace;
+    }
+  </style>
+</head>
+<body>
+  <h1>Video Test Page</h1>
+  <p>This page tests each video file individually to check for playback issues.</p>
+
+  <div class="video-container">
+    <h2>Video 1</h2>
+    <video id="video1" controls width="800">
+      <source src="./assets/videos/video1.mp4" type="video/mp4">
+      Your browser does not support the video element.
+    </video>
+    <div class="controls">
+      <button onclick="playVideo('video1')">Play</button>
+      <button onclick="pauseVideo('video1')">Pause</button>
+      <button onclick="reloadVideo('video1')">Reload</button>
+    </div>
+    <div id="log1" class="log"></div>
+  </div>
+
+  <div class="video-container">
+    <h2>Video 2</h2>
+    <video id="video2" controls width="800">
+      <source src="./assets/videos/video2.mp4" type="video/mp4">
+      Your browser does not support the video element.
+    </video>
+    <div class="controls">
+      <button onclick="playVideo('video2')">Play</button>
+      <button onclick="pauseVideo('video2')">Pause</button>
+      <button onclick="reloadVideo('video2')">Reload</button>
+    </div>
+    <div id="log2" class="log"></div>
+  </div>
+
+  <div class="video-container">
+    <h2>Video 3</h2>
+    <video id="video3" controls width="800">
+      <source src="./assets/videos/video3.mp4" type="video/mp4">
+      Your browser does not support the video element.
+    </video>
+    <div class="controls">
+      <button onclick="playVideo('video3')">Play</button>
+      <button onclick="pauseVideo('video3')">Pause</button>
+      <button onclick="reloadVideo('video3')">Reload</button>
+    </div>
+    <div id="log3" class="log"></div>
+  </div>
+
+  <h2>Video Carousel Test</h2>
+  <div class="video-container">
+    <div id="test-carousel" style="position: relative; width: 800px; height: 450px; overflow: hidden; background-color: #000;">
+      <video id="carousel-video1" muted loop playsinline class="active" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+        <source src="./assets/videos/video1.mp4" type="video/mp4">
+      </video>
+      <video id="carousel-video2" muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: none;">
+        <source src="./assets/videos/video2.mp4" type="video/mp4">
+      </video>
+      <video id="carousel-video3" muted loop playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; display: none;">
+        <source src="./assets/videos/video3.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="controls">
+      <button onclick="switchCarouselVideo(0)">Video 1</button>
+      <button onclick="switchCarouselVideo(1)">Video 2</button>
+      <button onclick="switchCarouselVideo(2)">Video 3</button>
+      <button onclick="startCarousel()">Start Auto-switch</button>
+      <button onclick="stopCarousel()">Stop Auto-switch</button>
+    </div>
+    <div id="carousel-log" class="log"></div>
+  </div>
+
+  <script>
+    // Set up event listeners for all videos
+    document.addEventListener('DOMContentLoaded', function() {
+      setupVideoEventListeners('video1', 'log1');
+      setupVideoEventListeners('video2', 'log2');
+      setupVideoEventListeners('video3', 'log3');
+      
+      // Set up carousel videos
+      setupVideoEventListeners('carousel-video1', 'carousel-log');
+      setupVideoEventListeners('carousel-video2', 'carousel-log');
+      setupVideoEventListeners('carousel-video3', 'carousel-log');
+      
+      // Start with the first carousel video
+      const firstVideo = document.getElementById('carousel-video1');
+      firstVideo.style.display = 'block';
+      firstVideo.play().catch(e => {
+        logMessage('carousel-log', 'Error playing carousel video1: ' + e.message);
+      });
+    });
+
+    function setupVideoEventListeners(videoId, logId) {
+      const video = document.getElementById(videoId);
+      
+      video.addEventListener('loadstart', () => logMessage(logId, `${videoId}: Loading started`));
+      video.addEventListener('loadedmetadata', () => logMessage(logId, `${videoId}: Metadata loaded, duration: ${video.duration.toFixed(2)}s`));
+      video.addEventListener('loadeddata', () => logMessage(logId, `${videoId}: Data loaded`));
+      video.addEventListener('canplay', () => logMessage(logId, `${videoId}: Can play`));
+      video.addEventListener('canplaythrough', () => logMessage(logId, `${videoId}: Can play through`));
+      video.addEventListener('play', () => logMessage(logId, `${videoId}: Playing`));
+      video.addEventListener('pause', () => logMessage(logId, `${videoId}: Paused`));
+      video.addEventListener('ended', () => logMessage(logId, `${videoId}: Ended`));
+      video.addEventListener('error', (e) => {
+        const error = video.error;
+        let errorMessage = 'Unknown error';
+        
+        if (error) {
+          switch (error.code) {
+            case 1: errorMessage = "MEDIA_ERR_ABORTED"; break;
+            case 2: errorMessage = "MEDIA_ERR_NETWORK"; break;
+            case 3: errorMessage = "MEDIA_ERR_DECODE"; break;
+            case 4: errorMessage = "MEDIA_ERR_SRC_NOT_SUPPORTED"; break;
+          }
+        }
+        
+        logMessage(logId, `${videoId}: Error: ${errorMessage}`);
+      });
+    }
+
+    function logMessage(logId, message) {
+      const log = document.getElementById(logId);
+      const timestamp = new Date().toLocaleTimeString();
+      log.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+      log.scrollTop = log.scrollHeight;
+    }
+
+    function playVideo(videoId) {
+      const video = document.getElementById(videoId);
+      const logId = 'log' + videoId.substring(5);
+      logMessage(logId, `${videoId}: Play button clicked`);
+      
+      video.play().catch(error => {
+        logMessage(logId, `${videoId}: Error playing: ${error.message}`);
+      });
+    }
+
+    function pauseVideo(videoId) {
+      const video = document.getElementById(videoId);
+      const logId = 'log' + videoId.substring(5);
+      logMessage(logId, `${videoId}: Pause button clicked`);
+      video.pause();
+    }
+
+    function reloadVideo(videoId) {
+      const video = document.getElementById(videoId);
+      const logId = 'log' + videoId.substring(5);
+      logMessage(logId, `${videoId}: Reload button clicked`);
+      video.load();
+    }
+
+    // Carousel functions
+    let carouselInterval;
+    let currentCarouselIndex = 0;
+
+    function switchCarouselVideo(index) {
+      const videos = [
+        document.getElementById('carousel-video1'),
+        document.getElementById('carousel-video2'),
+        document.getElementById('carousel-video3')
+      ];
+      
+      // Hide all videos
+      videos.forEach(v => {
+        v.style.display = 'none';
+        v.pause();
+      });
+      
+      // Show and play the selected video
+      const video = videos[index];
+      video.style.display = 'block';
+      currentCarouselIndex = index;
+      
+      logMessage('carousel-log', `Switching to carousel video ${index + 1}`);
+      
+      video.play().catch(error => {
+        logMessage('carousel-log', `Error playing carousel video ${index + 1}: ${error.message}`);
+      });
+    }
+
+    function startCarousel() {
+      if (carouselInterval) return;
+      
+      logMessage('carousel-log', 'Starting auto-switch carousel');
+      
+      carouselInterval = setInterval(() => {
+        currentCarouselIndex = (currentCarouselIndex + 1) % 3;
+        switchCarouselVideo(currentCarouselIndex);
+      }, 5000);
+    }
+
+    function stopCarousel() {
+      if (carouselInterval) {
+        clearInterval(carouselInterval);
+        carouselInterval = null;
+        logMessage('carousel-log', 'Stopping auto-switch carousel');
+      }
+    }
+  </script>
+</body>
+</html> 

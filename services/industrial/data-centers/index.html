@@ -39,401 +39,288 @@
   
   <!-- Scripts -->
   <script src="../../../assets/js/navigation-fixed.js" defer></script>
-  <script src="../../../assets/js/homepage-carousel.js" defer></script>
+  <!-- Removed carousel script as it's not needed -->
   <script src="../../../projects/stanley-black-decker/ticker.js" defer></script>
   
-<style>
-  :root {
-    --header-height: 80px;
-  }
-  
-    /* Video carousel styles - consolidated and simplified */
-    /* Override fade-in class to ensure elements are visible */
-    .fade-in {
-      opacity: 1 !important;
+  <style>
+    :root {
+      --header-height: 80px;
+      --primary-color: #0076C5;
     }
     
-    section[data-home-slider] {
-      opacity: 1 !important; /* Ensure the section is always visible */
-    } 
-
-    #video-carousel {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 5;
-      background-color: #000;
-      opacity: 1 !important; /* Ensure the carousel is always visible */
-    }
-
-    #video-carousel video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-      visibility: hidden;
-    }
-
-    #video-carousel video.active {
-      opacity: 1;
-      visibility: visible;
-      z-index: 2;
+    /* 
+    * Section spacing utility class
+    * Used to create consistent vertical spacing between major content sections
+    * Applied to the outermost wrapper of each content section
+    * 4rem (64px) padding on desktop, 2rem (32px) on mobile
+    * Does not affect internal spacing within sections
+    */
+    .section-spacing {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
     }
     
-    /* Logo overlay fix */
-    .video-logo-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 20 !important;
-      opacity: 1 !important;
-      visibility: visible !important;
-      pointer-events: none;
+    /* Hero spacing */
+    .hero-spacing {
+      padding-block: 6rem;
     }
     
-    .video-logo-overlay .logo-container {
-      position: relative;
-      width: 50%;
-      max-width: 28rem;
+    /* Divider spacing */
+    .divider-spacing {
+      padding-block: 1.5rem;
     }
     
-    .video-logo-overlay .logo-bg {
-      display: none; /* Hide the gradient background */
+    /* CTA spacing */
+    .cta-spacing {
+      padding-block: 3rem;
     }
     
-    .video-logo-overlay img {
-      position: relative;
-      width: 100%;
-      padding: 1.5rem;
-      filter: drop-shadow(0 0 15px rgba(0,0,0,0.8)) drop-shadow(0 0 30px rgba(0,0,0,0.6)) drop-shadow(0 0 45px rgba(0,0,0,0.5));
+    /* Heading spacing */
+    .heading-spacing {
+      margin-bottom: 2rem;
+      margin-top: 0;
     }
     
-    /* Navigation styles */
-    .nav-item {
-      position: relative;
+    /* Card spacing */
+    .card-spacing {
+      padding: 2rem;
     }
     
-    /* Ensure the logo is positioned at the far left */
-    .site-header .md\:w-11\/12 {
-      width: 100% !important;
-      max-width: 100% !important;
-      padding-left: 0 !important; /* Remove left padding to position logo at the very left */
-      padding-right: 20px;
+    /* Grid spacing */
+    .grid-spacing {
+      gap: 2rem;
     }
     
-    /* Ensure the logo container has proper padding */
-    .site-header .md\:w-11\/12 > a:first-child {
-      padding-left: 0 !important; /* Remove padding to position logo at the very left edge */
+    /* Footer spacing */
+    .footer-buffer {
+      margin-top: 6rem;
     }
     
-    @media (min-width: 768px) {
-      .site-header .md\:w-11\/12 > a:first-child {
-        padding-left: 0 !important; /* Remove padding to position logo at the very left edge */
-      }
+    /* Section headings styling */
+    h2 {
+      font-size: 28px;
+      font-weight: bold;
+      color: #000;
+      letter-spacing: -0.02em; /* tracking-tight */
     }
-
-    .submenu {
-      display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-      width: 100vw !important; /* Ensure full viewport width */
-      margin-left: 0 !important; /* Remove margin */
-      margin-right: 0 !important; /* Remove margin */
-      transform: none !important; /* Remove transform */
-    background-color: white;
-      z-index: 100;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
+    
+    .subline {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #374151; /* text-gray-700 */
+    }
+    
+    /* New global style classes */
+    .section-divider {
+      height: 4px;
+      width: 5rem;
+      background-color: var(--primary-color);
+      margin: 0 auto 2rem auto;
+      border-radius: 9999px;
+    }
+    
+    .card-enhanced {
+      border-radius: 0.75rem;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    }
-
-    @media (min-width: 1024px) {
-      /* Fix the header to ensure consistent positioning */
-      .site-header {
-        position: relative;
-        z-index: 101; /* Higher than submenu */
-      }
-      
-      /* Ensure the main navigation has proper height */
-      .site-header .lg\:py-0 {
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-      }
-      
-      /* Ensure the nav items have proper height */
-      .nav-item .lg\:py-6 {
-        padding-top: 1.5rem !important; /* 6 tailwind units */
-        padding-bottom: 1.5rem !important; /* 6 tailwind units */
-      }
-      
-      /* Ensure the submenu is positioned correctly */
-      .submenu {
-        position: fixed !important; /* Change to fixed to break out of container */
-        top: var(--header-height, 80px) !important; /* Use CSS variable with fallback */
-        left: 0 !important; /* Start at the left edge of the screen */
-        right: 0 !important;
-        width: 100% !important; /* Full viewport width */
-        max-width: none !important; /* No max width */
-        transform: none !important;
-        margin: 0 !important; /* No margin */
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-        border-top: none !important; /* Remove any border that might create a gap */
-      }
-      
-      /* Ensure the nav items have proper positioning */
-      .nav-item {
-        position: static !important;
-      }
+      transition: all 0.3s ease;
     }
     
-    /* Ensure the submenu connects directly to the header */
-    .site-header::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 0;
-      background-color: white;
-      z-index: 102; /* Higher than the submenu */
+    .card-enhanced:hover {
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     }
     
-    /* When submenu is visible, create a seamless connection with header */
-    .has-submenu-visible .site-header::after {
-      height: 2px;
-    }
-    
-    /* News Ticker Styles */
-    .ticker-container {
-      overflow: hidden;
-      padding: 8px 0;
-    }
-    
-    .ticker-wrapper {
-      width: 100%;
-      padding: 0;
-      overflow: hidden;
-    }
-    
-    .ticker-scroll {
-      display: inline-block;
-      white-space: nowrap;
-      padding-right: 100%;
-      animation: ticker 60s linear infinite;
-    }
-    
-    .ticker-scroll:hover {
-      animation-play-state: paused;
-    }
-    
-    .ticker-item {
-      display: inline-block;
-      padding: 0 30px;
-      font-size: 14px;
+    .btn-enhanced {
+      background-color: var(--primary-color);
       color: white;
-    }
-    
-    .ticker-item a {
-      text-decoration: none;
       font-weight: 600;
-      color: #FFD700;
-      transition: color 0.2s ease;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
     }
     
-    .ticker-item a:hover {
-      color: #FFC107;
+    .btn-enhanced:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     }
     
-    @keyframes ticker {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
+    /* Animation classes */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-fade-in {
+      animation: fadeIn 0.7s ease-out forwards;
+    }
+    
+    .delay-100 {
+      animation-delay: 0.1s;
+    }
+    
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+    
+    .delay-300 {
+      animation-delay: 0.3s;
+    }
+    
+    .delay-400 {
+      animation-delay: 0.4s;
+    }
+    
+    /* Parallax background effect */
+    .parallax-bg {
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      will-change: transform;
+      transform: translate3d(0, 0, 0);
+    }
+    
+    .hero-parallax::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
     }
     
     @media (max-width: 768px) {
-      .ticker-item {
-        padding: 0 15px;
-        font-size: 12px;
+      .parallax-bg {
+        background-attachment: scroll;
+      }
+    }
+    
+    /* Mobile responsive adjustments */
+    @media (max-width: 768px) {
+      .section-spacing {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
       }
       
-      /* Stack elements on mobile */
-      .bg-ke-blue .md\:w-11\/12 {
-        flex-direction: column;
+      .hero-spacing {
+        padding-block: 4rem;
       }
       
-      .flex-shrink-0 {
-        justify-content: center;
-        padding: 8px 0;
+      .divider-spacing {
+        padding-block: 1rem;
       }
+      
+      .cta-spacing {
+        padding-block: 2.5rem;
+      }
+      
+      h2 {
+        font-size: 24px;
+      }
+    }
+    
+    /* Text shadow for better readability on image backgrounds */
+    .text-shadow {
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    
+    /* Data Center Services Grid */
+    .data-center-services-section {
+      background-color: #f9fafb;
+      border-radius: 12px;
     }
 
-    /* Integrated header layout */
-    .bg-ke-blue .md\:w-11\/12 {
-      min-height: 40px;
-      display: flex;
-      align-items: center;
-    }
-    
-    /* Make sure support text is properly aligned */
-    .flex-shrink-0 {
-      padding: 8px 15px;
-      display: flex;
-      align-items: center;
-    }
-    
-    /* Ensure the support text and phone number are on the same line */
-    .flex-shrink-0 p {
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
-    /* Ensure the ticker and support section align properly */
-    @media (min-width: 768px) {
-      .ticker-container {
-        padding-right: 15px;
-      }
-      
-      .flex-shrink-0 {
-        min-width: 250px;
-        padding: 8px 0;
-        display: flex;
-        align-items: center;
-      }
-      
-      /* Ensure the ticker doesn't overflow on smaller screens */
-      .ticker-scroll {
-        animation-duration: 60s;
-      }
-    }
-
-    /* Support section styling */
-    .support-container {
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    
-    .support-label {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 8px;
-      border-top-left-radius: 4px;
-      border-bottom-left-radius: 4px;
-      font-weight: 600;
-    }
-    
-    .phone-button {
-      margin-left: -11px;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px;
-      transition: background-color 0.2s ease;
-      padding-left: 8px;
-      padding-right: 8px;
-      min-width: 160px;
+    .service-card {
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       text-align: left;
     }
-    
-    .phone-button:hover {
-      background-color: #0a4a7a;
+
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
     }
-    
-    @media (max-width: 768px) {
-      .support-container {
-        margin: 0 auto;
-      }
+
+    .service-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
     }
-    
-    /* Blue nav button */
-    .blue-nav-button {
-      display: inline-block;
-      color: white;
-      background-color: var(--ke-blue);
-      padding: 0.75rem 1.5rem;
-      font-size: 0.875rem;
+
+    .service-card h3 {
+      font-size: 1.25rem;
       font-weight: 600;
-      transition: background-color 0.2s ease;
+      margin-bottom: 12px;
+      color: #1f2937;
     }
-    
-    .blue-nav-button:hover {
-      background-color: var(--ke-blue-dark);
+
+    .service-card p {
+      font-size: 1rem;
+      color: #4b5563;
+      line-height: 1.6;
     }
-    
-    /* Mobile nav button */
-    [data-mobile-nav-toggle] {
-      position: relative;
-      z-index: 999; /* Ensure it's above the main-navigation */
-      padding: 0.75rem;
-      margin: -0.75rem;
-    }
-    
-    [data-mobile-nav-toggle] .line {
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      transform-origin: center;
-    }
-    
-    .menu-open [data-mobile-nav-toggle] .line:nth-child(1) {
-      transform: translateY(0.35rem) rotate(45deg);
-    }
-    
-    .menu-open [data-mobile-nav-toggle] .line:nth-child(2) {
-      opacity: 0;
-    }
-    
-    .menu-open [data-mobile-nav-toggle] .line:nth-child(3) {
-      transform: translateY(-0.35rem) rotate(-45deg);
-    }
-    
-    /* Main navigation */
-    .main-navigation {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      border-top: 1px solid var(--ke-gray-lighter);
-      transform: translateY(-100%);
-      transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-      opacity: 0;
-      visibility: hidden;
-    }
-    
-    .main-navigation.open {
-      transform: translateY(0);
-      opacity: 1;
-      visibility: visible;
-    }
-    
-    @media (min-width: 1024px) {
-      .main-navigation {
-        position: relative;
-        transform: none;
-        opacity: 1;
-        visibility: visible;
-        border-top: none;
+
+    /* Animation for button shine effect */
+    @keyframes shine {
+      0% {
+        left: -100%;
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.1;
+      }
+      100% {
+        left: 100%;
+        opacity: 0;
       }
     }
-</style>
+    
+    /* Section intro styling */
+    .section-intro {
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .section-intro h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #1f2937;
+    }
+
+    .section-intro .subline {
+      font-size: 1.125rem;
+      color: #4b5563;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    
+    /* Responsive styles for the hero section */
+    @media (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+      }
+
+      .hero-section p {
+        font-size: 1rem !important;
+      }
+
+      .hero-section .cta-button {
+        width: 100% !important;
+        max-width: 300px !important;
+        margin-top: 24px !important;
+      }
+    }
+  </style>
 </head>
 <body class="font-poppins flex flex-col min-h-screen relative">
 
@@ -713,152 +600,254 @@
 
   <main id="content" class="flex-grow">
     <article class="overflow-hidden">
-      <!-- Page Header Section -->
-      <section class="py-16 bg-ke-gray-lightest">
-        <div class="container mx-auto px-4">
-          <h1 class="text-3xl md:text-4xl font-bold text-center mb-6">Data Centers & Mission Critical Facilities</h1>
-          <p class="text-xl text-center max-w-3xl mx-auto">Specialized electrical systems for data centers and mission-critical infrastructure, ensuring maximum uptime and reliability.</p>
+      <!-- Hero Section with Background Image -->
+      <section class="hero-parallax relative overflow-hidden h-[85vh]">
+        <div class="parallax-bg absolute inset-0" style="background-image: url('../../../assets/img/2025 photos/hospital mcc.jpg');"></div>
+        
+        <!-- Content -->
+        <div class="container mx-auto px-6 md:px-8 relative z-10 flex flex-col items-center justify-center h-full hero-spacing">
+          <div class="text-center text-white max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-shadow opacity-0 animate-fade-in" style="text-shadow: 0 2px 10px rgba(0,0,0,0.5);">Data Centers & Mission-Critical Facilities</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-6 text-shadow opacity-0 animate-fade-in delay-100" style="text-shadow: 0 2px 8px rgba(0,0,0,0.5);">Engineered for uptime. Trusted by hospitals, cloud platforms, and private infrastructure leaders.</p>
+            <p class="text-lg text-ke-yellow font-medium mb-12 text-shadow opacity-0 animate-fade-in delay-200" style="text-shadow: 0 2px 8px rgba(0,0,0,0.5);">Over 1.5MW of critical power infrastructure delivered in 2024.</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6 opacity-0 animate-fade-in delay-300">
+              <a href="../../../contact/request-bid/" class="btn-enhanced py-[14px] px-[28px] text-white font-bold rounded-[6px] transition-all duration-300 md:max-w-[300px] sm:w-auto w-full mx-auto relative overflow-hidden group">
+                <span class="relative z-10">Let's Talk</span>
+                <div class="absolute inset-0 bg-[#005b99] transform scale-x-0 origin-left transition-transform duration-300 group-hover:scale-x-100"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 transition-opacity duration-300" style="animation: shine 2s infinite;"></div>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
       
+      <!-- Section Intro -->
+      <section class="section-intro section-spacing bg-gray-50 opacity-0 animate-fade-in" style="padding-top: 6rem;">
+        <h2 class="mb-2">Trusted by Leaders in Critical Infrastructure</h2>
+        <div class="section-divider"></div>
+        <p class="subline">Powering hospitals, cloud platforms, and private infrastructure with reliable electrical systems built for uptime.</p>
+      </section>
+      
       <!-- Main Content Section -->
-      <section class="py-12 bg-white">
+      <section id="services" class="section-spacing bg-white">
         <div class="container mx-auto px-4">
           <div class="max-w-4xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-8 mb-16">
-              <div class="bg-gray-50 p-6 rounded-lg">
-                <h3 class="text-xl font-bold mb-4 text-ke-dark">Reliability & Redundancy</h3>
-                <p>Our N+1 and 2N redundant power systems ensure continuous operation even during utility outages. We design and implement backup power solutions, UPS systems, and emergency power off (EPO) systems that keep your critical infrastructure running 24/7/365.</p>
-              </div>
-              <div class="bg-gray-50 p-6 rounded-lg">
-                <h3 class="text-xl font-bold mb-4 text-ke-dark">Energy Efficiency</h3>
-                <p>We implement energy-efficient designs that reduce operational costs while maintaining reliability. Our solutions include high-efficiency UPS systems, intelligent PDUs, and advanced cooling infrastructure integration that optimize power usage effectiveness (PUE).</p>
-              </div>
-              <div class="bg-gray-50 p-6 rounded-lg">
-                <h3 class="text-xl font-bold mb-4 text-ke-dark">Scalability & Future-Proofing</h3>
-                <p>Our modular design approach allows your infrastructure to grow seamlessly with your business. We implement solutions that can be expanded without disrupting operations, ensuring your facility can adapt to increasing power demands.</p>
-              </div>
-              <div class="bg-gray-50 p-6 rounded-lg">
-                <h3 class="text-xl font-bold mb-4 text-ke-dark">Monitoring & Management</h3>
-                <p>We integrate advanced power monitoring systems that provide real-time data on electrical performance, helping you optimize operations and identify potential issues before they affect uptime. Our solutions include DCIM integration for comprehensive facility management.</p>
-              </div>
-            </div>
-            
-            <h2 class="text-3xl font-bold mb-8 text-ke-dark">Comprehensive Data Center Electrical Services</h2>
-            
-            <div class="space-y-8 mb-16">
-              <div class="border-l-4 border-ke-yellow pl-6">
-                <h3 class="text-xl font-bold mb-2">Design & Engineering</h3>
-                <p>Our experienced engineers design electrical systems that meet the unique requirements of your data center or mission-critical facility. We consider factors such as redundancy, efficiency, and scalability to create solutions that align with industry standards and best practices.</p>
-              </div>
-              <div class="border-l-4 border-ke-yellow pl-6">
-                <h3 class="text-xl font-bold mb-2">Power Distribution</h3>
-                <p>We install robust power distribution systems, including switchgear, PDUs, and branch circuits, ensuring reliable power delivery throughout your facility. Our solutions include overhead busway systems and underfloor distribution options tailored to your specific needs.</p>
-              </div>
-              <div class="border-l-4 border-ke-yellow pl-6">
-                <h3 class="text-xl font-bold mb-2">Backup Power Systems</h3>
-                <p>Our backup power solutions include UPS systems, generator installations, and automatic transfer switches that ensure continuous operation during utility outages. We implement redundant configurations that eliminate single points of failure in your critical power infrastructure.</p>
-              </div>
-              <div class="border-l-4 border-ke-yellow pl-6">
-                <h3 class="text-xl font-bold mb-2">Preventive Maintenance</h3>
-                <p>Regular maintenance is essential for maintaining reliability in mission-critical environments. Our comprehensive maintenance programs include scheduled inspections, testing, and servicing of all electrical components to prevent unexpected failures and extend equipment life.</p>
-              </div>
-              <div class="border-l-4 border-ke-yellow pl-6">
-                <h3 class="text-xl font-bold mb-2">System Upgrades & Retrofits</h3>
-                <p>As your facility evolves, we help you upgrade and retrofit existing electrical systems to accommodate increased power demands or improve efficiency. Our experienced team implements changes with minimal disruption to your operations.</p>
+                        <!-- Feature Section with Light Gray Background -->
+            <div class="section-spacing bg-gray-50 mb-6 rounded-lg opacity-0 animate-fade-in" style="box-shadow: inset 0 -1px 0 #e4e4e4;">
+              <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 grid-spacing" style="background-color: #F7F8FA; border-radius: 12px; padding: 24px;">
+                <div class="service-card card-spacing text-left card-enhanced opacity-0 animate-fade-in delay-100">
+                  <h3 class="text-xl md:text-2xl font-bold mb-4 text-black heading-spacing tracking-tight">Reliability & Redundancy</h3>
+                  <p class="text-base leading-relaxed text-gray-700" style="font-size: 16px; line-height: 1.6;">Our N+1 and 2N redundant power systems ensure continuous operation even during utility outages. We design and implement backup power solutions, UPS systems, and emergency power off (EPO) systems that keep your critical infrastructure running 24/7/365.</p>
+                </div>
+                <div class="service-card card-spacing text-left card-enhanced opacity-0 animate-fade-in delay-200">
+                  <h3 class="text-xl md:text-2xl font-bold mb-4 text-black heading-spacing tracking-tight">Energy Efficiency</h3>
+                  <p class="text-base leading-relaxed text-gray-700" style="font-size: 16px; line-height: 1.6;">We implement energy-efficient designs that reduce operational costs while maintaining reliability. Our solutions include high-efficiency UPS systems, intelligent PDUs, and advanced cooling infrastructure integration that optimize power usage effectiveness (PUE).</p>
+                </div>
+                <div class="service-card card-spacing text-left card-enhanced opacity-0 animate-fade-in delay-300">
+                  <h3 class="text-xl md:text-2xl font-bold mb-4 text-black heading-spacing tracking-tight">Scalability & Future-Proofing</h3>
+                  <p class="text-base leading-relaxed text-gray-700" style="font-size: 16px; line-height: 1.6;">Our modular design approach allows your infrastructure to grow seamlessly with your business. We implement solutions that can be expanded without disrupting operations, ensuring your facility can adapt to increasing power demands.</p>
+                </div>
+                <div class="service-card card-spacing text-left card-enhanced opacity-0 animate-fade-in delay-400">
+                  <h3 class="text-xl md:text-2xl font-bold mb-4 text-black heading-spacing tracking-tight">Monitoring & Management</h3>
+                  <p class="text-base leading-relaxed text-gray-700" style="font-size: 16px; line-height: 1.6;">We integrate advanced power monitoring systems that provide real-time data on electrical performance, helping you optimize operations and identify potential issues before they affect uptime. Our solutions include DCIM integration for comprehensive facility management.</p>
+                </div>
               </div>
             </div>
             
-            <div class="mb-20">
-              <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-ke-dark">Why Choose Kansas Electric for Your Mission-Critical Facility?</h2>
-                <div class="w-24 h-1 bg-ke-yellow mx-auto mt-4"></div>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Industry-leading expertise for mission-critical environments where uptime and reliability are non-negotiable.</p>
+            <!-- Clean Divider Section (No grey divider above) -->
+            <div class="section-spacing bg-gray-50 mb-6 rounded-lg opacity-0 animate-fade-in" style="box-shadow: inset 0 -1px 0 #e4e4e4;">
+              <div class="text-center mb-8 max-w-4xl mx-auto">
+                <h2 class="mb-2 tracking-tight">Powering Infrastructure That Can't Afford to Fail</h2>
+                <div class="section-divider"></div>
+                <p class="subline mx-auto" style="max-width: 760px;">From hospitals to hyperscale, our electrical systems are designed to scale with you—reliably, safely, and without compromise.</p>
               </div>
               
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+              <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 grid-spacing" style="background-color: #F7F8FA; border-radius: 12px; padding: 24px;">
+                <div class="service-card card-spacing text-left card-enhanced opacity-0 animate-fade-in delay-100">
+                  <h3 class="heading-spacing tracking-tight">Design & Engineering</h3>
+                  <p class="text-gray-700">Custom electrical systems engineered for uptime, reliability, and future scalability — designed by experts who understand mission-critical requirements.</p>
+                </div>
+                <div class="service-card card-spacing text-left card-enhanced opacity-0 animate-fade-in delay-200">
+                  <h3 class="heading-spacing tracking-tight">Power Distribution</h3>
+                  <p class="text-gray-700">High-performance distribution systems including switchgear, PDUs, and busways — tailored to your site's load profile and operational priorities.</p>
+                </div>
+                <div class="service-card card-spacing text-left card-enhanced opacity-0 animate-fade-in delay-300">
+                  <h3 class="heading-spacing tracking-tight">Backup Power Systems</h3>
+                  <p class="text-gray-700">Redundant UPS and generator systems with ATS and EPO integration to eliminate single points of failure and maintain critical operations.</p>
+                </div>
+                <div class="service-card card-spacing text-left card-enhanced opacity-0 animate-fade-in delay-400">
+                  <h3 class="heading-spacing tracking-tight">Preventive Maintenance</h3>
+                  <p class="text-gray-700">Full-scope NFPA 70B programs including IR scans, testing, and breaker exercising to prevent downtime and extend equipment life.</p>
+                </div>
+                <div class="service-card card-spacing text-left card-enhanced opacity-0 animate-fade-in delay-100 md:col-span-2 max-w-xl mx-auto">
+                  <h3 class="heading-spacing tracking-tight">System Upgrades & Retrofits</h3>
+                  <p class="text-gray-700">Upgrade aging infrastructure or scale for new loads — with zero-disruption project planning, scheduling, and installation.</p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Full-width Image Divider -->
+            <section class="w-full relative my-8 sm:my-12 overflow-hidden" role="region" aria-label="Engineered to Scale">
+              <!-- Image container with shadow, border and original aspect ratio -->
+              <div class="w-full relative border border-gray-200 shadow-md sm:shadow-lg overflow-hidden">
+                <div class="w-full relative" style="padding-bottom: 42.5%;">
+                  <img src="../../../assets/img/2025 photos/employee divider.jpg" 
+                       alt="Kansas Electric team working on mission-critical electrical systems" 
+                       class="absolute inset-0 w-full h-full object-cover object-center"
+                       loading="lazy">
+                  <!-- Gradient overlay: dark-to-transparent top-to-bottom -->
+                  <div class="absolute inset-0 bg-gradient-to-r from-black via-black/70 to-transparent"></div>
+                  <!-- Additional gradient overlay as specified -->
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                </div>
+              </div>
+              
+              <!-- Text overlay centered on image -->
+              <div class="absolute inset-0 flex items-center justify-start px-6 md:px-16 z-10">
+                <div class="max-w-2xl opacity-0 animate-fade-in" id="divider-text">
+                  <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-shadow mb-4">
+                    Engineered to scale.<br>
+                    <span class="text-ke-yellow">Delivered without compromise.</span>
+                  </h2>
+                </div>
+              </div>
+            </section>
+            
+            <!-- Why Choose Kansas Electric Section with improved styling -->
+            <div class="section-spacing bg-gray-50 mb-6 rounded-lg opacity-0 animate-fade-in" style="box-shadow: inset 0 -1px 0 #e4e4e4;">
+              <div class="text-center mb-8 max-w-4xl mx-auto">
+                <h2 class="mb-2 tracking-tight">Why Choose Kansas Electric for Your Mission-Critical Facility?</h2>
+                <div class="section-divider"></div>
+                <p class="subline mx-auto" style="max-width: 760px;">Industry-leading expertise for mission-critical environments where uptime and reliability are non-negotiable.</p>
+              </div>
+              
+              <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 grid-spacing" style="background-color: #F7F8FA; border-radius: 12px; padding: 24px;">
                 <!-- Feature 1 -->
-                <div class="bg-white rounded-lg p-6 shadow-lg transform transition-transform hover:translate-y-[-5px]">
-                  <div class="flex items-center mb-4">
-                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-ke-blue flex items-center justify-center shadow-md">
-                      <svg class="h-6 w-6 text-ke-yellow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
-                      </svg>
-                    </div>
-                    <h3 class="ml-4 text-xl font-bold text-ke-blue">Specialized Expertise</h3>
-                  </div>
-                  <p class="text-gray-600 ml-16">Our team brings specialized knowledge of electrical systems for data centers and mission-critical facilities, ensuring optimal performance and reliability.</p>
+                <div class="service-card card-spacing text-left card-enhanced opacity-0 animate-fade-in delay-100">
+                  <h3 class="text-xl font-bold text-gray-800 heading-spacing tracking-tight" style="font-size: 20px;">Specialized Expertise</h3>
+                  <p class="text-base leading-relaxed text-gray-700" style="font-size: 16px; line-height: 1.6;">Expert knowledge of electrical systems for data centers, ensuring optimal performance and reliability in critical environments.</p>
                 </div>
                 
                 <!-- Feature 2 -->
-                <div class="bg-white rounded-lg p-6 shadow-lg transform transition-transform hover:translate-y-[-5px]">
-                  <div class="flex items-center mb-4">
-                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-ke-blue flex items-center justify-center shadow-md">
-                      <svg class="h-6 w-6 text-ke-yellow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
-                      </svg>
-                    </div>
-                    <h3 class="ml-4 text-xl font-bold text-ke-blue">24/7 Emergency Response</h3>
-                  </div>
-                  <p class="text-gray-600 ml-16">Our rapid response team is available 24/7/365, minimizing costly downtime with swift troubleshooting and resolution.</p>
+                <div class="service-card card-spacing text-left card-enhanced opacity-0 animate-fade-in delay-200">
+                  <h3 class="text-xl font-bold text-gray-800 heading-spacing tracking-tight" style="font-size: 20px;">24/7 Emergency Response</h3>
+                  <p class="text-base leading-relaxed text-gray-700" style="font-size: 16px; line-height: 1.6;">Rapid response available 24/7/365, minimizing costly downtime with swift troubleshooting and resolution.</p>
                 </div>
                 
                 <!-- Feature 3 -->
-                <div class="bg-white rounded-lg p-6 shadow-lg transform transition-transform hover:translate-y-[-5px]">
-                  <div class="flex items-center mb-4">
-                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-ke-blue flex items-center justify-center shadow-md">
-                      <svg class="h-6 w-6 text-ke-yellow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M3 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                      </svg>
-                    </div>
-                    <h3 class="ml-4 text-xl font-bold text-ke-blue">Complete Solutions</h3>
-                  </div>
-                  <p class="text-gray-600 ml-16">We deliver end-to-end services from initial design through installation, testing, and ongoing maintenance for seamless operation.</p>
+                <div class="service-card card-spacing text-left card-enhanced opacity-0 animate-fade-in delay-300">
+                  <h3 class="text-xl font-bold text-gray-800 heading-spacing tracking-tight" style="font-size: 20px;">Complete Solutions</h3>
+                  <p class="text-base leading-relaxed text-gray-700" style="font-size: 16px; line-height: 1.6;">End-to-end services from initial design through installation, testing, and ongoing maintenance for seamless operation.</p>
                 </div>
                 
                 <!-- Feature 4 -->
-                <div class="bg-white rounded-lg p-6 shadow-lg transform transition-transform hover:translate-y-[-5px]">
-                  <div class="flex items-center mb-4">
-                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-ke-blue flex items-center justify-center shadow-md">
-                      <svg class="h-6 w-6 text-ke-yellow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M21 10H3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M21 6H3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M21 14H3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M21 18H3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                      </svg>
-                    </div>
-                    <h3 class="ml-4 text-xl font-bold text-ke-blue">Scalable Architecture</h3>
-                  </div>
-                  <p class="text-gray-600 ml-16">Our designs scale effortlessly from server rooms to enterprise data centers, accommodating growth without disruption.</p>
+                <div class="service-card card-spacing text-left card-enhanced opacity-0 animate-fade-in delay-400">
+                  <h3 class="text-xl font-bold text-gray-800 heading-spacing tracking-tight" style="font-size: 20px;">Scalable Architecture</h3>
+                  <p class="text-base leading-relaxed text-gray-700" style="font-size: 16px; line-height: 1.6;">Infrastructure designs that scale from server rooms to enterprise data centers, accommodating growth without disruption.</p>
                 </div>
                 
                 <!-- Feature 5 -->
-                <div class="bg-white rounded-lg p-6 shadow-lg md:col-span-2 transform transition-transform hover:translate-y-[-5px]">
-                  <div class="flex items-center mb-4">
-                    <div class="flex-shrink-0 w-12 h-12 rounded-full bg-ke-blue flex items-center justify-center shadow-md">
-                      <svg class="h-6 w-6 text-ke-yellow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 18V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M7 10L12 6L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M7 21H17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                      </svg>
-                    </div>
-                    <h3 class="ml-4 text-xl font-bold text-ke-blue">Energy Efficiency Excellence</h3>
-                  </div>
-                  <p class="text-gray-600 ml-16">We implement advanced energy-efficient designs that reduce operational costs while maintaining the reliability and performance your critical systems demand.</p>
+                <div class="service-card card-spacing md:col-span-2 text-left max-w-xl mx-auto card-enhanced opacity-0 animate-fade-in delay-100">
+                  <h3 class="text-xl font-bold text-gray-800 heading-spacing tracking-tight" style="font-size: 20px;">Energy Efficiency Excellence</h3>
+                  <p class="text-base leading-relaxed text-gray-700" style="font-size: 16px; line-height: 1.6;">Advanced energy-efficient designs that reduce operational costs while maintaining reliability and performance for your critical systems.</p>
                 </div>
               </div>
             </div>
             
-            <div class="text-center">
-              <h2 class="text-3xl font-bold mb-6 text-ke-dark">Ready to Discuss Your Data Center Electrical Needs?</h2>
-              <p class="text-lg mb-8">Contact our team of data center electrical specialists to discuss your project requirements and learn how we can help you build a reliable, efficient, and scalable infrastructure.</p>
-              <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="../../../contact" class="py-3 px-6 bg-ke-yellow text-black font-semibold rounded-md hover:bg-ke-yellow-dark transition duration-300">Contact Us Today</a>
-                <a href="tel:3162834750" class="py-3 px-6 border border-ke-blue text-ke-blue font-semibold rounded-md hover:bg-ke-blue hover:text-white transition duration-300">Call (316) 283-4750</a>
+            <!-- Trusted by Leaders Section -->
+            <div class="section-spacing">
+              <div class="max-w-4xl mx-auto px-4">
+                <h2 class="mb-2 text-center">Trusted by Leaders in Critical Infrastructure</h2>
+                <div class="flex flex-wrap justify-center mt-4 grid-spacing">
+                  <!-- Placeholder logos - grayscale with equal spacing -->
+                  <div class="w-32 h-16 bg-gray-100 flex items-center justify-center rounded shadow-sm hover:shadow-md transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-auto text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect>
+                      <polyline points="17 2 12 7 7 2"></polyline>
+                    </svg>
+                  </div>
+                  <div class="w-32 h-16 bg-gray-100 flex items-center justify-center rounded shadow-sm hover:shadow-md transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-auto text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                      <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                  </div>
+                  <div class="w-32 h-16 bg-gray-100 flex items-center justify-center rounded shadow-sm hover:shadow-md transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-auto text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <line x1="2" y1="12" x2="22" y2="12"></line>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                    </svg>
+                  </div>
+                  <div class="w-32 h-16 bg-gray-100 flex items-center justify-center rounded shadow-sm hover:shadow-md transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-auto text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Projects We've Delivered Section -->
+            <div class="py-20 px-6 bg-gray-50 mt-8 rounded-lg" style="visibility: visible !important; display: block !important;">
+              <h2 class="text-2xl md:text-3xl font-bold tracking-tight text-center mb-10">Projects We've Delivered for Mission-Critical Clients</h2>
+              
+              <!-- Image Carousel -->
+              <div class="max-w-5xl mx-auto relative">
+                <div class="carousel-container overflow-hidden rounded-lg shadow-lg relative" style="height: 400px;">
+                  <div class="carousel-slides relative w-full h-full">
+                    <div class="carousel-slide w-full h-full">
+                      <img src="../../../assets/img/2025 photos/carousel 1/switchgear 1.jpg" alt="Data Center Switchgear" class="w-full h-full object-cover">
+                      <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white p-4">
+                        <h3 class="text-lg font-semibold">Data Center Switchgear Installation</h3>
+                        <p class="text-sm">High-capacity switchgear for mission-critical facility</p>
+                      </div>
+                    </div>
+                    <div class="carousel-slide w-full h-full">
+                      <img src="../../../assets/img/2025 photos/carousel 1/conduit 1.jpg" alt="Electrical Conduit Installation" class="w-full h-full object-cover">
+                      <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white p-4">
+                        <h3 class="text-lg font-semibold">Precision Conduit Installations</h3>
+                        <p class="text-sm">Organized electrical distribution systems for data centers</p>
+                      </div>
+                    </div>
+                    <div class="carousel-slide w-full h-full">
+                      <img src="../../../assets/img/2025 photos/carousel 1/panels and conduit.jpg" alt="Electrical Panels and Conduit" class="w-full h-full object-cover">
+                      <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 text-white p-4">
+                        <h3 class="text-lg font-semibold">Electrical Panels and Distribution</h3>
+                        <p class="text-sm">Custom electrical infrastructure for mission-critical environments</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Carousel Navigation -->
+                  <button class="carousel-btn prev absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-75 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button class="carousel-btn next absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-opacity-75 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                  
+                  <!-- Carousel Indicators -->
+                  <div class="carousel-indicators absolute bottom-20 left-0 right-0 flex justify-center gap-2">
+                    <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all active" data-slide="0"></button>
+                    <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all" data-slide="1"></button>
+                    <button class="w-3 h-3 rounded-full bg-white bg-opacity-50 hover:bg-opacity-100 transition-all" data-slide="2"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="text-center section-spacing px-4 sm:px-6 md:px-12 bg-gray-50 rounded-lg shadow-sm mt-5 mb-0">
+              <h2 class="mb-2">Ready to Discuss Your Data Center and Mission-Critical Electrical Needs?</h2>
+              <p class="subline max-w-2xl mx-auto mb-8">Contact our team of data center and mission-critical electrical specialists to discuss your project requirements and learn how we can help you build a reliable, efficient, and scalable infrastructure.</p>
+              <div class="flex flex-col sm:flex-row justify-center sm:gap-8">
+                <a href="../../../contact" class="py-3 px-8 bg-ke-yellow text-black font-semibold rounded-md hover:bg-ke-yellow-dark transition-all duration-300 hover:shadow-md hover:-translate-y-1 mb-4 sm:mb-0">Contact Us Today</a>
+                <a href="tel:3162834750" class="py-3 px-8 border-2 border-ke-blue text-ke-blue font-semibold rounded-md transition-all duration-300 hover:bg-ke-blue hover:text-white hover:shadow-md hover:-translate-y-1">Call (316) 283-4750</a>
               </div>
             </div>
           </div>
@@ -867,6 +856,7 @@
     </article>
   </main>
 
+  <!-- FOOTER START -->
   <footer class="bg-ke-gray-dark">
     <div class="md:w-11/12 md:mx-auto md:flex md:justify-between py-12 md:pb-12 md:pt-20 border-b border-ke-gray px-6 md:px-0">
       <a href="../../../"><img class="w-auto h-12" src="../../../assets/img/ke-logo-white.svg" alt="Kansas Electric" width="300" height="60"></a>
@@ -876,7 +866,7 @@
         </li>
       </ul>
     </div>
-  
+
     <div class="md:w-11/12 md:mx-auto md:flex md:flex-wrap md:justify-between py-8 md:py-12 px-6 md:px-0">
       <div class="lg:w-1/4 pb-8 md:pb-0 md:mb-12">
         <address class="not-italic text-ke-gray-light text-base md:text-sm tracking-wide mb-2">
@@ -885,73 +875,33 @@
           Newton, KS 67114
         </address>
         <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light text-sm transition duration-200 hover:text-ke-gray-lighter mb-6" href="tel:3162834750">(316) 283-4750</a>
-  
+
         <address class="not-italic text-ke-gray-light text-base md:text-sm tracking-wide mb-2">
           <span class="block text-white uppercase font-semibold">Emporia</span>
           817 E 6th Ave<br>
           Emporia, KS 66801
         </address>
+        <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light text-sm transition duration-200 hover:text-ke-gray-lighter mb-6" href="tel:3162834750">(316) 283-4750</a>
       </div>
-      <div class="lg:w-3/4 md:flex md:space-x-8 justify-between">
-        <div class="md:w-1/5 py-6 md:py-0 border-t border-ke-gray md:border-none">
-          <h2 class="mb-2 md:mb-6 uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 py-1 md:leading-normal md:py-0">Services</h2>
+      <div class="lg:w-3/4 md:flex md:justify-center">
+        <div class="md:w-2/3 py-6 md:py-0 border-t border-ke-gray md:border-none">
+          <h2 class="mb-2 md:mb-6 uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 py-1 md:leading-normal md:py-0">Divisions</h2>
           <ul class="text-base md:text-sm">
             <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/industrial/">Industrial Electrical Services</a>
+              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/divisions/industrial/">Industrial Electrical Division</a>
             </li>
             <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/commercial/">Commercial Electrical Services</a>
+              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/divisions/commercial/">Commercial Electrical Division</a>
             </li>
             <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/automation/">Automation</a>
+              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/divisions/service-maintenance/">Service and Maintenance Division</a>
             </li>
             <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/kohler-generators/">Kohler Generator Installation</a>
-            </li>
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/nfpa-70b-electrical-maintenance-programs/">NFPA 70B and Electrical Maintenance Program</a>
-            </li>
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/automation/ul-certified-design-build/">UL Certified Design &amp; Build</a>
+              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/divisions/automation-control/">Automation and Control Systems Division</a>
             </li>
           </ul>
         </div>
-        <div class="md:w-1/5 py-6 md:py-0 border-t border-ke-gray md:border-none">
-          <h2 class="mb-2 md:mb-6"><a class="uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0" href="../../../projects/">Projects</a></h2>
-          <ul class="text-base md:text-sm" data-project-links=""></ul>
-        </div>
-        <div class="md:w-1/5 py-6 md:py-0 border-t border-ke-gray md:border-none">
-          <h2 class="mb-2 md:mb-6 uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 py-1 md:leading-normal md:py-0">About</h2>
-          <ul class="text-base md:text-sm">
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../about/">Who We Are</a>
-            </li>
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../about/locations/">Locations</a>
-            </li>
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../about/our-team/">Our Team</a>
-            </li>
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../company-news/">Company News</a>
-            </li>
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../about/community/">Community Involvement</a>
-            </li>
-          </ul>
-        </div>
-        <div class="md:w-1/5 py-6 md:py-0 border-t border-ke-gray md:border-none">
-          <h2 class="mb-2 md:mb-6 uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 py-1 md:leading-normal md:py-0">Careers</h2>
-          <ul class="text-base md:text-sm">
-            <li class="mb-2">
-              <a class="inline-block leading-4 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../careers/">Careers</a>
-            </li>
-            <li class="mb-2">
-              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../careers/apprenticeship/">Apprenticeship Program</a>
-            </li>
-          </ul>
-        </div>
-        <div class="md:w-1/5 border-t border-ke-gray md:border-none py-6 md:py-0">
+        <div class="md:w-1/3 border-t border-ke-gray md:border-none py-6 md:py-0">
           <h2 class="mb-2 md:mb-6"><a class="uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0" href="../../../contact/">Contact</a></h2>
           <ul class="text-base md:text-sm">
             <li class="mb-2">
@@ -961,21 +911,20 @@
         </div>
       </div>
     </div>
-  
+
     <div class="md:w-11/12 md:mx-auto border-t border-ke-gray py-8 px-6 md:px-0 mt-8">
       <ul class="md:flex md:justify-end md:space-x-8">
         <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://inductiveautomation.com/"><img class="w-auto h-16" src="../../../assets/img/Ignition-Logo-LG.png" alt="Ignition by Inductive Automation" title="Ignition by Inductive Automation" width="600" height="314"></a></li>
-        <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://www.isnetworld.com/en/"><img class="w-auto h-12" src="../../../assets/img/isn-logo.png" alt="ISNetworld RAVS Plus Participant" title="ISNetworld RAVS Plus Participant" width="302" height="88"></a></li>
-        <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://www.fanucamerica.com/"><img class="w-auto h-20" src="../../../assets/img/fanuc-logo.png" alt="FANUC Authorized System Integrator" title="FANUC Authorized System Integrator" width="250" height="250"></a></li>
+        <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://www.rockwellautomation.com/"><img class="w-auto h-12" src="../../../assets/img/logos/System Integrator Partner Bronze Logo.png" alt="Rockwell Automation System Integrator Bronze Partner" title="Rockwell Automation System Integrator Bronze Partner" width="302" height="88"></a></li>
       </ul>
     </div>
-  
+
     <div class="md:w-11/12 md:mx-auto md:flex md:justify-between md:space-x-6 py-8 border-t border-ke-gray px-6 md:px-0">
       <div class="text-ke-gray-light text-sm block mb-2 md:mb-0">&copy; 2025 Kansas Electric &nbsp;|&nbsp; <a class="hover:underline" href="../../../assets/documents/04.01.2022-kansas-electric-terms-and-conditions.pdf">Terms &amp; Conditions</a></div>
-      <div class="text-ke-gray-light text-sm"><a class="inline-block" href="https://flinthillsdesign.com"><span class="sr-only">Flint Hills Design</span><img class="h-3" src="../../../assets/img/state-of-kansas.svg" alt="State of Kansas" width="28" height="15"></a> <a class="ml-2 hover:text-white transition duration-200" href="https://flinthillswebdesign.com">Website by Flint Hills Web Design</a></div>
     </div>
   </footer>
-  
+  <!-- FOOTER END -->
+
   <!-- JavaScript -->
   <script>
   document.addEventListener('DOMContentLoaded', function() {
@@ -1024,5 +973,273 @@
   <script src="../../../projects/stanley-black-decker/mobile-hamburger.js" defer></script>
   <script src="../../../projects/stanley-black-decker/mobile-nav-overhaul.js" defer></script>
   <script src="../../../projects/stanley-black-decker/division-nav-fix.js" defer></script>
-</body>
-</html> 
+
+<script>
+  // Parallax effect for hero section
+  document.addEventListener('DOMContentLoaded', function() {
+    const parallaxBg = document.querySelector('.parallax-bg');
+    
+    if (parallaxBg && window.innerWidth > 768) { // Only apply on non-mobile devices
+      window.addEventListener('scroll', function() {
+        const scrollPosition = window.pageYOffset;
+        const speed = 0.5; // Adjust speed of parallax effect (lower = slower)
+        
+        // Apply transformation to create parallax effect
+        parallaxBg.style.transform = `translate3d(0, ${scrollPosition * speed}px, 0)`;
+      });
+    }
+  });
+</script>
+
+<!-- Carousel JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.querySelector('.carousel-slides');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.querySelector('.carousel-btn.prev');
+    const nextBtn = document.querySelector('.carousel-btn.next');
+    const indicators = document.querySelectorAll('.carousel-indicators button');
+    
+    if (!carousel || !slides.length) return;
+    
+    let currentIndex = 0;
+    const slideCount = slides.length;
+    
+    // Don't clone slides - simplify the approach
+    // Just show/hide slides instead of transforming the container
+    
+    // Initialize all slides as hidden except the first one
+    slides.forEach((slide, index) => {
+      slide.style.display = index === 0 ? 'block' : 'none';
+      slide.style.position = 'absolute';
+      slide.style.inset = '0';
+      slide.style.opacity = index === 0 ? '1' : '0';
+      slide.style.transition = 'opacity 0.5s ease-in-out';
+    });
+    
+    // Update indicators
+    function updateIndicators() {
+      indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentIndex);
+        indicator.classList.toggle('bg-opacity-100', index === currentIndex);
+        indicator.classList.toggle('bg-opacity-50', index !== currentIndex);
+      });
+    }
+    
+    // Navigate to a specific slide
+    function goToSlide(index) {
+      // Hide current slide
+      slides[currentIndex].style.opacity = '0';
+      
+      // Update index
+      currentIndex = index;
+      
+      // Ensure index stays within bounds
+      if (currentIndex < 0) currentIndex = slideCount - 1;
+      if (currentIndex >= slideCount) currentIndex = 0;
+      
+      // Show new slide
+      setTimeout(() => {
+        slides.forEach((slide, i) => {
+          if (i === currentIndex) {
+            slide.style.display = 'block';
+            setTimeout(() => {
+              slide.style.opacity = '1';
+            }, 50);
+          } else {
+            setTimeout(() => {
+              slide.style.display = 'none';
+            }, 500);
+          }
+        });
+        
+        updateIndicators();
+      }, 500);
+    }
+    
+    // Handle next button click
+    nextBtn.addEventListener('click', () => {
+      goToSlide((currentIndex + 1) % slideCount);
+    });
+    
+    // Handle previous button click
+    prevBtn.addEventListener('click', () => {
+      goToSlide((currentIndex - 1 + slideCount) % slideCount);
+    });
+    
+    // Handle indicator clicks
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        goToSlide(index);
+      });
+    });
+    
+    // Auto-advance carousel every 5 seconds
+    let autoplayInterval = setInterval(() => {
+      goToSlide((currentIndex + 1) % slideCount);
+    }, 5000);
+    
+    // Pause autoplay on hover
+    const carouselContainer = document.querySelector('.carousel-container');
+    carouselContainer.addEventListener('mouseenter', () => {
+      clearInterval(autoplayInterval);
+    });
+    
+    carouselContainer.addEventListener('mouseleave', () => {
+      autoplayInterval = setInterval(() => {
+        goToSlide((currentIndex + 1) % slideCount);
+      }, 5000);
+    });
+  });
+</script>
+
+<!-- Fade-in Effect for Image Divider -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Function to check if element is in viewport
+    function isInViewport(element) {
+      const rect = element.getBoundingClientRect();
+      return (
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+        rect.bottom >= 0
+      );
+    }
+    
+    // Function to handle animations
+    function handleScrollAnimations() {
+      const dividerText = document.getElementById('divider-text');
+      
+      if (dividerText && isInViewport(dividerText) && !dividerText.classList.contains('animated')) {
+        dividerText.style.opacity = '1';
+        dividerText.style.animation = 'fadeInLeft 0.8s ease-out forwards';
+        dividerText.classList.add('animated');
+      }
+    }
+    
+    // Create the fadeInLeft animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    // Run on scroll and on load
+    window.addEventListener('scroll', handleScrollAnimations);
+    window.addEventListener('resize', handleScrollAnimations);
+    
+    // Initial check
+    setTimeout(handleScrollAnimations, 300);
+  });
+</script>
+
+<!-- CRITICAL NAVIGATION FIX -->
+<style>
+/* This must be the last style in the document to override all other styles */
+.site-header {
+  position: relative !important;
+  z-index: 9999 !important;
+  isolation: isolate !important; /* Create a new stacking context */
+}
+main#content {
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Fix for Data Center page hero section */
+.data-center-hero {
+  position: relative !important;
+  z-index: 1 !important; /* Lower than header but higher than other content */
+}
+
+/* Make hero text and CTAs clickable */
+.data-center-hero .container,
+.data-center-hero h1,
+.data-center-hero p,
+.data-center-hero .cta-button {
+  position: relative !important;
+  z-index: 10 !important; /* Higher than hero background but lower than navigation */
+  pointer-events: auto !important; /* Explicitly enable pointer events */
+}
+
+/* Ensure buttons are clickable */
+.btn-enhanced,
+.cta-button,
+a.btn-primary {
+  position: relative !important;
+  z-index: 20 !important; /* Higher than other hero content */
+  pointer-events: auto !important;
+}
+
+/* Ensure nav menu appears properly */
+.submenu {
+  z-index: 9998 !important;
+  position: absolute !important;
+  isolation: isolate !important;
+}
+
+.nav-item:hover .submenu {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Fix hero section to ensure it stays below navigation */
+.hero-content, 
+.hero-spacing,
+#hero-section,
+.data-center-hero {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* Fix hero positions for data centers page specifically */
+.hero-parallax::after {
+  z-index: 0 !important; /* Lower than content but visible for gradient effect */
+}
+
+/* Force submenu above everything except header */
+.submenu * {
+  z-index: 9998 !important;
+}
+
+/* Fix submenu display */
+@media (min-width: 1024px) {
+  .nav-item {
+    position: static !important;
+  }
+  
+  .submenu {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    width: 100% !important;
+  }
+  
+  /* Force horizontal menu display */
+  .submenu-container {
+    display: flex !important;
+    width: 100% !important;
+  }
+  
+  .three-column-menu {
+    display: flex !important;
+    width: 100% !important;
+  }
+}
+</style>
+
+<!-- Load navigation fix script at the very end -->
+<script src="../../../assets/js/nav-fix.js"></script>
+
+  </body>
+</html>
