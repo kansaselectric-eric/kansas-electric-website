@@ -214,6 +214,70 @@
       menuColumns.forEach(column => {
         column.style.display = 'block';
       });
+      
+      // VISUAL POLISH: Apply Data Centers page styling for consistent appearance
+      // Apply submenu container styling
+      submenu.style.backgroundColor = '#f8f9fa';
+      submenu.style.borderBottom = '2px solid #1a56db';
+      submenu.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
+      
+      if (submenuContainer) {
+        submenuContainer.style.maxWidth = '1280px';
+        submenuContainer.style.margin = '0 auto';
+        submenuContainer.style.padding = '0 1rem';
+      }
+      
+      // Apply styling to columns
+      menuColumns.forEach(column => {
+        column.style.padding = '1rem';
+        
+        // Special styling for first column
+        if (column.classList.contains('first-column')) {
+          column.style.paddingRight = '2rem';
+        }
+        
+        // Border and spacing for column dividers
+        if (column.classList.contains('lg:border-l')) {
+          column.style.borderLeft = '1px solid rgba(203, 213, 224, 0.5)';
+          column.style.paddingLeft = '2rem';
+        }
+      });
+      
+      // Apply link styling for consistent appearance
+      const menuLinks = submenu.querySelectorAll('.second-column-item, .third-column-content a');
+      menuLinks.forEach(link => {
+        link.style.color = '#4a5568';
+        link.style.transition = 'color 0.2s ease-in-out';
+        link.style.fontSize = '0.875rem';
+        link.style.lineHeight = '1.25rem';
+        link.style.display = 'block';
+        link.style.padding = '0.25rem 0';
+        
+        // Add hover event handlers
+        link.addEventListener('mouseenter', function() {
+          this.style.color = '#1a56db';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+          if (!this.classList.contains('active')) {
+            this.style.color = '#4a5568';
+          }
+        });
+        
+        // Active link styling
+        if (link.classList.contains('active')) {
+          link.style.color = '#1a56db';
+          link.style.fontWeight = '600';
+        }
+      });
+      
+      // Style headings inside menu
+      const headings = submenu.querySelectorAll('p.font-semibold');
+      headings.forEach(heading => {
+        heading.style.color = '#1a56db';
+        heading.style.fontSize = '1.25rem';
+        heading.style.marginBottom = '1rem';
+      });
     }
     
     console.log('Navigation fix initialized');

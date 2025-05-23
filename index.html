@@ -271,6 +271,84 @@
         visibility: visible !important;
       }
     }
+
+    /* NAV SUBMENU VISUAL POLISH - START */
+    /* This section ensures consistent visual styling of submenus across all pages */
+    @media (min-width: 1024px) {
+      /* Submenu container styling */
+      .submenu {
+        background-color: #f8f9fa !important; /* Consistent submenu background */
+        border-bottom: 2px solid #1a56db !important; /* Consistent blue border */
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important; /* Add subtle shadow */
+      }
+      
+      /* Force horizontal menu display */
+      .submenu-container,
+      .three-column-menu {
+        display: flex !important;
+        width: 100% !important;
+        max-width: 1280px !important;
+        margin: 0 auto !important;
+        padding: 0 1rem !important;
+      }
+      
+      /* Column styling */
+      .menu-column {
+        padding: 1rem !important;
+      }
+      
+      /* First column styling */
+      .first-column {
+        padding-right: 2rem !important;
+      }
+      
+      /* Border and spacing for column dividers */
+      .lg\:border-l {
+        border-left: 1px solid rgba(203, 213, 224, 0.5) !important;
+        padding-left: 2rem !important;
+      }
+      
+      /* Link styling for consistent appearance */
+      .second-column-item,
+      .third-column-content a {
+        color: #4a5568 !important;
+        transition: color 0.2s ease-in-out !important;
+        font-size: 0.875rem !important;
+        line-height: 1.25rem !important;
+        display: block !important;
+        padding: 0.25rem 0 !important;
+      }
+      
+      /* Link hover effects */
+      .second-column-item:hover,
+      .third-column-content a:hover {
+        color: #1a56db !important;
+      }
+      
+      /* Active link styling */
+      .second-column-item.active,
+      .third-column-content a.active {
+        color: #1a56db !important;
+        font-weight: 600 !important;
+      }
+      
+      /* Headings inside menu */
+      .submenu p.font-semibold {
+        color: #1a56db !important;
+        font-size: 1.25rem !important;
+        margin-bottom: 1rem !important;
+      }
+      
+      /* Ensure submenu properly expands on hover */
+      .nav-item:hover .submenu {
+        display: flex !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        height: auto !important;
+        min-height: 300px !important; /* Ensure minimum height for consistent appearance */
+      }
+    }
+    /* NAV SUBMENU VISUAL POLISH - END */
   </style>
 
   <!-- Special video force-play script to ensure videos work -->
@@ -378,7 +456,7 @@
                       <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/industrial/microgrids/">Microgrids & Energy Management Systems</a>
                     </li>
                     <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../services/industrial/data-centers/">Data Centers & Mission Critical Facilities</a>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/industrial/data-centers/">Data Centers & Mission Critical Facilities</a>
                     </li>
                   </ul>
                   
@@ -886,10 +964,23 @@
     </style>
   </section>
 
+  <!-- Powering What Matters Section Header -->
+  <section class="bg-white py-16 px-4 md:px-8 lg:px-16">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl md:text-[2.75rem] font-bold text-slate-900 mb-6 leading-tight">Powering What Matters</h2>
+      <p class="text-lg text-slate-600 max-w-xl">
+        From heavy industry to life-saving healthcare, we deliver electrical systems designed to perform when it matters most.
+      </p>
+    </div>
+  </section>
+
   <!-- Modern Hero Section with Background Image -->
   <section class="relative overflow-hidden min-h-[400px] md:min-h-[600px] hero-partner-section" style="background-image: url('./assets/img/2025 photos/KSE 1.jpg'); background-size: cover; background-position: center right; background-repeat: no-repeat;">
     <!-- Gradient Overlay with left-to-right fade -->
     <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0))"></div>
+    
+    <!-- Bottom gradient fade transition to white -->
+    <div class="absolute bottom-0 left-0 w-full h-[60px] bg-gradient-to-b from-transparent via-white/70 to-white z-10 pointer-events-none"></div>
     
     <!-- Mobile-specific background position and animations -->
     <style>
@@ -971,8 +1062,8 @@
   <!-- Link AOS CSS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-  <!-- What We Do Section - Modern Two-Column Layout -->
-  <section class="py-24" style="background: linear-gradient(to bottom, #ffffff00, #f6faff)">
+  <!-- What We Do Section - Modern Two-Column Layout with negative margin for overlap -->
+  <section class="-mt-12 md:-mt-16 py-24" style="background: linear-gradient(to bottom, #ffffff00, #f6faff)">
     <style>
       @keyframes fadeSlideUp {
         from {
@@ -1009,14 +1100,14 @@
         animation-delay: 0.4s;
       }
     </style>
-    <div class="max-w-7xl mx-auto px-6 md:px-16">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-16" aria-labelledby="what-we-do-heading">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         
         <!-- Left Column - Text Content -->
         <div data-aos="fade-up" data-aos-duration="800">
-          <h2 class="text-3xl md:text-[2.75rem] font-bold text-slate-900 mb-6 leading-tight">What We Do</h2>
+          <h2 id="what-we-do-heading" class="text-3xl md:text-[2.75rem] font-bold text-slate-900 mb-6 leading-tight">What We Do</h2>
           <p class="text-lg text-slate-600 max-w-xl">
-            From industrial automation to 24/7 service, we deliver end-to-end electrical expertise.
+            Kansas Electric delivers end-to-end electrical expertise—from automation to 24/7 service. Our teams design, install, and maintain the systems that power American industry.
           </p>
         </div>
         
@@ -1101,121 +1192,352 @@
     </div>
   </section>
 
+  <!-- Industries We Power Section -->
+  <section class="py-24" style="background: linear-gradient(to bottom, #f6faff, #ffffff)">
+    <style>
+      .industry-card {
+        transition: all 0.3s ease;
+      }
+      
+      .industry-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+    </style>
+    <div class="max-w-7xl mx-auto px-4 md:px-8 lg:px-16" aria-labelledby="industries-heading">
+      <!-- Section heading and paragraph -->
+      <div class="mb-16">
+        <h2 id="industries-heading" class="text-3xl md:text-[2.75rem] font-bold text-slate-900 mb-6 leading-tight" data-aos="fade-up" data-aos-duration="800">Industries We Power</h2>
+        <p class="text-lg text-slate-600 max-w-xl" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+          Strategic electrical systems for mission-critical industries that demand precision, uptime, and performance.
+        </p>
+      </div>
+      
+      <!-- Industry cards grid - added mt-12 for vertical spacing and improved vertical rhythm -->
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-x-16 lg:gap-y-8">
+        <!-- Left Column - Industry Cards -->
+        <div class="grid grid-cols-1 gap-8">
+          <!-- Healthcare -->
+          <div class="bg-slate-50 rounded-xl shadow-sm p-6 industry-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+            <div class="flex items-start">
+              <!-- Lucide Heart Pulse Icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 mt-1 mr-4 flex-shrink-0">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+              </svg>
+              <div class="flex flex-col">
+                <h3 class="text-xl font-bold mb-2 text-left">Healthcare</h3>
+                <p class="text-slate-600 text-sm text-left mb-3">Reliable electrical systems for hospitals and critical care facilities.</p>
+                <a href="./services/industrial/healthcare/" class="text-blue-600 hover:text-blue-800 text-sm inline-flex items-center mt-1 transition-all">
+                  <span>Learn more</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                    <path d="m9 18 6-6-6-6"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Food & Beverage -->
+          <div class="bg-slate-50 rounded-xl shadow-sm p-6 industry-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="150">
+            <div class="flex items-start">
+              <!-- Lucide Utensils Icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 mt-1 mr-4 flex-shrink-0">
+                <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path>
+                <path d="M7 2v20"></path>
+                <path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path>
+              </svg>
+              <div class="flex flex-col">
+                <h3 class="text-xl font-bold mb-2 text-left">Food & Beverage</h3>
+                <p class="text-slate-600 text-sm text-left mb-3">Specialized power systems for processing and manufacturing plants.</p>
+                <a href="./services/industrial/food-beverage/" class="text-blue-600 hover:text-blue-800 text-sm inline-flex items-center mt-1 transition-all">
+                  <span>Learn more</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                    <path d="m9 18 6-6-6-6"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Manufacturing -->
+          <div class="bg-slate-50 rounded-xl shadow-sm p-6 industry-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+            <div class="flex items-start">
+              <!-- Lucide Factory Icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 mt-1 mr-4 flex-shrink-0">
+                <path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"></path>
+                <path d="M17 18h1"></path>
+                <path d="M12 18h1"></path>
+                <path d="M7 18h1"></path>
+              </svg>
+              <div class="flex flex-col">
+                <h3 class="text-xl font-bold mb-2 text-left">Manufacturing</h3>
+                <p class="text-slate-600 text-sm text-left mb-3">Advanced automation and power distribution for production facilities.</p>
+                <a href="./services/industrial/advanced-manufacturing/" class="text-blue-600 hover:text-blue-800 text-sm inline-flex items-center mt-1 transition-all">
+                  <span>Learn more</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                    <path d="m9 18 6-6-6-6"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right Column - Industry Cards -->
+        <div class="grid grid-cols-1 gap-8">
+          <!-- Oil & Gas -->
+          <div class="bg-slate-50 rounded-xl shadow-sm p-6 industry-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="250">
+            <div class="flex items-start">
+              <!-- Lucide Pipeline Icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 mt-1 mr-4 flex-shrink-0">
+                <path d="M3 10h18"></path>
+                <path d="M3 14h18"></path>
+                <path d="M10 3v18"></path>
+                <path d="M14 3v18"></path>
+              </svg>
+              <div class="flex flex-col">
+                <h3 class="text-xl font-bold mb-2 text-left">Oil & Gas</h3>
+                <p class="text-slate-600 text-sm text-left mb-3">Hazardous location expertise and pipeline control systems.</p>
+                <a href="./services/industrial/oil-gas/" class="text-blue-600 hover:text-blue-800 text-sm inline-flex items-center mt-1 transition-all">
+                  <span>Learn more</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                    <path d="m9 18 6-6-6-6"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Water & Wastewater -->
+          <div class="bg-slate-50 rounded-xl shadow-sm p-6 industry-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+            <div class="flex items-start">
+              <!-- Lucide Droplets Icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 mt-1 mr-4 flex-shrink-0">
+                <path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"></path>
+                <path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"></path>
+              </svg>
+              <div class="flex flex-col">
+                <h3 class="text-xl font-bold mb-2 text-left">Water & Wastewater</h3>
+                <p class="text-slate-600 text-sm text-left mb-3">Complete electrical systems for treatment plants and pump stations.</p>
+                <a href="./services/industrial/wastewater-treatment/" class="text-blue-600 hover:text-blue-800 text-sm inline-flex items-center mt-1 transition-all">
+                  <span>Learn more</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                    <path d="m9 18 6-6-6-6"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Government & Public Works -->
+          <div class="bg-slate-50 rounded-xl shadow-sm p-6 industry-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="350">
+            <div class="flex items-start">
+              <!-- Lucide Landmark Icon -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600 mt-1 mr-4 flex-shrink-0">
+                <path d="M22 22H2"></path>
+                <path d="M3 22v-8c0-.93.51-1.8 1.27-2.29A3.56 3.56 0 0 1 6.09 11H6"></path>
+                <path d="M6 11V2h12v20"></path>
+                <path d="M18 22V2"></path>
+                <path d="M6 6h12"></path>
+                <path d="M6 11h12"></path>
+                <path d="M6 16h12"></path>
+              </svg>
+              <div class="flex flex-col">
+                <h3 class="text-xl font-bold mb-2 text-left">Government & Public Works</h3>
+                <p class="text-slate-600 text-sm text-left mb-3">Infrastructure solutions for schools, municipalities, and military facilities.</p>
+                <a href="./services/commercial/government/" class="text-blue-600 hover:text-blue-800 text-sm inline-flex items-center mt-1 transition-all">
+                  <span>Learn more</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                    <path d="m9 18 6-6-6-6"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Featured Projects Section -->
   <section class="border-t border-white">
+    <style>
+      /* Enhanced text styling for projects */
+      .project-category {
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        color: white;
+      }
+      
+      .project-title {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        -webkit-text-stroke: 0.4px rgba(255, 255, 255, 0.1);
+      }
+      
+      .project-location {
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+        color: white;
+      }
+      
+      .project-description {
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        color: white;
+      }
+      
+      .project-link {
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+        font-weight: 600;
+        color: white;
+      }
+      
+      .project-link:hover {
+        text-decoration: underline;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+      }
+      
+      /* Card outline effect */
+      .project-card {
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 
+                    inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+                    0 4px 20px rgba(0, 0, 0, 0.15);
+        transition: box-shadow 0.4s ease-in-out;
+        height: 300px;
+      }
+      
+      @media (min-width: 768px) {
+        .project-card {
+          height: 450px;
+        }
+      }
+      
+      .project-card:hover {
+        box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1),
+                    inset 0 0 0 1px rgba(255, 255, 255, 0.2),
+                    0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+      
+      .project-card .card-image {
+        transition: transform 0.5s ease-in-out;
+      }
+      
+      .project-card:hover .card-image {
+        transform: scale(1.03);
+      }
+    </style>
     <div class="w-full mx-auto">
       <!-- Project heading -->
-      <div class="bg-white py-16 px-6 md:px-16">
+      <div class="bg-white py-16 px-4 md:px-8 lg:px-16">
         <div class="max-w-7xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">Featured Projects</h2>
+          <h2 class="text-3xl md:text-[2.75rem] font-bold text-slate-900 mb-6 leading-tight">Featured Projects</h2>
           <p class="text-lg text-slate-600 max-w-xl">
             Innovative electrical solutions for complex environments that power America's infrastructure.
           </p>
         </div>
       </div>
       
-      <!-- Project Card 1 - Text on Left -->
-      <div class="w-full h-[220px] sm:h-[300px] md:h-[500px] relative border-t-2 border-white group overflow-hidden">
-        <!-- Background Image -->
-        <div class="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-700 ease-in-out group-hover:scale-105 group-hover:brightness-110" 
-             style="background-image: url('./assets/img/wastewater-project.jpg');">
-          <!-- Gradient Overlay -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-70 group-hover:opacity-60 transition-opacity duration-500"></div>
+      <!-- Project Cards Container -->
+      <div class="grid grid-cols-1 gap-0">
+        <!-- Project Card 1 - Text on Left -->
+        <div class="relative overflow-hidden border-t-2 border-white group project-card">
+          <!-- Background Image with proper aspect ratio -->
+          <div class="absolute inset-0 w-full h-full">
+            <div class="w-full h-full overflow-hidden">
+              <img src="./assets/img/2025 photos/featured projects cards/Newton Medical Center Switchgear.jpg" 
+                   alt="Water Infrastructure Project" 
+                   class="w-full h-full object-cover card-image">
+            </div>
+            <!-- Dark gradient overlay for better contrast -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60"></div>
+          </div>
+          
+          <!-- Content Container -->
+          <div class="relative z-10 h-full w-full">
+            <div class="p-6 md:p-8 lg:p-12 flex flex-col h-full">
+              <div class="w-full md:w-1/2 text-left" data-aos="fade-up" data-aos-duration="800">
+                <div class="font-bold text-sm tracking-wider uppercase mb-2 project-category">Water Infrastructure</div>
+                <h2 class="text-2xl md:text-4xl font-bold mb-2 project-title text-white">Cedar Creek Expansion</h2>
+                <p class="text-md md:text-lg mb-4 text-white font-light project-location">Olathe, Kansas</p>
+                <p class="text-white mb-4 max-w-md text-sm md:text-base project-description">Complete electrical systems for a 25 MGD wastewater treatment plant, including power distribution and SCADA integration.</p>
+                <a href="./projects/cedar-creek/" class="inline-flex items-center project-link">
+                  <span class="mr-2">View Project</span>
+                  <span class="text-xl">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
         
-        <!-- Content Container -->
-        <div class="relative h-full w-full flex items-center px-6 md:px-16">
-          <div class="max-w-7xl w-full mx-auto flex">
-            <div class="w-full md:w-1/2 text-white md:text-left text-center" data-aos="fade-up" data-aos-duration="800">
-              <div class="font-bold text-blue-400 text-sm tracking-wider uppercase mb-2">Water Infrastructure</div>
-              <h2 class="text-2xl md:text-4xl font-bold mb-2 drop-shadow-lg">Cedar Creek Expansion</h2>
-              <p class="text-md md:text-lg mb-4 text-slate-200 drop-shadow font-light">Olathe, Kansas</p>
-              <p class="text-slate-300 drop-shadow mb-4 max-w-md text-sm md:text-base">Complete electrical systems for a 25 MGD wastewater treatment plant, including power distribution and SCADA integration.</p>
-              <a href="./projects/cedar-creek/" class="inline-flex items-center text-blue-300 hover:text-white transition-colors duration-300 text-sm md:text-base">
-                <span class="mr-2">View Project</span>
-                <span class="text-xl">➝</span>
-              </a>
+        <!-- Project Card 2 - Text on Right -->
+        <div class="relative overflow-hidden border-t-2 border-white group project-card">
+          <!-- Background Image with proper aspect ratio -->
+          <div class="absolute inset-0 w-full h-full">
+            <div class="w-full h-full overflow-hidden">
+              <img src="./assets/img/2025 photos/featured projects cards/MKC Lyons.jpg" 
+                   alt="MKC Lyons Project" 
+                   class="w-full h-full object-cover card-image">
+            </div>
+            <!-- Dark gradient overlay for better contrast -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60"></div>
+          </div>
+          
+          <!-- Content Container -->
+          <div class="relative z-10 h-full w-full">
+            <div class="p-6 md:p-8 lg:p-12 flex flex-col h-full">
+              <div class="w-full md:w-1/2 md:ml-auto text-left" data-aos="fade-up" data-aos-duration="800">
+                <div class="font-bold text-sm tracking-wider uppercase mb-2 project-category">Grain Processing</div>
+                <h2 class="text-2xl md:text-4xl font-bold mb-2 project-title text-white">MKC Lyons Facility</h2>
+                <p class="text-md md:text-lg mb-4 text-white font-light project-location">Lyons, Kansas</p>
+                <p class="text-white mb-4 max-w-md text-sm md:text-base project-description">Complete electrical design and construction for a state-of-the-art grain processing facility with advanced automation systems.</p>
+                <a href="./projects/mkc-lyons/" class="inline-flex items-center project-link">
+                  <span class="mr-2">View Project</span>
+                  <span class="text-xl">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Project Card 3 - Text on Left -->
+        <div class="relative overflow-hidden border-t-2 border-white group project-card">
+          <!-- Background Image with proper aspect ratio -->
+          <div class="absolute inset-0 w-full h-full">
+            <div class="w-full h-full overflow-hidden">
+              <img src="./assets/img/2025 photos/featured projects cards/Health Ministries Dental Clinic.jpg" 
+                   alt="Health Ministries Dental Clinic Project" 
+                   class="w-full h-full object-cover card-image">
+            </div>
+            <!-- Dark gradient overlay for better contrast -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60"></div>
+          </div>
+          
+          <!-- Content Container -->
+          <div class="relative z-10 h-full w-full">
+            <div class="p-6 md:p-8 lg:p-12 flex flex-col h-full">
+              <div class="w-full md:w-1/2 text-left" data-aos="fade-up" data-aos-duration="800">
+                <div class="font-bold text-sm tracking-wider uppercase mb-2 project-category">Healthcare</div>
+                <h2 class="text-2xl md:text-4xl font-bold mb-2 project-title text-white">Health Ministries Dental Clinic</h2>
+                <p class="text-md md:text-lg mb-4 text-white font-light project-location">Newton, Kansas</p>
+                <p class="text-white mb-4 max-w-md text-sm md:text-base project-description">Specialized electrical systems for a critical care dental facility, including power distribution and medical equipment support.</p>
+                <a href="./projects/health-ministries/" class="inline-flex items-center project-link">
+                  <span class="mr-2">View Project</span>
+                  <span class="text-xl">→</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      
-      <!-- Project Card 2 - Text on Right -->
-      <div class="w-full h-[220px] sm:h-[300px] md:h-[500px] relative border-t-2 border-white group overflow-hidden">
-        <!-- Background Image -->
-        <div class="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-700 ease-in-out group-hover:scale-105 group-hover:brightness-110" 
-             style="background-image: url('./assets/img/data-center-project.jpg');">
-          <!-- Gradient Overlay -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-70 group-hover:opacity-60 transition-opacity duration-500"></div>
-        </div>
-        
-        <!-- Content Container -->
-        <div class="relative h-full w-full flex items-center px-6 md:px-16">
-          <div class="max-w-7xl w-full mx-auto flex justify-end">
-            <div class="w-full md:w-1/2 text-white md:text-left text-center" data-aos="fade-up" data-aos-duration="800">
-              <div class="font-bold text-blue-400 text-sm tracking-wider uppercase mb-2">Mission Critical / Data</div>
-              <h2 class="text-2xl md:text-4xl font-bold mb-2 drop-shadow-lg">Sunrise Data Center</h2>
-              <p class="text-md md:text-lg mb-4 text-slate-200 drop-shadow font-light">Kansas City, Missouri</p>
-              <p class="text-slate-300 drop-shadow mb-4 max-w-md text-sm md:text-base">Redundant power systems with backup generators for a Tier III data center, ensuring 99.99% uptime and critical operations.</p>
-              <a href="./projects/sunrise-data-center/" class="inline-flex items-center text-blue-300 hover:text-white transition-colors duration-300 text-sm md:text-base">
-                <span class="mr-2">View Project</span>
-                <span class="text-xl">➝</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Project Card 3 - Text on Left -->
-      <div class="w-full h-[220px] sm:h-[300px] md:h-[500px] relative border-t-2 border-white group overflow-hidden">
-        <!-- Background Image -->
-        <div class="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-700 ease-in-out group-hover:scale-105 group-hover:brightness-110" 
-             style="background-image: url('./assets/img/manufacturing-project.jpg');">
-          <!-- Gradient Overlay -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-70 group-hover:opacity-60 transition-opacity duration-500"></div>
-        </div>
-        
-        <!-- Content Container -->
-        <div class="relative h-full w-full flex items-center px-6 md:px-16">
-          <div class="max-w-7xl w-full mx-auto flex">
-            <div class="w-full md:w-1/2 text-white md:text-left text-center" data-aos="fade-up" data-aos-duration="800">
-              <div class="font-bold text-blue-400 text-sm tracking-wider uppercase mb-2">Manufacturing / Automation</div>
-              <h2 class="text-2xl md:text-4xl font-bold mb-2 drop-shadow-lg">Franklin Manufacturing</h2>
-              <p class="text-md md:text-lg mb-4 text-slate-200 drop-shadow font-light">Wichita, Kansas</p>
-              <p class="text-slate-300 drop-shadow mb-4 max-w-md text-sm md:text-base">Electrical and automation systems for a 150,000 sq ft facility, including PLC integration and remote monitoring solutions.</p>
-              <a href="./projects/franklin-manufacturing/" class="inline-flex items-center text-blue-300 hover:text-white transition-colors duration-300 text-sm md:text-base">
-                <span class="mr-2">View Project</span>
-                <span class="text-xl">➝</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Project Card 4 - Text on Right -->
-      <div class="w-full h-[220px] sm:h-[300px] md:h-[500px] relative border-t-2 border-white group overflow-hidden">
-        <!-- Background Image -->
-        <div class="absolute inset-0 w-full h-full bg-cover bg-center transition-transform duration-700 ease-in-out group-hover:scale-105 group-hover:brightness-110" 
-             style="background-image: url('./assets/img/solar-project.jpg');" onerror="this.style.backgroundImage='url(./assets/img/bethel-college.jpg)'">
-          <!-- Gradient Overlay -->
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent opacity-70 group-hover:opacity-60 transition-opacity duration-500"></div>
-        </div>
-        
-        <!-- Content Container -->
-        <div class="relative h-full w-full flex items-center px-6 md:px-16">
-          <div class="max-w-7xl w-full mx-auto flex justify-end">
-            <div class="w-full md:w-1/2 text-white md:text-left text-center" data-aos="fade-up" data-aos-duration="800">
-              <div class="font-bold text-blue-400 text-sm tracking-wider uppercase mb-2">Renewable Energy</div>
-              <h2 class="text-2xl md:text-4xl font-bold mb-2 drop-shadow-lg">Northcrest Solar Facility</h2>
-              <p class="text-md md:text-lg mb-4 text-slate-200 drop-shadow font-light">Newton, Kansas</p>
-              <p class="text-slate-300 drop-shadow mb-4 max-w-md text-sm md:text-base">Designed and constructed a 2.5MW solar array with battery storage for a community microgrid, enhancing energy resilience.</p>
-              <a href="./projects/northcrest-solar/" class="inline-flex items-center text-blue-300 hover:text-white transition-colors duration-300 text-sm md:text-base">
-                <span class="mr-2">View Project</span>
-                <span class="text-xl">➝</span>
-              </a>
-            </div>
-          </div>
-        </div>
+    </div>
+  </section>
+
+  <!-- Testimonial Strip -->
+  <section class="bg-gray-50 py-16 px-6 md:px-12">
+    <div class="max-w-6xl mx-auto text-center">
+      <blockquote class="text-xl md:text-2xl font-semibold italic text-gray-800 max-w-3xl mx-auto">
+        "Kansas Electric handled a 12-week install with zero downtime. That's rare."
+      </blockquote>
+      <div class="mt-4 text-sm text-gray-600">
+        — Jamie Winters, Facility Manager, Franklin Manufacturing
       </div>
     </div>
   </section>
