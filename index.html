@@ -464,6 +464,53 @@
       }
     }
 
+    /* Global transition and hover effects */
+    * {
+      transition: all 0.3s ease-out;
+    }
+
+    button, .btn, .service-card, .industry-card, .project-card, .kse-nav-link, .kse-dropdown-link {
+      transition: all 0.25s ease-out;
+    }
+    
+    button:hover, .btn:hover, .service-card:hover, .industry-card:hover, .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    img {
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    img.loaded {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .section-heading::after {
+      content: "";
+      display: block;
+      width: 48px;
+      height: 3px;
+      background-color: #2563eb;
+      margin-top: 8px;
+      border-radius: 2px;
+    }
+    
+    /* AOS alternative styles */
+    .aos-hide {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    .aos-show {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
     /* Removing nav-caret styles as they're part of the old navigation */
   </style>
 
@@ -917,7 +964,7 @@
         
         <!-- Left Column - Text Content -->
         <div data-aos="fade-up" data-aos-duration="800">
-          <h2 id="what-we-do-heading" class="text-3xl md:text-[2.75rem] font-bold text-slate-900 mb-6 leading-tight text-left">What We Do</h2>
+          <h2 id="what-we-do-heading" class="text-3xl md:text-[2.75rem] font-bold text-slate-900 mb-6 leading-tight text-left section-heading">What We Do</h2>
           <p class="text-lg text-slate-600 max-w-xl text-left">
             Kansas Electric delivers end-to-end electrical expertise—from automation to 24/7 service. Our teams design, install, and maintain the systems that power American industry.
           </p>
@@ -1040,7 +1087,7 @@
     <div class="w-full px-6 md:px-10 lg:px-16" aria-labelledby="industries-heading">
       <!-- Section heading and paragraph -->
       <div class="mb-16">
-        <h2 id="industries-heading" class="text-3xl md:text-[2.75rem] font-bold text-slate-900 mb-6 leading-tight text-left" data-aos="fade-up" data-aos-duration="800">Industries We Power</h2>
+        <h2 id="industries-heading" class="text-3xl md:text-[2.75rem] font-bold text-slate-900 mb-6 leading-tight text-left section-heading" data-aos="fade-up" data-aos-duration="800">Industries We Power</h2>
         <p class="text-lg text-slate-600 max-w-xl text-left" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
           Strategic electrical systems for mission-critical industries that demand precision, uptime, and performance.
         </p>
@@ -1210,7 +1257,7 @@
       <!-- Project heading -->
       <div class="bg-white py-16 px-6 md:px-10 lg:px-16">
         <div class="w-full">
-          <h2 class="text-3xl md:text-[2.75rem] font-bold text-slate-900 mb-6 leading-tight text-left">Featured Projects</h2>
+          <h2 class="text-3xl md:text-[2.75rem] font-bold text-slate-900 mb-6 leading-tight text-left section-heading">Featured Projects</h2>
           <p class="text-lg text-slate-600 max-w-xl text-left">
             Innovative electrical solutions for complex environments that power America's infrastructure.
           </p>
@@ -1334,7 +1381,7 @@
       
       <!-- LEFT: TEXT -->
       <div>
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8); -webkit-text-stroke: 0.25px rgba(0,0,0,0.5);">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-white section-heading" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8); -webkit-text-stroke: 0.25px rgba(0,0,0,0.5);">
           About Kansas Electric
         </h2>
         <p class="text-lg mb-6 max-w-xl text-white" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.7); -webkit-text-stroke: 0.25px rgba(0,0,0,0.4);">
@@ -1536,5 +1583,50 @@
   </script>
   
   <!-- REMOVED: Old navigation scripts -->
+  
+  <!-- Enhanced UI Scripts -->
+  <script>
+    // Image Fade-in Effect
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("img").forEach((img) => {
+        if (img.complete) {
+          img.classList.add("loaded");
+        } else {
+          img.addEventListener("load", () => img.classList.add("loaded"));
+        }
+      });
+    });
+    
+    // Scroll Reveal without AOS
+    const observerOptions = { threshold: 0.15 };
+    
+    const revealOnScroll = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('aos-show');
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+    
+    const scrollObserver = new IntersectionObserver(revealOnScroll, observerOptions);
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('[data-aos]').forEach(el => {
+        el.classList.add('aos-hide');
+        scrollObserver.observe(el);
+      });
+      
+      // Reset any transform styles on section headings
+      document.querySelectorAll(".section-heading").forEach(el => {
+        el.style.transform = "none";
+      });
+    });
+  </script>
+  
+  <!-- Mobile Sticky CTA Button -->
+  <div class="fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-50 md:hidden hover:bg-blue-700 transition">
+    <a href="./contact/" class="block w-full h-full text-white">Let's Engineer Your Next Power Move</a>
+  </div>
 </body>
 </html>
