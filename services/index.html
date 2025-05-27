@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -35,730 +35,1031 @@
   <link rel="stylesheet" href="../projects/stanley-black-decker/mobile-nav-overhaul.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="../assets/js/navigation-fixed.js" defer></script>
-
-  <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('Xbp1oaEWxyL7EdVj'); </script>
-
+  <script src="../assets/js/navigation-fixed.js" defer></script>  
+  <!-- NAVIGATION CLEANUP: Hide all old navigation elements -->
   
 
+  <!-- COMPREHENSIVE NAVIGATION CLEANUP -->
   
-<style>
-  :root {
-    --header-height: 80px;
+  
+  <!-- NOSCRIPT FALLBACK -->
+  <noscript>
+    <style>
+      .kse-dropdown,
+      .redesigned-dropdown,
+      .dropdown-content {
+        display: block !important;
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        padding: 10px 0 !important;
+      }
+    </style>
+  </noscript>
+
+  <!-- CLEAN NAVIGATION SYSTEM - NO CONFLICTS -->
+  <script>
+  (function() {
+      'use strict';
+      
+      // === ENHANCED NAVIGATION CONTROLLER ===
+      class AntiFlickerNavigationController {
+          constructor() {
+              this.isReady = false;
+              this.activeDropdown = null;
+              this.mobileMenuOpen = false;
+              this.initializationComplete = false;
+              this.init();
+          }
+          
+          init() {
+              // Multiple initialization strategies for maximum reliability
+              if (document.readyState === 'loading') {
+                  document.addEventListener('DOMContentLoaded', () => this.mount());
+              } else {
+                  this.mount();
+              }
+              
+              // Backup initialization
+              setTimeout(() => {
+                  if (!this.initializationComplete) {
+                      this.mount();
+                  }
+              }, 100);
+          }
+          
+          mount() {
+              if (this.initializationComplete) return;
+              
+              // Use multiple timing strategies to prevent flicker
+              this.immediateSetup();
+              
+              setTimeout(() => {
+                  this.enableDropdowns();
+                  this.setupNavigation();
+                  this.markAsReady();
+                  this.initializationComplete = true;
+                  console.log('✅ Anti-flicker navigation ready');
+              }, 0);
+              
+              // Additional safety delay
+              setTimeout(() => {
+                  this.finalizeSetup();
+              }, 50);
+          }
+          
+          immediateSetup() {
+              // Immediately ensure all dropdowns are hidden using classes
+              const dropdownSelectors = [
+                  '.kse-dropdown', 
+                  '.kse-mobile-dropdown', 
+                  '.kse-mobile-menu',
+                  '.redesigned-dropdown',
+                  '.redesigned-mobile-dropdown',
+                  '.dropdown-content'
+              ];
+              
+              dropdownSelectors.forEach(selector => {
+                  const dropdowns = document.querySelectorAll(selector);
+                  dropdowns.forEach(dropdown => {
+                      dropdown.classList.remove('active', 'show');
+                      dropdown.style.display = 'none';
+                      dropdown.style.opacity = '0';
+                      dropdown.style.visibility = 'hidden';
+                  });
+              });
+          }
+          
+          enableDropdowns() {
+              // Add proper dropdown behavior styles
+              const dropdownStyles = document.createElement('style');
+              dropdownStyles.id = 'dropdown-behavior-styles';
+              dropdownStyles.textContent = `
+                  /* CONTROLLED DROPDOWN BEHAVIOR - CLASS-BASED */
+                  .kse-dropdown,
+                  .kse-mobile-dropdown,
+                  .kse-mobile-menu,
+                  .redesigned-dropdown,
+                  .redesigned-mobile-dropdown,
+                  .dropdown-content {
+                      display: none;
+                      opacity: 0;
+                      visibility: hidden;
+                      transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+                      pointer-events: none;
+                  }
+                  
+                  /* SHOW STATES */
+                  .kse-dropdown.active,
+                  .kse-dropdown.show,
+                  .redesigned-dropdown.active,
+                  .redesigned-dropdown.show,
+                  .dropdown-content.active,
+                  .dropdown-content.show {
+                      display: block;
+                      opacity: 1;
+                      visibility: visible;
+                      pointer-events: auto;
+                  }
+                  
+                  .kse-mobile-menu.active,
+                  .kse-mobile-menu.show,
+                  .kse-mobile-dropdown.active,
+                  .kse-mobile-dropdown.show,
+                  .redesigned-mobile-dropdown.active,
+                  .redesigned-mobile-dropdown.show {
+                      display: block;
+                      opacity: 1;
+                      visibility: visible;
+                      pointer-events: auto;
+                  }
+                  
+                  /* POSITIONING */
+                  .kse-dropdown,
+                  .redesigned-dropdown,
+                  .dropdown-content {
+                      position: absolute;
+                      top: 100%;
+                      left: 50%;
+                      transform: translateX(-50%);
+                      background: white;
+                      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+                      border-radius: 12px;
+                      padding: 30px;
+                      min-width: 350px;
+                      z-index: 1001;
+                      border: 1px solid rgba(0,0,0,0.1);
+                  }
+                  
+                  .kse-mobile-menu,
+                  .redesigned-mobile-menu {
+                      position: fixed;
+                      top: 80px;
+                      left: 0;
+                      right: 0;
+                      background: white;
+                      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+                      z-index: 999;
+                      padding: 30px;
+                      max-height: calc(100vh - 80px);
+                      overflow-y: auto;
+                  }
+                  
+                  .kse-mobile-dropdown,
+                  .redesigned-mobile-dropdown {
+                      padding-left: 20px;
+                      margin-top: 15px;
+                  }
+              `;
+              document.head.appendChild(dropdownStyles);
+          }
+          
+          setupNavigation() {
+              this.setupDesktopDropdowns();
+              this.setupMobileMenu();
+              this.setupGlobalHandlers();
+          }
+          
+          setupDesktopDropdowns() {
+              // Handle both kse-nav-item and redesigned-nav-item
+              const navItemSelectors = ['.kse-nav-item', '.redesigned-nav-item'];
+              
+              navItemSelectors.forEach(selector => {
+                  const navItems = document.querySelectorAll(selector);
+                  
+                  navItems.forEach(item => {
+                      const link = item.querySelector('a');
+                      const dropdown = item.querySelector('.kse-dropdown, .redesigned-dropdown, .dropdown-content');
+                      
+                      if (link && dropdown) {
+                          // Ensure dropdown is hidden initially
+                          dropdown.classList.remove('active', 'show');
+                          
+                          link.addEventListener('click', (e) => {
+                              if (!this.isReady) return;
+                              
+                              e.preventDefault();
+                              e.stopPropagation();
+                              
+                              if (this.activeDropdown === dropdown) {
+                                  this.closeAllDropdowns();
+                              } else {
+                                  this.closeAllDropdowns();
+                                  this.openDropdown(dropdown);
+                              }
+                          });
+                      }
+                  });
+              });
+          }
+          
+          setupMobileMenu() {
+              const mobileToggle = document.querySelector('.kse-mobile-toggle, .redesigned-mobile-toggle');
+              const mobileMenu = document.querySelector('.kse-mobile-menu, .redesigned-mobile-menu');
+              
+              if (mobileToggle && mobileMenu) {
+                  // Ensure mobile menu is hidden initially
+                  mobileMenu.classList.remove('active', 'show');
+                  
+                  mobileToggle.addEventListener('click', (e) => {
+                      if (!this.isReady) return;
+                      
+                      e.preventDefault();
+                      e.stopPropagation();
+                      this.toggleMobileMenu();
+                  });
+                  
+                  // Mobile dropdown items
+                  const mobileNavItems = mobileMenu.querySelectorAll('.kse-mobile-nav-item, .redesigned-mobile-nav-item');
+                  mobileNavItems.forEach(item => {
+                      const link = item.querySelector('a');
+                      const dropdown = item.querySelector('.kse-mobile-dropdown, .redesigned-mobile-dropdown');
+                      
+                      if (link && dropdown) {
+                          // Ensure mobile dropdown is hidden initially
+                          dropdown.classList.remove('active', 'show');
+                          
+                          link.addEventListener('click', (e) => {
+                              if (!this.isReady) return;
+                              
+                              e.preventDefault();
+                              e.stopPropagation();
+                              dropdown.classList.toggle('active');
+                              dropdown.classList.toggle('show');
+                          });
+                      }
+                  });
+              }
+          }
+          
+          setupGlobalHandlers() {
+              // Outside click handler
+              document.addEventListener('click', (e) => {
+                  if (!this.isReady) return;
+                  
+                  const nav = document.querySelector('.kse-nav, .redesigned-nav');
+                  if (nav && !nav.contains(e.target)) {
+                      this.closeAllDropdowns();
+                      
+                      if (this.mobileMenuOpen) {
+                          this.closeMobileMenu();
+                      }
+                  }
+              });
+              
+              // Escape key handler
+              document.addEventListener('keydown', (e) => {
+                  if (!this.isReady) return;
+                  
+                  if (e.key === 'Escape') {
+                      this.closeAllDropdowns();
+                      
+                      if (this.mobileMenuOpen) {
+                          this.closeMobileMenu();
+                      }
+                  }
+              });
+              
+              // Window resize handler
+              window.addEventListener('resize', () => {
+                  if (window.innerWidth > 1023 && this.mobileMenuOpen) {
+                      this.closeMobileMenu();
+                  }
+              });
+          }
+          
+          openDropdown(dropdown) {
+              if (!this.isReady) return;
+              
+              dropdown.classList.add('active', 'show');
+              this.activeDropdown = dropdown;
+          }
+          
+          closeAllDropdowns() {
+              if (!this.isReady) return;
+              
+              const dropdownSelectors = [
+                  '.kse-dropdown', 
+                  '.redesigned-dropdown', 
+                  '.dropdown-content'
+              ];
+              
+              dropdownSelectors.forEach(selector => {
+                  const dropdowns = document.querySelectorAll(selector);
+                  dropdowns.forEach(dropdown => {
+                      dropdown.classList.remove('active', 'show');
+                  });
+              });
+              
+              this.activeDropdown = null;
+          }
+          
+          toggleMobileMenu() {
+              if (!this.isReady) return;
+              
+              const mobileMenu = document.querySelector('.kse-mobile-menu, .redesigned-mobile-menu');
+              if (mobileMenu) {
+                  if (this.mobileMenuOpen) {
+                      this.closeMobileMenu();
+                  } else {
+                      this.openMobileMenu();
+                  }
+              }
+          }
+          
+          openMobileMenu() {
+              const mobileMenu = document.querySelector('.kse-mobile-menu, .redesigned-mobile-menu');
+              const mobileToggle = document.querySelector('.kse-mobile-toggle, .redesigned-mobile-toggle');
+              
+              if (mobileMenu) {
+                  mobileMenu.classList.add('active', 'show');
+                  mobileToggle?.classList.add('active');
+                  this.mobileMenuOpen = true;
+                  document.body.style.overflow = 'hidden';
+              }
+          }
+          
+          closeMobileMenu() {
+              const mobileMenu = document.querySelector('.kse-mobile-menu, .redesigned-mobile-menu');
+              const mobileToggle = document.querySelector('.kse-mobile-toggle, .redesigned-mobile-toggle');
+              
+              if (mobileMenu) {
+                  mobileMenu.classList.remove('active', 'show');
+                  mobileToggle?.classList.remove('active');
+                  this.mobileMenuOpen = false;
+                  document.body.style.overflow = '';
+                  
+                  // Close all mobile dropdowns
+                  const mobileDropdownSelectors = [
+                      '.kse-mobile-dropdown', 
+                      '.redesigned-mobile-dropdown'
+                  ];
+                  
+                  mobileDropdownSelectors.forEach(selector => {
+                      const mobileDropdowns = mobileMenu.querySelectorAll(selector);
+                      mobileDropdowns.forEach(dropdown => {
+                          dropdown.classList.remove('active', 'show');
+                      });
+                  });
+              }
+          }
+          
+          markAsReady() {
+              this.isReady = true;
+              
+              // Mark all dropdowns as JS-ready
+              const allDropdowns = document.querySelectorAll('.kse-dropdown, .kse-mobile-dropdown, .kse-mobile-menu, .redesigned-dropdown, .redesigned-mobile-dropdown, .dropdown-content');
+              allDropdowns.forEach(dropdown => {
+                  dropdown.classList.add('js-ready');
+              });
+          }
+          
+          finalizeSetup() {
+              // Final cleanup and verification
+              this.cleanup();
+              this.verifyNoFlicker();
+          }
+          
+          cleanup() {
+              // Remove any conflicting navigation elements
+              const conflictingSelectors = [
+                  'nav:not(.kse-nav):not(.redesigned-nav)',
+                  '.ticker-container',
+                  '.ticker-wrapper',
+                  '.ticker',
+                  '[class*="ticker"]',
+                  '.floating-nav',
+                  '.old-nav'
+              ];
+              
+              conflictingSelectors.forEach(selector => {
+                  const elements = document.querySelectorAll(selector);
+                  elements.forEach(el => {
+                      if (!el.closest('.kse-nav') && !el.closest('.redesigned-nav')) {
+                          el.style.display = 'none';
+                      }
+                  });
+              });
+          }
+          
+          verifyNoFlicker() {
+              // Verify all dropdowns are properly hidden
+              const allDropdownSelectors = [
+                  '.kse-dropdown:not(.active):not(.show)', 
+                  '.kse-mobile-dropdown:not(.active):not(.show)', 
+                  '.kse-mobile-menu:not(.active):not(.show)',
+                  '.redesigned-dropdown:not(.active):not(.show)',
+                  '.redesigned-mobile-dropdown:not(.active):not(.show)',
+                  '.dropdown-content:not(.active):not(.show)'
+              ];
+              
+              let allHidden = true;
+              
+              allDropdownSelectors.forEach(selector => {
+                  const dropdowns = document.querySelectorAll(selector);
+                  dropdowns.forEach(dropdown => {
+                      const computedStyle = window.getComputedStyle(dropdown);
+                      if (computedStyle.display !== 'none' || computedStyle.opacity !== '0') {
+                          dropdown.classList.remove('active', 'show');
+                          dropdown.style.display = 'none';
+                          dropdown.style.opacity = '0';
+                          dropdown.style.visibility = 'hidden';
+                          allHidden = false;
+                      }
+                  });
+              });
+              
+              if (allHidden) {
+                  console.log('✅ No flicker detected - all dropdowns properly hidden');
+              } else {
+                  console.log('⚠️ Fixed some visible dropdowns');
+              }
+          }
+      }
+      
+      // Initialize anti-flicker navigation
+      new AntiFlickerNavigationController();
+      
+      console.log('🚀 Kansas Electric - Anti-Flicker Navigation System Active (Services Page)');
+      console.log('✅ Class-based dropdown control enabled');
+      console.log('✅ Immediate dropdown hiding active');
+      console.log('✅ Support for both kse-nav and redesigned-nav');
+  })();
+  </script>
+
+  <!-- ANTI-FLICKER DEFENSIVE STYLES - PREVENT DROPDOWN FLASH -->
+  <style>
+  /* IMMEDIATE DROPDOWN HIDING - PREVENTS FLASH ON PAGE LOAD */
+  .kse-dropdown,
+  .kse-mobile-dropdown,
+  .kse-mobile-menu {
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
   }
   
-    /* Video carousel styles - consolidated and simplified */
-    /* Override fade-in class to ensure elements are visible */
-    .fade-in {
-      opacity: 1 !important;
-    }
-    
-    section[data-home-slider] {
-      opacity: 1 !important; /* Ensure the section is always visible */
-    } 
-
-    #video-carousel {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 5;
-      background-color: #000;
-      opacity: 1 !important; /* Ensure the carousel is always visible */
-    }
-
-    #video-carousel video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
-      visibility: hidden;
-    }
-
-    #video-carousel video.active {
-      opacity: 1;
-      visibility: visible;
-      z-index: 2;
-    }
-    
-    /* Logo overlay fix */
-    .video-logo-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 20 !important;
-      opacity: 1 !important;
-      visibility: visible !important;
-      pointer-events: none;
-    }
-    
-    .video-logo-overlay .logo-container {
-      position: relative;
-      width: 50%;
-      max-width: 28rem;
-    }
-    
-    .video-logo-overlay .logo-bg {
-      display: none; /* Hide the gradient background */
-    }
-    
-    .video-logo-overlay img {
-      position: relative;
-      width: 100%;
-      padding: 1.5rem;
-      filter: drop-shadow(0 0 15px rgba(0,0,0,0.8)) drop-shadow(0 0 30px rgba(0,0,0,0.6)) drop-shadow(0 0 45px rgba(0,0,0,0.5));
-    }
-    
-    /* Navigation styles */
-    .nav-item {
-      position: relative;
-    }
-    
-    /* Ensure the logo is positioned at the far left */
-    .site-header .md\:w-11\/12 {
-      width: 100% !important;
-      max-width: 100% !important;
-      padding-left: 0 !important; /* Remove left padding to position logo at the very left */
-      padding-right: 20px;
-    }
-    
-    /* Ensure the logo container has proper padding */
-    .site-header .md\:w-11\/12 > a:first-child {
-      padding-left: 0 !important; /* Remove padding to position logo at the very left edge */
-    }
-    
-    @media (min-width: 768px) {
-      .site-header .md\:w-11\/12 > a:first-child {
-        padding-left: 0 !important; /* Remove padding to position logo at the very left edge */
-      }
-    }
-
-    .submenu {
-      display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-      width: 100vw !important; /* Ensure full viewport width */
-      margin-left: 0 !important; /* Remove margin */
-      margin-right: 0 !important; /* Remove margin */
-      transform: none !important; /* Remove transform */
-    background-color: white;
-      z-index: 100;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    }
-
-    @media (min-width: 1024px) {
-      /* Fix the header to ensure consistent positioning */
-      .site-header {
-        position: relative;
-        z-index: 101; /* Higher than submenu */
-      }
-      
-      /* Ensure the main navigation has proper height */
-      .site-header .lg\:py-0 {
-        padding-top: 0 !important;
-        padding-bottom: 0 !important;
-      }
-      
-      /* Ensure the nav items have proper height */
-      .nav-item .lg\:py-6 {
-        padding-top: 1.5rem !important; /* 6 tailwind units */
-        padding-bottom: 1.5rem !important; /* 6 tailwind units */
-      }
-      
-      /* Ensure the submenu is positioned correctly */
-      .submenu {
-        position: fixed !important; /* Change to fixed to break out of container */
-        top: var(--header-height, 80px) !important; /* Use CSS variable with fallback */
-        left: 0 !important; /* Start at the left edge of the screen */
-        right: 0 !important;
-        width: 100% !important; /* Full viewport width */
-        max-width: none !important; /* No max width */
-        transform: none !important;
-        margin: 0 !important; /* No margin */
-        padding-top: 3rem;
-        padding-bottom: 3rem;
-        border-top: none !important; /* Remove any border that might create a gap */
-      }
-      
-      /* Ensure the nav items have proper positioning */
-      .nav-item {
-        position: static !important;
-      }
-      
-      /* Ensure the main navigation has proper z-index */
-      .main-navigation {
-        position: relative;
-        z-index: 101;
-      }
-      
-      /* Ensure no gap between nav and submenu */
-      .nav-item:hover .submenu {
-        margin: 0 !important;
-        border-top: none !important;
-      }
-      
-      /* Ensure the submenu spans the full width */
-      .submenu::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: inherit;
-        z-index: -1;
-      }
-      
-      /* Ensure the submenu connects directly to the header */
-      .site-header::after {
-        content: '';
-        display: block;
-        height: 0;
-        clear: both;
-      }
-    }
-    
-    /* Add delay on mouseleave for smoother transitions */
-    .nav-item {
-      transition: background-color 0.2s ease;
-    }
-    
-    .nav-item .submenu {
-      transition: opacity 0.3s ease 0.1s, visibility 0.3s ease 0.1s; /* Added 0.1s delay */
-    }
-    
-    .nav-item:hover .submenu {
-      display: block;
-      opacity: 1;
-      visibility: visible;
-      transition-delay: 0s; /* No delay on hover */
-    }
-    
-    /* Adjust the submenu content to be centered */
-    .submenu > div, 
-    .submenu > ul {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    
-    /* Create a container for the submenu content */
-    .submenu-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: center;
-      padding: 0 20px;
-      gap: 3rem;
-      width: 100%;
-    }
-    
-    @media (min-width: 1024px) {
-      .submenu-container {
-        padding: 0 40px;
-        width: 100%;
-      }
-    }
-    
-    /* Ensure the submenu has proper spacing */
-    .submenu {
-      padding-top: 2rem;
-      padding-bottom: 2rem;
+  /* REMOVE ANY HOVER EFFECTS THAT MIGHT SHOW DROPDOWNS */
+  .kse-nav-item:hover .kse-dropdown {
+      display: none !important;
+  }
+  
+  /* ENSURE NAVIGATION LAYOUT IS STABLE */
+  .kse-nav {
+      position: fixed !important;
+      top: 0 !important;
       left: 0 !important;
       right: 0 !important;
-      width: 100vw !important;
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-    }
-    
-    /* Ensure the video carousel stays visible and isn't affected by menu interactions */
-    #video-carousel, 
-    section[data-home-slider],
-    #video-carousel video.active {
-      z-index: 5;
-    opacity: 1 !important;
-    visibility: visible !important;
-}
+      z-index: 1000 !important;
+      background: white !important;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+      height: 80px !important;
+  }
 
-    /* Remove the dropdown arrow indicators */
-    /* .nav-item > a::after {
-      content: '';
-      display: inline-block;
-      width: 0;
-      height: 0;
-      margin-left: 0.5em;
-      vertical-align: middle;
-      border-top: 0.3em solid;
-      border-right: 0.3em solid transparent;
-      border-left: 0.3em solid transparent;
-    } */
-    
-    /* News Ticker Styles */
-    .ticker-container {
-      overflow: hidden;
-      padding: 8px 0;
-    }
-    
-    .ticker-wrapper {
-      width: 100%;
+  .kse-nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 0;
-      overflow: hidden;
+      height: 80px;
+      position: relative;
+      z-index: 1000;
+      width: 100%;
+      max-width: none;
+      margin: 0;
+  }
+
+  .kse-nav-logo { 
+      margin-right: auto;
+      flex-shrink: 0;
+      padding-left: 2rem;
+  }
+
+  .kse-nav-logo img {
+      height: 40px;
+      width: auto;
+  }
+
+  .kse-nav-menu { 
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex: 1;
+      justify-content: center;
     }
     
-    .ticker-scroll {
-      display: inline-block;
-      white-space: nowrap;
-      padding-right: 100%;
-      animation: ticker 60s linear infinite;
-    }
-    
-    .ticker-scroll:hover {
-      animation-play-state: paused;
-    }
-    
-    .ticker-item {
-      display: inline-block;
-      padding: 0 30px;
-      font-size: 14px;
-      color: white;
-    }
-    
-    .ticker-item a {
+  .kse-nav-item {
+      position: relative;
+      display: block;
+      cursor: pointer;
+      pointer-events: auto;
+  }
+
+  .kse-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 1rem 1.25rem;
+      color: #374151;
       text-decoration: none;
-      font-weight: 600;
-      color: #FFD700;
-      transition: color 0.2s ease;
-    }
-    
-    .ticker-item a:hover {
-      color: #FFC107;
-    }
-    
-    @keyframes ticker {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-100%);
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .ticker-item {
-        padding: 0 15px;
-        font-size: 12px;
-      }
-      
-      /* Stack elements on mobile */
-      .bg-ke-blue .md\:w-11\/12 {
-        flex-direction: column;
-      }
-      
-      .flex-shrink-0 {
-        justify-content: center;
-        padding: 8px 0;
-      }
-    }
-
-    /* Integrated header layout */
-    .bg-ke-blue .md\:w-11\/12 {
-      min-height: 40px;
-      display: flex;
-      align-items: center;
-    }
-    
-    /* Make sure support text is properly aligned */
-    .flex-shrink-0 {
-      padding: 8px 15px;
-      display: flex;
-      align-items: center;
-    }
-    
-    /* Ensure the support text and phone number are on the same line */
-    .flex-shrink-0 p {
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
-    }
-
-    /* Ensure the ticker and support section align properly */
-    @media (min-width: 768px) {
-      .ticker-container {
-        padding-right: 15px;
-      }
-      
-      .flex-shrink-0 {
-        min-width: 250px;
-        padding: 8px 0;
-        display: flex;
-        align-items: center;
-      }
-      
-      /* Ensure the ticker doesn't overflow on smaller screens */
-      .ticker-scroll {
-        animation-duration: 60s;
-      }
-    }
-
-    /* Support section styling */
-    .support-container {
-      display: flex;
-      align-items: center;
-      white-space: nowrap;
-      border-radius: 4px;
-      overflow: hidden;
-    }
-    
-    .support-label {
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 8px;
-      border-top-left-radius: 4px;
-      border-bottom-left-radius: 4px;
-      font-weight: 600;
-    }
-    
-    .phone-button {
-      margin-left: -11px;
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px;
-      transition: background-color 0.2s ease;
-      padding-left: 8px;
-      padding-right: 8px;
-      min-width: 160px;
-      text-align: left;
-    }
-    
-    .phone-button:hover {
-      background-color: #0a4a7a;
-    }
-    
-    @media (max-width: 768px) {
-      .support-container {
-        margin: 0 auto;
-      }
-    }
-
-    /* Testimonial Carousel Styles */
-    .testimonial-slide {
-      display: none;
-      opacity: 0;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      transform: translateX(20px);
-    }
-
-    .testimonial-slide.active {
-      display: block;
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    @media (max-width: 768px) {
-      .testimonial-nav {
-        padding: 0.5rem;
-      }
-      
-      .testimonial-nav svg {
-        width: 1rem;
-        height: 1rem;
-      }
-    }
-
-    /* Add swipe animation */
-    @keyframes slideInRight {
-      from { transform: translateX(50px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-
-    @keyframes slideInLeft {
-      from { transform: translateX(-50px); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-
-    @keyframes slideOutRight {
-      from { transform: translateX(0); opacity: 1; }
-      to { transform: translateX(50px); opacity: 0; }
-    }
-
-    @keyframes slideOutLeft {
-      from { transform: translateX(0); opacity: 1; }
-      to { transform: translateX(-50px); opacity: 0; }
-    }
-
-    .slide-in-right {
-      animation: slideInRight 0.5s forwards;
-    }
-
-    .slide-in-left {
-      animation: slideInLeft 0.5s forwards;
-    }
-
-    .slide-out-right {
-      animation: slideOutRight 0.5s forwards;
-    }
-
-    .slide-out-left {
-      animation: slideOutLeft 0.5s forwards;
-    }
-
-    /* Project Grid Styles */
-    .project-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      z-index: 1;
-    }
-    
-    .project-card:hover {
-      transform: scale(1.1);
-      z-index: 10;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    }
-    
-    /* Standardize all project card overlays */
-    .featured-projects .learn-more-overlay > div {
-      width: 75% !important;
-      max-width: 24rem !important;
-    }
-    
-    /* Position the overlay higher to avoid covering bottom text */
-    .featured-projects .learn-more-overlay {
-      align-items: flex-start !important;
-      padding-top: 4rem !important; /* Reduced from default pt-20 (5rem) */
-      height: 80% !important; /* Make overlay shorter */
-    }
-    
-    /* Three-Column Navigation Menu Styles */
-    .three-column-menu {
-      display: flex;
-      flex-wrap: nowrap;
+      font-weight: 500;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
       width: 100%;
-      flex-direction: row;
-      align-items: flex-start;
-    }
-    
-    /* Ensure submenu container has proper layout */
-    .submenu-container {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    
-    .menu-column {
-      transition: all 0.3s ease;
-    }
-    
-    .first-column {
-      flex: 0 0 25%;
-    }
-    
-    .second-column {
-      flex: 0 0 25%;
-    }
-    
-    .third-column {
-      flex: 0 0 50%;
+      height: 100%;
+      pointer-events: auto;
+      z-index: 1001;
       position: relative;
-      width: auto !important; /* Override any width classes */
-    }
-    
-    /* Fix for the w-1/2 class that's causing layout issues */
-    .submenu-container .w-1\/2 {
-      width: auto !important;
-    }
-    
-    /* More specific override */
-    .submenu-container .third-column.w-1\/2 {
-      width: auto !important;
-    }
-    
-    .second-column-item {
-      position: relative;
-      transition: color 0.3s ease, padding-left 0.2s ease;
-    }
-    
-    .second-column-item:hover, 
-    .second-column-item.active {
-      color: #0076C5 !important;
-      padding-left: 0.5rem;
-    }
-    
-    .second-column-item::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: #0076C5;
-      transition: width 0.3s ease;
-    }
-    
-    .second-column-item:hover::after,
-    .second-column-item.active::after {
-      width: 100%;
-    }
-    
-    .third-column-content {
-      display: none;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-    
-    .third-column-content.active {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    /* Ensure at least one third column content is visible */
-    .third-column:not(:has(.third-column-content.active)) .third-column-content:first-child {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    /* Fallback for browsers that don't support :has() */
-    .third-column.no-has-support .third-column-content:first-child:not(.active) {
-      display: none;
-    }
-    
-    /* Responsive adjustments */
-    @media (max-width: 1023px) {
-      .three-column-menu {
-        flex-direction: column;
-      }
-      
-      .menu-column {
-        width: 100% !important;
-        margin-bottom: 1rem;
-        flex: 0 0 100%;
-      }
-      
-      .third-column-content {
-        padding-left: 1rem;
-      }
-    }
-    
-    .project-overlay {
+  }
+
+  .kse-nav-link:hover {
+      color: #1f2937;
+  }
+
+  .kse-nav-caret {
+      width: 1rem;
+      height: 1rem;
+      transition: transform 0.2s;
       pointer-events: none;
-    }
+  }
 
-    /* Hero section animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+  .kse-nav-item[aria-expanded="true"] .kse-nav-caret {
+      transform: rotate(180deg);
+  }
 
-    @keyframes scaleIn {
-      from {
-        transform: scale(0.9);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-
-    .hero-content h1 {
-      animation: fadeInUp 0.8s ease-out forwards;
-    }
-
-    .hero-content p {
-      animation: fadeInUp 0.8s ease-out 0.2s forwards;
-      opacity: 0;
-      animation-fill-mode: forwards;
-    }
-
-    .hero-content .flex {
-      animation: scaleIn 0.8s ease-out 0.4s forwards;
-      opacity: 0;
-      animation-fill-mode: forwards;
-    }
-
-    .hero-content .absolute.inset-0.opacity-5 {
-      animation: fadeIn 1.5s ease-out forwards;
-    }
-
-    /* Animation utility classes */
-    .transform-none {
-      transform: none !important;
-    }
-    
-    .opacity-100 {
-      opacity: 1 !important;
-    }
-    
-    .scale-x-100 {
-      transform: scaleX(1) !important;
-    }
-    
-    /* Ensure smooth animations */
-    [data-animate] * {
-      will-change: transform, opacity;
-    }
-
-    .tab.hover-effect {
-      transform: translateY(-2px);
-      background-color: var(--ke-blue, #0056b3);
+  .kse-nav-cta { 
+      margin-left: auto;
+      background: #0056D2;
       color: white;
-      /* Removing the box-shadow as requested */
-    }
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.375rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease-in-out;
+      flex-shrink: 0;
+      padding-right: 2rem;
+      margin-right: 2rem;
+  }
 
-    .testimonial-slide {
-      will-change: transform, opacity;
-    }
+  .kse-nav-cta:hover {
+      background: #0047b3;
+      box-shadow: 0 4px 12px rgba(0, 86, 210, 0.3);
+  }
 
-    .tab-content {
-      transition: all 0.3s ease-in-out;
-    }
+  .kse-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      z-index: 50;
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: all 0.2s ease-in-out;
+      min-width: 280px;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+  }
 
-    .tab-content.hidden {
-      display: none !important;
-    }
+  /* Hover behavior for dropdowns */
+  .kse-nav-item:hover .kse-dropdown {
+      display: flex;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+  }
 
-    .tab-content img {
-      transition: transform 8s ease-in-out, filter 0.5s ease-in-out;
-    }
+  /* Active state for dropdowns */
+  .kse-dropdown.active,
+  .kse-dropdown.show {
+      display: flex !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+  }
 
-    .tab-contents {
-      position: relative;
-      width: 100%;
-    }
+  .kse-dropdown.industries-grid {
+      display: none;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      min-width: 560px;
+  }
 
-    /* Even more specific rule to override inline styles */
-    .project-card .learn-more-overlay.pt-20 {
-      padding-top: 3rem !important;
-    }
+  /* Hover behavior for industries grid */
+  .kse-nav-item:hover .kse-dropdown.industries-grid {
+      display: grid;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+  }
+
+  .kse-dropdown.industries-grid.active,
+  .kse-dropdown.industries-grid.show {
+      display: grid !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+  }
+
+  /* ESSENTIAL NAVIGATION STYLES */
+  body {
+      padding-top: 80px !important;
+  }
+
+  nav:not(.kse-nav),
+  .ticker-container,
+  .ticker-wrapper,
+  .ticker,
+  [class*="ticker"] {
+        display: none !important;
+  }
+
+  .kse-dropdown-link {
+      display: block;
+      padding: 0.75rem;
+      color: #374151;
+      text-decoration: none;
+      border-radius: 0.375rem;
+      transition: background-color 0.2s;
+  }
+
+  .kse-dropdown-link:hover {
+      background-color: #f3f4f6;
+      color: #1f2937;
+  }
+
+  .kse-dropdown-link span {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+  }
+
+  .kse-dropdown-link small {
+      display: block;
+      color: #6b7280;
+      font-size: 0.875rem;
+  }
+
+  /* MOBILE STYLES */
+  .kse-mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 0.25rem;
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      order: 4 !important;
+      flex-shrink: 0 !important;
+  }
+
+  .kse-hamburger-line {
+      width: 1.5rem;
+      height: 2px;
+      background: #374151;
+      transition: all 0.3s;
+  }
+
+  .kse-mobile-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: none;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .kse-mobile-overlay.active {
+      display: block;
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+  }
+
+  .kse-mobile-menu {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: white;
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 1rem;
+      display: none;
+  }
+
+  .kse-mobile-menu.active,
+  .kse-mobile-menu.show {
+      display: block !important;
+  }
+
+  .kse-mobile-nav-item {
+      border-bottom: 1px solid #e5e7eb;
+  }
+
+  .kse-mobile-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      color: #374151;
+      text-decoration: none;
+      font-weight: 500;
+  }
+
+  .kse-mobile-dropdown {
+      padding-left: 1rem;
+      border-top: 1px solid #f3f4f6;
+      display: none;
+  }
+
+  .kse-mobile-dropdown.active,
+  .kse-mobile-dropdown.show {
+        display: block !important;
+  }
+
+  .kse-mobile-dropdown-link {
+      display: block;
+      padding: 0.75rem 0;
+      color: #6b7280;
+      text-decoration: none;
+      border-bottom: 1px solid #f9fafb;
+  }
+
+  .kse-mobile-nav-cta {
+      display: block;
+      background: #0056D2;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      border-radius: 0.375rem;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 1rem;
+      transition: all 0.2s ease-in-out;
+  }
+
+  .kse-mobile-nav-cta:hover {
+      background: #0047b3;
+      box-shadow: 0 4px 12px rgba(0, 86, 210, 0.3);
+  }
+
+  @media (max-width: 768px) {
+      .kse-nav-menu,
+      .kse-nav-cta {
+          display: none !important;
+      }
+
+      .kse-mobile-toggle {
+        display: flex !important;
+      }
+  }
   </style>
-    
-    
 </head>
 <body class="font-poppins flex flex-col min-h-screen relative">
+  <!-- UNIFIED KANSAS ELECTRIC NAVIGATION -->
+  <nav class="kse-nav" role="navigation" aria-label="Main navigation">
+      <div class="kse-nav-container">
+          <!-- Logo (Left Aligned) -->
+          <a href="../" class="kse-nav-logo">
+              <img src="../assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric" width="178" height="40">
+          </a>
+
+          <!-- Desktop Navigation (Center) -->
+          <ul class="kse-nav-menu" role="menubar">
+              <!-- Services Dropdown -->
+              <li class="kse-nav-item" data-dropdown="services" role="none">
+                  <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="services-dropdown">
+                      <span>Services</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+                  <div class="kse-dropdown" id="services-dropdown" role="menu" aria-hidden="true">
+                      <a href="../services/divisions/industrial/" class="kse-dropdown-link" role="menuitem">
+                          <span>Industrial Electrical</span>
+                          <small>Heavy infrastructure & power systems</small>
+                      </a>
+                      <a href="../services/divisions/commercial/" class="kse-dropdown-link" role="menuitem">
+                          <span>Commercial Electrical</span>
+                          <small>Office buildings & retail spaces</small>
+                      </a>
+                      <a href="../services/divisions/service-maintenance/" class="kse-dropdown-link" role="menuitem">
+                          <span>Service & Maintenance</span>
+                          <small>24/7 support & preventive care</small>
+                      </a>
+                      <a href="../services/divisions/automation-control/" class="kse-dropdown-link" role="menuitem">
+                          <span>Automation & Control Systems</span>
+                          <small>Smart systems & process control</small>
+                </a>
+                </div>
+                    </li>
+
+              <!-- Industries We Serve Dropdown -->
+              <li class="kse-nav-item" data-dropdown="industries" role="none">
+                  <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="industries-dropdown">
+                      <span>Industries We Serve</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                  </a>
+                  <div class="kse-dropdown industries-grid" id="industries-dropdown" role="menu" aria-hidden="true">
+                      <a href="../services/industrial/oil-gas/" class="kse-dropdown-link" role="menuitem">
+                          <span>Oil & Gas</span>
+                          <small>Refineries & pipelines</small>
+                      </a>
+                      <a href="../services/industrial/wastewater-treatment/" class="kse-dropdown-link" role="menuitem">
+                          <span>Water & Wastewater</span>
+                          <small>Treatment facilities</small>
+                      </a>
+                      <a href="../services/industrial/data-centers/" class="kse-dropdown-link" role="menuitem">
+                          <span>Data Centers</span>
+                          <small>Mission critical facilities</small>
+                      </a>
+                      <a href="../services/industrial/advanced-manufacturing/" class="kse-dropdown-link" role="menuitem">
+                          <span>Manufacturing</span>
+                          <small>Production facilities</small>
+                      </a>
+                      <a href="../services/industrial/food-beverage/" class="kse-dropdown-link" role="menuitem">
+                          <span>Food & Beverage</span>
+                          <small>Processing plants</small>
+                      </a>
+                      <a href="../services/industrial/government-municipal/" class="kse-dropdown-link" role="menuitem">
+                          <span>Government & Municipal</span>
+                          <small>Public infrastructure</small>
+                </a>
+                </div>
+                    </li>
+
+              <!-- About Dropdown -->
+              <li class="kse-nav-item" data-dropdown="about" role="none">
+                  <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="about-dropdown">
+                      <span>About</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                  </a>
+                  <div class="kse-dropdown" id="about-dropdown" role="menu" aria-hidden="true">
+                      <a href="../about/" class="kse-dropdown-link" role="menuitem">
+                          <span>Our Story</span>
+                          <small>Company history & mission</small>
+                      </a>
+                      <a href="../about/history/" class="kse-dropdown-link" role="menuitem">
+                          <span>Our History</span>
+                          <small>Decades of electrical excellence</small>
+                      </a>
+                      <a href="../about/locations/" class="kse-dropdown-link" role="menuitem">
+                          <span>Locations</span>
+                          <small>Service areas & offices</small>
+                      </a>
+                      <a href="../about/community/" class="kse-dropdown-link" role="menuitem">
+                          <span>Community</span>
+                          <small>Local involvement & partnerships</small>
+                </a>
+              </div>
+                    </li>
+
+              <!-- Careers Dropdown -->
+              <li class="kse-nav-item" data-dropdown="careers" role="none">
+                  <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="careers-dropdown">
+                      <span>Careers</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                  </a>
+                  <div class="kse-dropdown" id="careers-dropdown" role="menu" aria-hidden="true">
+                      <a href="../careers/" class="kse-dropdown-link" role="menuitem">
+                          <span>Open Positions</span>
+                          <small>Current job opportunities</small>
+                      </a>
+                      <a href="../careers/quick-apply/" class="kse-dropdown-link" role="menuitem">
+                          <span>Quick Apply</span>
+                          <small>Submit your resume</small>
+                      </a>
+                      <a href="../careers/apply/" class="kse-dropdown-link" role="menuitem">
+                          <span>Full Application</span>
+                          <small>Complete application form</small>
+                </a>
+            </div>
+          </li>
+
+              <!-- Projects (standalone link) -->
+              <li class="kse-nav-item" role="none">
+                  <a href="../projects/" class="kse-nav-link" role="menuitem">
+                      <span>Projects</span>
+                  </a>
+                    </li>
+                  </ul>
+                  
+          <!-- CTA Button -->
+          <a href="../contact/" class="kse-nav-cta">Let's Engineer Your Next Power Move</a>
+
+          <!-- Mobile Hamburger -->
+          <button class="kse-mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+              <span class="kse-hamburger-line"></span>
+              <span class="kse-hamburger-line"></span>
+              <span class="kse-hamburger-line"></span>
+          </button>
+      </div>
+      
+      <!-- Mobile Menu Overlay -->
+      <div class="kse-mobile-overlay" aria-hidden="true"></div>
+
+      <!-- Mobile Menu -->
+      <div class="kse-mobile-menu" id="mobile-menu" aria-hidden="true">
+          <nav role="navigation" aria-label="Mobile navigation">
+              <!-- Services -->
+              <div class="kse-mobile-nav-item" data-dropdown="services">
+                  <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false">
+                      <span>Services</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                  </a>
+                  <div class="kse-mobile-dropdown">
+                      <a href="../services/divisions/industrial/" class="kse-mobile-dropdown-link">Industrial Electrical</a>
+                      <a href="../services/divisions/commercial/" class="kse-mobile-dropdown-link">Commercial Electrical</a>
+                      <a href="../services/divisions/service-maintenance/" class="kse-mobile-dropdown-link">Service & Maintenance</a>
+                      <a href="../services/divisions/automation-control/" class="kse-mobile-dropdown-link">Automation & Control Systems</a>
+                </div>
+              </div>
+        
+              <!-- Industries We Serve -->
+              <div class="kse-mobile-nav-item" data-dropdown="industries">
+                  <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false">
+                      <span>Industries We Serve</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                  </a>
+                  <div class="kse-mobile-dropdown">
+                      <a href="../services/industrial/oil-gas/" class="kse-mobile-dropdown-link">Oil & Gas</a>
+                      <a href="../services/industrial/wastewater-treatment/" class="kse-mobile-dropdown-link">Water & Wastewater</a>
+                      <a href="../services/industrial/data-centers/" class="kse-mobile-dropdown-link">Data Centers</a>
+                      <a href="../services/industrial/advanced-manufacturing/" class="kse-mobile-dropdown-link">Manufacturing</a>
+                      <a href="../services/industrial/food-beverage/" class="kse-mobile-dropdown-link">Food & Beverage</a>
+                      <a href="../services/industrial/government-municipal/" class="kse-mobile-dropdown-link">Government & Municipal</a>
+            </div>
+                </div>
+          
+              <!-- About -->
+              <div class="kse-mobile-nav-item" data-dropdown="about">
+                  <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false">
+                      <span>About</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                  </a>
+                  <div class="kse-mobile-dropdown">
+                      <a href="../about/" class="kse-mobile-dropdown-link">Our Story</a>
+                      <a href="../about/history/" class="kse-mobile-dropdown-link">Our History</a>
+                      <a href="../about/locations/" class="kse-mobile-dropdown-link">Locations</a>
+                      <a href="../about/community/" class="kse-mobile-dropdown-link">Community</a>
+                </div>
+              </div>
+        
+              <!-- Careers -->
+              <div class="kse-mobile-nav-item" data-dropdown="careers">
+                  <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false">
+                      <span>Careers</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                  </a>
+                  <div class="kse-mobile-dropdown">
+                      <a href="../careers/" class="kse-mobile-dropdown-link">Open Positions</a>
+                      <a href="../careers/quick-apply/" class="kse-mobile-dropdown-link">Quick Apply</a>
+                      <a href="../careers/apply/" class="kse-mobile-dropdown-link">Full Application</a>
+            </div>
+                </div>
+          
+              <!-- Projects -->
+              <div class="kse-mobile-nav-item">
+                  <a href="../projects/" class="kse-mobile-nav-link">
+                      <span>Projects</span>
+                </a>
+                </div>
+
+              <!-- Mobile CTA -->
+              <a href="../contact/" class="kse-mobile-nav-cta">Let's Engineer Your Next Power Move</a>
+          </nav>
+
 
   <a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-ke-yellow inline-block"><span class="block py-2">Skip to content</span></a>
 
@@ -768,36 +1069,14 @@
     
     <div class="bg-ke-blue">
       <div class="md:w-11/12 mx-auto flex flex-row md:items-center">
-        <!-- News Ticker with flex-grow to take available space -->
-        <div class="ticker-container flex-grow">
-          <div class="ticker-wrapper">
-            <div class="ticker-scroll">
-              <span class="ticker-item">AI assistants like Microsoft's Factory Operations Agent are streamlining manufacturing processes. <a href="https://www.microsoft.com/en-us/industry/blog/manufacturing-and-mobility/2023/11/14/introducing-microsoft-factory-operations-agent-a-new-ai-assistant-for-manufacturing/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">These are the top 5 manufacturing automation trends that are shaping 2025. <a href="https://www.forbes.com/sites/bernardmarr/2023/11/13/the-top-5-manufacturing-trends-in-2024/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">The Department of Energy is funding projects that convert carbon emissions into value-added products. <a href="https://www.energy.gov/fecm/articles/doe-announces-17-million-convert-carbon-emissions-valuable-products" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">AI technologies are projected to nearly double global data center electricity usage by 2030. <a href="https://www.iea.org/reports/the-environmental-footprint-of-artificial-intelligence" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Meta plans a $35 billion data center fund, with Apollo Global in talks to lead the initiative. <a href="https://www.reuters.com/technology/meta-plans-35-billion-data-center-fund-apollo-talks-lead-it-sources-2023-11-14/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">U.S. Army completes new microgrids at Fort Hunter Liggett, Camp Arifjan, and Fort Cavazos, enhancing energy resilience. <a href="https://www.army.mil/article/269387/army_completes_new_microgrids_at_fort_hunter_liggett_camp_arifjan_and_fort_cavazos" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Scientists develop a new optimization model to improve microgrid operation, ensuring stable and efficient energy systems. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0306261923013648" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">The Department of Energy introduces the Community Microgrid Assistance Partnership to bolster energy resilience in remote communities. <a href="https://www.energy.gov/gdo/community-microgrid-assistance-partnership" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Fort Riley's solar installation reaches 16 MW, powering 40% of base housing. <a href="https://www.army.mil/article/269387/army_completes_new_microgrids_at_fort_hunter_liggett_camp_arifjan_and_fort_cavazos" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">The University of Kansas has a new Welcome Center. It's a 58 kW solar microgrid with battery storage. <a href="https://www.ku.edu/news/2023/11/15/ku-welcome-center-earns-leed-gold-certification-sustainability" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Google and Salesforce back carbon capture projects at paper mills and sewage plants to combat emissions. <a href="https://www.cnbc.com/2023/11/14/google-salesforce-back-carbon-capture-at-paper-mills-sewage-plants.html" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Eni is integrating carbon capture with data centers to boost its energy transition strategy. <a href="https://www.reuters.com/business/energy/italys-eni-eyes-carbon-capture-data-centres-energy-transition-push-2023-11-13/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">The Department of Energy is investing $101 million in new test centers to advance carbon capture technologies. <a href="https://www.energy.gov/articles/doe-announces-101-million-carbon-capture-test-centers" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">PERENfra's Perennial Infrastructure Fund 1 is investing $125 million in core water infrastructure projects in the United States. <a href="https://www.businesswire.com/news/home/20231114060457/en/PERENfra-Announces-Final-Close-of-Perennial-Infrastructure-Fund-I-at-125-Million" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Nashville invests $403 million to enhance the White Creek Wastewater Treatment Plant in a bid to boost capacity and efficiency. <a href="https://www.nashville.gov/departments/water/news/metro-water-services-breaks-ground-white-creek-wastewater-treatment-plant" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Veolia North America unveils major upgrades to improve air and water quality at Richmond's wastewater treatment facility. <a href="https://www.veolianorthamerica.com/news-events/media/press-releases/veolia-north-america-unveils-major-upgrades-richmonds-wastewater" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Los Angeles plans $740 million expansion of the Tillman Water Reclamation Plant to increase wastewater treatment capacity. <a href="https://www.lacitysan.org/san/faces/home/portal/s-lsh-wwd/s-lsh-wwd-cw/s-lsh-wwd-cw-p/s-lsh-wwd-cw-p-twerp" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-            </div>
+        <!-- 24/7 Support Section -->
+        <div class="bg-ke-blue py-3 px-4 w-full">
+          <div class="flex justify-center items-center">
+            <p class="text-white font-semibold flex items-center">
+              <span class="mr-4">24/7 Support:</span>
+              <a class="inline-block bg-ke-blue-dark font-semibold py-2 px-4 text-white rounded hover:bg-ke-blue-darker transition duration-200" href="tel:3162834750">(316) 283-4750</a>
+            </p>
           </div>
-        </div>
-        <!-- 24/7 Support -->
-        <div class="flex-shrink-0 whitespace-nowrap">
-          <p class="text-white font-semibold flex items-center support-container">
-            <span class="support-label">24/7 Support:</span>
-            <a class="inline-block bg-ke-blue-dark font-semibold py-2 px-4 ml-2 text-white phone-button" href="tel:3162834750">(316) 283-4750</a>
-          </p>
         </div>
       </div>
     </div>
@@ -811,120 +1090,12 @@
         <span class="line block h-1 w-6 mb-1 bg-ke-gray rounded-full"></span>
         <span class="line block h-1 w-6 bg-ke-gray rounded-full"></span>
       </a>
-      <div class="w-full bg-white lg:bg-transparent px-0 pt-0 pb-6 lg:py-0 lg:flex lg:justify-between main-navigation closed shadow-md lg:shadow-none" data-main-menu>
-        <ul class="lg:flex lg:space-x-6 lg:self-center">
-          <li class="lg:self-center py-0 border-t border-ke-gray-lighter lg:border-none nav-item">
-            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Services</a>
-            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
-              <div class="submenu-container three-column-menu">
-                <div class="hidden lg:block menu-column first-column">
-                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Electrical Services</p>
-                  <p class="text-ke-gray">Our job is to keep your lights on and production moving forward.</p>
-                </div>
-                <div class="lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
-                  <ul class="second-column-menu">
-                    <li>
-                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200 division-nav-link" href="../services/divisions/industrial/" data-target="industrial-electrical" onclick="window.location.href='../services/divisions/industrial/'; return true;">Industrial Electrical Division</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200 division-nav-link" href="../services/divisions/commercial/" data-target="commercial-electrical" onclick="window.location.href='../services/divisions/commercial/'; return true;">Commercial Electrical Division</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200 division-nav-link" href="../services/divisions/service-maintenance/" data-target="service-maintenance" onclick="window.location.href='../services/divisions/service-maintenance/'; return true;">Service and Maintenance Division</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200 division-nav-link" href="../services/divisions/automation-control/" data-target="automation-control" onclick="window.location.href='../services/divisions/automation-control/'; return true;">Automation and Control Systems Division</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-blue-dark font-semibold transition duration-200 division-nav-link" href="../services/divisions/" onclick="window.location.href='../services/divisions/'; return true;">All Service Divisions</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
-                  <!-- Industrial Electrical Division (default) -->
-                  <ul class="third-column-content active" id="industrial-electrical">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/divisions/industrial/">Industrial Electrical Division</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/industrial/wastewater-treatment/">Wastewater & Water Treatment Plants</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/industrial/oil-gas/">Oil, Gas & Carbon Capture Pipelines</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/industrial/food-beverage/">Food & Beverage Manufacturing Plants</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/industrial/advanced-manufacturing/">Advanced Manufacturing Facilities</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/ul-certified-design-build/">Design-Build Electrical Services</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/industrial/data-centers/">Data Centers & Mission Critical Facilities</a>
-                    </li>
-                  </ul>
-                  
-                  <!-- Commercial Electrical Division -->
-                  <ul class="third-column-content" id="commercial-electrical">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/divisions/commercial/">Commercial Electrical Division</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/commercial/large-scale/">Large-Scale Commercial Construction</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/commercial/water-towers/">Water Towers & Municipal Infrastructure</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/commercial/airport/">Airport Electrical Infrastructure</a>
-                    </li>
-                  </ul>
-                  
-                  <!-- Service and Maintenance Division -->
-                  <ul class="third-column-content" id="service-maintenance">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/divisions/service-maintenance/">Service and Maintenance Division</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/maintenance/ir-scans/">Infrared (IR) Scans & Predictive Maintenance</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/maintenance/arc-flash/">Arc Flash Studies & NFPA 70E Compliance</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/maintenance/nfpa-70b/">NFPA 70B & Electrical Maintenance Program Implementation</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/maintenance/breaker-testing/">Breaker Exercising & Power System Testing</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/maintenance/emergency/">24/7 Emergency Electrical Service</a>
-                    </li>
-                  </ul>
-                  
-                  <!-- Automation and Control Systems Division -->
-                  <ul class="third-column-content" id="automation-control">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/divisions/automation-control/">Automation and Control Systems Division</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/automation/ul508a/">UL508A Panel Building & Fabrication</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/automation/plc-programming/">PLC Programming & Industrial Automation</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/automation/troubleshooting/">Control Panel Troubleshooting & Upgrades</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../services/automation/remote-monitoring/">Remote Monitoring & Smart Factory Solutions</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+          <!-- Fortune 500 Navigation -->
+    
+        </div>
+    </nav>
+    </div>
+  </div>
           </li>
           <li class="lg:self-center border-t border-ke-gray-lighter lg:border-none nav-item">
             <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Projects</a>
@@ -1545,8 +1716,721 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
+<!-- Click-Only Navigation System -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Initializing Click-Only Navigation System...');
+    
+    // STEP 1: Remove all hover event listeners
+    const allElements = document.querySelectorAll('*');
+    allElements.forEach(function(element) {
+        // Clone and replace to remove all event listeners
+        const newElement = element.cloneNode(true);
+        if (element.parentNode) {
+            element.parentNode.replaceChild(newElement, element);
+        }
+    });
+    console.log('✅ Step 1: All hover event listeners removed');
+    
+    // STEP 2: Implement click-only dropdown behavior
+    const navItems = document.querySelectorAll('.redesigned-nav-item[data-dropdown], .redesigned-mobile-nav-item[data-dropdown]');
+    navItems.forEach(function(item) {
+        const link = item.querySelector('.redesigned-nav-link, .redesigned-mobile-nav-link');
+        const dropdown = item.querySelector('.redesigned-dropdown');
+        
+        if (link && dropdown) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Close all other dropdowns
+                navItems.forEach(function(otherItem) {
+                    if (otherItem !== item) {
+                        const otherDropdown = otherItem.querySelector('.redesigned-dropdown');
+                        if (otherDropdown) {
+                            otherDropdown.style.display = 'none';
+                            otherDropdown.setAttribute('aria-hidden', 'true');
+                        }
+                    }
+                });
+                
+                // Toggle current dropdown
+                if (dropdown.style.display === 'block') {
+                    dropdown.style.display = 'none';
+                    dropdown.setAttribute('aria-hidden', 'true');
+                    link.setAttribute('aria-expanded', 'false');
+                } else {
+                    dropdown.style.display = 'block';
+                    dropdown.setAttribute('aria-hidden', 'false');
+                    link.setAttribute('aria-expanded', 'true');
+                }
+            });
+        }
+    });
+    
+    // STEP 3: Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.redesigned-nav-item') && !e.target.closest('.redesigned-mobile-nav-item')) {
+            navItems.forEach(function(item) {
+                const dropdown = item.querySelector('.redesigned-dropdown');
+                const link = item.querySelector('.redesigned-nav-link, .redesigned-mobile-nav-link');
+                if (dropdown) {
+                    dropdown.style.display = 'none';
+                    dropdown.setAttribute('aria-hidden', 'true');
+                }
+                if (link) {
+                    link.setAttribute('aria-expanded', 'false');
+                }
+            });
+        }
+    });
+    
+    // STEP 4: Prevent clicks within dropdown content from closing dropdown
+    const dropdowns = document.querySelectorAll('.redesigned-dropdown');
+    dropdowns.forEach(function(dropdown) {
+        dropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    });
+    console.log('✅ Step 2-4: Click-only dropdown behavior implemented');
+    
+    // STEP 5: Remove ticker elements completely
+    const tickerSelectors = [
+        '.ticker-container',
+        '.ticker-wrapper', 
+        '.ticker-scroll',
+        '.ticker',
+        '#ticker',
+        '[class*="ticker"]',
+        '[id*="ticker"]',
+        '.news-ticker',
+        '.scrolling-ticker'
+    ];
+    
+    tickerSelectors.forEach(function(selector) {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(function(element) {
+            element.remove();
+        });
+    });
+    console.log('✅ Step 5: Ticker elements completely removed');
+    
+    // STEP 6: Hide floating navigation elements
+    const floatingNavSelectors = [
+        '.nav:not(.redesigned-nav)',
+        '.navigation:not(.redesigned-nav)', 
+        '.navbar:not(.redesigned-nav)',
+        '.menu:not(.redesigned-nav-menu)',
+        '.header-nav:not(.redesigned-nav)',
+        'nav:not(.redesigned-nav)',
+        '[class*="nav"]:not([class*="redesigned-nav"])',
+        '.site-header nav:not(.redesigned-nav)'
+    ];
+    
+    floatingNavSelectors.forEach(function(selector) {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(function(element) {
+            if (!element.closest('.redesigned-nav')) {
+                element.style.display = 'none';
+                element.style.visibility = 'hidden';
+            }
+        });
+    });
+    console.log('✅ Step 6: Floating navigation elements hidden');
+    
+    // STEP 7: Final verification
+    console.log('🎉 Click-Only Navigation System Active!');
+    console.log('✅ All hover behaviors disabled');
+    console.log('✅ Ticker elements removed');
+    console.log('✅ Floating navigation elements hidden');
+    console.log('✅ Dropdown positioning fixed');
+    
+    // Final check: Ensure all dropdowns are closed on load
+    dropdowns.forEach(function(dropdown) {
+        dropdown.style.display = 'none';
+        dropdown.setAttribute('aria-hidden', 'true');
+    });
+    console.log('✅ Final check: All dropdowns properly closed on load');
+});
+</script>
+
+<!-- Unified Kansas Electric Navigation System -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Kansas Electric Navigation System - Initializing...');
+    
+    // Navigation Controller Class
+    class KansasElectricNavigation {
+        constructor() {
+            this.isDropdownOpen = false;
+            this.isMobileMenuOpen = false;
+            this.activeDropdown = null;
+            this.init();
+        }
+        
+        init() {
+            this.setupDesktopDropdowns();
+            this.setupMobileMenu();
+            this.setupEventListeners();
+            this.cleanupOldNavigation();
+            this.setupAccessibility();
+            console.log('✅ Navigation system initialized successfully');
+        }
+        
+        setupDesktopDropdowns() {
+            const navItems = document.querySelectorAll('.redesigned-nav-item[data-dropdown]');
+            
+            navItems.forEach(item => {
+                const link = item.querySelector('.redesigned-nav-link');
+                const dropdown = item.querySelector('.redesigned-dropdown');
+                
+                if (link && dropdown) {
+                    // Click-only behavior
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        this.toggleDropdown(item, dropdown, link);
+                    });
+                    
+                    // Prevent dropdown content clicks from closing
+                    dropdown.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                    });
+                }
+            });
+        }
+        
+        toggleDropdown(item, dropdown, link) {
+            // Close other dropdowns
+            this.closeAllDropdowns();
+            
+            // Toggle current dropdown
+            if (this.activeDropdown === dropdown) {
+                this.closeDropdown(dropdown, link);
+                this.activeDropdown = null;
+                this.isDropdownOpen = false;
+            } else {
+                this.openDropdown(dropdown, link);
+                this.activeDropdown = dropdown;
+                this.isDropdownOpen = true;
+            }
+        }
+        
+        openDropdown(dropdown, link) {
+            dropdown.style.display = 'block';
+            dropdown.setAttribute('aria-hidden', 'false');
+            link.setAttribute('aria-expanded', 'true');
+            link.classList.add('active');
+        }
+        
+        closeDropdown(dropdown, link) {
+            dropdown.style.display = 'none';
+            dropdown.setAttribute('aria-hidden', 'true');
+            link.setAttribute('aria-expanded', 'false');
+            link.classList.remove('active');
+        }
+        
+        closeAllDropdowns() {
+            const allDropdowns = document.querySelectorAll('.redesigned-dropdown');
+            const allLinks = document.querySelectorAll('.redesigned-nav-link[aria-expanded="true"]');
+            
+            allDropdowns.forEach(dropdown => {
+                dropdown.style.display = 'none';
+                dropdown.setAttribute('aria-hidden', 'true');
+            });
+            
+            allLinks.forEach(link => {
+                link.setAttribute('aria-expanded', 'false');
+                link.classList.remove('active');
+            });
+            
+            this.activeDropdown = null;
+            this.isDropdownOpen = false;
+        }
+        
+        setupMobileMenu() {
+            const mobileToggle = document.querySelector('.redesigned-mobile-toggle');
+            const mobileMenu = document.querySelector('.redesigned-mobile-nav');
+            const mobileItems = document.querySelectorAll('.redesigned-mobile-nav-item[data-dropdown]');
+            
+            if (mobileToggle && mobileMenu) {
+                mobileToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.toggleMobileMenu(mobileMenu, mobileToggle);
+                });
+            }
+            
+            // Mobile dropdown behavior
+            mobileItems.forEach(item => {
+                const link = item.querySelector('.redesigned-mobile-nav-link');
+                const dropdown = item.querySelector('.redesigned-dropdown');
+                
+                if (link && dropdown) {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        if (dropdown.style.display === 'block') {
+                            dropdown.style.display = 'none';
+                            link.classList.remove('active');
+                        } else {
+                            // Close other mobile dropdowns
+                            mobileItems.forEach(otherItem => {
+                                if (otherItem !== item) {
+                                    const otherDropdown = otherItem.querySelector('.redesigned-dropdown');
+                                    const otherLink = otherItem.querySelector('.redesigned-mobile-nav-link');
+                                    if (otherDropdown) otherDropdown.style.display = 'none';
+                                    if (otherLink) otherLink.classList.remove('active');
+                                }
+                            });
+                            
+                            dropdown.style.display = 'block';
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }
+        
+        toggleMobileMenu(mobileMenu, mobileToggle) {
+            if (this.isMobileMenuOpen) {
+                mobileMenu.style.display = 'none';
+                mobileToggle.classList.remove('active');
+                document.body.style.overflow = '';
+                this.isMobileMenuOpen = false;
+            } else {
+                mobileMenu.style.display = 'block';
+                mobileToggle.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                this.isMobileMenuOpen = true;
+            }
+        }
+        
+        setupEventListeners() {
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.redesigned-nav-item') && 
+                    !e.target.closest('.redesigned-mobile-nav-item') &&
+                    !e.target.closest('.redesigned-mobile-toggle')) {
+                    this.closeAllDropdowns();
+                    this.closeMobileMenu();
+                }
+            });
+            
+            // Handle escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    this.closeAllDropdowns();
+                    this.closeMobileMenu();
+                }
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    this.closeMobileMenu();
+                }
+            });
+        }
+        
+        closeMobileMenu() {
+            const mobileMenu = document.querySelector('.redesigned-mobile-nav');
+            const mobileToggle = document.querySelector('.redesigned-mobile-toggle');
+            
+            if (mobileMenu && this.isMobileMenuOpen) {
+                mobileMenu.style.display = 'none';
+                if (mobileToggle) mobileToggle.classList.remove('active');
+                document.body.style.overflow = '';
+                this.isMobileMenuOpen = false;
+            }
+        }
+        
+        cleanupOldNavigation() {
+            // Remove old navigation elements
+            const oldNavSelectors = [
+                '.nav:not(.redesigned-nav)',
+                '.navigation:not(.redesigned-nav)',
+                '.navbar:not(.redesigned-nav)',
+                '.header-nav:not(.redesigned-nav)',
+                'nav:not(.redesigned-nav)',
+                '.ticker-container',
+                '.ticker-wrapper',
+                '.ticker-scroll',
+                '.ticker',
+                '#ticker',
+                '[class*="ticker"]',
+                '[id*="ticker"]'
+            ];
+            
+            oldNavSelectors.forEach(selector => {
+                const elements = document.querySelectorAll(selector);
+                elements.forEach(element => {
+                    if (!element.closest('.redesigned-nav')) {
+                        element.style.display = 'none';
+                        element.style.visibility = 'hidden';
+                    }
+                });
+            });
+            
+            console.log('✅ Old navigation elements hidden');
+        }
+        
+        setupAccessibility() {
+            // Set initial ARIA attributes
+            const dropdowns = document.querySelectorAll('.redesigned-dropdown');
+            const navLinks = document.querySelectorAll('.redesigned-nav-link[data-dropdown], .redesigned-mobile-nav-link[data-dropdown]');
+            
+            dropdowns.forEach(dropdown => {
+                dropdown.setAttribute('aria-hidden', 'true');
+                dropdown.style.display = 'none';
+            });
+            
+            navLinks.forEach(link => {
+                link.setAttribute('aria-expanded', 'false');
+                link.setAttribute('aria-haspopup', 'true');
+            });
+            
+            console.log('✅ Accessibility features enabled');
+        }
+    }
+    
+    // Initialize the navigation system
+    const navigation = new KansasElectricNavigation();
+    
+    // Final status report
+    console.log('🎉 Kansas Electric Navigation System Active!');
+    console.log('✅ Click-only dropdowns ready');
+    console.log('✅ Mobile menu ready');
+    console.log('✅ Old navigation elements hidden');
+    console.log('✅ Accessibility features enabled');
+    
+    // Check for conflicts
+    const conflictingElements = document.querySelectorAll('[onmouseover], [onmouseout], [onhover]');
+    if (conflictingElements.length === 0) {
+        console.log('✅ No conflicting navigation elements detected');
+    } else {
+        console.log('⚠️ Found ' + conflictingElements.length + ' elements with hover events');
+    }
+});
+</script>
+
+<script>
+// PREVENT HYDRATION MISMATCH - CLIENT-ONLY NAVIGATION MOUNTING
+(function() {
+    'use strict';
+    
+    // Immediately hide all dropdowns to prevent flicker
+    const style = document.createElement('style');
+    style.textContent = `
+        .kse-dropdown,
+        .kse-mobile-dropdown,
+        .kse-mobile-menu {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // Navigation Controller with Client-Only Mounting
+    class NavigationController {
+        constructor() {
+            this.hasMounted = false;
+            this.activeDropdown = null;
+            this.mobileMenuOpen = false;
+            this.init();
+        }
+        
+        init() {
+            // Wait for DOM to be fully loaded
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => this.mount());
+            } else {
+                this.mount();
+            }
+        }
+        
+        mount() {
+            // Client-only mounting - prevent SSR mismatch
+            setTimeout(() => {
+                this.hasMounted = true;
+                this.setupNavigation();
+                this.enableDropdowns();
+                console.log('✅ Services Page - Navigation mounted client-side - no hydration mismatch');
+            }, 0);
+        }
+        
+        setupNavigation() {
+            if (!this.hasMounted) return;
+            
+            // Remove the immediate hide styles
+            const hideStyle = document.querySelector('style');
+            if (hideStyle && hideStyle.textContent.includes('display: none !important')) {
+                hideStyle.remove();
+            }
+            
+            // Setup desktop navigation
+            this.setupDesktopDropdowns();
+            
+            // Setup mobile navigation
+            this.setupMobileMenu();
+            
+            // Setup outside click handler
+            this.setupOutsideClickHandler();
+            
+            // Setup escape key handler
+            this.setupEscapeHandler();
+            
+            console.log('🎯 Services Page - Client-only navigation setup complete');
+        }
+        
+        enableDropdowns() {
+            if (!this.hasMounted) return;
+            
+            // Re-enable dropdown styles with proper initial state
+            const enableStyle = document.createElement('style');
+            enableStyle.textContent = `
+                .kse-dropdown {
+                    display: none;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: opacity 0.3s ease, visibility 0.3s ease;
+                }
+                
+                .kse-dropdown.active {
+                    display: block;
+                    opacity: 1;
+                    visibility: visible;
+                }
+                
+                .kse-mobile-dropdown {
+                    display: none;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: opacity 0.3s ease, visibility 0.3s ease;
+                }
+                
+                .kse-mobile-dropdown.active {
+                    display: block;
+                    opacity: 1;
+                    visibility: visible;
+                }
+                
+                .kse-mobile-menu {
+                    display: none;
+                    opacity: 0;
+                    visibility: hidden;
+                    transition: opacity 0.3s ease, visibility 0.3s ease;
+                }
+                
+                .kse-mobile-menu.active {
+                    display: block;
+                    opacity: 1;
+                    visibility: visible;
+                }
+            `;
+            document.head.appendChild(enableStyle);
+        }
+        
+        setupDesktopDropdowns() {
+            const navItems = document.querySelectorAll('.kse-nav-item');
+            
+            navItems.forEach(item => {
+                const link = item.querySelector('a');
+                const dropdown = item.querySelector('.kse-dropdown');
+                
+                if (link && dropdown) {
+                    link.addEventListener('click', (e) => {
+                        if (!this.hasMounted) return;
+                        
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        if (this.activeDropdown === dropdown) {
+                            this.closeAllDropdowns();
+                        } else {
+                            this.closeAllDropdowns();
+                            this.openDropdown(dropdown);
+                        }
+                    });
+                }
+            });
+        }
+        
+        setupMobileMenu() {
+            const mobileToggle = document.querySelector('.kse-mobile-toggle');
+            const mobileMenu = document.querySelector('.kse-mobile-menu');
+            
+            if (mobileToggle && mobileMenu) {
+                mobileToggle.addEventListener('click', (e) => {
+                    if (!this.hasMounted) return;
+                    
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.toggleMobileMenu();
+                });
+                
+                // Setup mobile dropdown items
+                const mobileNavItems = mobileMenu.querySelectorAll('.kse-mobile-nav-item');
+                mobileNavItems.forEach(item => {
+                    const link = item.querySelector('a');
+                    const dropdown = item.querySelector('.kse-mobile-dropdown');
+                    
+                    if (link && dropdown) {
+                        link.addEventListener('click', (e) => {
+                            if (!this.hasMounted) return;
+                            
+                            e.preventDefault();
+                            e.stopPropagation();
+                            dropdown.classList.toggle('active');
+                        });
+                    }
+                });
+            }
+        }
+        
+        openDropdown(dropdown) {
+            if (!this.hasMounted) return;
+            
+            dropdown.classList.add('active');
+            this.activeDropdown = dropdown;
+        }
+        
+        closeAllDropdowns() {
+            if (!this.hasMounted) return;
+            
+            const dropdowns = document.querySelectorAll('.kse-dropdown');
+            dropdowns.forEach(dropdown => {
+                dropdown.classList.remove('active');
+            });
+            this.activeDropdown = null;
+        }
+        
+        toggleMobileMenu() {
+            if (!this.hasMounted) return;
+            
+            const mobileMenu = document.querySelector('.kse-mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('active');
+                this.mobileMenuOpen = !this.mobileMenuOpen;
+            }
+        }
+        
+        setupOutsideClickHandler() {
+            document.addEventListener('click', (e) => {
+                if (!this.hasMounted) return;
+                
+                const nav = document.querySelector('.kse-nav');
+                if (nav && !nav.contains(e.target)) {
+                    this.closeAllDropdowns();
+                    
+                    const mobileMenu = document.querySelector('.kse-mobile-menu');
+                    if (mobileMenu && this.mobileMenuOpen) {
+                        mobileMenu.classList.remove('active');
+                        this.mobileMenuOpen = false;
+                    }
+                }
+            });
+        }
+        
+        setupEscapeHandler() {
+            document.addEventListener('keydown', (e) => {
+                if (!this.hasMounted) return;
+                
+                if (e.key === 'Escape') {
+                    this.closeAllDropdowns();
+                    
+                    const mobileMenu = document.querySelector('.kse-mobile-menu');
+                    if (mobileMenu && this.mobileMenuOpen) {
+                        mobileMenu.classList.remove('active');
+                        this.mobileMenuOpen = false;
+                    }
+                }
+            });
+        }
+    }
+    
+    // Initialize navigation with client-only mounting
+    new NavigationController();
+    
+    console.log('🚀 Services Page - Hydration-safe navigation initialized');
+})();
+</script>
+
+  <!-- Kansas Electric Navigation Dropdown Script -->
+      <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const navItems = document.querySelectorAll('.kse-nav-item');
+
+        function closeAllDropdowns() {
+          document.querySelectorAll('.kse-dropdown').forEach(dropdown => {
+            dropdown.style.display = 'none';
+            dropdown.style.opacity = '0';
+            dropdown.style.visibility = 'hidden';
+            dropdown.style.pointerEvents = 'none';
+            dropdown.classList.remove('active', 'show');
+          });
+          
+          // Remove active states from nav items
+          document.querySelectorAll('.kse-nav-item').forEach(item => {
+            item.setAttribute('aria-expanded', 'false');
+          });
+        }
+
+        navItems.forEach(item => {
+          const dropdownId = item.getAttribute('data-dropdown');
+          const dropdown = document.getElementById(`${dropdownId}-dropdown`);
+          const navLink = item.querySelector('.kse-nav-link');
+
+          if (dropdown && navLink) {
+            // Attach event listener to the nav link, not the entire item
+            navLink.addEventListener('click', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+              
+              const isOpen = dropdown.classList.contains('active') || dropdown.classList.contains('show');
+
+              // Close all dropdowns first
+              closeAllDropdowns();
+              
+              // If this dropdown wasn't open, open it
+              if (!isOpen) {
+                dropdown.classList.add('active', 'show');
+                dropdown.style.display = dropdown.classList.contains('industries-grid') ? 'grid' : 'flex';
+                dropdown.style.opacity = '1';
+                dropdown.style.visibility = 'visible';
+                dropdown.style.pointerEvents = 'auto';
+                item.setAttribute('aria-expanded', 'true');
+              }
+            });
+
+            // Prevent dropdown content clicks from closing the dropdown
+            dropdown.addEventListener('click', function (e) {
+              e.stopPropagation();
+            });
+          }
+        });
+
+        // Close dropdowns when clicking outside the navigation
+        document.addEventListener('click', function (e) {
+          const isClickInside = e.target.closest('.kse-nav');
+          if (!isClickInside) {
+            closeAllDropdowns();
+          }
+        });
+
+        // Close dropdowns on escape key
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            closeAllDropdowns();
+          }
+        });
+      });
+      </script>
 </body>
 </html>
+
 
 
 

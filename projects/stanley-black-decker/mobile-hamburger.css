@@ -125,19 +125,6 @@
     width: 100% !important;
   }
   
-  /* Add dropdown indicator */
-  .main-navigation .nav-item > a::after {
-    content: '↓' !important;
-    display: inline-block !important;
-    margin-left: 0.5rem !important;
-    transition: transform 0.3s ease !important;
-  }
-  
-  /* Rotate arrow when submenu is open */
-  .main-navigation .nav-item.open > a::after {
-    transform: rotate(180deg) !important;
-  }
-  
   /* Mobile submenu styling */
   .main-navigation .submenu {
     position: relative !important;

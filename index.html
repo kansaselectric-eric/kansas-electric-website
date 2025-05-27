@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>Home - Kansas Electric</title>
+  <title>Kansas Electric - Fortune 500 Navigation</title>
 
   <meta name="description" content="From lighting to equipment automation, grain terminals to hospitals, Kansas Electric is a full-service electrical design and construction company that builds the systems that power our lives.">
 
@@ -28,764 +28,603 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
   <link rel="manifest" href="./site.webmanifest">
-  <link rel="stylesheet" href="projects/stanley-black-decker/mobile-responsive.css">
-  <link rel="stylesheet" href="projects/stanley-black-decker/mobile-hamburger.css">
-  <link rel="stylesheet" href="projects/stanley-black-decker/css-conflict-fix.css">
-  <link rel="stylesheet" href="projects/stanley-black-decker/mobile-nav-overhaul.css">
-  <link rel="stylesheet" href="projects/stanley-black-decker/ticker-styles.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="./assets/js/navigation-fixed.js" defer></script>
-  <script src="./assets/js/homepage-carousel.js" defer></script>
-  <script src="./assets/js/video-init.js" defer></script>
-  <script src="./projects/stanley-black-decker/ticker.js" defer></script>
 
   <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('Xbp1oaEWxyL7EdVj'); </script>
 
-  <!-- Critical CSS that must load after main.css -->
+  <link rel="stylesheet" href="assets/css/fancybox.css" />
+  
+  <!-- ANTI-FLICKER DEFENSIVE STYLES - PREVENT DROPDOWN FLASH -->
   <style>
-    /* Video carousel styles - consolidated and simplified */
-    /* Override fade-in class to ensure elements are visible */
-    .fade-in {
-      opacity: 1 !important;
-    }
-    
-    section[data-home-slider] {
-      opacity: 1 !important; /* Ensure the section is always visible */
-    } 
-
-    /* CRITICAL FIX: Force site header above all content */
-    .site-header {
-      position: relative;
-      z-index: 9999 !important; /* Extremely high z-index */
-    }
-
-    /* Ensure main content stays below navigation */
-    main#content {
-      position: relative;
-      z-index: 1 !important; /* Keep main content below header */
-    }
-    
-    /* Force hero section to stay below nav */
-    .hero-content, 
-    section[data-home-slider],
-    #hero-section,
-    #video-carousel {
-      position: relative !important;
-      z-index: 2 !important;
-    }
-
-    /* 
-    * Section spacing utility class
-    * Used to create consistent vertical spacing between major content sections
-    * Applied to the outermost wrapper of each content section
-    * 4rem (64px) padding on desktop, 2rem (32px) on mobile
-    * Does not affect internal spacing within sections
-    */
-    .section-spacing {
-      padding-top: 4rem;
-      padding-bottom: 4rem;
-    }
-
-    @media (max-width: 768px) {
-      .section-spacing {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-      }
-    }
-
-    #video-carousel {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: 5;
-      background-color: #000;
-      opacity: 1 !important; /* Ensure the carousel is always visible */
-    }
-
-    #video-carousel video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+  /* IMMEDIATE DROPDOWN HIDING - PREVENTS FLASH ON PAGE LOAD */
+  .kse-dropdown,
+  .kse-mobile-dropdown,
+  .kse-mobile-menu {
+      display: none;
       opacity: 0;
-      transition: opacity 0.5s ease-in-out;
       visibility: hidden;
-    }
+      pointer-events: none;
+  }
+  
+  /* REMOVE ANY HOVER EFFECTS THAT MIGHT SHOW DROPDOWNS */
+  .kse-nav-item:hover .kse-dropdown {
+      display: none !important;
+  }
+  
+  /* ENSURE NAVIGATION LAYOUT IS STABLE */
+  .kse-nav {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      z-index: 1000 !important;
+      background: white !important;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+      height: 80px !important;
+  }
 
-    #video-carousel video.active {
-      opacity: 1 !important;
-      visibility: visible !important;
-      z-index: 2;
-      display: block !important;
-    }
-    
-    /* Logo overlay fix */
-    .video-logo-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+  .kse-nav-container {
       display: flex;
       align-items: center;
-      justify-content: center;
-      z-index: 20 !important;
-      opacity: 1 !important;
-      visibility: visible !important;
-      pointer-events: none;
-    }
-    
-    .video-logo-overlay .logo-container {
+      justify-content: space-between;
+      padding: 0;
+      height: 80px;
       position: relative;
-      width: 50%;
-      max-width: 28rem;
-    }
-    
-    .video-logo-overlay .logo-bg {
-      display: none; /* Hide the gradient background */
-    }
-    
-    .video-logo-overlay img {
-      position: relative;
+      z-index: 1000;
       width: 100%;
-      padding: 1.5rem;
-      filter: drop-shadow(0 0 15px rgba(0,0,0,0.8)) drop-shadow(0 0 30px rgba(0,0,0,0.6)) drop-shadow(0 0 45px rgba(0,0,0,0.5));
-    }
-    
-    /* Navigation styles */
-    .nav-item {
-      position: relative;
-    }
-    
-    /* Ensure the logo is positioned at the far left */
-    .site-header .md\:w-11\/12 {
-      width: 100% !important;
-      max-width: 100% !important;
-      padding-left: 0 !important; /* Remove left padding to position logo at the very left */
-      padding-right: 20px;
-    }
-    
-    /* Ensure the logo container has proper padding */
-    .site-header .md\:w-11\/12 > a:first-child {
-      padding-left: 0 !important; /* Remove padding to position logo at the very left edge */
-    }
-    
-    @media (min-width: 768px) {
-      .site-header .md\:w-11\/12 > a:first-child {
-        padding-left: 0 !important; /* Remove padding to position logo at the very left edge */
-      }
-    }
+      max-width: none;
+      margin: 0;
+  }
 
-    /* Make sure site-header is above hero section */
-    .site-header {
-      position: relative;
-      z-index: 9999 !important; /* Extremely high z-index */
-    }
+  .kse-nav-logo { 
+      margin-right: auto;
+      flex-shrink: 0;
+      padding-left: 2rem;
+  }
 
-    .submenu {
-      display: none;
+  .kse-nav-logo img {
+      height: 40px;
+      width: auto;
+  }
+
+  .kse-nav-menu { 
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      flex: 1;
+      justify-content: center;
+    }
+    
+  .kse-nav-item {
+      position: relative;
+      display: block;
+      cursor: pointer;
+      pointer-events: auto;
+  }
+
+  .kse-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 1rem 1.25rem;
+      color: #374151;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      pointer-events: auto;
+      z-index: 1001;
+      position: relative;
+  }
+
+  .kse-nav-link:hover {
+      color: #1f2937;
+  }
+
+  .kse-nav-caret {
+      width: 1rem;
+      height: 1rem;
+      transition: transform 0.2s;
+      pointer-events: none;
+  }
+
+  .kse-nav-item[aria-expanded="true"] .kse-nav-caret {
+      transform: rotate(180deg);
+  }
+
+  .kse-nav-cta { 
+      margin-left: auto;
+      background: #0056D2;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.375rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.2s ease-in-out;
+      flex-shrink: 0;
+      padding-right: 2rem;
+      margin-right: 2rem;
+  }
+
+  .kse-nav-cta:hover {
+      background: #0047b3;
+      box-shadow: 0 4px 12px rgba(0, 86, 210, 0.3);
+  }
+
+  .kse-dropdown {
       position: absolute;
       top: 100%;
       left: 0;
-      width: 100vw !important; /* Ensure full viewport width */
-      margin-left: 0 !important; /* Remove margin */
-      margin-right: 0 !important; /* Remove margin */
-      transform: none !important; /* Remove transform */
-      background-color: white;
-      z-index: 9998 !important; /* Just below header but above everything else */
+      background: white;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      z-index: 50;
+      display: none;
       opacity: 0;
-    }
+      visibility: hidden;
+      pointer-events: none;
+      transition: all 0.2s ease-in-out;
+      min-width: 280px;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+  }
 
-    /* NAVIGATION SUBMENU COMPREHENSIVE FIX */
-    @media (min-width: 1024px) {
-      /* Create a root variable for header height */
-      :root {
-        --header-height: 80px;
-      }
+  /* Hover behavior for dropdowns */
+  .kse-nav-item:hover .kse-dropdown {
+      display: flex;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+  }
 
-      /* Critical styles for navigation menus */
-      .site-header {
-        isolation: isolate; /* Create a new stacking context */
-        position: relative !important;
-        z-index: 9999 !important;
-      }
+  /* Active state for dropdowns */
+  .kse-dropdown.active,
+  .kse-dropdown.show {
+      display: flex !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+  }
 
-      .nav-item {
-        position: static !important; /* Allow absolute positioning from site-header */
-      }
+  .kse-dropdown.industries-grid {
+      display: none;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+      min-width: 560px;
+  }
 
-      .submenu {
-        position: absolute !important;
-        top: 100% !important;
-        left: 0 !important;
-        right: 0 !important;
-        width: 100vw !important;
-        margin: 0 !important;
-        transform: none !important;
-        pointer-events: none !important; /* Prevent interfering with other elements */
-        transition: opacity 0.3s, visibility 0.3s !important;
-        z-index: 9998 !important;
+  /* Hover behavior for industries grid */
+  .kse-nav-item:hover .kse-dropdown.industries-grid {
+      display: grid;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+  }
+
+  .kse-dropdown.industries-grid.active,
+  .kse-dropdown.industries-grid.show {
+      display: grid !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+  }
+
+  /* ESSENTIAL NAVIGATION STYLES */
+  body {
+      padding-top: 80px !important;
+  }
+
+  nav:not(.kse-nav),
+  .ticker-container,
+  .ticker-wrapper,
+  .ticker,
+  [class*="ticker"] {
         display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-      }
+  }
 
-      /* Fix submenu hover behavior */
-      .nav-item:hover .submenu,
-      .nav-item:focus-within .submenu,
-      .nav-item.hover .submenu {
-        display: flex !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        pointer-events: auto !important;
-      }
+  .kse-dropdown-link {
+      display: block;
+      padding: 0.75rem;
+      color: #374151;
+      text-decoration: none;
+      border-radius: 0.375rem;
+      transition: background-color 0.2s;
+  }
 
-      /* Force highest z-indices to prevent other elements from covering */
-      .site-header { z-index: 9999 !important; }
-      .submenu { z-index: 9998 !important; }
-      main#content { z-index: 1 !important; }
-      
-      /* Ensure all elements inside submenu have high z-index */
-      .submenu * {
-        z-index: 9998 !important;
-      }
+  .kse-dropdown-link:hover {
+      background-color: #f3f4f6;
+      color: #1f2937;
+  }
 
-      /* Override any inline styles set by JavaScript */
-      .submenu[style] {
-        display: none !important;
-        opacity: 0 !important;
-        visibility: hidden !important;
-      }
+  .kse-dropdown-link span {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+  }
 
-      .nav-item:hover .submenu[style],
-      .nav-item:focus-within .submenu[style],
-      .nav-item.hover .submenu[style] {
-        display: flex !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-      }
-    }
+  .kse-dropdown-link small {
+      display: block;
+      color: #6b7280;
+      font-size: 0.875rem;
+  }
 
-    /* NAV SUBMENU VISUAL POLISH - START */
-    /* This section ensures consistent visual styling of submenus across all pages */
-    @media (min-width: 1024px) {
-      /* Submenu container styling */
-      .submenu {
-        background-color: #f8f9fa !important; /* Consistent submenu background */
-        border-bottom: 2px solid #1a56db !important; /* Consistent blue border */
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important; /* Add subtle shadow */
-      }
-      
-      /* Force horizontal menu display */
-      .submenu-container,
-      .three-column-menu {
-        display: flex !important;
-        width: 100% !important;
-        max-width: 1280px !important;
-        margin: 0 auto !important;
-        padding: 0 1rem !important;
-      }
-      
-      /* Column styling */
-      .menu-column {
-        padding: 1rem !important;
-      }
-      
-      /* First column styling */
-      .first-column {
-        padding-right: 2rem !important;
-      }
-      
-      /* Border and spacing for column dividers */
-      .lg\:border-l {
-        border-left: 1px solid rgba(203, 213, 224, 0.5) !important;
-        padding-left: 2rem !important;
-      }
-      
-      /* Link styling for consistent appearance */
-      .second-column-item,
-      .third-column-content a {
-        color: #4a5568 !important;
-        transition: color 0.2s ease-in-out !important;
-        font-size: 0.875rem !important;
-        line-height: 1.25rem !important;
+  /* MOBILE STYLES */
+  .kse-mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 0.25rem;
+      background: none;
+      border: none;
+      padding: 0.5rem;
+      cursor: pointer;
+      order: 4 !important;
+      flex-shrink: 0 !important;
+  }
+
+  .kse-hamburger-line {
+      width: 1.5rem;
+      height: 2px;
+      background: #374151;
+      transition: all 0.3s;
+  }
+
+  .kse-mobile-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      display: none;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .kse-mobile-overlay.active {
+      display: block;
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+  }
+
+  .kse-mobile-menu {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: white;
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 1rem;
+      display: none;
+  }
+
+  .kse-mobile-menu.active,
+  .kse-mobile-menu.show {
+      display: block !important;
+  }
+
+  .kse-mobile-nav-item {
+      border-bottom: 1px solid #e5e7eb;
+  }
+
+  .kse-mobile-nav-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      color: #374151;
+      text-decoration: none;
+      font-weight: 500;
+  }
+
+  .kse-mobile-dropdown {
+      padding-left: 1rem;
+      border-top: 1px solid #f3f4f6;
+      display: none;
+  }
+
+  .kse-mobile-dropdown.active,
+  .kse-mobile-dropdown.show {
         display: block !important;
-        padding: 0.25rem 0 !important;
+  }
+
+  .kse-mobile-dropdown-link {
+      display: block;
+      padding: 0.75rem 0;
+      color: #6b7280;
+      text-decoration: none;
+      border-bottom: 1px solid #f9fafb;
+  }
+
+  .kse-mobile-nav-cta {
+      display: block;
+      background: #0056D2;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      border-radius: 0.375rem;
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 1rem;
+      transition: all 0.2s ease-in-out;
+  }
+
+  .kse-mobile-nav-cta:hover {
+      background: #0047b3;
+      box-shadow: 0 4px 12px rgba(0, 86, 210, 0.3);
+  }
+
+  @media (max-width: 768px) {
+      .kse-nav-menu,
+      .kse-nav-cta {
+          display: none !important;
       }
-      
-      /* Link hover effects */
-      .second-column-item:hover,
-      .third-column-content a:hover {
-        color: #1a56db !important;
-      }
-      
-      /* Active link styling */
-      .second-column-item.active,
-      .third-column-content a.active {
-        color: #1a56db !important;
-        font-weight: 600 !important;
-      }
-      
-      /* Headings inside menu */
-      .submenu p.font-semibold {
-        color: #1a56db !important;
-        font-size: 1.25rem !important;
-        margin-bottom: 1rem !important;
-      }
-      
-      /* Ensure submenu properly expands on hover */
-      .nav-item:hover .submenu {
+
+      .kse-mobile-toggle {
         display: flex !important;
+      }
+  }
+  </style>
+  
+  <noscript>
+    <style>
+    .dropdown-content,
+    .redesigned-dropdown,
+    .kse-dropdown,
+    .mobile-dropdown,
+    .kse-mobile-dropdown,
+    .redesigned-mobile-dropdown {
+        display: block !important;
+        position: static !important;
         opacity: 1 !important;
         visibility: visible !important;
-        height: auto !important;
-        min-height: 300px !important; /* Ensure minimum height for consistent appearance */
       }
-    }
-    /* NAV SUBMENU VISUAL POLISH - END */
   </style>
+  </noscript>
 
-  <!-- Special video force-play script to ensure videos work -->
-  <script src="./assets/js/video-force-play.js" defer></script>
-  
+  <!-- CLEAN NAVIGATION SYSTEM - NO CONFLICTS -->
+  <!-- AntiFlickerNavigationController disabled to prevent conflicts with new dropdown system -->
 </head>
 <body class="font-poppins flex flex-col min-h-screen relative">
 
-  <a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-ke-yellow inline-block"><span class="block py-2">Skip to content</span></a>
+  <!-- UNIFIED KANSAS ELECTRIC NAVIGATION -->
+  <nav class="kse-nav" role="navigation" aria-label="Main navigation">
+      <div class="kse-nav-container">
+          <!-- Logo (Left Aligned) -->
+          <a href="./" class="kse-nav-logo">
+              <img src="./assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric" width="178" height="40">
+          </a>
 
-  <nav class="site-header relative z-10">
-    <!-- <a class="py-2 text-ke-gray-dark block bg-ke-yellow hover:bg-ke-yellow-dark transition duration-200 text-center text-lg font-semibold uppercase" href="./job-openings/">Now Hiring! <span class="block text-base normal-case font-normal">Click to fill out an application</span></a> -->
-    <!-- <a class="py-2 text-ke-gray-dark block bg-ke-yellow hover:bg-ke-yellow-dark transition duration-200 text-center text-lg font-semibold uppercase" href="https://www.indeed.com/cmp/Kansas-Electric/jobs">Now hiring experienced apprentices and electricians! <span class="block text-base normal-case font-normal">Click to fill out an application</span></a> -->
-    
-    <div class="bg-ke-blue">
-      <div class="md:w-11/12 mx-auto flex flex-row md:items-center">
-        <!-- News Ticker with flex-grow to take available space -->
-        <div class="ticker-container flex-grow">
-          <div class="ticker-wrapper">
-            <div class="ticker-scroll">
-              <span class="ticker-item">AI assistants like Microsoft's Factory Operations Agent are streamlining manufacturing processes. <a href="https://www.microsoft.com/en-us/industry/blog/manufacturing-and-mobility/2023/11/14/introducing-microsoft-factory-operations-agent-a-new-ai-assistant-for-manufacturing/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">These are the top 5 manufacturing automation trends that are shaping 2025. <a href="https://www.forbes.com/sites/bernardmarr/2023/11/13/the-top-5-manufacturing-trends-in-2024/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">The Department of Energy is funding projects that convert carbon emissions into value-added products. <a href="https://www.energy.gov/fecm/articles/doe-announces-17-million-convert-carbon-emissions-valuable-products" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">AI technologies are projected to nearly double global data center electricity usage by 2030. <a href="https://www.iea.org/reports/the-environmental-footprint-of-artificial-intelligence" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Meta plans a $35 billion data center fund, with Apollo Global in talks to lead the initiative. <a href="https://www.reuters.com/technology/meta-plans-35-billion-data-center-fund-apollo-talks-lead-it-sources-2023-11-14/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">U.S. Army completes new microgrids at Fort Hunter Liggett, Camp Arifjan, and Fort Cavazos, enhancing energy resilience. <a href="https://www.army.mil/article/269387/army_completes_new_microgrids_at_fort_hunter_liggett_camp_arifjan_and_fort_cavazos" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Scientists develop a new optimization model to improve microgrid operation, ensuring stable and efficient energy systems. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0306261923013648" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">The Department of Energy introduces the Community Microgrid Assistance Partnership to bolster energy resilience in remote communities. <a href="https://www.energy.gov/gdo/community-microgrid-assistance-partnership" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Fort Riley's solar installation reaches 16 MW, powering 40% of base housing. <a href="https://www.army.mil/article/269387/army_completes_new_microgrids_at_fort_hunter_liggett_camp_arifjan_and_fort_cavazos" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">The University of Kansas has a new Welcome Center. It's a 58 kW solar microgrid with battery storage. <a href="https://www.ku.edu/news/2023/11/15/ku-welcome-center-earns-leed-gold-certification-sustainability" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Google and Salesforce back carbon capture projects at paper mills and sewage plants to combat emissions. <a href="https://www.cnbc.com/2023/11/14/google-salesforce-back-carbon-capture-at-paper-mills-sewage-plants.html" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Eni is integrating carbon capture with data centers to boost its energy transition strategy. <a href="https://www.reuters.com/business/energy/italys-eni-eyes-carbon-capture-data-centres-energy-transition-push-2023-11-13/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">The Department of Energy is investing $101 million in new test centers to advance carbon capture technologies. <a href="https://www.energy.gov/articles/doe-announces-101-million-carbon-capture-test-centers" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">PERENfra's Perennial Infrastructure Fund 1 is investing $125 million in core water infrastructure projects in the United States. <a href="https://www.businesswire.com/news/home/20231114060457/en/PERENfra-Announces-Final-Close-of-Perennial-Infrastructure-Fund-I-at-125-Million" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Nashville invests $403 million to enhance the White Creek Wastewater Treatment Plant in a bid to boost capacity and efficiency. <a href="https://www.nashville.gov/departments/water/news/metro-water-services-breaks-ground-white-creek-wastewater-treatment-plant" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Veolia North America unveils major upgrades to improve air and water quality at Richmond's wastewater treatment facility. <a href="https://www.veolianorthamerica.com/news-events/media/press-releases/veolia-north-america-unveils-major-upgrades-richmonds-wastewater" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Los Angeles plans $740 million expansion of the Tillman Water Reclamation Plant to increase wastewater treatment capacity. <a href="https://www.lacitysan.org/san/faces/home/portal/s-lsh-wwd/s-lsh-wwd-cw/s-lsh-wwd-cw-p/s-lsh-wwd-cw-p-twerp" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+          <!-- Desktop Navigation (Center) -->
+          <ul class="kse-nav-menu" role="menubar">
+              <!-- Services Dropdown -->
+              <li class="kse-nav-item" data-dropdown="services" role="none">
+                  <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="services-dropdown">
+                      <span>Services</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+                  <div class="kse-dropdown" id="services-dropdown" role="menu" aria-hidden="true">
+                      <a href="./services/divisions/industrial/" class="kse-dropdown-link" role="menuitem">
+                          <span>Industrial Electrical</span>
+                          <small>Heavy infrastructure & power systems</small>
+                      </a>
+                      <a href="./services/divisions/commercial/" class="kse-dropdown-link" role="menuitem">
+                          <span>Commercial Electrical</span>
+                          <small>Office buildings & retail spaces</small>
+                      </a>
+                      <a href="./services/divisions/service-maintenance/" class="kse-dropdown-link" role="menuitem">
+                          <span>Service & Maintenance</span>
+                          <small>24/7 support & preventive care</small>
+                      </a>
+                      <a href="./services/divisions/automation-control/" class="kse-dropdown-link" role="menuitem">
+                          <span>Automation & Control Systems</span>
+                          <small>Smart systems & process control</small>
+                </a>
+                </div>
+                    </li>
+
+              <!-- Industries We Serve Dropdown -->
+              <li class="kse-nav-item" data-dropdown="industries" role="none">
+                  <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="industries-dropdown">
+                      <span>Industries We Serve</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                  </a>
+                  <div class="kse-dropdown industries-grid" id="industries-dropdown" role="menu" aria-hidden="true">
+                      <a href="./services/industrial/oil-gas/" class="kse-dropdown-link" role="menuitem">
+                          <span>Oil & Gas</span>
+                          <small>Refineries & pipelines</small>
+                      </a>
+                      <a href="./services/industrial/wastewater-treatment/" class="kse-dropdown-link" role="menuitem">
+                          <span>Water & Wastewater</span>
+                          <small>Treatment facilities</small>
+                      </a>
+                      <a href="./services/industrial/data-centers/" class="kse-dropdown-link" role="menuitem">
+                          <span>Data Centers</span>
+                          <small>Mission critical facilities</small>
+                      </a>
+                      <a href="./services/industrial/advanced-manufacturing/" class="kse-dropdown-link" role="menuitem">
+                          <span>Manufacturing</span>
+                          <small>Production facilities</small>
+                      </a>
+                      <a href="./services/industrial/food-beverage/" class="kse-dropdown-link" role="menuitem">
+                          <span>Food & Beverage</span>
+                          <small>Processing plants</small>
+                      </a>
+                      <a href="./services/industrial/government-municipal/" class="kse-dropdown-link" role="menuitem">
+                          <span>Government & Municipal</span>
+                          <small>Public infrastructure</small>
+                </a>
+                </div>
+                    </li>
+
+              <!-- About Dropdown -->
+              <li class="kse-nav-item" data-dropdown="about" role="none">
+                  <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="about-dropdown">
+                      <span>About</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                  </a>
+                  <div class="kse-dropdown" id="about-dropdown" role="menu" aria-hidden="true">
+                      <a href="./about/" class="kse-dropdown-link" role="menuitem">
+                          <span>Our Story</span>
+                          <small>Company history & mission</small>
+                      </a>
+                      <a href="./about/history/" class="kse-dropdown-link" role="menuitem">
+                          <span>Our History</span>
+                          <small>Decades of electrical excellence</small>
+                      </a>
+                      <a href="./about/locations/" class="kse-dropdown-link" role="menuitem">
+                          <span>Locations</span>
+                          <small>Service areas & offices</small>
+                      </a>
+                      <a href="./about/community/" class="kse-dropdown-link" role="menuitem">
+                          <span>Community</span>
+                          <small>Local involvement & partnerships</small>
+                </a>
+              </div>
+                    </li>
+
+              <!-- Careers Dropdown -->
+              <li class="kse-nav-item" data-dropdown="careers" role="none">
+                  <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="careers-dropdown">
+                      <span>Careers</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                  </a>
+                  <div class="kse-dropdown" id="careers-dropdown" role="menu" aria-hidden="true">
+                      <a href="./careers/" class="kse-dropdown-link" role="menuitem">
+                          <span>Open Positions</span>
+                          <small>Current job opportunities</small>
+                      </a>
+                      <a href="./careers/quick-apply/" class="kse-dropdown-link" role="menuitem">
+                          <span>Quick Apply</span>
+                          <small>Submit your resume</small>
+                      </a>
+                      <a href="./careers/apply/" class="kse-dropdown-link" role="menuitem">
+                          <span>Full Application</span>
+                          <small>Complete application form</small>
+                </a>
             </div>
-          </div>
-        </div>
-        <!-- 24/7 Support -->
-        <div class="flex-shrink-0 whitespace-nowrap">
-          <p class="text-white font-semibold flex items-center support-container">
-            <span class="support-label">24/7 Support:</span>
-            <a class="inline-block bg-ke-blue-dark font-semibold py-2 px-4 ml-2 text-white phone-button" href="tel:3162834750">(316) 283-4750</a>
-          </p>
-        </div>
+          </li>
+
+              <!-- Projects (standalone link) -->
+              <li class="kse-nav-item" role="none">
+                  <a href="./projects/" class="kse-nav-link" role="menuitem">
+                      <span>Projects</span>
+                  </a>
+                    </li>
+                  </ul>
+                  
+          <!-- CTA Button -->
+          <a href="./contact/" class="kse-nav-cta">Let's Engineer Your Next Power Move</a>
+
+          <!-- Mobile Hamburger -->
+          <button class="kse-mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+              <span class="kse-hamburger-line"></span>
+              <span class="kse-hamburger-line"></span>
+              <span class="kse-hamburger-line"></span>
+          </button>
       </div>
-    </div>
-    <div class="md:w-11/12 mx-auto flex lg:space-x-10 justify-between py-6 lg:py-0 px-4 md:px-0">
-      <a href="./" class="md:self-center">
-        <img class="w-auto h-8 md:h-10" src="./assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric" width="178" height="40">
-      </a>
-      <a class="block lg:hidden self-center" href="#" data-mobile-nav-toggle>
-        <span class="sr-only">Toggle mobile menu</span>
-        <span class="line block h-1 w-6 mb-1 bg-ke-gray rounded-full"></span>
-        <span class="line block h-1 w-6 mb-1 bg-ke-gray rounded-full"></span>
-        <span class="line block h-1 w-6 bg-ke-gray rounded-full"></span>
-      </a>
-      <div class="w-full bg-white lg:bg-transparent px-0 pt-0 pb-6 lg:py-0 lg:flex lg:justify-between main-navigation closed shadow-md lg:shadow-none" data-main-menu>
-        <ul class="lg:flex lg:space-x-6 lg:self-center">
-          <li class="lg:self-center py-0 border-t border-ke-gray-lighter lg:border-none nav-item">
-            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Services</a>
-            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
-              <div class="submenu-container three-column-menu">
-                <div class="hidden lg:block menu-column first-column">
-                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Electrical Services</p>
-                  <p class="text-ke-gray">Our job is to keep your lights on and production moving forward.</p>
-                </div>
-                <div class="lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
-                  <ul class="second-column-menu">
-                    <li>
-                      <a class="second-column-item division-nav-link active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/divisions/industrial/" data-target="industrial-electrical">Industrial Electrical Division</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item division-nav-link relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/divisions/commercial/" data-target="commercial-electrical">Commercial Electrical Division</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item division-nav-link relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/divisions/service-maintenance/" data-target="service-maintenance">Service and Maintenance Division</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item division-nav-link relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/divisions/automation-control/" data-target="automation-control">Automation and Control Systems Division</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
-                  <!-- Industrial Electrical Division (default) -->
-                  <ul class="third-column-content active" id="industrial-electrical">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/industrial/wastewater-treatment/">Wastewater & Water Treatment Plants</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/industrial/oil-gas/">Oil, Gas & Carbon Capture Pipelines</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/industrial/food-beverage/">Food & Beverage Manufacturing Plants</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/industrial/advanced-manufacturing/">Advanced Manufacturing Facilities</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/ul-certified-design-build/">Design-Build Electrical Services</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/industrial/microgrids/">Microgrids & Energy Management Systems</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/industrial/data-centers/">Data Centers & Mission Critical Facilities</a>
-                    </li>
-                  </ul>
-                  
-                  <!-- Commercial Electrical Division -->
-                  <ul class="third-column-content" id="commercial-electrical">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/commercial/large-scale/">Large-Scale Commercial Construction</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/commercial/water-towers/">Water Towers & Municipal Infrastructure</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/commercial/airport/">Airport Electrical Infrastructure</a>
-                    </li>
-                  </ul>
-                  
-                  <!-- Service and Maintenance Division -->
-                  <ul class="third-column-content" id="service-maintenance">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/maintenance/ir-scans/">Infrared (IR) Scans & Predictive Maintenance</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/maintenance/arc-flash/">Arc Flash Studies & NFPA 70E Compliance</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/maintenance/nfpa-70b/">NFPA 70B & Electrical Maintenance Program Implementation</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/maintenance/breaker-testing/">Breaker Exercising & Power System Testing</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/maintenance/emergency/">24/7 Emergency Electrical Service</a>
-                    </li>
-                  </ul>
-                  
-                  <!-- Automation and Control Systems Division -->
-                  <ul class="third-column-content" id="automation-control">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/automation/ul508a/">UL508A Panel Building & Fabrication</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/automation/plc-programming/">PLC Programming & Industrial Automation</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/automation/troubleshooting/">Control Panel Troubleshooting & Upgrades</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./services/automation/remote-monitoring/">Remote Monitoring & Smart Factory Solutions</a>
-                    </li>
-                  </ul>
+      
+      <!-- Mobile Menu Overlay -->
+      <div class="kse-mobile-overlay" aria-hidden="true"></div>
+
+      <!-- Mobile Menu -->
+      <div class="kse-mobile-menu" id="mobile-menu" aria-hidden="true">
+          <nav role="navigation" aria-label="Mobile navigation">
+              <!-- Services -->
+              <div class="kse-mobile-nav-item" data-dropdown="services">
+                  <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false">
+                      <span>Services</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                  </a>
+                  <div class="kse-mobile-dropdown">
+                      <a href="./services/divisions/industrial/" class="kse-mobile-dropdown-link">Industrial Electrical</a>
+                      <a href="./services/divisions/commercial/" class="kse-mobile-dropdown-link">Commercial Electrical</a>
+                      <a href="./services/divisions/service-maintenance/" class="kse-mobile-dropdown-link">Service & Maintenance</a>
+                      <a href="./services/divisions/automation-control/" class="kse-mobile-dropdown-link">Automation & Control Systems</a>
                 </div>
               </div>
+        
+              <!-- Industries We Serve -->
+              <div class="kse-mobile-nav-item" data-dropdown="industries">
+                  <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false">
+                      <span>Industries We Serve</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                  </a>
+                  <div class="kse-mobile-dropdown">
+                      <a href="./services/industrial/oil-gas/" class="kse-mobile-dropdown-link">Oil & Gas</a>
+                      <a href="./services/industrial/wastewater-treatment/" class="kse-mobile-dropdown-link">Water & Wastewater</a>
+                      <a href="./services/industrial/data-centers/" class="kse-mobile-dropdown-link">Data Centers</a>
+                      <a href="./services/industrial/advanced-manufacturing/" class="kse-mobile-dropdown-link">Manufacturing</a>
+                      <a href="./services/industrial/food-beverage/" class="kse-mobile-dropdown-link">Food & Beverage</a>
+                      <a href="./services/industrial/government-municipal/" class="kse-mobile-dropdown-link">Government & Municipal</a>
             </div>
-          </li>
-          <li class="lg:self-center border-t border-ke-gray-lighter lg:border-none nav-item">
-            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Projects</a>
-            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
-              <div class="submenu-container three-column-menu">
-                <div class="w-1/4 hidden lg:block menu-column first-column">
-                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Our Projects</p>
-                  <p class="text-ke-gray">Explore our portfolio of completed electrical projects.</p>
                 </div>
-                <div class="w-1/4 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
-                  <ul class="second-column-menu">
-                    <li>
-                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="all-projects">All Projects</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="industrial-projects">Industrial Projects</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="commercial-projects">Commercial Projects</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="service-maintenance-projects">Service and Maintenance Projects</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="automation-projects">Automation and Control Systems Projects</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
-                  <!-- All Projects (default) -->
-                  <ul class="third-column-content active" id="all-projects">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/stanley-black-decker/">Stanley Black & Decker - Network Upgrades</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/mkc-lyons/">MKC - Lyons</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/health-ministries/">Health Ministries Dental Clinic</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/bethel-college/">Bethel College Solar Grid</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/agco-hesston/">AGCO - Hesston</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/camso-control-panel/">Camso Control Panel</a>
-                    </li>
-                  </ul>
-                  
-                  <!-- Industrial Projects -->
-                  <ul class="third-column-content" id="industrial-projects">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/industrial/project1/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/industrial/project2/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/industrial/project3/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/industrial/project4/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/industrial/project5/">To be filled in later..</a>
-                    </li>
-                  </ul>
-                  
-                  <!-- Commercial Projects -->
-                  <ul class="third-column-content" id="commercial-projects">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/commercial/project1/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/commercial/project2/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/commercial/project3/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/commercial/project4/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/commercial/project5/">To be filled in later..</a>
-                    </li>
-                  </ul>
-                  
-                  <!-- Service and Maintenance Projects -->
-                  <ul class="third-column-content" id="service-maintenance-projects">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/service/project1/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/service/project2/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/service/project3/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/service/project4/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/service/project5/">To be filled in later..</a>
-                    </li>
-                  </ul>
-                  
-                  <!-- Automation and Control Systems Projects -->
-                  <ul class="third-column-content" id="automation-projects">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/automation/project1/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/automation/project2/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/automation/project3/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/automation/project4/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/automation/project5/">To be filled in later..</a>
-                    </li>
-                  </ul>
+          
+              <!-- About -->
+              <div class="kse-mobile-nav-item" data-dropdown="about">
+                  <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false">
+                      <span>About</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                  </a>
+                  <div class="kse-mobile-dropdown">
+                      <a href="./about/" class="kse-mobile-dropdown-link">Our Story</a>
+                      <a href="./about/history/" class="kse-mobile-dropdown-link">Our History</a>
+                      <a href="./about/locations/" class="kse-mobile-dropdown-link">Locations</a>
+                      <a href="./about/community/" class="kse-mobile-dropdown-link">Community</a>
                 </div>
               </div>
+        
+              <!-- Careers -->
+              <div class="kse-mobile-nav-item" data-dropdown="careers">
+                  <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false">
+                      <span>Careers</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                      </svg>
+                  </a>
+                  <div class="kse-mobile-dropdown">
+                      <a href="./careers/" class="kse-mobile-dropdown-link">Open Positions</a>
+                      <a href="./careers/quick-apply/" class="kse-mobile-dropdown-link">Quick Apply</a>
+                      <a href="./careers/apply/" class="kse-mobile-dropdown-link">Full Application</a>
             </div>
-          </li>
-          <li class="lg:self-center border-t border-ke-gray-lighter lg:border-none nav-item">
-            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">About</a>
-            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
-              <div class="submenu-container three-column-menu">
-                <div class="w-1/4 hidden lg:block menu-column first-column">
-                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">About Us</p>
-                  <p class="text-ke-gray">Our job is to keep your lights on and production moving forward.</p>
                 </div>
-                <div class="w-1/4 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
-                  <ul class="second-column-menu">
-                    <li>
-                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="who-we-are">Who We Are</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="company-news">Company News</a>
-                    </li>
-                  </ul>
+          
+              <!-- Projects -->
+              <div class="kse-mobile-nav-item">
+                  <a href="./projects/" class="kse-mobile-nav-link">
+                      <span>Projects</span>
+                </a>
                 </div>
-                <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
-                  <!-- Who We Are (default) -->
-                  <ul class="third-column-content active" id="who-we-are">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./about/">Who We Are</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./about/locations/">Locations</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./about/our-team/">Our Team</a>
-                    </li>
-                  </ul>
-                  
-                  <!-- Company News -->
-                  <ul class="third-column-content" id="company-news">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./company-news/">Company News</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./about/community/">Community Involvement</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="lg:self-center border-t border-b border-ke-gray-lighter lg:border-none nav-item">
-            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Careers</a>
-            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
-              <div class="submenu-container three-column-menu">
-                <div class="w-1/4 hidden lg:block menu-column first-column">
-                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Careers</p>
-                  <p class="text-ke-gray">We're always looking for talented people to join our team.</p>
-                </div>
-                <div class="w-1/4 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
-                  <ul class="second-column-menu">
-                    <li>
-                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="administrative">Administrative</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="project-management">Project Management</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="electricians">Electricians</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="engineering">Engineering</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="estimating">Estimating</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="apprenticeships">Apprenticeships</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
-                  <!-- Administrative (default) -->
-                  <ul class="third-column-content active" id="administrative">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/administrative/position1/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/administrative/position2/">To be filled in later..</a>
-                    </li>
-                  </ul>
-                  
-                  <!-- Project Management -->
-                  <ul class="third-column-content" id="project-management">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/project-management/position1/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/project-management/position2/">To be filled in later..</a>
-                    </li>
-                  </ul>
-                  
-                  <!-- Electricians -->
-                  <ul class="third-column-content" id="electricians">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/electricians/position1/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/electricians/position2/">To be filled in later..</a>
-                    </li>
-                  </ul>
-                  
-                  <!-- Engineering -->
-                  <ul class="third-column-content" id="engineering">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/engineering/position1/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/engineering/position2/">To be filled in later..</a>
-                    </li>
-                  </ul>
-                  
-                  <!-- Estimating -->
-                  <ul class="third-column-content" id="estimating">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/estimating/position1/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/estimating/position2/">To be filled in later..</a>
-                    </li>
-                  </ul>
-                  
-                  <!-- Apprenticeships -->
-                  <ul class="third-column-content" id="apprenticeships">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/apprenticeship/">To be filled in later..</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/apprenticeship/position2/">To be filled in later..</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <ul class="md:flex md:space-x-8 w-full justify-center">
-          <li class="mt-6 pl-4 md:pl-0 md:ml-4 lg:mt-0 md:self-center absolute right-0 lg:right-6">
-            <a class="blue-nav-button rounded-md" href="./contact/request-bid/">POWER UP YOUR PROJECT - LET'S TALK!</a>
-          </li>
-        </ul>
-      </div>
+
+              <!-- Mobile CTA -->
+              <a href="./contact/" class="kse-mobile-nav-cta">Let's Engineer Your Next Power Move</a>
+          </nav>
     </div>
   </nav>
 
@@ -1743,8 +1582,80 @@
 
   <!-- Navigation hover fix script -->
   <script src="./assets/js/nav-fix.js"></script>
+
+      <!-- Kansas Electric Navigation Dropdown Script -->
+      <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const navItems = document.querySelectorAll('.kse-nav-item');
+
+        function closeAllDropdowns() {
+          document.querySelectorAll('.kse-dropdown').forEach(dropdown => {
+            dropdown.style.display = 'none';
+            dropdown.style.opacity = '0';
+            dropdown.style.visibility = 'hidden';
+            dropdown.style.pointerEvents = 'none';
+            dropdown.classList.remove('active', 'show');
+          });
+          
+          // Remove active states from nav items
+          document.querySelectorAll('.kse-nav-item').forEach(item => {
+            item.setAttribute('aria-expanded', 'false');
+          });
+        }
+
+        navItems.forEach(item => {
+          const dropdownId = item.getAttribute('data-dropdown');
+          const dropdown = document.getElementById(`${dropdownId}-dropdown`);
+          const navLink = item.querySelector('.kse-nav-link');
+
+          if (dropdown && navLink) {
+            // Attach event listener to the nav link, not the entire item
+            navLink.addEventListener('click', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+              
+              const isOpen = dropdown.classList.contains('active') || dropdown.classList.contains('show');
+
+              // Close all dropdowns first
+              closeAllDropdowns();
+              
+              // If this dropdown wasn't open, open it
+              if (!isOpen) {
+                dropdown.classList.add('active', 'show');
+                dropdown.style.display = dropdown.classList.contains('industries-grid') ? 'grid' : 'flex';
+                dropdown.style.opacity = '1';
+                dropdown.style.visibility = 'visible';
+                dropdown.style.pointerEvents = 'auto';
+                item.setAttribute('aria-expanded', 'true');
+              }
+            });
+
+            // Prevent dropdown content clicks from closing the dropdown
+            dropdown.addEventListener('click', function (e) {
+              e.stopPropagation();
+            });
+          }
+        });
+
+        // Close dropdowns when clicking outside the navigation
+        document.addEventListener('click', function (e) {
+          const isClickInside = e.target.closest('.kse-nav');
+          if (!isClickInside) {
+            closeAllDropdowns();
+          }
+        });
+
+        // Close dropdowns on escape key
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') {
+            closeAllDropdowns();
+          }
+        });
+      });
+      </script>
 </body>
 </html>
+
 
 
 

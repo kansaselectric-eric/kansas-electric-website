@@ -1,0 +1,802 @@
+/**
+ * Kansas Electric - Fortune 500 Navigation System
+ * Modern, premium navigation with advanced animations and interactions
+ */
+
+/* Import modern font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Reset and base styles */
+.redesigned-nav * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main navigation container */
+.redesigned-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+    z-index: 1000;
+    transition: all 0.2s ease-in-out;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Sticky shrink state */
+.redesigned-nav.scrolled {
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.redesigned-nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.redesigned-nav.scrolled .redesigned-nav-container {
+    padding: 0.75rem 2rem;
+}
+
+/* Logo */
+.redesigned-nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    z-index: 1001;
+}
+
+.redesigned-nav-logo img {
+    height: 48px;
+    width: auto;
+    transition: all 0.2s ease-in-out;
+}
+
+.redesigned-nav.scrolled .redesigned-nav-logo img {
+    height: 32px;
+}
+
+/* Navigation menu */
+.redesigned-nav-menu {
+    display: none;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+}
+
+/* Navigation items */
+.redesigned-nav-item {
+    position: relative;
+}
+
+/* Navigation links - Fortune 500 typography */
+.redesigned-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0.75rem;
+    text-decoration: none;
+    color: #1f2937;
+    font-weight: 500;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.2s ease-out;
+    cursor: pointer;
+    border-radius: 8px;
+    position: relative;
+    border-bottom: 2px solid transparent;
+}
+
+/* Active state highlighting */
+.redesigned-nav-link.active {
+    color: #2563eb;
+    border-bottom-color: #2563eb;
+    font-weight: 600;
+}
+
+/* Hover effects */
+.redesigned-nav-link:hover {
+    color: #2563eb;
+    border-bottom-color: #60a5fa;
+    background: rgba(37, 99, 235, 0.05);
+}
+
+/* Dropdown nav links - enhanced interactivity */
+.redesigned-nav-item[data-dropdown] .redesigned-nav-link {
+    border-radius: 8px;
+    transition: all 0.2s ease-out;
+}
+
+.redesigned-nav-item[data-dropdown] .redesigned-nav-link:hover {
+    background: rgba(37, 99, 235, 0.08);
+    transform: translateY(-1px);
+}
+
+/* Caret icons with micro-interactions */
+.redesigned-nav-caret {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease-out;
+    flex-shrink: 0;
+    color: #6b7280;
+}
+
+.redesigned-nav-item[aria-expanded="true"] .redesigned-nav-caret,
+.redesigned-nav-item.dropdown-open .redesigned-nav-caret {
+    transform: rotate(180deg);
+    color: #2563eb;
+}
+
+.redesigned-nav-link:hover .redesigned-nav-caret {
+    color: #2563eb;
+    transform: scale(1.1);
+}
+
+.redesigned-nav-item[aria-expanded="true"] .redesigned-nav-link:hover .redesigned-nav-caret,
+.redesigned-nav-item.dropdown-open .redesigned-nav-link:hover .redesigned-nav-caret {
+    transform: rotate(180deg) scale(1.1);
+}
+
+/* Dropdown menus with Fortune 500 styling */
+.redesigned-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.95);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(16px);
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 2rem;
+    min-width: 320px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease-out;
+    z-index: 1000;
+    margin-top: 0.5rem;
+    border: 1px solid rgba(229, 231, 235, 0.8);
+}
+
+.redesigned-nav-item[aria-expanded="true"] .redesigned-dropdown,
+.redesigned-nav-item.dropdown-open .redesigned-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(1);
+}
+
+/* Industries dropdown - enhanced grid layout */
+.redesigned-dropdown.industries-grid {
+    min-width: 480px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    padding: 2.5rem;
+}
+
+/* Enhanced dropdown links with two-column grid layout */
+.redesigned-dropdown-link {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    align-items: start;
+    gap: 0.25rem;
+    padding: 1rem;
+    text-decoration: none;
+    color: #374151;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    text-transform: none;
+    letter-spacing: normal;
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+    min-height: 4rem;
+    aspect-ratio: auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Title styling */
+.redesigned-dropdown-link span {
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    color: #1f2937;
+    text-align: left;
+    max-width: 100%;
+    word-break: break-word;
+    margin: 0;
+    padding: 0;
+}
+
+/* Description styling */
+.redesigned-dropdown-link small {
+    font-weight: 400;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #6b7280;
+    text-align: left;
+    max-width: 100%;
+    word-break: break-word;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+/* Remove the old shimmer effect and replace with new hover states */
+.redesigned-dropdown-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.redesigned-dropdown-link:hover::before {
+    left: 100%;
+}
+
+.redesigned-dropdown-link:hover {
+    background: rgba(37, 99, 235, 0.05);
+    transform: translateY(-2px);
+    border: 1px solid #007BFF;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.redesigned-dropdown-link:hover span {
+    color: #2563eb;
+}
+
+.redesigned-dropdown-link:hover small {
+    color: #4b5563;
+}
+
+/* Remove the arrow icon for cleaner look */
+.redesigned-dropdown-link::after {
+    display: none;
+}
+
+/* Ensure consistent card alignment in grid layouts */
+.redesigned-dropdown.industries-grid .redesigned-dropdown-link {
+    height: auto;
+    min-height: 4.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* Ensure all cards in columns have equal width and alignment */
+.redesigned-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.redesigned-dropdown:not(.industries-grid) .redesigned-dropdown-link {
+    width: 100%;
+    flex: 1;
+}
+
+/* Grid layout adjustments for perfect alignment */
+.redesigned-dropdown.industries-grid {
+    align-items: stretch;
+}
+
+.redesigned-dropdown.industries-grid .redesigned-dropdown-link {
+    align-self: stretch;
+    height: auto;
+    min-height: 4.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .redesigned-dropdown.industries-grid {
+        grid-template-columns: 1fr;
+        min-width: 280px;
+        gap: 0.5rem;
+    }
+    
+    .redesigned-dropdown-link {
+        min-height: 3.5rem;
+        padding: 0.875rem;
+    }
+    
+    .redesigned-dropdown-link span {
+        font-size: 0.875rem;
+    }
+    
+    .redesigned-dropdown-link small {
+        font-size: 0.8rem;
+    }
+}
+
+/* CTA Button with premium styling */
+.redesigned-nav-cta {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white;
+    padding: 0.875rem 1.75rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease-out;
+    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.redesigned-nav-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.redesigned-nav-cta:hover::before {
+    left: 100%;
+}
+
+.redesigned-nav-cta:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px -8px rgba(37, 99, 235, 0.6);
+}
+
+/* Mobile hamburger with premium animation */
+.redesigned-mobile-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+    border-radius: 8px;
+    transition: all 0.2s ease-out;
+}
+
+.redesigned-mobile-toggle:hover {
+    background: rgba(37, 99, 235, 0.1);
+}
+
+.redesigned-hamburger-line {
+    width: 24px;
+    height: 2px;
+    background: #1f2937;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 3px 0;
+    border-radius: 2px;
+}
+
+.redesigned-mobile-toggle.active .redesigned-hamburger-line:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+    background: #2563eb;
+}
+
+.redesigned-mobile-toggle.active .redesigned-hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.redesigned-mobile-toggle.active .redesigned-hamburger-line:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+    background: #2563eb;
+}
+
+/* Mobile menu with slide-in animation */
+.redesigned-mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 420px;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    padding: 7rem 2rem 2rem;
+    border-left: 1px solid rgba(229, 231, 235, 0.8);
+}
+
+.redesigned-mobile-menu.active {
+    right: 0;
+}
+
+.redesigned-mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.redesigned-mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mobile menu items with accordion animation */
+.redesigned-mobile-nav-item {
+    border-bottom: 1px solid rgba(229, 231, 235, 0.6);
+    margin-bottom: 0.5rem;
+}
+
+.redesigned-mobile-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 0;
+    text-decoration: none;
+    color: #1f2937;
+    font-weight: 500;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s ease-out;
+    border-radius: 8px;
+}
+
+.redesigned-mobile-nav-link:hover {
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.05);
+    padding-left: 1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-right: 1rem;
+}
+
+.redesigned-mobile-dropdown {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(249, 250, 251, 0.8);
+    margin: 0 -1rem;
+    padding: 0 1rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+}
+
+.redesigned-mobile-nav-item.dropdown-open .redesigned-mobile-dropdown {
+    max-height: 600px;
+    padding: 1.5rem;
+}
+
+.redesigned-mobile-dropdown-link {
+    display: block;
+    padding: 1rem 0;
+    text-decoration: none;
+    color: #6b7280;
+    font-weight: 400;
+    font-size: 0.875rem;
+    text-transform: none;
+    letter-spacing: normal;
+    border-bottom: 1px solid rgba(229, 231, 235, 0.5);
+    transition: all 0.2s ease-out;
+    border-radius: 6px;
+}
+
+.redesigned-mobile-dropdown-link:last-child {
+    border-bottom: none;
+}
+
+.redesigned-mobile-dropdown-link:hover {
+    color: #2563eb;
+    background: rgba(37, 99, 235, 0.05);
+    padding-left: 1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-right: 1rem;
+    transform: translateX(8px);
+}
+
+/* Mobile CTA with sticky positioning */
+.redesigned-mobile-cta {
+    position: sticky;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 2rem 0;
+    border-top: 1px solid rgba(229, 231, 235, 0.8);
+    margin: 3rem -2rem -2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.redesigned-mobile-cta .redesigned-nav-cta {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+/* Desktop responsive styles */
+@media (min-width: 1024px) {
+    .redesigned-nav-menu {
+        display: flex;
+    }
+    
+    .redesigned-mobile-toggle {
+        display: none;
+    }
+}
+
+/* Tablet adjustments */
+@media (max-width: 1023px) and (min-width: 768px) {
+    .redesigned-nav-container {
+        padding: 1rem 1.5rem;
+    }
+    
+    .redesigned-nav.scrolled .redesigned-nav-container {
+        padding: 0.75rem 1.5rem;
+    }
+    
+    .redesigned-mobile-menu {
+        max-width: 380px;
+    }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+    .redesigned-nav-container {
+        padding: 1rem;
+    }
+    
+    .redesigned-nav.scrolled .redesigned-nav-container {
+        padding: 0.75rem 1rem;
+    }
+    
+    .redesigned-nav-logo img {
+        height: 40px;
+    }
+    
+    .redesigned-nav.scrolled .redesigned-nav-logo img {
+        height: 28px;
+    }
+    
+    .redesigned-mobile-menu {
+        padding: 6rem 1.5rem 1.5rem;
+    }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    .redesigned-nav,
+    .redesigned-nav-container,
+    .redesigned-nav-logo img,
+    .redesigned-nav-caret,
+    .redesigned-dropdown,
+    .redesigned-hamburger-line,
+    .redesigned-mobile-menu,
+    .redesigned-mobile-overlay,
+    .redesigned-mobile-dropdown,
+    .redesigned-dropdown-link,
+    .redesigned-nav-cta {
+        transition: none;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .redesigned-nav {
+        background: white;
+        border-bottom: 2px solid #000;
+    }
+    
+    .redesigned-dropdown {
+        background: white;
+        border: 2px solid #000;
+    }
+    
+    .redesigned-nav-cta {
+        background: #000;
+        border: 2px solid #000;
+    }
+}
+
+/* Focus styles for accessibility */
+.redesigned-nav-link:focus,
+.redesigned-dropdown-link:focus,
+.redesigned-mobile-nav-link:focus,
+.redesigned-mobile-dropdown-link:focus,
+.redesigned-nav-cta:focus,
+.redesigned-mobile-toggle:focus {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+
+/* Print styles */
+@media print {
+    .redesigned-nav {
+        display: none;
+    }
+}
+
+/* Mobile Navigation Styles */
+.redesigned-mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    overflow-y: auto;
+    padding: 1rem;
+}
+
+.redesigned-mobile-nav.active {
+    display: block;
+}
+
+.redesigned-mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.redesigned-mobile-nav-logo {
+    height: 40px;
+}
+
+.redesigned-mobile-nav-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.375rem;
+    transition: background-color 0.2s ease;
+}
+
+.redesigned-mobile-nav-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.redesigned-mobile-nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.redesigned-mobile-nav-item {
+    margin-bottom: 0.5rem;
+}
+
+.redesigned-mobile-nav-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.125rem;
+    font-weight: 500;
+    text-align: left;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.redesigned-mobile-nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fbbf24;
+}
+
+.redesigned-mobile-nav-caret {
+    width: 1.25rem;
+    height: 1.25rem;
+    transition: transform 0.2s ease;
+}
+
+.redesigned-mobile-nav-link[aria-expanded="true"] .redesigned-mobile-nav-caret {
+    transform: rotate(180deg);
+}
+
+.redesigned-mobile-dropdown {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.redesigned-mobile-dropdown.active {
+    max-height: 500px;
+    padding: 0.5rem;
+}
+
+.redesigned-mobile-dropdown-link {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+    margin-bottom: 0.25rem;
+}
+
+.redesigned-mobile-dropdown-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #fbbf24;
+}
+
+.redesigned-mobile-dropdown-link span {
+    font-weight: 500;
+    font-size: 1rem;
+    color: inherit;
+}
+
+.redesigned-mobile-dropdown-link small {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.redesigned-mobile-dropdown-link:hover small {
+    color: rgba(251, 191, 36, 0.8);
+}
+
+.redesigned-mobile-nav-cta {
+    display: block;
+    width: 100%;
+    margin-top: 2rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: #1f2937;
+    text-decoration: none;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.redesigned-mobile-nav-cta:hover {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
+} 
