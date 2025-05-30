@@ -1003,20 +1003,29 @@
       
       <!-- Section 1: What We Do for Mission-Critical Infrastructure -->
       <section class="py-24">
-        <div class="w-full px-6 md:px-10 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="w-full py-24 px-6 md:px-10 lg:px-16 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch min-h-[100%]">
           
           <!-- Left Column -->
-          <div>
-            <h2 class="text-3xl md:text-[2.75rem] font-bold text-slate-900 mb-6 leading-tight">
-              What We Do for Mission-Critical Infrastructure
-            </h2>
-            <p class="text-lg text-slate-600 max-w-xl">
-              Mission-critical facilities demand electrical systems that can't afford to fail. Kansas Electric designs, builds, and supports the infrastructure that keeps these environments online—no matter what.
-            </p>
+          <div class="relative rounded-xl overflow-hidden shadow-lg group h-full" data-aos="fade-right">
+            <!-- Background Image Layer -->
+            <div class="absolute inset-0 h-full w-full z-0 transition-transform duration-700 ease-out group-hover:scale-105" style="background-image: url('../../../assets/img/2025 photos/switchgear 1.jpg'); background-size: 100% 100%; background-position: center; background-repeat: no-repeat;"></div>
+            
+            <!-- Soft Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent z-10"></div>
+            
+            <!-- Text Content -->
+            <div class="relative z-20 text-white px-6 py-10 h-full flex flex-col justify-center">
+              <h2 class="text-white drop-shadow-[0_3px_4px_rgba(0,0,0,0.85)] text-3xl md:text-[2.75rem] font-bold mb-6 leading-tight">
+                What We Do for Mission-Critical Infrastructure
+              </h2>
+              <p class="text-white drop-shadow-[0_3px_4px_rgba(0,0,0,0.85)] text-lg max-w-xl">
+                Mission-critical facilities demand electrical systems that can't afford to fail. Kansas Electric designs, builds, and supports the infrastructure that keeps these environments online—no matter what.
+              </p>
+            </div>
           </div>
 
           <!-- Right Column - Cards -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 h-full" data-aos="fade-left" data-aos-delay="100">
             <div class="service-card">
               <h3>Reliability & Redundancy</h3>
               <p>N+1 and 2N power systems, UPS design, and EPO circuits—engineered to keep your systems running 24/7/365 through any outage.</p>
@@ -1039,28 +1048,40 @@
       </section>
             
       <!-- Powering Infrastructure That Can't Afford to Fail -->
-      <section class="bg-gray-900 py-24">
-        <div class="max-w-7xl mx-auto px-6 md:px-10">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            <div class="text-left" data-aos="fade-right">
-              <h2 class="text-gray-900 text-4xl font-bold mb-4">Powering Infrastructure That Can't Afford to Fail</h2>
-              <p class="text-gray-700">We build for resiliency—mission-critical branch systems, tier-level designs, and emergency response baked into every project we touch.</p>
+      <section class="bg-gray-900 py-24" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
+          
+          <!-- Left Column - Background Image Block -->
+          <div class="relative rounded-xl overflow-hidden shadow-lg group">
+            <!-- Background Image Layer -->
+            <div class="absolute inset-0 h-full w-full bg-contain bg-no-repeat bg-left transition-transform duration-700 ease-out group-hover:scale-105" style="background-image: url('../../../assets/img/2025 photos/switchgear 2.jpg');"></div>
+            
+            <!-- Dark Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>
+            
+            <!-- Content Container -->
+            <div class="relative z-20 text-white px-6 py-10 flex flex-col justify-center h-full">
+              <h2 class="text-3xl md:text-[2.75rem] font-bold mb-6 leading-tight drop-shadow-[0_3px_4px_rgba(0,0,0,0.85)]">Powering Infrastructure That Can't Afford to Fail</h2>
+              <p class="text-lg max-w-xl drop-shadow-[0_3px_4px_rgba(0,0,0,0.85)]">We build for resiliency—mission-critical branch systems, tier-level designs, and emergency response baked into every project we touch.</p>
             </div>
-            <div class="space-y-6" data-aos="fade-left">
-              <div class="service-card">
-                <h3 class="text-[1.125rem] font-bold text-gray-900 mb-2">Branch Isolation</h3>
-                <p class="text-sm text-gray-700 leading-relaxed">Life-safety, equipment, and critical power—fully separated and monitored independently.</p>
-                </div>
-              <div class="service-card">
-                <h3 class="text-[1.125rem] font-bold text-gray-900 mb-2">Tier-Certified Design</h3>
-                <p class="text-sm text-gray-700 leading-relaxed">We design for Tier I–IV standards—built for real-world failure scenarios, not just code compliance.</p>
-                </div>
-              <div class="service-card">
-                <h3 class="text-[1.125rem] font-bold text-gray-900 mb-2">Emergency Support</h3>
-                <p class="text-sm text-gray-700 leading-relaxed">Service SLAs and on-call coverage for facilities that can't tolerate downtime.</p>
-                </div>
-                </div>
           </div>
+          
+          <!-- Right Column - Service Cards -->
+          <div class="space-y-6">
+            <div class="service-card">
+              <h3 class="text-[1.125rem] font-bold text-gray-900 mb-2">Branch Isolation</h3>
+              <p class="text-sm text-gray-700 leading-relaxed">Life-safety, equipment, and critical power—fully separated and monitored independently.</p>
+            </div>
+            <div class="service-card">
+              <h3 class="text-[1.125rem] font-bold text-gray-900 mb-2">Tier-Certified Design</h3>
+              <p class="text-sm text-gray-700 leading-relaxed">We design for Tier I–IV standards—built for real-world failure scenarios, not just code compliance.</p>
+            </div>
+            <div class="service-card">
+              <h3 class="text-[1.125rem] font-bold text-gray-900 mb-2">Emergency Support</h3>
+              <p class="text-sm text-gray-700 leading-relaxed">Service SLAs and on-call coverage for facilities that can't tolerate downtime.</p>
+            </div>
+          </div>
+          
         </div>
       </section>
       

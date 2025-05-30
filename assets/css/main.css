@@ -4138,3 +4138,35 @@ figure > figcaption::before {
 [data-main-menu] {
     transition: top 0.3s ease-in-out;
 }
+
+/* Mission Critical Infrastructure Background Section */
+.mission-bg {
+  position: relative;
+  background-image: url('../../../assets/img/2025 photos/switchgear 1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 400px;
+}
+
+.mission-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.mission-bg h2,
+.mission-bg p {
+  color: white !important;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 0.8),
+    -1px -1px 0 rgba(0, 0, 0, 0.8),
+    1px -1px 0 rgba(0, 0, 0, 0.8),
+    -1px 1px 0 rgba(0, 0, 0, 0.8),
+    1px 1px 0 rgba(0, 0, 0, 0.8);
+}
