@@ -944,8 +944,8 @@
   <!-- Link AOS CSS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-  <!-- What We Do Section - Updated to Match Industries Layout -->
-  <section class="-mt-12 md:-mt-16 bg-white border-b border-gray-200" style="background: linear-gradient(to bottom, #ffffff00, #f6faff)">
+  <!-- What We Do Section - Made Identical to Industries We Power -->
+  <section class="py-20 bg-gray-100 border-t border-gray-200">
     <style>
       .service-card {
         background-color: #ffffff;
@@ -959,16 +959,16 @@
         transform: translateY(-2px);
       }
     </style>
-    <div class="max-w-7xl mx-auto px-6 py-20" aria-labelledby="what-we-do-heading">
-      <!-- Heading and Subheading -->
-      <div class="text-left mb-12" data-aos="fade-up" data-aos-duration="800">
-        <h2 id="what-we-do-heading" class="text-4xl font-bold text-gray-900 section-heading">What We Do</h2>
-        <p class="text-lg text-gray-500 mt-4">
+    <div class="w-full px-6 md:px-10 lg:px-16" aria-labelledby="what-we-do-heading">
+      <!-- Section heading and paragraph -->
+      <div class="mb-16 text-center">
+        <h2 id="what-we-do-heading" class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight section-heading" data-aos="fade-up" data-aos-duration="800">What We Do</h2>
+        <p class="text-lg text-gray-500 mb-4 leading-relaxed max-w-3xl mx-auto" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
           Kansas Electric delivers end-to-end electrical expertise—from automation to 24/7 service. Our teams design, install, and maintain the systems that power American industry.
         </p>
       </div>
 
-      <!-- 2x2 Card Grid -->
+      <!-- Service cards grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         
         <!-- Card 1: Industrial Electrical -->
@@ -1390,73 +1390,72 @@
     </div>
   </section>
 
-  <!-- Testimonial Strip -->
-  <section class="bg-gray-100 py-16 px-6 md:px-12 border-t border-gray-200">
-    <div class="max-w-6xl mx-auto text-center">
-      <blockquote class="text-xl md:text-2xl font-semibold italic text-gray-800 max-w-3xl mx-auto">
-        "Kansas Electric handled a 12-week install with zero downtime. That's rare."
-      </blockquote>
-      <div class="mt-4 text-sm text-gray-600">
-        — Jamie Winters, Facility Manager, Franklin Manufacturing
-      </div>
-    </div>
-  </section>
-
   <!-- Final CTA Section -->
-  <section class="bg-gray-900 text-white py-20 px-6 text-center border-t border-gray-700">
-    <div class="max-w-4xl mx-auto">
-      <h2 class="text-4xl font-bold text-white">Ready to power your facility with precision and scale?</h2>
-      <p class="text-lg text-gray-300 mt-4 max-w-2xl mx-auto">
-        Let's discuss your electrical infrastructure needs and engineer a solution that delivers reliability, efficiency, and performance.
-      </p>
-      <a href="./contact/" class="inline-block bg-white text-gray-900 font-semibold px-8 py-3 rounded shadow-md mt-8 hover:bg-gray-100 transition">
-        Schedule a Consultation
-      </a>
+  <section class="bg-gray-50 py-24 px-6 md:px-10 lg:px-16">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="shadow-md rounded-xl bg-white p-12">
+        <h2 class="text-4xl font-bold text-gray-900">Ready to power your facility with precision and scale?</h2>
+        <p class="text-lg text-gray-700 mt-4 max-w-2xl mx-auto">
+          Let's discuss your electrical infrastructure needs and engineer a solution that delivers reliability, efficiency, and performance.
+        </p>
+        <a href="./contact/" class="inline-block bg-blue-600 text-white font-semibold px-8 py-3 rounded shadow-md mt-8 hover:bg-blue-700 hover:scale-105 transition">
+          Schedule a Consultation
+        </a>
+      </div>
     </div>
   </section>
 
   </main>
 
-  <footer class="bg-black text-gray-400 py-16 px-6">
+  <style>
+    .footer-custom {
+      background-color: #0056D2;
+      background-image: url('/assets/img/noise.png');
+      background-blend-mode: overlay;
+    }
+  </style>
+
+  <footer class="footer-custom text-white py-16 px-6 border-t border-white/10" data-aos="fade-up">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
-      <!-- Left Column: Logo and Tagline -->
-      <div class="flex flex-col items-center md:items-start text-center md:text-left">
-        <img src="./assets/img/kansas-electric-logo-white.svg" alt="Kansas Electric logo" class="h-10 object-contain mb-6">
-        <p class="text-gray-400 text-sm">Built for Power. Engineered for Excellence.</p>
+      <!-- Left Column: Tagline -->
+      <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-3" data-aos="fade-up" data-aos-delay="100">
+        <p class="text-white text-sm">Built for Power. Engineered for Excellence.</p>
       </div>
       
-      <!-- Center Column: CTA Button -->
-      <div class="flex flex-col items-center justify-center">
-        <a href="./contact/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-md transition-colors duration-300 text-center">
+      <!-- Center Column: Contact -->
+      <div class="flex flex-col items-center justify-center space-y-3" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Contact</h3>
+        <a href="tel:3162834750" class="text-white font-medium hover:text-white transition-colors text-base">
+          (316) 283-4750
+        </a>
+        <a href="./contact/" class="inline-block bg-[#0047b3] text-white font-medium py-3 px-6 rounded-md hover:bg-[#003a94] transition-colors duration-300 text-center" style="filter: drop-shadow(0 0 6px rgba(255,255,255,0.1));">
           Let's Engineer Your Next Power Move
         </a>
       </div>
       
-      <!-- Right Column: Contact Info and Links -->
-      <div class="flex flex-col items-center md:items-end text-center md:text-right space-y-3">
-        <a href="tel:3162834750" class="text-white font-medium hover:text-blue-400 transition-colors text-base">
-          (316) 283-4750
-        </a>
-        <a href="https://www.linkedin.com/company/kansas-electric/" class="text-gray-400 hover:text-blue-400 transition-colors" aria-label="LinkedIn">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+      <!-- Right Column: Links -->
+      <div class="flex flex-col items-center md:items-end text-center md:text-right space-y-3" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Links</h3>
+        <a href="https://www.linkedin.com/company/kansas-electric/" class="text-white hover:text-gray-200 transition-colors" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6">
             <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
           </svg>
         </a>
-        <a href="./suppliers/" class="text-sm text-gray-400 hover:text-blue-400 hover:underline transition-colors">
+        <a href="./suppliers/" class="text-sm text-white hover:text-white hover:underline transition-colors">
           Interested in becoming a supplier?
         </a>
       </div>
     </div>
     
     <!-- Company Description -->
-    <div class="mt-12 text-center">
-      <p class="text-sm text-gray-400 max-w-3xl mx-auto leading-relaxed">
+    <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
+      <p class="text-sm text-white max-w-3xl mx-auto leading-relaxed">
         Since 1948, Kansas Electric has powered some of the region's most essential facilities — from hospitals and manufacturers to mission-critical infrastructure. We bring decades of experience, a culture of safety, and future-focused innovation to every electrical project we touch.
       </p>
     </div>
     
     <!-- Copyright -->
-    <div class="mt-8 text-center text-gray-500 text-sm">
+    <div class="mt-8 text-center text-gray-200 text-sm" data-aos="fade-up" data-aos-delay="500">
       &copy; 2025 Kansas Electric. All rights reserved.
     </div>
   </footer>
