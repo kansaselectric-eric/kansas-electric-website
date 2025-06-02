@@ -1096,7 +1096,7 @@
         </div>
         
         <!-- Right Column - Industry Cards Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- Healthcare -->
           <div class="p-6 industry-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
             <div class="flex flex-col">
@@ -1186,7 +1186,7 @@
   </section>
 
   <!-- Featured Projects Section -->
-  <section class="border-t border-white">
+  <section class="border-t border-white py-24">
     <style>
       /* Enhanced text styling for projects */
       .project-category {
@@ -1250,104 +1250,105 @@
         transform: scale(1.03);
       }
     </style>
-    <div class="w-full mx-auto">
-      <!-- Project heading -->
-      <div class="bg-white py-16 px-6 md:px-10 lg:px-16">
-        <div class="w-full">
+    <div class="w-full px-6 md:px-10 lg:px-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left Column - Text Content -->
+        <div data-aos="fade-up" data-aos-duration="800">
           <h2 class="text-3xl md:text-[2.75rem] font-bold text-slate-900 mb-6 leading-tight text-left section-heading">Featured Projects</h2>
           <p class="text-lg text-slate-600 max-w-xl text-left">
             Innovative electrical solutions for complex environments that power America's infrastructure.
           </p>
         </div>
-      </div>
-      
-      <!-- Project Cards Container -->
-      <div class="grid grid-cols-1 gap-0">
-        <!-- Project Card 1 - Text on Left -->
-        <div class="relative overflow-hidden border-t-2 border-white group project-card">
-          <!-- Background Image with proper aspect ratio -->
-          <div class="absolute inset-0 w-full h-full">
-            <div class="w-full h-full overflow-hidden">
-              <img src="./assets/img/2025 photos/featured projects cards/Newton Medical Center Switchgear.jpg" 
-                   alt="Water Infrastructure Project" 
-                   class="w-full h-full object-cover card-image">
+        
+        <!-- Right Column - Project Cards -->
+        <div class="grid grid-cols-1 gap-6">
+          <!-- Project Card 1 - Text on Left -->
+          <div class="relative overflow-hidden border-t-2 border-white group project-card">
+            <!-- Background Image with proper aspect ratio -->
+            <div class="absolute inset-0 w-full h-full">
+              <div class="w-full h-full overflow-hidden">
+                <img src="./assets/img/2025 photos/featured projects cards/Newton Medical Center Switchgear.jpg" 
+                     alt="Water Infrastructure Project" 
+                     class="w-full h-full object-cover card-image">
+              </div>
+              <!-- Dark gradient overlay for better contrast -->
+              <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60"></div>
             </div>
-            <!-- Dark gradient overlay for better contrast -->
-            <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60"></div>
-          </div>
-          
-          <!-- Content Container -->
-          <div class="relative z-10 h-full w-full">
-            <div class="p-6 md:p-8 lg:p-12 flex flex-col h-full">
-              <div class="w-full md:w-1/2 text-left" data-aos="fade-up" data-aos-duration="800">
-                <div class="font-bold text-sm tracking-wider uppercase mb-2 project-category">Water Infrastructure</div>
-                <h2 class="text-2xl md:text-4xl font-bold mb-2 project-title text-white">Cedar Creek Expansion</h2>
-                <p class="text-md md:text-lg mb-4 text-white font-light project-location">Olathe, Kansas</p>
-                <p class="text-white mb-4 max-w-md text-sm md:text-base project-description">Complete electrical systems for a 25 MGD wastewater treatment plant, including power distribution and SCADA integration.</p>
-                <a href="./projects/cedar-creek/" class="inline-flex items-center project-link">
-                  <span class="mr-2">View Project</span>
-                  <span class="text-xl">→</span>
-                </a>
+            
+            <!-- Content Container -->
+            <div class="relative z-10 h-full w-full">
+              <div class="p-6 md:p-8 lg:p-12 flex flex-col h-full">
+                <div class="w-full md:w-1/2 text-left" data-aos="fade-up" data-aos-duration="800">
+                  <div class="font-bold text-sm tracking-wider uppercase mb-2 project-category">Water Infrastructure</div>
+                  <h2 class="text-2xl md:text-4xl font-bold mb-2 project-title text-white">Cedar Creek Expansion</h2>
+                  <p class="text-md md:text-lg mb-4 text-white font-light project-location">Olathe, Kansas</p>
+                  <p class="text-white mb-4 max-w-md text-sm md:text-base project-description">Complete electrical systems for a 25 MGD wastewater treatment plant, including power distribution and SCADA integration.</p>
+                  <a href="./projects/cedar-creek/" class="inline-flex items-center project-link">
+                    <span class="mr-2">View Project</span>
+                    <span class="text-xl">→</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <!-- Project Card 2 - Text on Right -->
-        <div class="relative overflow-hidden border-t-2 border-white group project-card">
-          <!-- Background Image with proper aspect ratio -->
-          <div class="absolute inset-0 w-full h-full">
-            <div class="w-full h-full overflow-hidden">
-              <img src="./assets/img/2025 photos/featured projects cards/MKC Lyons.jpg" 
-                   alt="MKC Lyons Project" 
-                   class="w-full h-full object-cover card-image">
-            </div>
-            <!-- Dark gradient overlay for better contrast -->
-            <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60"></div>
-          </div>
           
-          <!-- Content Container -->
-          <div class="relative z-10 h-full w-full">
-            <div class="p-6 md:p-8 lg:p-12 flex flex-col h-full">
-              <div class="w-full md:w-1/2 text-left" data-aos="fade-up" data-aos-duration="800">
-                <div class="font-bold text-sm tracking-wider uppercase mb-2 project-category">Grain Processing</div>
-                <h2 class="text-2xl md:text-4xl font-bold mb-2 project-title text-white">MKC Lyons Facility</h2>
-                <p class="text-md md:text-lg mb-4 text-white font-light project-location">Lyons, Kansas</p>
-                <p class="text-white mb-4 max-w-md text-sm md:text-base project-description">Complete electrical design and construction for a state-of-the-art grain processing facility with advanced automation systems.</p>
-                <a href="./projects/mkc-lyons/" class="inline-flex items-center project-link">
-                  <span class="mr-2">View Project</span>
-                  <span class="text-xl">→</span>
-                </a>
+          <!-- Project Card 2 - Text on Right -->
+          <div class="relative overflow-hidden border-t-2 border-white group project-card">
+            <!-- Background Image with proper aspect ratio -->
+            <div class="absolute inset-0 w-full h-full">
+              <div class="w-full h-full overflow-hidden">
+                <img src="./assets/img/2025 photos/featured projects cards/MKC Lyons.jpg" 
+                     alt="MKC Lyons Project" 
+                     class="w-full h-full object-cover card-image">
+              </div>
+              <!-- Dark gradient overlay for better contrast -->
+              <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60"></div>
+            </div>
+            
+            <!-- Content Container -->
+            <div class="relative z-10 h-full w-full">
+              <div class="p-6 md:p-8 lg:p-12 flex flex-col h-full">
+                <div class="w-full md:w-1/2 text-left" data-aos="fade-up" data-aos-duration="800">
+                  <div class="font-bold text-sm tracking-wider uppercase mb-2 project-category">Grain Processing</div>
+                  <h2 class="text-2xl md:text-4xl font-bold mb-2 project-title text-white">MKC Lyons Facility</h2>
+                  <p class="text-md md:text-lg mb-4 text-white font-light project-location">Lyons, Kansas</p>
+                  <p class="text-white mb-4 max-w-md text-sm md:text-base project-description">Complete electrical design and construction for a state-of-the-art grain processing facility with advanced automation systems.</p>
+                  <a href="./projects/mkc-lyons/" class="inline-flex items-center project-link">
+                    <span class="mr-2">View Project</span>
+                    <span class="text-xl">→</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <!-- Project Card 3 - Text on Left -->
-        <div class="relative overflow-hidden border-t-2 border-white group project-card">
-          <!-- Background Image with proper aspect ratio -->
-          <div class="absolute inset-0 w-full h-full">
-            <div class="w-full h-full overflow-hidden">
-              <img src="./assets/img/2025 photos/featured projects cards/Health Ministries Dental Clinic.jpg" 
-                   alt="Health Ministries Dental Clinic Project" 
-                   class="w-full h-full object-cover card-image">
-            </div>
-            <!-- Dark gradient overlay for better contrast -->
-            <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60"></div>
-          </div>
           
-          <!-- Content Container -->
-          <div class="relative z-10 h-full w-full">
-            <div class="p-6 md:p-8 lg:p-12 flex flex-col h-full">
-              <div class="w-full md:w-1/2 text-left" data-aos="fade-up" data-aos-duration="800">
-                <div class="font-bold text-sm tracking-wider uppercase mb-2 project-category">Healthcare</div>
-                <h2 class="text-2xl md:text-4xl font-bold mb-2 project-title text-white">Health Ministries Dental Clinic</h2>
-                <p class="text-md md:text-lg mb-4 text-white font-light project-location">Newton, Kansas</p>
-                <p class="text-white mb-4 max-w-md text-sm md:text-base project-description">Specialized electrical systems for a critical care dental facility, including power distribution and medical equipment support.</p>
-                <a href="./projects/health-ministries/" class="inline-flex items-center project-link">
-                  <span class="mr-2">View Project</span>
-                  <span class="text-xl">→</span>
-                </a>
+          <!-- Project Card 3 - Text on Left -->
+          <div class="relative overflow-hidden border-t-2 border-white group project-card">
+            <!-- Background Image with proper aspect ratio -->
+            <div class="absolute inset-0 w-full h-full">
+              <div class="w-full h-full overflow-hidden">
+                <img src="./assets/img/2025 photos/featured projects cards/Health Ministries Dental Clinic.jpg" 
+                     alt="Health Ministries Dental Clinic Project" 
+                     class="w-full h-full object-cover card-image">
+              </div>
+              <!-- Dark gradient overlay for better contrast -->
+              <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60"></div>
+            </div>
+            
+            <!-- Content Container -->
+            <div class="relative z-10 h-full w-full">
+              <div class="p-6 md:p-8 lg:p-12 flex flex-col h-full">
+                <div class="w-full md:w-1/2 text-left" data-aos="fade-up" data-aos-duration="800">
+                  <div class="font-bold text-sm tracking-wider uppercase mb-2 project-category">Healthcare</div>
+                  <h2 class="text-2xl md:text-4xl font-bold mb-2 project-title text-white">Health Ministries Dental Clinic</h2>
+                  <p class="text-md md:text-lg mb-4 text-white font-light project-location">Newton, Kansas</p>
+                  <p class="text-white mb-4 max-w-md text-sm md:text-base project-description">Specialized electrical systems for a critical care dental facility, including power distribution and medical equipment support.</p>
+                  <a href="./projects/health-ministries/" class="inline-flex items-center project-link">
+                    <span class="mr-2">View Project</span>
+                    <span class="text-xl">→</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
