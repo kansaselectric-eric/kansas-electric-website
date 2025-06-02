@@ -511,6 +511,17 @@
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
 
+    /* AOS Fallback Styles - Ensure elements are visible even if animations fail */
+    [data-aos] {
+      opacity: 1 !important;
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+    
+    /* Ensure all AOS elements with opacity-100 class are visible */
+    .opacity-100 {
+      opacity: 1 !important;
+    }
+
     /* Removing nav-caret styles as they're part of the old navigation */
   </style>
 
@@ -527,7 +538,7 @@
       <div class="kse-nav-container">
           <!-- Logo (Left Aligned) -->
           <a href="./" class="kse-nav-logo">
-              <img src="./assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric" width="178" height="40">
+              <img src="./assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric - Homepage" width="178" height="40">
           </a>
 
           <!-- Desktop Navigation (Center) -->
@@ -783,19 +794,23 @@
     <div class="video-logo-overlay" style="position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; z-index: 20 !important; opacity: 1 !important; visibility: visible !important; pointer-events: none !important;">
       <div class="logo-container" style="position: relative !important; width: 50% !important; max-width: 28rem !important;">
         <div class="logo-bg"></div>
-        <img src="./assets/img/ke-logo-white.svg" alt="Kansas Electric" style="position: relative !important; width: 100% !important; padding: 1.5rem !important; filter: drop-shadow(0 0 15px rgba(0,0,0,0.8)) drop-shadow(0 0 30px rgba(0,0,0,0.6)) drop-shadow(0 0 45px rgba(0,0,0,0.5)) !important;">
+        <img src="./assets/img/ke-logo-white.svg" alt="Kansas Electric - Electrical experts since 1948, powering mission-critical infrastructure" style="position: relative !important; width: 100% !important; padding: 1.5rem !important; filter: drop-shadow(0 0 15px rgba(0,0,0,0.8)) drop-shadow(0 0 30px rgba(0,0,0,0.6)) drop-shadow(0 0 45px rgba(0,0,0,0.5)) !important;">
       </div>
       
       <!-- Text elements beneath logo -->
       <div class="text-center" style="margin-top: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">
         <!-- "Electrical Experts Since 1948" -->
-        <div class="uppercase tracking-widest text-white" style="font-size: 0.875rem; letter-spacing: 0.15em; margin-bottom: 0.75rem; text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 0 1px rgba(0,0,0,0.7); font-weight: 500;">
-          Electrical Experts Since 1948
+        <div class="bg-black bg-opacity-30 px-4 py-2 rounded-md inline-block">
+          <div class="uppercase tracking-widest text-white" style="font-size: 0.875rem; letter-spacing: 0.15em; margin-bottom: 0.75rem; text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 0 1px rgba(0,0,0,0.7); font-weight: 500;">
+            Electrical Experts Since 1948
+          </div>
         </div>
         
         <!-- "Built for Power. Engineered for Excellence." -->
-        <div class="text-xl text-white" style="text-shadow: 0 2px 5px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.8); letter-spacing: 0.025em; font-weight: 500;">
-          Built for Power. Engineered for Excellence.
+        <div class="bg-black bg-opacity-30 px-4 py-2 rounded-md inline-block mt-2">
+          <div class="text-xl text-white" style="text-shadow: 0 2px 5px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.8); letter-spacing: 0.025em; font-weight: 500;">
+            Built for Power. Engineered for Excellence.
+          </div>
         </div>
       </div>
     </div>
@@ -962,7 +977,7 @@
     <div class="w-full px-6 md:px-10 lg:px-16" aria-labelledby="what-we-do-heading">
       <!-- Section heading and paragraph -->
       <div class="mb-16 text-center">
-        <h2 id="what-we-do-heading" class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight section-heading" data-aos="fade-up" data-aos-duration="800">What We Do</h2>
+        <h2 id="what-we-do-heading" class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight section-heading" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0" opacity-100 transition-opacity duration-500>What We Do</h2>
         <p class="text-lg text-gray-500 mb-4 leading-relaxed max-w-3xl mx-auto" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
           Kansas Electric delivers end-to-end electrical expertise—from automation to 24/7 service. Our teams design, install, and maintain the systems that power American industry.
         </p>
@@ -1092,7 +1107,7 @@
     <div class="relative z-10 h-full">
       <!-- Text Content Container -->
       <div class="max-w-3xl px-6 pt-20 pb-6 md:pl-12 md:pt-24 md:pb-10">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-relaxed drop-shadow-md fade-up-element delay-100">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-relaxed drop-shadow-md fade-up-element delay-100 opacity-100 transition-opacity duration-500">
           Kansas Electric — Your Trusted Partner in Power
         </h2>
         <p class="text-lg mb-8 max-w-xl partner-subheading fade-up-element delay-200">
@@ -1120,7 +1135,7 @@
     <div class="w-full px-6 md:px-10 lg:px-16" aria-labelledby="industries-heading">
       <!-- Section heading and paragraph -->
       <div class="mb-16 text-center">
-        <h2 id="industries-heading" class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight section-heading" data-aos="fade-up" data-aos-duration="800">Industries We Power</h2>
+        <h2 id="industries-heading" class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight section-heading" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0" opacity-100 transition-opacity duration-500>Industries We Power</h2>
         <p class="text-lg text-gray-500 mb-4 leading-relaxed max-w-3xl mx-auto" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
           Strategic electrical systems for mission-critical industries that demand precision, uptime, and performance.
         </p>
@@ -1289,7 +1304,7 @@
     <div class="w-full px-6 md:px-10 lg:px-16">
       <!-- Section heading and paragraph -->
       <div class="mb-16 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight section-heading" data-aos="fade-up" data-aos-duration="800">Proven. Trusted. Delivered.</h2>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight section-heading" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0" opacity-100 transition-opacity duration-500>Proven. Trusted. Delivered.</h2>
         <p class="text-lg text-gray-500 mb-4 leading-relaxed max-w-3xl mx-auto" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
           Projects we've engineered for mission-critical demands.
         </p>
@@ -1303,7 +1318,7 @@
           <div class="absolute inset-0 w-full h-full">
             <div class="w-full h-full overflow-hidden">
               <img src="./assets/img/2025 photos/featured projects cards/Newton Medical Center Switchgear.jpg" 
-                   alt="Water Infrastructure Project" 
+                   alt="Cedar Creek wastewater treatment plant electrical systems - 25 MGD facility with power distribution and SCADA integration in Olathe, Kansas" 
                    class="w-full h-full object-cover card-image">
             </div>
             <!-- Dark gradient overlay for better contrast -->
@@ -1333,7 +1348,7 @@
           <div class="absolute inset-0 w-full h-full">
             <div class="w-full h-full overflow-hidden">
               <img src="./assets/img/2025 photos/featured projects cards/MKC Lyons.jpg" 
-                   alt="MKC Lyons Project" 
+                   alt="MKC Lyons grain processing facility - Complete electrical design and construction for advanced automation systems in 55,000 sq. ft. processing plant" 
                    class="w-full h-full object-cover card-image">
             </div>
             <!-- Dark gradient overlay for better contrast -->
@@ -1363,7 +1378,7 @@
           <div class="absolute inset-0 w-full h-full">
             <div class="w-full h-full overflow-hidden">
               <img src="./assets/img/2025 photos/featured projects cards/Health Ministries Dental Clinic.jpg" 
-                   alt="Health Ministries Dental Clinic Project" 
+                   alt="Health Ministries Dental Clinic electrical systems - Specialized power distribution for critical care dental facility in Newton, Kansas" 
                    class="w-full h-full object-cover card-image">
             </div>
             <!-- Dark gradient overlay for better contrast -->
@@ -1394,7 +1409,7 @@
   <section class="bg-gray-50 py-24 px-6 md:px-10 lg:px-16">
     <div class="max-w-4xl mx-auto text-center">
       <div class="shadow-md rounded-xl bg-white p-12">
-        <h2 class="text-4xl font-bold text-gray-900">Ready to power your facility with precision and scale?</h2>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Ready to power your facility with precision and scale?</h2>
         <p class="text-lg text-gray-700 mt-4 max-w-2xl mx-auto">
           Let's discuss your electrical infrastructure needs and engineer a solution that delivers reliability, efficiency, and performance.
         </p>
@@ -1428,7 +1443,7 @@
         <a href="tel:3162834750" class="text-white font-medium hover:text-white transition-colors text-base">
           (316) 283-4750
         </a>
-        <a href="./contact/" class="inline-block bg-[#0047b3] text-white font-medium py-3 px-6 rounded-md hover:bg-[#003a94] transition-colors duration-300 text-center" style="filter: drop-shadow(0 0 6px rgba(255,255,255,0.1));">
+        <a href="./contact/" class="inline-block bg-[#0047b3] text-white font-medium py-3 px-6 rounded-md hover:bg-[#003a94] transition-colors duration-300 text-center transition-transform duration-300 ease-in-out hover:scale-105" style="filter: drop-shadow(0 0 6px rgba(255,255,255,0.1));">
           Let's Engineer Your Next Power Move
         </a>
       </div>
@@ -1436,8 +1451,8 @@
       <!-- Right Column: Links -->
       <div class="flex flex-col items-center md:items-end text-center md:text-right space-y-3" data-aos="fade-up" data-aos-delay="300">
         <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Links</h3>
-        <a href="https://www.linkedin.com/company/kansas-electric/" class="text-white hover:text-gray-200 transition-colors" aria-label="LinkedIn">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6">
+        <a href="https://www.linkedin.com/company/kansas-electric/" class="text-white hover:text-gray-200 transition-colors" aria-label="Kansas Electric LinkedIn profile">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6" alt="Kansas Electric LinkedIn profile">
             <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
           </svg>
         </a>

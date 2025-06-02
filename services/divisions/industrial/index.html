@@ -41,6 +41,10 @@
   <link rel="stylesheet" href="../../../projects/stanley-black-decker/redesigned-navigation.css">
   <script src="../../../projects/stanley-black-decker/redesigned-navigation.js" defer></script>
 
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <!-- ANTI-FLICKER DEFENSIVE STYLES - PREVENT DROPDOWN FLASH -->
   <style>
   /* IMMEDIATE DROPDOWN HIDING - PREVENTS FLASH ON PAGE LOAD */
@@ -611,374 +615,500 @@
               <!-- Mobile CTA -->
               <a href="../../../contact/" class="kse-mobile-nav-cta">Let's Engineer Your Next Power Move</a>
           </nav>
-
-
-  <a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-ke-yellow inline-block"><span class="block py-2">Skip to content</span></a>
-
-  <nav class="site-header relative z-10">
-    <!-- <a class="py-2 text-ke-gray-dark block bg-ke-yellow hover:bg-ke-yellow-dark transition duration-200 text-center text-lg font-semibold uppercase" href="../../../job-openings/">Now Hiring! <span class="block text-base normal-case font-normal">Click to fill out an application</span></a> -->
-    
-    <div class="bg-ke-blue">
-      <div class="md:w-11/12 mx-auto flex flex-row md:items-center">
-        <!-- News Ticker with flex-grow to take available space -->
-        <div class="ticker-container flex-grow">
-          <div class="ticker-wrapper">
-            <div class="ticker-scroll">
-              <span class="ticker-item">AI assistants like Microsoft's Factory Operations Agent are streamlining manufacturing processes. <a href="https://www.microsoft.com/en-us/industry/blog/manufacturing-and-mobility/2023/11/14/introducing-microsoft-factory-operations-agent-a-new-ai-assistant-for-manufacturing/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">These are the top 5 manufacturing automation trends that are shaping 2025. <a href="https://www.forbes.com/sites/bernardmarr/2023/11/13/the-top-5-manufacturing-trends-in-2024/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">The Department of Energy is funding projects that convert carbon emissions into value-added products. <a href="https://www.energy.gov/fecm/articles/doe-announces-17-million-convert-carbon-emissions-valuable-products" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">AI technologies are projected to nearly double global data center electricity usage by 2030. <a href="https://www.iea.org/reports/the-environmental-footprint-of-artificial-intelligence" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Meta plans a $35 billion data center fund, with Apollo Global in talks to lead the initiative. <a href="https://www.reuters.com/technology/meta-plans-35-billion-data-center-fund-apollo-talks-lead-it-sources-2023-11-14/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">U.S. Army completes new microgrids at Fort Hunter Liggett, Camp Arifjan, and Fort Cavazos, enhancing energy resilience. <a href="https://www.army.mil/article/269387/army_completes_new_microgrids_at_fort_hunter_liggett_camp_arifjan_and_fort_cavazos" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Scientists develop a new optimization model to improve microgrid operation, ensuring stable and efficient energy systems. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0306261923013648" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">The Department of Energy introduces the Community Microgrid Assistance Partnership to bolster energy resilience in remote communities. <a href="https://www.energy.gov/gdo/community-microgrid-assistance-partnership" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">Fort Riley's solar installation reaches 16 MW, powering 40% of base housing. <a href="https://www.army.mil/article/269387/army_completes_new_microgrids_at_fort_hunter_liggett_camp_arifjan_and_fort_cavazos" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-              <span class="ticker-item">The University of Kansas has a new Welcome Center. It's a 58 kW solar microgrid with battery storage. <a href="https://www.ku.edu/news/2023/11/15/ku-welcome-center-earns-leed-gold-certification-sustainability" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
-            </div>
-          </div>
-        </div>
-        <!-- 24/7 Support -->
-        <div class="flex-shrink-0 whitespace-nowrap">
-          <p class="text-white font-semibold flex items-center support-container">
-            <span class="support-label">24/7 Support:</span>
-            <a class="phone-button" href="tel:3162834750">(316) 283-4750</a>
-          </p>
-        </div>
       </div>
-    </div>
-    <div class="md:w-11/12 mx-auto flex lg:space-x-10 justify-between py-6 lg:py-0 px-4 md:px-0">
-      <a href="../../../" class="md:self-center">
-        <img class="w-auto h-8 md:h-10 lg:h-10" src="../../../assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric" width="178" height="40">
-      </a>
-      <a class="block lg:hidden self-center" href="#" data-mobile-nav-toggle>
-        <span class="sr-only">Toggle mobile menu</span>
-        <span class="line block h-1 w-6 mb-1 bg-ke-gray rounded-full"></span>
-        <span class="line block h-1 w-6 mb-1 bg-ke-gray rounded-full"></span>
-        <span class="line block h-1 w-6 bg-ke-gray rounded-full"></span>
-      </a>
-          <!-- Fortune 500 Navigation -->
-    
-        </div>
-    </nav>
-    </div>
-  </div>
-          </li>
-          <li class="lg:self-center border-t border-ke-gray-lighter lg:border-none nav-item">
-            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Projects</a>
-            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
-              <div class="submenu-container three-column-menu">
-                <div class="w-1/4 hidden lg:block menu-column first-column">
-                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Our Projects</p>
-                  <p class="text-ke-gray">Explore our portfolio of completed electrical projects.</p>
-                </div>
-                <div class="w-1/4 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
-                  <ul class="second-column-menu">
-                    <li>
-                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="all-projects">All Projects</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="industrial-projects">Industrial Projects</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="commercial-projects">Commercial Projects</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="service-maintenance-projects">Service and Maintenance Projects</a>
-                    </li>
-                    <li>
-                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="automation-projects">Automation and Control Systems Projects</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
-                  <!-- All Projects (default) -->
-                  <ul class="third-column-content active" id="all-projects">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/stanley-black-decker/">Stanley Black & Decker - Network Upgrades</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/mkc-lyons/">MKC - Lyons</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/health-ministries/">Health Ministries Dental Clinic</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/bethel-college/">Bethel College Solar Grid</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/agco-hesston/">AGCO - Hesston</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../projects/camso-control-panel/">Camso Control Panel</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="lg:self-center border-t border-ke-gray-lighter lg:border-none nav-item">
-            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">About</a>
-            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
-              <div class="submenu-container">
-                <div class="hidden lg:block menu-column first-column" style="flex: 0 0 25%;">
-                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">About Kansas Electric</p>
-                  <p class="text-ke-gray">Learn more about our company, our team, and our mission.</p>
-                </div>
-                <div class="lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column" style="flex: 0 0 75%;">
-                  <div class="grid md:grid-cols-3 gap-8">
-                    <div>
-                      <p class="font-semibold mb-3 text-ke-blue">Our Story</p>
-                      <ul>
-                        <li>
-                          <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200 hover:text-ke-blue" href="../../../about/">Company History</a>
-                        </li>
-                        <li>
-                          <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200 hover:text-ke-blue" href="../../../about/mission-values/">Mission & Values</a>
-                        </li>
-                        <li>
-                          <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200 hover:text-ke-blue" href="../../../about/affiliations/">Affiliations & Certifications</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <p class="font-semibold mb-3 text-ke-blue">Our Team</p>
-                      <ul>
-                        <li>
-                          <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200 hover:text-ke-blue" href="../../../about/leadership/">Leadership Team</a>
-                        </li>
-                        <li>
-                          <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200 hover:text-ke-blue" href="../../../careers/">Join Our Team</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <p class="font-semibold mb-3 text-ke-blue">Connect With Us</p>
-                      <ul>
-                        <li>
-                          <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200 hover:text-ke-blue" href="../../../contact/locations/">Our Locations</a>
-                        </li>
-                        <li>
-                          <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200 hover:text-ke-blue" href="../../../contact/request-bid/">Request a Bid</a>
-                        </li>
-                        <li>
-                          <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200 hover:text-ke-blue" href="../../../resources/">Resources</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="lg:self-center border-t border-b border-ke-gray-lighter lg:border-none nav-item">
-            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Careers</a>
-            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
-              <div class="submenu-container three-column-menu">
-                <div class="w-1/4 hidden lg:block menu-column first-column">
-                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Careers</p>
-                  <p class="text-ke-gray">We're always looking for talented people to join our team.</p>
-                </div>
-                <div class="w-1/4 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
-                  <ul class="second-column-menu">
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../careers/">All Job Openings</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../careers/benefits/">Benefits & Culture</a>
-                    </li>
-                    <li>
-                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="../../../careers/quick-apply/">Quick Apply</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
-                  <div class="grid md:grid-cols-2 gap-8">
-                    <div>
-                      <p class="font-semibold mb-3 text-ke-blue">Career Categories</p>
-                      <ul>
-                        <li>
-                          <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200 hover:text-ke-blue" href="../../../careers/electrical/">Electrical</a>
-                        </li>
-                        <li>
-                          <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200 hover:text-ke-blue" href="../../../careers/project-management/">Project Management</a>
-                        </li>
-                        <li>
-                          <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200 hover:text-ke-blue" href="../../../careers/engineering/">Engineering</a>
-                        </li>
-                        <li>
-                          <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200 hover:text-ke-blue" href="../../../careers/administrative/">Administrative</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <div>
-                      <div class="bg-ke-blue-dark p-4 rounded-lg text-white">
-                        <h3 class="font-semibold text-sm mb-2">Join Our Team</h3>
-                        <p class="text-sm mb-3">Kansas Electric offers competitive wages, benefits, and opportunities for growth.</p>
-                        <a href="../../../careers/quick-apply/" class="text-sm bg-white text-ke-blue-dark font-semibold py-1 px-3 rounded inline-block hover:bg-ke-gray-lightest transition duration-200">Apply Now</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <!-- Navigation items will be inserted here by JavaScript -->
-        </ul>
-        <ul class="md:flex md:space-x-8 w-full justify-center">
-          <li class="mt-6 pl-4 md:pl-0 md:ml-4 lg:mt-0 md:self-center absolute right-0 lg:right-6">
-            <a class="blue-nav-button rounded-md" href="../../../contact/request-bid/">POWER UP YOUR PROJECT - LET'S TALK!</a>
-          </li>
-        </ul>
-      </div>
-    </div>
   </nav>
 
   <main id="content" class="flex-grow">
     <article class="overflow-hidden">
-      <!-- Page Header Section -->
-      <section class="py-16 bg-ke-gray-lightest">
-        <div class="container mx-auto px-4">
-          <h1 class="text-3xl md:text-4xl font-bold text-center mb-6">Industrial Electrical Division</h1>
-          <p class="text-xl text-center max-w-3xl mx-auto">Delivering high-quality, reliable electrical solutions for industrial environments since 1948.</p>
+
+      <!-- Hero Section -->
+      <section class="relative w-full h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+          <img src="../../../assets/img/2025 photos/industrial-hero-bg.jpg" 
+               alt="Industrial electrical infrastructure at manufacturing facility" 
+               class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        </div>
+        
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-6">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" data-aos="fade-up">
+            Engineered for Industry. Trusted Nationwide.
+          </h1>
+          <p class="text-xl md:text-2xl mb-8 leading-relaxed max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+            Kansas Electric delivers mission-critical infrastructure across manufacturing, oil & gas, grain, wastewater, and energy sectors.
+          </p>
+          <a href="../../../contact/request-bid/" 
+             class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105 shadow-lg"
+             data-aos="fade-up" data-aos-delay="400">
+            Request a Bid
+          </a>
         </div>
       </section>
-      
-      <!-- Main Content Section -->
-      <section class="py-12 bg-white">
-        <div class="container mx-auto px-4">
-          <div class="max-w-4xl mx-auto">
-            <p class="mb-6">The Industrial Electrical Division at Kansas Electric specializes in solving complex electrical challenges for industrial clients across various sectors. Our experienced team of engineers, project managers, and skilled electricians understand the unique demands of industrial settings and deliver solutions that enhance safety, reliability, and efficiency.</p>
+
+      <!-- What We Deliver Section -->
+      <section class="py-20 bg-white">
+        <div class="w-full px-6 md:px-10 lg:px-16">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             
-            <h2 class="text-2xl font-bold mt-10 mb-4">Our Industrial Services</h2>
-            
-            <div class="grid md:grid-cols-2 gap-6 mb-10">
-              <div class="bg-ke-gray-lightest p-6 rounded-lg">
-                <h3 class="text-lg font-semibold mb-2">Advanced Manufacturing Facilities</h3>
-                <p>Complete electrical systems for modern manufacturing plants, including power distribution, control systems, and machine integration.</p>
-                <p class="mt-4"><a href="../../industrial/advanced-manufacturing/" class="text-ke-blue hover:underline">Learn more →</a></p>
-              </div>
-              
-              <div class="bg-ke-gray-lightest p-6 rounded-lg">
-                <h3 class="text-lg font-semibold mb-2">Wastewater & Water Treatment</h3>
-                <p>Specialized electrical systems for water treatment facilities, pumping stations, and related infrastructure.</p>
-                <p class="mt-4"><a href="../../industrial/wastewater-treatment/" class="text-ke-blue hover:underline">Learn more →</a></p>
-              </div>
-              
-              <div class="bg-ke-gray-lightest p-6 rounded-lg">
-                <h3 class="text-lg font-semibold mb-2">Food & Beverage Manufacturing</h3>
-                <p>Industry-compliant electrical installations for food processing environments, with particular attention to safety and sanitation requirements.</p>
-                <p class="mt-4"><a href="../../industrial/food-beverage/" class="text-ke-blue hover:underline">Learn more →</a></p>
-              </div>
-              
-              <div class="bg-ke-gray-lightest p-6 rounded-lg">
-                <h3 class="text-lg font-semibold mb-2">Oil, Gas & Carbon Capture</h3>
-                <p>Hazardous location electrical services for oil and gas infrastructure, including pipeline monitoring and control systems.</p>
-                <p class="mt-4"><a href="../../industrial/oil-gas/" class="text-ke-blue hover:underline">Learn more →</a></p>
-              </div>
-              
-              <div class="bg-ke-gray-lightest p-6 rounded-lg">
-                <h3 class="text-lg font-semibold mb-2">Design-Build Services</h3>
-                <p>Comprehensive electrical design and implementation from concept to completion for industrial projects.</p>
-                <p class="mt-4"><a href="../../ul-certified-design-build/" class="text-ke-blue hover:underline">Learn more →</a></p>
-              </div>
-              
-              <div class="bg-ke-gray-lightest p-6 rounded-lg">
-                <h3 class="text-lg font-semibold mb-2">Microgrids & Energy Management</h3>
-                <p>Advanced energy solutions including microgrids, renewable integration, and intelligent energy management systems.</p>
-                <p class="mt-4"><a href="../../industrial/data-centers/" class="text-ke-blue hover:underline">Learn more →</a></p>
-              </div>
+            <!-- Left Column: Intro Text -->
+            <div data-aos="fade-right">
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
+                What We Deliver
+              </h2>
+              <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                Kansas Electric brings 75+ years of industrial expertise to every project. From initial design through commissioning and ongoing support, we deliver comprehensive electrical solutions that keep critical operations running safely and efficiently.
+              </p>
+              <p class="text-lg text-gray-600 leading-relaxed">
+                Our full-scope capabilities ensure seamless project execution, whether you're building a new facility, expanding operations, or upgrading existing infrastructure.
+              </p>
             </div>
-            
-            <h2 class="text-2xl font-bold mt-10 mb-4">Why Choose Our Industrial Division</h2>
-            
-            <ul class="list-disc pl-6 mb-6 space-y-2">
-              <li><strong>Experience:</strong> Over 75 years of industrial electrical expertise</li>
-              <li><strong>Specialized Knowledge:</strong> Deep understanding of industrial processes and requirements</li>
-              <li><strong>Safety Focus:</strong> Comprehensive safety protocols for high-voltage industrial environments</li>
-              <li><strong>24/7 Support:</strong> Round-the-clock emergency services for critical industrial operations</li>
-              <li><strong>Full Lifecycle Services:</strong> From design and installation to maintenance and upgrades</li>
-              <li><strong>Technology Integration:</strong> Incorporating modern control systems, IoT, and industrial automation</li>
-            </ul>
-            
-            <div class="bg-ke-blue text-white p-6 rounded-lg my-10">
-              <h3 class="text-xl font-bold mb-3">Ready to discuss your industrial electrical needs?</h3>
-              <p class="mb-4">Our team of industrial electrical experts is ready to help you design, implement, and maintain electrical systems that meet your specific requirements.</p>
-              <a href="../../../contact/request-bid/" class="inline-block bg-white text-ke-blue font-semibold py-2 px-6 rounded-md hover:bg-ke-gray-lightest transition duration-200">Request a Consultation</a>
+
+            <!-- Right Column: Feature Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4" data-aos="fade-left">
+              
+              <div class="bg-gray-50 p-6 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                <h3 class="font-semibold text-lg mb-2 text-gray-900">Redundant Power Systems</h3>
+                <p class="text-gray-600 text-sm">Critical backup power and uninterruptible systems</p>
+              </div>
+              
+              <div class="bg-gray-50 p-6 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                <h3 class="font-semibold text-lg mb-2 text-gray-900">MCCs & VFDs</h3>
+                <p class="text-gray-600 text-sm">Motor control centers and variable frequency drives</p>
+              </div>
+              
+              <div class="bg-gray-50 p-6 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                <h3 class="font-semibold text-lg mb-2 text-gray-900">PLC + Control Wiring</h3>
+                <p class="text-gray-600 text-sm">Advanced automation and control system integration</p>
+              </div>
+              
+              <div class="bg-gray-50 p-6 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                <h3 class="font-semibold text-lg mb-2 text-gray-900">Medium Voltage (4160V)</h3>
+                <p class="text-gray-600 text-sm">High-voltage power distribution and switchgear</p>
+              </div>
+              
+              <div class="bg-gray-50 p-6 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                <h3 class="font-semibold text-lg mb-2 text-gray-900">Hazardous Location Installations</h3>
+                <p class="text-gray-600 text-sm">Class I, II, III explosive environment expertise</p>
+              </div>
+              
+              <div class="bg-gray-50 p-6 rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                <h3 class="font-semibold text-lg mb-2 text-gray-900">24/7 Emergency Support</h3>
+                <p class="text-gray-600 text-sm">Round-the-clock service for critical operations</p>
+              </div>
+              
             </div>
           </div>
         </div>
       </section>
+
+      <!-- Industries We Serve Section -->
+      <section class="py-20 bg-gray-100">
+        <div class="w-full px-6 md:px-10 lg:px-16">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight" data-aos="fade-up">
+              Industries We Serve
+            </h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+              Specialized electrical solutions for mission-critical industrial environments
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <a href="../../../services/industrial/grain/" 
+               class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group"
+               data-aos="fade-up" data-aos-delay="100">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                Grain Handling
+              </h3>
+              <p class="text-gray-600 mb-4">Elevator controls, dust mitigation, and safety systems</p>
+              <span class="text-blue-600 font-medium inline-flex items-center gap-1">
+                Learn more
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </a>
+            
+            <a href="../../../services/industrial/oil-gas/" 
+               class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group"
+               data-aos="fade-up" data-aos-delay="200">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                Oil & Gas
+              </h3>
+              <p class="text-gray-600 mb-4">Hazardous location expertise and pipeline controls</p>
+              <span class="text-blue-600 font-medium inline-flex items-center gap-1">
+                Learn more
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </a>
+            
+            <a href="../../../services/industrial/wastewater-treatment/" 
+               class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group"
+               data-aos="fade-up" data-aos-delay="300">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                Wastewater Treatment
+              </h3>
+              <p class="text-gray-600 mb-4">Treatment plants and pump station automation</p>
+              <span class="text-blue-600 font-medium inline-flex items-center gap-1">
+                Learn more
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </a>
+            
+            <a href="../../../services/industrial/advanced-manufacturing/" 
+               class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group"
+               data-aos="fade-up" data-aos-delay="400">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                Advanced Manufacturing
+              </h3>
+              <p class="text-gray-600 mb-4">Production line automation and power distribution</p>
+              <span class="text-blue-600 font-medium inline-flex items-center gap-1">
+                Learn more
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </a>
+            
+            <a href="../../../services/industrial/food-beverage/" 
+               class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group"
+               data-aos="fade-up" data-aos-delay="500">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                Food & Beverage
+              </h3>
+              <p class="text-gray-600 mb-4">Sanitary design and process control systems</p>
+              <span class="text-blue-600 font-medium inline-flex items-center gap-1">
+                Learn more
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </a>
+            
+            <a href="../../../services/industrial/data-centers/" 
+               class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group"
+               data-aos="fade-up" data-aos-delay="600">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                Data Centers
+              </h3>
+              <p class="text-gray-600 mb-4">Mission-critical infrastructure and redundancy</p>
+              <span class="text-blue-600 font-medium inline-flex items-center gap-1">
+                Learn more
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+              </span>
+            </a>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- Built to Perform in Harsh Environments Section -->
+      <section class="py-20 bg-white">
+        <div class="w-full px-6 md:px-10 lg:px-16">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight" data-aos="fade-up">
+              Built to Perform in Harsh Environments
+            </h2>
+          </div>
+          
+          <!-- Block 1: Left Image, Right Text -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 items-center">
+            <div data-aos="fade-right">
+              <img src="../../../assets/img/2025 photos/grain-facility-electrical.jpg" 
+                   alt="Grain facility electrical installation with dust-resistant components" 
+                   class="w-full h-80 object-cover rounded-lg shadow-lg">
+            </div>
+            <div data-aos="fade-left">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Grain & Agricultural Facilities</h3>
+              <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                Our team specializes in grain elevator electrical systems, including explosion-proof installations, dust mitigation controls, and automated grain handling systems. We understand the unique safety requirements and operational demands of agricultural facilities.
+              </p>
+              <a href="../../../services/industrial/grain/" 
+                 class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300">
+                View Grain Projects
+              </a>
+            </div>
+          </div>
+          
+          <!-- Block 2: Right Image, Left Text -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20 items-center">
+            <div class="lg:order-2" data-aos="fade-left">
+              <img src="../../../assets/img/2025 photos/confined-space-panel.jpg" 
+                   alt="Electrical panel installation in confined industrial space" 
+                   class="w-full h-80 object-cover rounded-lg shadow-lg">
+            </div>
+            <div class="lg:order-1" data-aos="fade-right">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Confined Space & Hazardous Locations</h3>
+              <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                Working safely in confined spaces and hazardous environments requires specialized expertise. Our certified technicians are trained in Class I, II, and III locations, ensuring compliant installations that protect both personnel and equipment.
+              </p>
+              <a href="../../../services/industrial/oil-gas/" 
+                 class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300">
+                Learn About Safety Standards
+              </a>
+            </div>
+          </div>
+          
+          <!-- Block 3: Left Image, Right Text -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+              <img src="../../../assets/img/2025 photos/outdoor-transformer.jpg" 
+                   alt="Outdoor electrical transformer and conduit installation" 
+                   class="w-full h-80 object-cover rounded-lg shadow-lg">
+            </div>
+            <div data-aos="fade-left">
+              <h3 class="text-2xl font-bold text-gray-900 mb-4">Outdoor Infrastructure & Underground Systems</h3>
+              <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                From underground conduit systems to outdoor transformer installations, we design and build electrical infrastructure that withstands extreme weather conditions and provides reliable power distribution across expansive industrial sites.
+              </p>
+              <a href="../../../contact/request-bid/" 
+                 class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300">
+                Request Site Assessment
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Projects Section -->
+      <section class="py-20 bg-gray-100">
+        <div class="w-full px-6 md:px-10 lg:px-16">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight" data-aos="fade-up">
+              Featured Industrial Projects
+            </h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+              Complex electrical challenges solved with precision and expertise
+            </p>
+          </div>
+          
+          <div class="grid grid-cols-1 gap-8">
+            
+            <!-- Project 1 -->
+            <a href="../../../projects/mkc-lyons/" 
+               class="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.01] group"
+               data-aos="fade-up" data-aos-delay="100">
+              <div class="relative h-96 md:h-80">
+                <img src="../../../assets/img/2025 photos/featured projects cards/MKC Lyons.jpg" 
+                     alt="MKC Lyons grain processing facility electrical systems" 
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-50 transition-all duration-300"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                  <h3 class="text-2xl font-bold mb-2">MKC Lyons Facility</h3>
+                  <p class="text-lg mb-4">Complete electrical design and automation for a state-of-the-art grain processing facility featuring advanced PLC controls and safety systems.</p>
+                  <span class="inline-flex items-center gap-2 text-blue-300 font-semibold">
+                    View Project Details
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+            
+            <!-- Project 2 -->
+            <a href="../../../projects/cedar-creek/" 
+               class="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.01] group"
+               data-aos="fade-up" data-aos-delay="200">
+              <div class="relative h-96 md:h-80">
+                <img src="../../../assets/img/2025 photos/featured projects cards/Newton Medical Center Switchgear.jpg" 
+                     alt="Cedar Creek wastewater treatment plant electrical infrastructure" 
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-50 transition-all duration-300"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                  <h3 class="text-2xl font-bold mb-2">Cedar Creek Treatment Plant</h3>
+                  <p class="text-lg mb-4">25 MGD wastewater treatment facility featuring redundant power systems, SCADA integration, and automated process controls.</p>
+                  <span class="inline-flex items-center gap-2 text-blue-300 font-semibold">
+                    View Project Details
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+            
+            <!-- Project 3 -->
+            <a href="../../../projects/stanley-black-decker/" 
+               class="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.01] group"
+               data-aos="fade-up" data-aos-delay="300">
+              <div class="relative h-96 md:h-80">
+                <img src="../../../assets/img/2025 photos/stanley-black-decker-manufacturing.jpg" 
+                     alt="Stanley Black & Decker manufacturing facility electrical upgrade" 
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                <div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-50 transition-all duration-300"></div>
+                <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                  <h3 class="text-2xl font-bold mb-2">Stanley Black & Decker Upgrades</h3>
+                  <p class="text-lg mb-4">Network infrastructure upgrades and power distribution improvements for Fortune 500 manufacturing operations with zero downtime.</p>
+                  <span class="inline-flex items-center gap-2 text-blue-300 font-semibold">
+                    View Project Details
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+            
+          </div>
+          
+          <div class="text-center mt-12">
+            <a href="../../../projects/" 
+               class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105"
+               data-aos="fade-up" data-aos-delay="400">
+              See More Projects
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Kansas Electric Section -->
+      <section class="py-20 bg-white">
+        <div class="w-full px-6 md:px-10 lg:px-16">
+          <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight" data-aos="fade-up">
+              Why Kansas Electric
+            </h2>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            
+            <!-- Stat 1 -->
+            <div class="text-center p-8 bg-gray-50 rounded-lg" data-aos="fade-up" data-aos-delay="100">
+              <div class="text-5xl font-bold text-blue-600 mb-4">< 2hrs</div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Average Response Time</h3>
+              <p class="text-gray-600">Emergency service response for critical industrial operations</p>
+            </div>
+            
+            <!-- Stat 2 -->
+            <div class="text-center p-8 bg-gray-50 rounded-lg" data-aos="fade-up" data-aos-delay="200">
+              <div class="text-5xl font-bold text-blue-600 mb-4">15+</div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Multi-Trade Coordination</h3>
+              <p class="text-gray-600">Skilled trades working seamlessly on complex projects</p>
+            </div>
+            
+            <!-- Stat 3 -->
+            <div class="text-center p-8 bg-gray-50 rounded-lg" data-aos="fade-up" data-aos-delay="300">
+              <div class="text-5xl font-bold text-blue-600 mb-4">11</div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Licensed in 11 States</h3>
+              <p class="text-gray-600">Regional expertise with nationwide project capabilities</p>
+            </div>
+            
+          </div>
+          
+          <div class="text-center bg-gray-100 p-12 rounded-lg" data-aos="fade-up" data-aos-delay="400">
+            <blockquote class="text-2xl md:text-3xl font-semibold text-gray-900 italic mb-4">
+              "We don't just wire buildings — we power entire systems."
+            </blockquote>
+            <p class="text-lg text-gray-600">— Kansas Electric Industrial Division</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final CTA Section -->
+      <section class="relative py-24 bg-blue-600 overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10">
+          <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.1%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        </div>
+        
+        <div class="relative z-10 w-full px-6 md:px-10 lg:px-16">
+          <div class="text-center text-white max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight" data-aos="fade-up">
+              Ready to engineer your next industrial facility without compromise?
+            </h2>
+            <p class="text-xl mb-8 leading-relaxed opacity-90" data-aos="fade-up" data-aos-delay="200">
+              Our industrial electrical experts are standing by to discuss your project requirements and deliver solutions that exceed expectations.
+            </p>
+            <a href="../../../contact/request-bid/" 
+               class="inline-block bg-white text-blue-600 hover:bg-gray-100 font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105 shadow-lg"
+               data-aos="fade-up" data-aos-delay="400">
+              Get in Touch with Our Industrial Team
+            </a>
+          </div>
+        </div>
+      </section>
+
     </article>
   </main>
 
   <!-- FOOTER START -->
-<footer class="bg-ke-gray-dark">
-  <div class="md:w-11/12 md:mx-auto md:flex md:justify-between py-12 md:pb-12 md:pt-20 border-b border-ke-gray px-6 md:px-0">
-    <a href="../../.."><img class="w-auto h-12" src="../../../assets/img/ke-logo-white.svg" alt="Kansas Electric" width="300" height="60"></a>
-    <ul class="flex space-x-4 self-end mt-12 md:mt-0">
-      <li>
-        <a class="hover:-translate-y-2 focus:-translate-y-2 transition duration-200 ease-in-out block" href="https://www.linkedin.com/company/kansas-electric-inc" target="_blank" rel="noopener"><span class="sr-only">Kansas Electric LinkedIn page</span><img class="social-icon" src="../../../assets/img/linkedin.svg" alt="Kansas Electric LinkedIn page" title="Kansas Electric LinkedIn page" width="24" height="24"></a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="md:w-11/12 md:mx-auto md:flex md:flex-wrap md:justify-between py-8 md:py-12 px-6 md:px-0">
-    <div class="lg:w-1/4 pb-8 md:pb-0 md:mb-12">
-      <address class="not-italic text-ke-gray-light text-base md:text-sm tracking-wide mb-2">
-        <span class="block text-white uppercase font-semibold">Newton</span>
-        1420 NW 36th St.<br>
-        Newton, KS 67114
-      </address>
-      <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light text-sm transition duration-200 hover:text-ke-gray-lighter mb-6" href="tel:3162834750">(316) 283-4750</a>
-
-      <address class="not-italic text-ke-gray-light text-base md:text-sm tracking-wide mb-2">
-        <span class="block text-white uppercase font-semibold">Emporia</span>
-        817 E 6th Ave<br>
-        Emporia, KS 66801
-      </address>
-      <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light text-sm transition duration-200 hover:text-ke-gray-lighter mb-6" href="tel:3162834750">(316) 283-4750</a>
+  <footer class="bg-ke-gray-dark">
+    <div class="md:w-11/12 md:mx-auto md:flex md:justify-between py-12 md:pb-12 md:pt-20 border-b border-ke-gray px-6 md:px-0">
+      <a href="../../.."><img class="w-auto h-12" src="../../../assets/img/ke-logo-white.svg" alt="Kansas Electric" width="300" height="60"></a>
+      <ul class="flex space-x-4 self-end mt-12 md:mt-0">
+        <li>
+          <a class="hover:-translate-y-2 focus:-translate-y-2 transition duration-200 ease-in-out block" href="https://www.linkedin.com/company/kansas-electric-inc" target="_blank" rel="noopener"><span class="sr-only">Kansas Electric LinkedIn page</span><img class="social-icon" src="../../../assets/img/linkedin.svg" alt="Kansas Electric LinkedIn page" title="Kansas Electric LinkedIn page" width="24" height="24"></a>
+        </li>
+      </ul>
     </div>
-    <div class="lg:w-3/4 md:flex md:justify-center">
-      <div class="md:w-2/3 py-6 md:py-0 border-t border-ke-gray md:border-none">
-        <h2 class="mb-2 md:mb-6 uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 py-1 md:leading-normal md:py-0">Divisions</h2>
-        <ul class="text-base md:text-sm">
-          <li class="mb-2">
-            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/divisions/industrial/">Industrial Electrical Division</a>
-          </li>
-          <li class="mb-2">
-            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/divisions/commercial/">Commercial Electrical Division</a>
-          </li>
-          <li class="mb-2">
-            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/divisions/service-maintenance/">Service and Maintenance Division</a>
-          </li>
-          <li class="mb-2">
-            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/divisions/automation-control/">Automation and Control Systems Division</a>
-          </li>
-        </ul>
+
+    <div class="md:w-11/12 md:mx-auto md:flex md:flex-wrap md:justify-between py-8 md:py-12 px-6 md:px-0">
+      <div class="lg:w-1/4 pb-8 md:pb-0 md:mb-12">
+        <address class="not-italic text-ke-gray-light text-base md:text-sm tracking-wide mb-2">
+          <span class="block text-white uppercase font-semibold">Newton</span>
+          1420 NW 36th St.<br>
+          Newton, KS 67114
+        </address>
+        <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light text-sm transition duration-200 hover:text-ke-gray-lighter mb-6" href="tel:3162834750">(316) 283-4750</a>
+
+        <address class="not-italic text-ke-gray-light text-base md:text-sm tracking-wide mb-2">
+          <span class="block text-white uppercase font-semibold">Emporia</span>
+          817 E 6th Ave<br>
+          Emporia, KS 66801
+        </address>
+        <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light text-sm transition duration-200 hover:text-ke-gray-lighter mb-6" href="tel:3162834750">(316) 283-4750</a>
       </div>
-      <div class="md:w-1/3 border-t border-ke-gray md:border-none py-6 md:py-0">
-        <h2 class="mb-2 md:mb-6"><a class="uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0" href="../../../contact/">Contact</a></h2>
-        <ul class="text-base md:text-sm">
-          <li class="mb-2">
-            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../contact/request-bid/">Request a bid</a>
-          </li>
-        </ul>
+      <div class="lg:w-3/4 md:flex md:justify-center">
+        <div class="md:w-2/3 py-6 md:py-0 border-t border-ke-gray md:border-none">
+          <h2 class="mb-2 md:mb-6 uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 py-1 md:leading-normal md:py-0">Divisions</h2>
+          <ul class="text-base md:text-sm">
+            <li class="mb-2">
+              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/divisions/industrial/">Industrial Electrical Division</a>
+            </li>
+            <li class="mb-2">
+              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/divisions/commercial/">Commercial Electrical Division</a>
+            </li>
+            <li class="mb-2">
+              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/divisions/service-maintenance/">Service and Maintenance Division</a>
+            </li>
+            <li class="mb-2">
+              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../services/divisions/automation-control/">Automation and Control Systems Division</a>
+            </li>
+          </ul>
+        </div>
+        <div class="md:w-1/3 border-t border-ke-gray md:border-none py-6 md:py-0">
+          <h2 class="mb-2 md:mb-6"><a class="uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0" href="../../../contact/">Contact</a></h2>
+          <ul class="text-base md:text-sm">
+            <li class="mb-2">
+              <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="../../../contact/request-bid/">Request a bid</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="md:w-11/12 md:mx-auto border-t border-ke-gray py-8 px-6 md:px-0 mt-8">
-    <ul class="md:flex md:justify-end md:space-x-8">
-      <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://inductiveautomation.com/"><img class="w-auto h-16" src="../../../assets/img/Ignition-Logo-LG.png" alt="Ignition by Inductive Automation" title="Ignition by Inductive Automation" width="600" height="314"></a></li>
-      <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://www.rockwellautomation.com/"><img class="w-auto h-12" src="../../../assets/img/logos/System Integrator Partner Bronze Logo.png" alt="Rockwell Automation System Integrator Bronze Partner" title="Rockwell Automation System Integrator Bronze Partner" width="302" height="88"></a></li>
-    </ul>
-  </div>
+    <div class="md:w-11/12 md:mx-auto border-t border-ke-gray py-8 px-6 md:px-0 mt-8">
+      <ul class="md:flex md:justify-end md:space-x-8">
+        <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://inductiveautomation.com/"><img class="w-auto h-16" src="../../../assets/img/Ignition-Logo-LG.png" alt="Ignition by Inductive Automation" title="Ignition by Inductive Automation" width="600" height="314"></a></li>
+        <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://www.rockwellautomation.com/"><img class="w-auto h-12" src="../../../assets/img/logos/System Integrator Partner Bronze Logo.png" alt="Rockwell Automation System Integrator Bronze Partner" title="Rockwell Automation System Integrator Bronze Partner" width="302" height="88"></a></li>
+      </ul>
+    </div>
 
-  <div class="md:w-11/12 md:mx-auto md:flex md:justify-between md:space-x-6 py-8 border-t border-ke-gray px-6 md:px-0">
-    <div class="text-ke-gray-light text-sm block mb-2 md:mb-0">&copy; 2025 Kansas Electric &nbsp;|&nbsp; <a class="hover:underline" href="../../../assets/documents/04.01.2022-kansas-electric-terms-and-conditions.pdf">Terms &amp; Conditions</a></div>
-  </div>
-</footer>
-<!-- FOOTER END --> 
+    <div class="md:w-11/12 md:mx-auto md:flex md:justify-between md:space-x-6 py-8 border-t border-ke-gray px-6 md:px-0">
+      <div class="text-ke-gray-light text-sm block mb-2 md:mb-0">&copy; 2025 Kansas Electric &nbsp;|&nbsp; <a class="hover:underline" href="../../../assets/documents/04.01.2022-kansas-electric-terms-and-conditions.pdf">Terms &amp; Conditions</a></div>
+    </div>
+  </footer>
+  <!-- FOOTER END --> 
 
   <script src="../../../projects/stanley-black-decker/mobile-hamburger.js" defer></script>
   <script src="../../../projects/stanley-black-decker/mobile-nav-overhaul.js" defer></script>
@@ -1056,6 +1186,16 @@
         });
       });
       </script>
+
+  <!-- Initialize AOS Animations -->
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 120
+    });
+  </script>
 </body>
 </html> 
 
