@@ -523,6 +523,81 @@
     }
 
     /* Removing nav-caret styles as they're part of the old navigation */
+
+    /* Hero Section Video and Overlay Styles */
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+    
+    .hero-fallback {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 1;
+      transition: opacity 0.5s ease-in-out;
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 10;
+    }
+    
+    .hero-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+    }
+    
+    /* Ensure video plays on mobile */
+    video::-webkit-media-controls {
+      display: none !important;
+    }
+    
+    video::-webkit-media-controls-enclosure {
+      display: none !important;
+    }
+    
+    /* Animation for scroll indicator */
+    @keyframes bounce {
+      0%, 20%, 53%, 80%, 100% {
+        transform: translate3d(0,0,0);
+      }
+      40%, 43% {
+        transform: translate3d(0,-8px,0);
+      }
+      70% {
+        transform: translate3d(0,-4px,0);
+      }
+      90% {
+        transform: translate3d(0,-2px,0);
+      }
+    }
+    
+    .animate-bounce {
+      animation: bounce 2s infinite;
+    }
   </style>
 
   <!-- Special video force-play script to ensure videos work -->
@@ -767,179 +842,119 @@
 
 <article class="overflow-hidden">
 
-  <section data-home-slider class="transition-1000 relative w-full max-w-[2560px] mx-auto min-h-[65vh] lg:min-h-[65vh] overflow-hidden bg-ke-gray-lightest">
-    <div id="video-carousel" style="position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; overflow: hidden !important; z-index: 5 !important; background-color: #000 !important; opacity: 1 !important; visibility: visible !important; display: block !important;">
-      <video muted loop playsinline autoplay preload="auto" class="active" style="position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; opacity: 1 !important; visibility: visible !important; display: block !important; z-index: 6 !important;">
-        <source src="./assets/videos/video1.mp4" type="video/mp4">
-      </video>
-      <video muted loop playsinline preload="auto" style="position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; opacity: 0 !important; visibility: hidden !important; display: none !important;">
-        <source src="./assets/videos/video2.mp4" type="video/mp4">
-      </video>
-      <video muted loop playsinline preload="auto" style="position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; object-fit: cover !important; opacity: 0 !important; visibility: hidden !important; display: none !important;">
-        <source src="./assets/videos/video3.mp4" type="video/mp4">
-      </video>
-    </div>
+  <!-- Hero Section with Video Background -->
+  <section class="relative w-full h-screen min-h-screen overflow-hidden bg-black">
+    <!-- Video Background -->
+    <video 
+      autoplay 
+      muted 
+      loop 
+      playsinline
+      class="absolute inset-0 w-full h-full object-cover z-0"
+      style="z-index: 1;"
+    >
+      <source src="./assets/videos/video1.mp4" type="video/mp4">
+      <source src="./assets/videos/video2.mp4" type="video/mp4">
+      <!-- Fallback for browsers that don't support video -->
+      Your browser does not support the video tag.
+    </video>
     
-    <!-- Gradient overlay - Desktop only -->
-    <div class="hidden lg:block absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-[7]" style="pointer-events: none;"></div>
+    <!-- Fallback Background Image -->
+    <div 
+      class="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat z-0"
+      style="background-image: url('./assets/img/2025 photos/KSE 1.jpg'); z-index: 1;"
+    ></div>
     
-    <!-- Fallback image in case videos don't load -->
-    <div class="absolute top-0 left-0 w-full h-full" id="fallback-image" style="background-image: url('./assets/img/ke-logo-white.svg'), url('./assets/img/background-fallback.jpg'); background-size: 30% auto, cover; background-position: center center, center center; background-repeat: no-repeat, no-repeat; background-color: rgba(0, 0, 0, 0.8); display: none; z-index: 15;">
-      <div style="position: absolute; bottom: 20%; left: 0; width: 100%; text-align: center; color: white; font-size: 18px; padding: 20px; background-color: rgba(0,0,0,0.7);">
-        <p>Experience the power of Kansas Electric.</p>
-      </div>
-    </div>
+    <!-- Dark Overlay for Better Text Contrast -->
+    <div class="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
     
-    <!-- Kansas Electric Logo Overlay -->
-    <div class="video-logo-overlay" style="position: absolute !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; z-index: 20 !important; opacity: 1 !important; visibility: visible !important; pointer-events: none !important;">
-      <div class="logo-container" style="position: relative !important; width: 50% !important; max-width: 28rem !important;">
-        <div class="logo-bg"></div>
-        <img src="./assets/img/ke-logo-white.svg" alt="Kansas Electric - Electrical experts since 1948, powering mission-critical infrastructure" style="position: relative !important; width: 100% !important; padding: 1.5rem !important; filter: drop-shadow(0 0 15px rgba(0,0,0,0.8)) drop-shadow(0 0 30px rgba(0,0,0,0.6)) drop-shadow(0 0 45px rgba(0,0,0,0.5)) !important;">
-      </div>
-      
-      <!-- Text elements beneath logo -->
-      <div class="text-center" style="margin-top: 1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">
-        <!-- "Electrical Experts Since 1948" -->
-        <div class="bg-black bg-opacity-30 px-4 py-2 rounded-md inline-block">
-          <div class="uppercase tracking-widest text-white" style="font-size: 0.875rem; letter-spacing: 0.15em; margin-bottom: 0.75rem; text-shadow: 0 2px 4px rgba(0,0,0,0.9), 0 0 1px rgba(0,0,0,0.7); font-weight: 500;">
-            Electrical Experts Since 1948
-          </div>
+    <!-- Text Overlay Content -->
+    <div class="absolute inset-0 flex items-center justify-center z-20">
+      <div class="text-center text-white px-6 max-w-4xl mx-auto">
+        <!-- Logo -->
+        <div class="mb-8">
+          <img 
+            src="./assets/img/ke-logo-white.svg" 
+            alt="Kansas Electric - Electrical experts since 1948"
+            class="w-96 max-w-full h-auto mx-auto filter drop-shadow-2xl"
+            style="filter: drop-shadow(0 0 20px rgba(0,0,0,0.8)) drop-shadow(0 0 40px rgba(0,0,0,0.6));"
+          >
         </div>
         
-        <!-- "Built for Power. Engineered for Excellence." -->
-        <div class="bg-black bg-opacity-30 px-4 py-2 rounded-md inline-block mt-2">
-          <div class="text-xl text-white" style="text-shadow: 0 2px 5px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.8); letter-spacing: 0.025em; font-weight: 500;">
-            Built for Power. Engineered for Excellence.
-          </div>
-        </div>
+        <!-- Main Headline -->
+        <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white"
+            style="text-shadow: 0 4px 8px rgba(0,0,0,0.8), 0 0 2px rgba(0,0,0,0.9);">
+          Built for Power.<br>Engineered for Excellence.
+        </h1>
+        
+        <!-- Supporting Text -->
+        <p class="text-lg md:text-xl mb-8 text-white max-w-2xl mx-auto leading-relaxed"
+           style="text-shadow: 0 2px 4px rgba(0,0,0,0.8);">
+          From hospitals to automation, we design and build the systems that power American infrastructure.
+        </p>
+        
+        <!-- CTA Button -->
+        <a href="./contact/" 
+           class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl"
+           style="text-shadow: none;">
+          Let's Engineer Your Next Power Move
+        </a>
       </div>
     </div>
     
-    <script>
-      // Immediately try to force video to play
-      (function() {
-        const firstVideo = document.querySelector('#video-carousel video');
-        if (firstVideo) {
-          firstVideo.muted = true;
-          firstVideo.loop = true;
-          firstVideo.setAttribute('playsinline', '');
-          firstVideo.setAttribute('autoplay', '');
-          firstVideo.setAttribute('webkit-playsinline', '');
-          firstVideo.classList.add('active');
-          firstVideo.style.opacity = '1';
-          firstVideo.style.visibility = 'visible';
-          firstVideo.style.display = 'block';
-          firstVideo.style.zIndex = '10';
-          
-          // Try to play the video immediately
-          const playPromise = firstVideo.play();
-          if (playPromise !== undefined) {
-            playPromise.catch(e => {
-              console.error('Initial play failed:', e);
-              
-              // Show fallback image if playback fails
-              if (e.name === 'NotAllowedError') {
-                setTimeout(() => {
-                  firstVideo.play().catch(err => {
-                    console.error('Second attempt failed:', err);
-                    const fallback = document.getElementById('fallback-image');
-                    if (fallback) fallback.style.display = 'block';
-                  });
-                }, 1000);
-              }
-            });
-          }
-        }
-      })();
-    </script>
-    
-    <script>
-      // Initialize the hero text animation
-      document.addEventListener('DOMContentLoaded', function() {
-        // Ensure the hero text is visible
-        const heroText = document.querySelector('.hero-text-content');
-        if (heroText) {
-          // Add animation but also make sure content is visible immediately in case animation fails
-          heroText.style.animation = 'fadeInUp 1.2s ease-out forwards';
-          
-          // Ensure visibility regardless of animation
-          setTimeout(function() {
-            heroText.style.opacity = '1';
-            heroText.style.transform = 'translateY(0)';
-          }, 100);
-        }
-      });
-    </script>
-    
-    <!-- Parallax effect script - Desktop only -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // Only apply parallax on desktop devices
-        if (window.innerWidth >= 1024) {
-          const carousel = document.getElementById('video-carousel');
-          if (!carousel) return;
-          
-          let lastScrollY = window.scrollY;
-          let ticking = false;
-          
-          // Parallax scroll effect
-          function applyParallax() {
-            const scrollY = window.scrollY;
-            // Apply a subtle transform based on scroll position
-            if (scrollY <= window.innerHeight) {
-              const translateY = scrollY * 0.25; // 25% of scroll speed for subtle effect
-              carousel.style.transform = `translate3d(0, ${translateY}px, 0)`;
-            }
-            
-            lastScrollY = scrollY;
-            ticking = false;
-          }
-          
-          // Handle scroll events with requestAnimationFrame for performance
-          window.addEventListener('scroll', function() {
-            if (!ticking) {
-              window.requestAnimationFrame(function() {
-                applyParallax();
-              });
-              ticking = true;
-            }
-          });
-          
-          // Reset on window resize
-          window.addEventListener('resize', function() {
-            if (window.innerWidth < 1024) {
-              carousel.style.transform = '';
-            }
-          });
-        }
-      });
-    </script>
-    
-    <style>
-      /* Animation for text fade-in */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      
-      .animate-fade-in {
-        opacity: 0;
-      }
-      
-      /* Ensure parallax only applies on desktop */
-      @media (max-width: 1023px) {
-        #video-carousel {
-          transform: none !important;
-        }
-      }
-    </style>
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+      <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+        <div class="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
+      </div>
+    </div>
   </section>
+
+  <!-- Hero Video Initialization Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const heroVideo = document.querySelector('section video');
+      const fallbackDiv = document.querySelector('section div[style*="background-image"]');
+      
+      if (heroVideo) {
+        // Ensure video properties are set
+        heroVideo.muted = true;
+        heroVideo.loop = true;
+        heroVideo.autoplay = true;
+        heroVideo.playsInline = true;
+        
+        // Try to play the video
+        const playPromise = heroVideo.play();
+        
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            // Video started playing successfully
+            heroVideo.style.opacity = '1';
+            if (fallbackDiv) {
+              fallbackDiv.style.opacity = '0';
+            }
+          }).catch((error) => {
+            // Auto-play was prevented or failed
+            console.log('Video autoplay failed:', error);
+            // Show fallback background image
+            if (fallbackDiv) {
+              fallbackDiv.style.opacity = '1';
+              fallbackDiv.style.zIndex = '2';
+            }
+          });
+        }
+        
+        // Handle video loading errors
+        heroVideo.addEventListener('error', function() {
+          console.log('Video failed to load');
+          if (fallbackDiv) {
+            fallbackDiv.style.opacity = '1';
+            fallbackDiv.style.zIndex = '2';
+          }
+        });
+      }
+    });
+  </script>
 
   <!-- AOS Animation Library -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
