@@ -1036,18 +1036,15 @@
   </section>
 
   <!-- Modern Hero Section with Background Image -->
-  <section class="relative overflow-hidden min-h-[400px] md:min-h-[600px] hero-partner-section" style="background-image: url('./assets/img/2025 photos/MKC Lyons Conveyor.jpg'); background-size: cover; background-position: center right; background-repeat: no-repeat;">
-    <!-- Gradient Overlay with left-to-right fade -->
-    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0,0,0,0.6), rgba(0,0,0,0))"></div>
-    
-    <!-- Bottom gradient fade transition to white -->
-    <div class="absolute bottom-0 left-0 w-full h-[60px] bg-gradient-to-b from-transparent via-white/70 to-white z-10 pointer-events-none"></div>
+  <section class="relative h-screen min-h-screen bg-cover bg-center bg-no-repeat hero-partner-section" style="background-image: url('./assets/img/2025 photos/KSE 1.jpg');">
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
     
     <!-- Mobile-specific background position and animations -->
     <style>
       @media (max-width: 768px) {
         .hero-partner-section {
-          background-position: center left !important;
+          background-position: center center !important;
         }
       }
       
@@ -1060,7 +1057,7 @@
       }
       
       .fade-up-element {
-  opacity: 0;
+        opacity: 0;
         transform: translateY(20px);
         animation: fadeUp 0.6s ease-out forwards;
       }
@@ -1089,13 +1086,13 @@
       }
     </style>
     
-    <div class="relative z-10 h-full">
-      <!-- Text Content Container -->
-      <div class="max-w-3xl px-6 pt-20 pb-6 md:pl-12 md:pt-24 md:pb-10">
+    <!-- Text Content Container -->
+    <div class="relative z-10 flex flex-col justify-center items-center h-full text-white text-center px-4">
+      <div class="max-w-4xl mx-auto">
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-relaxed drop-shadow-md fade-up-element delay-100 opacity-100 transition-opacity duration-500">
           Kansas Electric — Your Trusted Partner in Power
         </h2>
-        <p class="text-lg mb-8 max-w-xl partner-subheading fade-up-element delay-200">
+        <p class="text-lg mb-8 max-w-xl mx-auto partner-subheading fade-up-element delay-200">
           From hospitals to automation, we design and build the systems that power American infrastructure.
         </p>
       </div>
