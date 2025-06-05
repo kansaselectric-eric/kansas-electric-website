@@ -48,7 +48,7 @@ The Kansas Electric website now features a **world-class unified navigation syst
 - **Script**: Click-only navigation active
 - **CSS**: Comprehensive cleanup applied
 
-### ✅ Projects Page (`projects/index.html`)
+### ✅ Projects Page (`projects.html`)
 - **Status**: COMPLETE ✅
 - **Navigation**: Unified GlobalNav implemented
 - **Ticker**: Removed and replaced with 24/7 support
