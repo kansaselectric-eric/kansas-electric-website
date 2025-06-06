@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Oil, Gas & Carbon Capture – Kansas Electric</title>
-  <meta name="description" content="Kansas Electric powers pipelines, compressor stations & carbon-capture infrastructure with turnkey electrical expertise." />
+  <meta name="description" content="Kansas Electric delivers premier midstream electrical services, including pipeline automation controls, SCADA system integration, and compressor station power solutions.">
   
   <!-- Open Graph / Twitter -->
   <meta property="og:title" content="Oil, Gas & Carbon Capture – Kansas Electric" />
-  <meta property="og:description" content="Kansas Electric powers pipelines, compressor stations & carbon-capture infrastructure with turnkey electrical expertise." />
+  <meta property="og:description" content="Kansas Electric delivers premier midstream electrical services, including pipeline automation controls, SCADA system integration, and compressor station power solutions." />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Kansas Electric" />
   <meta property="og:locale" content="en_US" />
@@ -23,216 +23,519 @@
   <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-  <!-- Essential Navigation Styles (copied from site-wide template) -->
+  <!-- Favicon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  
+  <!-- KSE Navigation Styles -->
   <style>
-  /* Adding essential navigation styles */
-  .kse-nav{position:fixed;top:0;left:0;right:0;background-color:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(229,231,235,.8);z-index:1000;transition:all .2s ease-in-out;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}
-  .kse-nav-container{width:100%;display:flex;justify-content:space-between;align-items:center;padding-left:2rem;padding-right:2rem;height:80px;position:relative}
-  .kse-nav-logo{display:flex;align-items:center;text-decoration:none;z-index:1001;margin-left:0}
-  .kse-nav-logo img{height:40px;width:auto;}
-  .kse-nav-menu{display:flex;align-items:center;gap:2rem;list-style:none;justify-content:center;flex:1}
-  .kse-nav-item{position:relative}
-  .kse-nav-link{display:flex;align-items:center;gap:.5rem;padding:1rem .75rem;text-decoration:none;color:#1f2937;font-weight:500;transition:all .2s ease-out}
-  .kse-nav-link:hover{color:#2563eb}
-  .kse-nav-caret{width:16px;height:16px;transition:transform .2s}
-  .kse-nav-item[aria-expanded="true"] .kse-nav-caret{transform:rotate(180deg)}
-  .kse-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(-10px);background:#fff;box-shadow:0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -2px rgba(0,0,0,0.05);border-radius:.5rem;padding:1rem;min-width:16rem;z-index:50;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:all .2s ease-out}
-  .kse-dropdown.industries-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;min-width:32rem;max-width:90vw}
-  .kse-dropdown.active,.kse-dropdown.show{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);display:flex;pointer-events:auto}
-  .kse-dropdown.industries-grid.active,.kse-dropdown.industries-grid.show{display:grid}
-  .kse-dropdown-link{display:block;padding:.75rem;color:#374151;text-decoration:none;border-radius:.375rem;transition:background-color .2s}
-  .kse-dropdown-link:hover{background:#f3f4f6}
-  .kse-dropdown-link span{display:block;font-weight:500;margin-bottom:.25rem}
-  .kse-dropdown-link small{display:block;color:#6b7280;font-size:.875rem}
-  .kse-nav-cta{display:inline-block;background:#0056D2;color:#fff;padding:.75rem 1.5rem;border-radius:.375rem;font-weight:600;text-decoration:none;transition:all .2s ease-in-out;margin-right:0; font-size: 1rem;}
-  .kse-nav-cta:hover{background:#0047b3;box-shadow:0 4px 12px rgba(0,86,210,.3)}
-  .kse-mobile-toggle{display:none;flex-direction:column;gap:.25rem;background:none;border:none;padding:.5rem;cursor:pointer;margin-right:0}
-  .kse-hamburger-line{width:1.5rem;height:2px;background:#374151;transition:all .3s}
-  .kse-mobile-menu{position:fixed;top:80px;left:0;right:0;bottom:0;background:#fff;z-index:1000;overflow-y:auto;padding:1rem;transition:transform .3s ease;transform:translateX(100%)}
-  .kse-mobile-menu.active{transform:translateX(0)}
-  .kse-mobile-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.5);z-index:999;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
-  .kse-mobile-overlay.active{opacity:1;visibility:visible}
-  .kse-mobile-nav-item{border-bottom:1px solid #e5e7eb}
-  .kse-mobile-nav-link{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;color:#374151;text-decoration:none;font-weight:500}
-  .kse-mobile-dropdown{padding-left:1rem;border-top:1px solid #f3f4f6;display:none}
-  .kse-mobile-dropdown.active{display:block}
-  .kse-mobile-dropdown-link{display:block;padding:.75rem 0;color:#6b7280;text-decoration:none;border-bottom:1px solid #f9fafb}
-  .kse-mobile-nav-cta{display:block;background:#0056D2;color:#fff;padding:1rem;text-align:center;border-radius:.375rem;text-decoration:none;font-weight:500;margin-top:1rem}
-  @media(max-width:768px){.kse-nav-menu,.kse-nav-cta{display:none}.kse-mobile-toggle{display:flex}.kse-dropdown.industries-grid{min-width:90vw}}
+    .kse-dropdown,.kse-mobile-dropdown,.kse-mobile-menu{display:none;opacity:0;visibility:hidden;pointer-events:none}.kse-nav{position:fixed;top:0;left:0;right:0;background-color:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(229,231,235,.8);z-index:1000;transition:all .2s ease-in-out;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}.kse-nav-container{width:100%;display:flex;justify-content:space-between;align-items:center;padding-left:2rem;padding-right:2rem;height:80px;position:relative}.kse-nav-logo{display:flex;align-items:center;text-decoration:none;z-index:1001;margin-left:0}.kse-nav-logo img{height:40px;width:auto}.kse-nav-menu{display:flex;align-items:center;gap:2rem;list-style:none;justify-content:center;flex:1}.kse-nav-item{position:relative}.kse-nav-link{display:flex;align-items:center;gap:.5rem;padding:1rem .75rem;text-decoration:none;color:#1f2937;font-weight:500;transition:all .2s ease-out}.kse-nav-link:hover{color:#2563eb}.kse-nav-caret{width:16px;height:16px;transition:transform .2s}.kse-nav-item[aria-expanded=true] .kse-nav-caret{transform:rotate(180deg)}.kse-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(-10px);background-color:#fff;box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);border-radius:.5rem;padding:1rem;min-width:16rem;z-index:50;flex-direction:column;transition:all .2s ease-out}.kse-dropdown.industries-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;min-width:32rem;max-width:90vw}.kse-dropdown.active,.kse-dropdown.show{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);display:flex;pointer-events:auto}.kse-dropdown.industries-grid.active,.kse-dropdown.industries-grid.show{display:grid}.kse-dropdown-link{display:block;padding:.75rem;color:#374151;text-decoration:none;border-radius:.375rem;transition:background-color .2s}.kse-dropdown-link:hover{background-color:#f3f4f6}.kse-dropdown-link span{display:block;font-weight:500;margin-bottom:.25rem}.kse-dropdown-link small{display:block;color:#6b7280;font-size:.875rem}.kse-nav-cta{display:inline-block;background-color:#0056d2;color:#fff;padding:.75rem 1.5rem;border-radius:.375rem;font-weight:500;text-decoration:none;transition:all .2s ease-in-out;margin-right:0}.kse-nav-cta:hover{background-color:#0047b3;box-shadow:0 4px 12px rgba(0,86,210,.3)}.kse-mobile-toggle{display:none;flex-direction:column;gap:.25rem;background:0 0;border:none;padding:.5rem;cursor:pointer;margin-right:0}.kse-hamburger-line{width:1.5rem;height:2px;background-color:#374151;transition:all .3s}.kse-mobile-menu{position:fixed;top:80px;left:0;right:0;bottom:0;background-color:#fff;z-index:1000;overflow-y:auto;padding:1rem;transition:transform .3s ease;transform:translateX(100%)}.kse-mobile-menu.active,.kse-mobile-menu.show{transform:translateX(0)}.kse-mobile-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,.5);z-index:999;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}.kse-mobile-overlay.active{opacity:1;visibility:visible}.kse-mobile-nav-item{border-bottom:1px solid #e5e7eb}.kse-mobile-nav-link{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;color:#374151;text-decoration:none;font-weight:500}.kse-mobile-dropdown{padding-left:1rem;border-top:1px solid #f3f4f6}.kse-mobile-dropdown.active,.kse-mobile-dropdown.show{display:block}.kse-mobile-dropdown-link{display:block;padding:.75rem 0;color:#6b7280;text-decoration:none;border-bottom:1px solid #f9fafb}.kse-mobile-nav-cta{display:block;background-color:#0056d2;color:#fff;padding:1rem;text-align:center;border-radius:.375rem;text-decoration:none;font-weight:500;margin-top:1rem}@media (max-width:768px){.kse-nav-menu,.kse-nav-cta{display:none}.kse-mobile-toggle{display:flex}.kse-dropdown.industries-grid{min-width:90vw}}@media (min-width:768px){.kse-nav-container{padding-left:2rem;padding-right:2rem}}@media (min-width:1024px){.kse-nav-container{padding-left:3rem;padding-right:3rem}}@media (min-width:1536px){.kse-nav-container{padding-left:4rem;padding-right:4rem}}
   </style>
 
   <!-- Global Transitions & Image Fade-in -->
   <style>
-    *{transition:all .3s ease-out}
     img{opacity:0;transform:scale(1.02);transition:opacity .6s ease,transform .6s ease}
     img.loaded{opacity:1;transform:scale(1)}
   </style>
-
+  
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- Anti-flicker style block to prevent dropdowns from flashing during load -->
+  <style>
+  .kse-dropdown,
+  .kse-mobile-dropdown,
+  .kse-mobile-menu {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Adding essential navigation styles */
+  .kse-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+    z-index: 1000;
+    transition: all 0.2s ease-in-out;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .kse-nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    height: 80px;
+    position: relative;
+  }
+
+  .kse-nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    z-index: 1001;
+    margin-left: 0;
+  }
+
+  .kse-nav-logo img {
+    height: 40px;
+    width: auto;
+  }
+
+  .kse-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .kse-nav-item {
+    position: relative;
+  }
+
+  .kse-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0.75rem;
+    text-decoration: none;
+    color: #1f2937;
+    font-weight: 500;
+    transition: all 0.2s ease-out;
+  }
+
+  .kse-nav-link:hover {
+    color: #2563eb;
+  }
+
+  .kse-nav-caret {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s;
+  }
+
+  .kse-nav-item[aria-expanded="true"] .kse-nav-caret {
+    transform: rotate(180deg);
+  }
+
+  .kse-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background-color: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    min-width: 16rem;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease-out;
+  }
+
+  .kse-dropdown.industries-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    min-width: 32rem;
+    max-width: 90vw;
+  }
+
+  .kse-dropdown.active,
+  .kse-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    display: flex;
+    pointer-events: auto;
+  }
+
+  .kse-dropdown.industries-grid.active,
+  .kse-dropdown.industries-grid.show {
+    display: grid;
+  }
+
+  .kse-dropdown-link {
+    display: block;
+    padding: 0.75rem;
+    color: #374151;
+    text-decoration: none;
+    border-radius: 0.375rem;
+    transition: background-color 0.2s;
+  }
+
+  .kse-dropdown-link:hover {
+    background-color: #f3f4f6;
+  }
+
+  .kse-dropdown-link span {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .kse-dropdown-link small {
+    display: block;
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+
+  .kse-nav-cta {
+    display: inline-block;
+    background-color: #0056D2;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    margin-right: 0;
+  }
+
+  .kse-nav-cta:hover {
+    background-color: #0047b3;
+    box-shadow: 0 4px 12px rgba(0, 86, 210, 0.3);
+  }
+
+  .kse-mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 0.25rem;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    margin-right: 0;
+  }
+
+  .kse-hamburger-line {
+    width: 1.5rem;
+    height: 2px;
+    background-color: #374151;
+    transition: all 0.3s;
+  }
+
+  .kse-mobile-menu {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+  }
+
+  .kse-mobile-menu.active,
+  .kse-mobile-menu.show {
+    transform: translateX(0);
+  }
+
+  .kse-mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .kse-mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .kse-mobile-nav-item {
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .kse-mobile-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    color: #374151;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .kse-mobile-dropdown {
+    padding-left: 1rem;
+    border-top: 1px solid #f3f4f6;
+    display: none;
+  }
+
+  .kse-mobile-dropdown.active,
+  .kse-mobile-dropdown.show {
+    display: block;
+  }
+
+  .kse-mobile-dropdown-link {
+    display: block;
+    padding: 0.75rem 0;
+    color: #6b7280;
+    text-decoration: none;
+    border-bottom: 1px solid #f9fafb;
+  }
+
+  .kse-mobile-nav-cta {
+    display: block;
+    background-color: #0056D2;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .kse-nav-menu,
+    .kse-nav-cta {
+      display: none;
+    }
+
+    .kse-mobile-toggle {
+      display: flex;
+    }
+    
+    .kse-dropdown.industries-grid {
+      min-width: 90vw;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .kse-nav-container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+  
+  @media (min-width: 1536px) {
+    .kse-nav-container {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+  </style>
+
+  <!-- Critical CSS that must load after main.css -->
+  <style>
+    img {
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    img.loaded {
+      opacity: 1;
+      transform: scale(1);
+    }
+  </style>
 </head>
-<body class="font-poppins flex flex-col min-h-screen relative">
-  <a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-ke-yellow inline-block"><span class="block py-2">Skip to content</span></a>
+<body class="font-poppins flex flex-col min-h-screen relative bg-white">
+  
+  <a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-yellow-400 inline-block"><span class="block py-2">Skip to content</span></a>
 
   <!-- UNIFIED KANSAS ELECTRIC NAVIGATION -->
   <nav class="kse-nav" role="navigation" aria-label="Main navigation">
-    <div class="kse-nav-container">
-      <a href="/" class="kse-nav-logo"><img src="/assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric" width="178" height="40"></a>
-      <!-- Desktop Nav -->
-      <ul class="kse-nav-menu" role="menubar">
-        <!-- Services Dropdown -->
-        <li class="kse-nav-item" data-dropdown="services" role="none">
-          <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="services-dropdown"><span>Services</span><svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></a>
-          <div class="kse-dropdown" id="services-dropdown" role="menu" aria-hidden="true">
-            <a href="/services/divisions/industrial/" class="kse-dropdown-link" role="menuitem"><span>Industrial Electrical</span><small>Heavy infrastructure & power systems</small></a>
-            <a href="/services/divisions/commercial/" class="kse-dropdown-link" role="menuitem"><span>Commercial Electrical</span><small>Office buildings & retail spaces</small></a>
-            <a href="/services/divisions/service-maintenance/" class="kse-dropdown-link" role="menuitem"><span>Service & Maintenance</span><small>24/7 support & preventive care</small></a>
-            <a href="/services/divisions/automation-control/" class="kse-dropdown-link" role="menuitem"><span>Automation & Control Systems</span><small>Smart systems & process control</small></a>
-          </div>
-        </li>
-        <!-- Projects -->
-        <li class="kse-nav-item" role="none"><a href="/projects/" class="kse-nav-link" role="menuitem"><span>Projects</span></a></li>
-        <!-- Industries Dropdown -->
-        <li class="kse-nav-item" data-dropdown="industries" role="none">
-          <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="industries-dropdown"><span>Industries We Serve</span><svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></a>
-          <div class="kse-dropdown industries-grid" id="industries-dropdown" role="menu" aria-hidden="true">
-            <a href="/services/industrial/oil-gas/" class="kse-dropdown-link" role="menuitem"><span>Oil & Gas</span><small>Refineries & pipelines</small></a>
-            <a href="/services/industrial/wastewater-treatment/" class="kse-dropdown-link" role="menuitem"><span>Water & Wastewater</span><small>Treatment facilities</small></a>
-            <a href="/services/industrial/data-centers/" class="kse-dropdown-link" role="menuitem"><span>Data Centers</span><small>Mission critical facilities</small></a>
-            <a href="/services/industrial/advanced-manufacturing/" class="kse-dropdown-link" role="menuitem"><span>Manufacturing</span><small>Production facilities</small></a>
-            <a href="/services/industrial/food-beverage/" class="kse-dropdown-link" role="menuitem"><span>Food & Beverage</span><small>Processing plants</small></a>
-            <a href="/services/industrial/government-municipal/" class="kse-dropdown-link" role="menuitem"><span>Government & Municipal</span><small>Public infrastructure</small></a>
-          </div>
-        </li>
-        <!-- About -->
-        <li class="kse-nav-item" role="none"><a href="/about/" class="kse-nav-link" role="menuitem"><span>About</span></a></li>
-        <!-- Careers Dropdown -->
-        <li class="kse-nav-item" data-dropdown="careers" role="none">
-          <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="careers-dropdown"><span>Careers</span><svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></a>
-          <div class="kse-dropdown" id="careers-dropdown" role="menu" aria-hidden="true">
-            <a href="/careers/" class="kse-dropdown-link" role="menuitem"><span>Open Positions</span><small>Current job opportunities</small></a>
-            <a href="/careers/quick-apply/" class="kse-dropdown-link" role="menuitem"><span>Quick Apply</span><small>Submit your resume</small></a>
-            <a href="/careers/apply/" class="kse-dropdown-link" role="menuitem"><span>Full Application</span><small>Complete application form</small></a>
-          </div>
-        </li>
-      </ul>
-      <!-- CTA & Mobile -->
-      <a href="/contact/" class="kse-nav-cta">Let's Engineer Your Next Power Move</a>
-      <button class="kse-mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu"><span class="kse-hamburger-line"></span><span class="kse-hamburger-line"></span><span class="kse-hamburger-line"></span></button>
+    <div class="kse-nav-container px-8 md:px-10">
+        <a href="/" class="kse-nav-logo">
+            <img src="/assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric" class="h-10 w-auto">
+        </a>
+        <ul class="kse-nav-menu" role="menubar">
+            <li class="kse-nav-item" data-dropdown="services" role="none">
+                <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="services-dropdown"><span>Services</span><svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></a>
+                <div class="kse-dropdown" id="services-dropdown" role="menu">
+                    <a href="/services/divisions/industrial/" class="kse-dropdown-link" role="menuitem"><span>Industrial Electrical</span><small>Heavy infrastructure & power systems</small></a>
+                    <a href="/services/divisions/commercial/" class="kse-dropdown-link" role="menuitem"><span>Commercial Electrical</span><small>Office buildings & retail spaces</small></a>
+                    <a href="/services/divisions/service-maintenance/" class="kse-dropdown-link" role="menuitem"><span>Service & Maintenance</span><small>24/7 support & preventive care</small></a>
+                    <a href="/services/divisions/automation-control/" class="kse-dropdown-link" role="menuitem"><span>Automation & Control Systems</span><small>Smart systems & process control</small></a>
+                </div>
+            </li>
+            <li class="kse-nav-item" role="none"><a href="/projects/" class="kse-nav-link" role="menuitem"><span>Projects</span></a></li>
+            <li class="kse-nav-item" data-dropdown="industries" role="none">
+                <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="industries-dropdown"><span>Industries We Serve</span><svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></a>
+                <div class="kse-dropdown industries-grid" id="industries-dropdown" role="menu">
+                    <a href="/services/industrial/oil-gas/" class="kse-dropdown-link" role="menuitem"><span>Oil & Gas</span><small>Refineries & pipelines</small></a>
+                    <a href="/services/industrial/wastewater-treatment/" class="kse-dropdown-link" role="menuitem"><span>Water & Wastewater</span><small>Treatment facilities</small></a>
+                    <a href="/services/industrial/data-centers/" class="kse-dropdown-link" role="menuitem"><span>Data Centers</span><small>Mission critical facilities</small></a>
+                    <a href="/services/industrial/advanced-manufacturing/" class="kse-dropdown-link" role="menuitem"><span>Manufacturing</span><small>Production facilities</small></a>
+                    <a href="/services/industrial/food-beverage/" class="kse-dropdown-link" role="menuitem"><span>Food & Beverage</span><small>Processing plants</small></a>
+                    <a href="/services/industrial/government-municipal/" class="kse-dropdown-link" role="menuitem"><span>Government & Municipal</span><small>Public infrastructure</small></a>
+                </div>
+            </li>
+            <li class="kse-nav-item" role="none"><a href="/about/" class="kse-nav-link" role="menuitem"><span>About</span></a></li>
+            <li class="kse-nav-item" data-dropdown="careers" role="none">
+                <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="careers-dropdown"><span>Careers</span><svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></a>
+                <div class="kse-dropdown" id="careers-dropdown" role="menu">
+                    <a href="/careers/" class="kse-dropdown-link" role="menuitem"><span>Open Positions</span><small>Current job opportunities</small></a>
+                    <a href="/careers/quick-apply/" class="kse-dropdown-link" role="menuitem"><span>Quick Apply</span><small>Submit your resume</small></a>
+                    <a href="/careers/apply/" class="kse-dropdown-link" role="menuitem"><span>Full Application</span><small>Complete application form</small></a>
+                </div>
+            </li>
+        </ul>
+        <a href="/contact/" class="kse-nav-cta">Let's Engineer Your Next Power Move</a>
+        <button class="kse-mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu"><span class="kse-hamburger-line"></span><span class="kse-hamburger-line"></span><span class="kse-hamburger-line"></span></button>
     </div>
     <div class="kse-mobile-overlay" aria-hidden="true"></div>
     <div class="kse-mobile-menu" id="mobile-menu" aria-hidden="true">
-      <nav role="navigation" aria-label="Mobile navigation">
-        <div class="kse-mobile-nav-item" data-dropdown="services"><a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false"><span>Services</span><svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></a>
-          <div class="kse-mobile-dropdown"><a href="/services/divisions/industrial/" class="kse-mobile-dropdown-link">Industrial Electrical</a><a href="/services/divisions/commercial/" class="kse-mobile-dropdown-link">Commercial Electrical</a><a href="/services/divisions/service-maintenance/" class="kse-mobile-dropdown-link">Service & Maintenance</a><a href="/services/divisions/automation-control/" class="kse-mobile-dropdown-link">Automation & Control Systems</a></div>
-        </div>
-        <div class="kse-mobile-nav-item"><a href="/projects/" class="kse-mobile-nav-link"><span>Projects</span></a></div>
-        <div class="kse-mobile-nav-item" data-dropdown="industries"><a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false"><span>Industries We Serve</span><svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></a>
-          <div class="kse-mobile-dropdown"><a href="/services/industrial/oil-gas/" class="kse-mobile-dropdown-link">Oil & Gas</a><a href="/services/industrial/wastewater-treatment/" class="kse-mobile-dropdown-link">Water & Wastewater</a><a href="/services/industrial/data-centers/" class="kse-mobile-dropdown-link">Data Centers</a><a href="/services/industrial/advanced-manufacturing/" class="kse-mobile-dropdown-link">Manufacturing</a><a href="/services/industrial/food-beverage/" class="kse-mobile-dropdown-link">Food & Beverage</a><a href="/services/industrial/government-municipal/" class="kse-mobile-dropdown-link">Government & Municipal</a></div>
-        </div>
-        <div class="kse-mobile-nav-item"><a href="/about/" class="kse-mobile-nav-link"><span>About</span></a></div>
-        <div class="kse-mobile-nav-item" data-dropdown="careers"><a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false"><span>Careers</span><svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg></a>
-          <div class="kse-mobile-dropdown"><a href="/careers/" class="kse-mobile-dropdown-link">Open Positions</a><a href="/careers/quick-apply/" class="kse-mobile-dropdown-link">Quick Apply</a><a href="/careers/apply/" class="kse-mobile-dropdown-link">Full Application</a></div>
-        </div>
-        <a href="/contact/" class="kse-mobile-nav-cta">Let's Engineer Your Next Power Move</a>
-      </nav>
+        <nav role="navigation" aria-label="Mobile navigation">
+            <div class="kse-mobile-nav-item" data-dropdown="services">
+                <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false"><span>Services</span><svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></a>
+                <div class="kse-mobile-dropdown"><a href="/services/divisions/industrial/" class="kse-mobile-dropdown-link">Industrial Electrical</a><a href="/services/divisions/commercial/" class="kse-mobile-dropdown-link">Commercial Electrical</a><a href="/services/divisions/service-maintenance/" class="kse-mobile-dropdown-link">Service & Maintenance</a><a href="/services/divisions/automation-control/" class="kse-mobile-dropdown-link">Automation & Control Systems</a></div>
+            </div>
+            <div class="kse-mobile-nav-item"><a href="/projects/" class="kse-mobile-nav-link"><span>Projects</span></a></div>
+            <div class="kse-mobile-nav-item" data-dropdown="industries">
+                <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false"><span>Industries We Serve</span><svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></a>
+                <div class="kse-mobile-dropdown"><a href="/services/industrial/oil-gas/" class="kse-mobile-dropdown-link">Oil & Gas</a><a href="/services/industrial/wastewater-treatment/" class="kse-mobile-dropdown-link">Water & Wastewater</a><a href="/services/industrial/data-centers/" class="kse-mobile-dropdown-link">Data Centers</a><a href="/services/industrial/advanced-manufacturing/" class="kse-mobile-dropdown-link">Manufacturing</a><a href="/services/industrial/food-beverage/" class="kse-mobile-dropdown-link">Food & Beverage</a><a href="/services/industrial/government-municipal/" class="kse-mobile-dropdown-link">Government & Municipal</a></div>
+            </div>
+            <div class="kse-mobile-nav-item"><a href="/about/" class="kse-mobile-nav-link"><span>About</span></a></div>
+            <div class="kse-mobile-nav-item" data-dropdown="careers">
+                <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false"><span>Careers</span><svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg></a>
+                <div class="kse-mobile-dropdown"><a href="/careers/" class="kse-mobile-dropdown-link">Open Positions</a><a href="/careers/quick-apply/" class="kse-mobile-dropdown-link">Quick Apply</a><a href="/careers/apply/" class="kse-mobile-dropdown-link">Full Application</a></div>
+            </div>
+            <a href="/contact/" class="kse-mobile-nav-cta">Let's Engineer Your Next Power Move</a>
+        </nav>
     </div>
-  </nav>
+</nav>
 
   <main id="content" class="flex-grow">
     <!-- SECTION: Hero -->
     <section class="relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image:url('/assets/img/2025 photos/KSE 1.jpg');">
       <div class="absolute inset-0 bg-black/60"></div>
-      <div class="relative z-10 text-center px-6" data-aos="fade-up">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">Oil, Gas &amp; Carbon Capture</h1>
-        <p class="text-lg md:text-2xl text-slate-100 max-w-3xl mx-auto">Powering critical energy infrastructure—from pipeline pump stations to next-gen carbon capture facilities.</p>
+      <div class="relative z-10 text-center text-white px-6" data-aos="fade-up">
+        <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-4">Oil, Gas &amp; Carbon Capture</h1>
+        <p class="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto">Powering critical energy infrastructure with expert midstream electrical services.</p>
       </div>
     </section>
 
     <!-- SECTION: Intro -->
-    <section class="py-20 bg-white border-b border-gray-200">
-      <div class="max-w-screen-xl mx-auto px-6 md:px-10 lg:px-16" data-aos="fade-up">
-        <p class="text-lg text-gray-600 leading-relaxed max-w-4xl mx-auto text-center">
-          Kansas Electric partners with midstream operators, EPCs, and carbon-capture developers to deliver safe, reliable power and controls for pipelines, compressor stations, tank farms, and emerging CO₂ sequestration projects. Our licensed crews mobilize fast, adhere to hazardous-area standards, and integrate cutting-edge automation so your operations stay online 24/7.
-        </p>
+    <section class="py-24 bg-white">
+      <div class="max-w-4xl mx-auto px-6" data-aos="fade-up">
+        <div class="text-center">
+          <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6">Turnkey Electrical Partner for Midstream Operations</h2>
+          <p class="text-lg text-gray-600 leading-relaxed">
+            Kansas Electric is a trusted electrical contracting partner for North America's energy sector, delivering comprehensive midstream electrical services that power the nation's infrastructure. We specialize in providing end-to-end solutions for pipeline automation controls, ensuring seamless and efficient operations across vast networks. Our expertise extends to complete compressor station power systems, from initial design and hazardous location compliance to final commissioning. We are proficient in advanced SCADA system integration, enabling robust remote monitoring and control that enhances safety and operational uptime.
+            <br><br>
+            Our project portfolio includes electrical contracting for tank farms, greenfield carbon capture facility design, and brownfield retrofits. We understand the critical importance of reliability in this sector, which is why our services include redundant power systems, emergency backup solutions, and 24/7 maintenance support. With a deep understanding of industry regulations and a commitment to safety, Kansas Electric is equipped to handle the unique electrical challenges of the oil, gas, and carbon capture industries, ensuring your projects are completed on time, within budget, and to the highest standards of quality.
+          </p>
+        </div>
       </div>
     </section>
 
     <!-- SECTION: Featured Project or Scope Highlight -->
     <section class="relative py-24 bg-gray-900 text-white">
-      <img src="/assets/img/2025%20photos/KSE%201.jpg" alt="Compressor station MCC install" class="absolute inset-0 w-full h-full object-cover opacity-40" />
-      <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-10 lg:px-16 grid md:grid-cols-2 gap-12 items-center">
+      <div class="absolute inset-0 w-full h-full object-cover opacity-30" style="background-image:url('/assets/img/2025%20photos/featured%20projects%20cards/MKC%20Lyons.jpg');"></div>
+      <div class="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
         <div data-aos="fade-right">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Project</h2>
-          <p class="text-lg opacity-90 mb-6">Turn-key electrical &amp; controls package for a 9,000 HP pipeline compressor station, including hazardous-area installations, SCADA tie-in, and redundant backup power.</p>
-          <a href="/projects/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-all">Explore Our Projects</a>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Project: Pipeline Expansion</h2>
+          <p class="text-lg text-slate-200 mb-6">Turnkey electrical and controls package for a 9,000 HP pipeline compressor station, including hazardous-area installations, SCADA tie-in, and redundant backup power.</p>
+          <a href="/projects/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105 shadow-lg">Explore Our Projects</a>
         </div>
       </div>
     </section>
 
     <!-- SECTION: Capabilities Overview -->
-    <section class="py-24 bg-white border-b border-gray-200">
-      <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
-        <div class="text-center mb-12" data-aos="fade-up">
+    <section class="py-24 bg-white border-y border-gray-200">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16" data-aos="fade-up">
           <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Specialized Capabilities</h2>
-          <p class="text-gray-600 max-w-3xl mx-auto">Our in-house engineers and field crews deliver discipline-integrated solutions that keep energy flowing.</p>
+          <div class="h-1 w-16 bg-blue-600 mx-auto mb-6"></div>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">Our in-house engineers and field crews deliver discipline-integrated solutions that keep energy flowing.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="100">
-          <div class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition"><h3 class="font-semibold mb-2">Pipeline pump station power &amp; controls</h3></div>
-          <div class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition"><h3 class="font-semibold mb-2">Hazardous area classification &amp; installation</h3></div>
-          <div class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition"><h3 class="font-semibold mb-2">SCADA integration &amp; remote monitoring</h3></div>
-          <div class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition"><h3 class="font-semibold mb-2">Emergency systems and backup power</h3></div>
-          <div class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition"><h3 class="font-semibold mb-2">Carbon capture facility electrical design</h3></div>
-          <div class="p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition"><h3 class="font-semibold mb-2">Commissioning, testing &amp; 24/7 maintenance</h3></div>
+          <div class="p-8 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Pipeline Pump Station Power &amp; Controls</h3>
+            <p class="text-sm text-gray-600">Design and installation of MCCs, VFDs, and power distribution for reliable midstream operations.</p>
+          </div>
+          <div class="p-8 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Hazardous Area Classification &amp; Installation</h3>
+            <p class="text-sm text-gray-600">NEC-compliant installations for Class I, Division 1 & 2 locations, ensuring safety and uptime.</p>
+          </div>
+          <div class="p-8 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">SCADA Integration &amp; Remote Monitoring</h3>
+            <p class="text-sm text-gray-600">Real-time data access, alarm control, and secure communications for remote infrastructure.</p>
+          </div>
+          <div class="p-8 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Emergency Systems &amp; Backup Power</h3>
+            <p class="text-sm text-gray-600">Redundant power solutions, including UPS and generator systems, to maintain critical operations.</p>
+          </div>
+          <div class="p-8 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Carbon Capture Facility Electrical Design</h3>
+            <p class="text-sm text-gray-600">Full electrical system design for emerging CCUS projects, from power distribution to control systems.</p>
+          </div>
+          <div class="p-8 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-all duration-300">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Commissioning, Testing &amp; 24/7 Maintenance</h3>
+            <p class="text-sm text-gray-600">Comprehensive startup services and ongoing support to maximize facility performance and lifespan.</p>
+          </div>
         </div>
       </div>
     </section>
-
-    <!-- SECTION: Trusted By / Logo Grid (Optional) -->
-    <section class="py-20 bg-gray-50">
-      <div class="max-w-6xl mx-auto px-6 md:px-10 text-center">
-        <p class="uppercase tracking-widest text-blue-600 text-sm font-medium mb-6" data-aos="fade-up">TRUSTED BY</p>
-        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-items-center" data-aos="fade-up" data-aos-delay="100">
-          <img src="/assets/img/svg logos/adm2.png" alt="ADM" class="h-10 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all" />
-          <img src="/assets/img/svg logos/mkc2.png" alt="MKC" class="h-10 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all" />
-          <img src="/assets/img/svg logos/cnh2.png" alt="CNH" class="h-10 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all" />
-          <img src="/assets/img/svg logos/michelin2.png" alt="Michelin" class="h-10 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all" />
-          <img src="/assets/img/svg logos/pfizer2.png" alt="Pfizer" class="h-10 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all" />
-          <img src="/assets/img/svg logos/agco2.png" alt="AGCO" class="h-10 opacity-60 grayscale hover:opacity-100 hover:grayscale-0 transition-all" />
-        </div>
-      </div>
-    </section>
-
+    
     <!-- SECTION: CTA -->
-    <section class="relative py-24 bg-slate-900 overflow-hidden border-t border-gray-200">
-      <div class="absolute inset-0 opacity-10" style="background-image:url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.1%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-      <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16 grid lg:grid-cols-2 gap-12 items-center">
-        <div class="text-white max-w-xl mx-auto lg:mx-0" data-aos="fade-up">
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-slate-900">Let's Engineer Your Next Power Move</h2>
-          <p class="text-xl mb-8 leading-relaxed text-slate-600">Ready to energize your next pipeline or carbon-capture project? Our experts are standing by.</p>
-          <a href="/contact/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all">Request a Project Consultation</a>
-        </div>
+    <section class="relative py-24 bg-slate-900">
+      <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.1%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 text-center" data-aos="fade-up">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-white">Let's Engineer Your Next Power Move</h2>
+        <p class="text-xl mb-8 leading-relaxed text-slate-300 max-w-3xl mx-auto">Ready to energize your next pipeline or carbon-capture project? Our experts are standing by to deliver solutions that exceed expectations.</p>
+        <a href="/contact/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105 shadow-lg">Request a Project Consultation</a>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER (copied from template) -->
+  <!-- FOOTER -->
   <footer class="bg-white border-t border-gray-200 py-12">
     <div class="max-w-7xl mx-auto px-6 md:px-8">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start text-center md:text-left">
-        <div class="flex flex-col items-center md:items-start space-y-2"><img src="/assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric" class="h-10 w-auto"><p class="text-gray-600 mt-1 text-sm">Built for Power. Engineered for Excellence.</p></div>
-        <div class="flex flex-col items-center justify-center min-h-[100px]"><a href="/contact/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-md transition-colors">Let's Engineer Your Next Power Move</a></div>
-        <div class="flex flex-col items-center md:items-end space-y-2"><a href="tel:3162834750" class="text-gray-800 font-medium hover:text-[#2563eb] transition-colors">(316) 283-4750</a><a href="https://www.linkedin.com/company/kansas-electric/" class="text-gray-600 hover:text-[#2563eb] transition-colors" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg></a><a href="/suppliers/" class="text-sm text-gray-600 hover:text-[#2563eb] hover:underline transition-colors">Interested in becoming a supplier?</a></div>
+        <div class="flex flex-col items-center md:items-start space-y-2">
+          <img src="/assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric" class="h-10 w-auto">
+          <p class="text-gray-600 mt-1 text-sm">Built for Power. Engineered for Excellence.</p>
+        </div>
+        <div class="flex flex-col items-center justify-center min-h-[100px]">
+          <a href="/contact/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-md transition-colors duration-300 text-center">Let's Engineer Your Next Power Move</a>
+        </div>
+        <div class="flex flex-col items-center md:items-end space-y-2">
+          <a href="tel:3162834750" class="text-gray-800 font-medium hover:text-[#2563eb] transition-colors text-base">(316) 283-4750</a>
+          <a href="https://www.linkedin.com/company/kansas-electric/" class="text-gray-600 hover:text-[#2563eb] transition-colors mt-1" aria-label="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg>
+          </a>
+          <a href="/suppliers/" class="text-sm text-gray-600 hover:text-[#2563eb] hover:underline transition-colors mt-1">Interested in becoming a supplier?</a>
+        </div>
       </div>
       <div class="mt-12 text-center text-gray-500 text-sm">&copy; 2025 Kansas Electric. All rights reserved.</div>
     </div>
   </footer>
 
-  <!-- Navigation & UI Scripts (same as template) -->
+  <!-- Scripts -->
   <script>
-    document.addEventListener('DOMContentLoaded',function(){const n=document.querySelectorAll('.kse-nav-item');function e(){document.querySelectorAll('.kse-dropdown').forEach(e=>{e.classList.remove('active','show')});n.forEach(e=>{const n=e.querySelector('.kse-nav-link');n&&n.setAttribute('aria-expanded','false')})}n.forEach(t=>{const o=t.getAttribute('data-dropdown');if(!o)return;const r=document.getElementById(`${o}-dropdown`),a=t.querySelector('.kse-nav-link');a&&r&&a.addEventListener('click',function(t){t.preventDefault(),t.stopPropagation();const n='true'===a.getAttribute('aria-expanded');e(),n||(r.classList.add('active','show'),a.setAttribute('aria-expanded','true'))})});const t=document.querySelector('.kse-mobile-toggle'),o=document.getElementById('mobile-menu'),r=document.querySelector('.kse-mobile-overlay');t&&o&&t.addEventListener('click',function(){const n='true'===t.getAttribute('aria-expanded');n?(t.setAttribute('aria-expanded','false'),o.classList.remove('active','show'),r&&r.classList.remove('active'),document.body.style.overflow=''):(t.setAttribute('aria-expanded','true'),o.classList.add('active','show'),r&&r.classList.add('active'),document.body.style.overflow='hidden')});document.querySelectorAll('.kse-mobile-nav-item').forEach(e=>{const n=e.querySelector('.kse-mobile-nav-link'),t=e.querySelector('.kse-mobile-dropdown');n&&t&&n.addEventListener('click',function(e){e.preventDefault();const r='true'===n.getAttribute('aria-expanded');r?(n.setAttribute('aria-expanded','false'),t.classList.remove('active','show')):(n.setAttribute('aria-expanded','true'),t.classList.add('active','show'))})});document.addEventListener('click',function(n){n.target.closest('.kse-nav')||e()});document.addEventListener('keydown',function(n){'Escape'===n.key&&(e(),o&&o.classList.contains('active')&&(o.classList.remove('active','show'),t&&t.setAttribute('aria-expanded','false'),r&&r.classList.remove('active'),document.body.style.overflow=''))})});
+    document.addEventListener('DOMContentLoaded',function(){AOS.init({duration:800,easing:'ease-out',once:!0,offset:100});document.querySelectorAll("img").forEach(e=>{e.complete?e.classList.add("loaded"):e.addEventListener("load",()=>e.classList.add("loaded"))});const e=document.querySelectorAll(".kse-nav-item");function t(){document.querySelectorAll(".kse-dropdown").forEach(e=>{e.classList.remove("active","show")}),e.forEach(e=>{const t=e.querySelector(".kse-nav-link");t&&t.setAttribute("aria-expanded","false")})}e.forEach(n=>{const o=n.getAttribute("data-dropdown");if(!o)return;const r=document.getElementById(`${o}-dropdown`),s=n.querySelector(".kse-nav-link");s&&r&&s.addEventListener("click",function(n){n.preventDefault(),n.stopPropagation();const e="true"===s.getAttribute("aria-expanded");t(),e||(r.classList.add("active","show"),s.setAttribute("aria-expanded","true"))})});const n=document.querySelector(".kse-mobile-toggle"),o=document.getElementById("mobile-menu"),r=document.querySelector(".kse-mobile-overlay");n&&o&&n.addEventListener("click",function(){const e="true"===n.getAttribute("aria-expanded");e?(n.setAttribute("aria-expanded","false"),o.classList.remove("active","show"),r&&r.classList.remove("active"),document.body.style.overflow=""):n.setAttribute("aria-expanded","true")});document.querySelectorAll(".kse-mobile-nav-item").forEach(e=>{const t=e.querySelector(".kse-mobile-nav-link"),n=e.querySelector(".kse-mobile-dropdown");t&&n&&t.addEventListener("click",function(e){e.preventDefault();const o="true"===t.getAttribute("aria-expanded");o?(t.setAttribute("aria-expanded","false"),n.classList.remove("active","show")):(t.setAttribute("aria-expanded","true"),n.classList.add("active","show"))})}),document.addEventListener("click",function(n){n.target.closest(".kse-nav")||t()}),document.addEventListener("keydown",function(e){"Escape"===e.key&&(t(),o&&o.classList.contains("active")&&(o.classList.remove("active","show"),n&&n.setAttribute("aria-expanded","false"),r&&r.classList.remove("active"),document.body.style.overflow=""))})});
   </script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>document.addEventListener('DOMContentLoaded',()=>{AOS.init({duration:800,easing:'ease-out',once:true,offset:100});document.querySelectorAll('img').forEach(e=>{e.complete?e.classList.add('loaded'):e.addEventListener('load',()=>e.classList.add('loaded'))})});</script>
-
 </body>
 </html> 
