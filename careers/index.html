@@ -608,19 +608,12 @@
         <div class="h-1 w-16 bg-blue-600 mx-auto mb-12"></div>
         
         <!-- Filter Bar -->
-        <div class="flex flex-wrap gap-4 mb-8 justify-center">
-          <select id="divisionFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+        <div class="flex flex-wrap gap-4 justify-center mb-8">
+          <select id="divisionFilter" class="border border-gray-300 px-4 py-2 rounded text-sm">
             <option value="">All Divisions</option>
-            <option value="Industrial">Industrial</option>
-            <option value="Service & Maintenance">Service & Maintenance</option>
-            <option value="Automation & Controls">Automation & Controls</option>
           </select>
-          
-          <select id="locationFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent">
+          <select id="locationFilter" class="border border-gray-300 px-4 py-2 rounded text-sm">
             <option value="">All Locations</option>
-            <option value="Wichita, KS">Wichita, KS</option>
-            <option value="Emporia, KS">Emporia, KS</option>
-            <option value="Kansas City, MO">Kansas City, MO</option>
           </select>
         </div>
         
@@ -632,140 +625,47 @@
     </section>
 
     <!-- CTA BANNER -->
-    <section class="py-16 bg-gray-900 text-white">
-      <div class="max-w-4xl mx-auto px-6 text-center">
-        <h2 class="text-2xl md:text-3xl font-bold mb-4">Don't see your exact fit? We're always hiring for top talent.</h2>
-        <a href="https://forms.gle/YOUR-GOOGLE-FORM-ID" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105 shadow-lg">Submit a General Application</a>
-      </div>
+    <section class="bg-gray-900 text-white py-16 px-6 text-center">
+      <h2 class="text-2xl font-semibold mb-4">Didn't see your exact fit?</h2>
+      <p class="mb-6 text-gray-300">We're always hiring for top talent across all divisions.</p>
+      <a href="https://forms.gle/YOUR-GENERAL-APPLICATION-FORM" target="_blank" class="inline-block bg-white text-gray-900 px-6 py-3 rounded font-medium hover:bg-gray-100 transition">
+        Submit a General Application
+      </a>
     </section>
 
     <!-- BENEFITS SECTION -->
-    <section class="py-24 bg-gray-50">
-      <div class="max-w-7xl mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">Benefits & Perks</h2>
-        <div class="h-1 w-16 bg-blue-600 mx-auto mb-12"></div>
-        
-        <!-- 2-row grid with 6 cards -->
-        <div class="grid md:grid-cols-3 gap-6">
-          
-          <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
-              </svg>
-            </div>
-            <h3 class="text-lg font-semibold mb-2">401(k) with Match</h3>
-            <p class="text-gray-600 text-sm">Secure your future with our competitive retirement matching program.</p>
-          </div>
-
-          <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-            </div>
-            <h3 class="text-lg font-semibold mb-2">Paid Travel</h3>
-            <p class="text-gray-600 text-sm">Per diem, lodging, and mileage reimbursement for travel positions.</p>
-          </div>
-
-          <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-              </svg>
-            </div>
-            <h3 class="text-lg font-semibold mb-2">Company Truck for Leads</h3>
-            <p class="text-gray-600 text-sm">Leadership positions include company vehicle and fuel coverage.</p>
-          </div>
-
-          <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-              </svg>
-            </div>
-            <h3 class="text-lg font-semibold mb-2">Continuing Education Covered</h3>
-            <p class="text-gray-600 text-sm">We invest in your growth with training and certification programs.</p>
-          </div>
-
-          <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-              </svg>
-            </div>
-            <h3 class="text-lg font-semibold mb-2">Referral Bonuses</h3>
-            <p class="text-gray-600 text-sm">Earn rewards for bringing quality talent to our team.</p>
-          </div>
-
-          <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
-            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-              <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-            </div>
-            <h3 class="text-lg font-semibold mb-2">Family-Friendly Hours</h3>
-            <p class="text-gray-600 text-sm">Service division offers predictable schedules for work-life balance.</p>
-          </div>
-
-        </div>
+    <section class="bg-gray-100 py-16 px-6">
+      <h2 class="text-center text-3xl font-semibold mb-12">Benefits & Perks</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto text-center">
+        <div class="p-6 bg-white shadow rounded">401(k) with Company Match</div>
+        <div class="p-6 bg-white shadow rounded">Paid Travel for Job Sites</div>
+        <div class="p-6 bg-white shadow rounded">Company Truck for Leads</div>
+        <div class="p-6 bg-white shadow rounded">Continuing Education Paid</div>
+        <div class="p-6 bg-white shadow rounded">$1,500 Employee Referral Bonus</div>
+        <div class="p-6 bg-white shadow rounded">Family-Friendly Hours (Service Division)</div>
       </div>
     </section>
 
     <!-- TESTIMONIALS SECTION -->
-    <section class="py-24 bg-white">
-      <div class="max-w-7xl mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">What Our Team Says</h2>
-        <div class="h-1 w-16 bg-blue-600 mx-auto mb-12"></div>
-        
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
-          <!-- Testimonial 1 -->
-          <div class="bg-gray-50 p-6 rounded-xl">
-            <div class="text-blue-600 mb-4">
-              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
-              </svg>
-            </div>
-            <p class="text-gray-700 mb-4">"Working at Kansas Electric has given me opportunities I never had before. The training programs are excellent and management truly cares about your career growth."</p>
-            <div class="font-semibold text-slate-900">Sarah Johnson</div>
-            <div class="text-sm text-gray-600">Industrial Electrician</div>
-          </div>
-
-          <!-- Testimonial 2 -->
-          <div class="bg-gray-50 p-6 rounded-xl">
-            <div class="text-blue-600 mb-4">
-              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
-              </svg>
-            </div>
-            <p class="text-gray-700 mb-4">"The variety of projects keeps things interesting. One day I'm working on a hospital, the next it's a manufacturing plant. Every project teaches you something new."</p>
-            <div class="font-semibold text-slate-900">Mike Rodriguez</div>
-            <div class="text-sm text-gray-600">Project Manager</div>
-          </div>
-
-          <!-- Testimonial 3 -->
-          <div class="bg-gray-50 p-6 rounded-xl">
-            <div class="text-blue-600 mb-4">
-              <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z"/>
-              </svg>
-            </div>
-            <p class="text-gray-700 mb-4">"Safety is more than just a policy here—it's ingrained in everything we do. I never feel pressured to cut corners or rush through dangerous work."</p>
-            <div class="font-semibold text-slate-900">David Chen</div>
-            <div class="text-sm text-gray-600">Service Technician</div>
-          </div>
-
-        </div>
+    <section class="py-20 px-6 bg-white text-center">
+      <h2 class="text-3xl font-semibold mb-12">What Our Team Says</h2>
+      <div class="max-w-4xl mx-auto space-y-12">
+        <blockquote class="italic text-lg text-gray-700">
+          "Working at Kansas Electric means I go home proud every day. It's more than a job — it's impact."
+          <footer class="mt-4 text-sm text-gray-500">— Jacob M., Industrial Foreman</footer>
+        </blockquote>
+        <blockquote class="italic text-lg text-gray-700">
+          "They supported me from apprenticeship through licensing. I'm now leading crews across the state."
+          <footer class="mt-4 text-sm text-gray-500">— Maria L., Service Technician</footer>
+        </blockquote>
       </div>
     </section>
 
     <!-- FINAL CTA SECTION -->
-    <section class="py-24 bg-slate-900">
-      <div class="max-w-4xl mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Be part of something bigger than a job. Be part of Kansas Electric.</h2>
-        <a href="/careers/quick-apply/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105 shadow-lg">Apply Today</a>
-      </div>
+    <section class="bg-blue-700 text-white py-16 text-center">
+      <h2 class="text-2xl font-semibold mb-4">Be part of something bigger than a job.</h2>
+      <p class="mb-6">Be part of Kansas Electric.</p>
+      <a href="#jobs" class="bg-white text-blue-700 px-6 py-3 rounded hover:bg-gray-100 transition font-medium">Apply Today</a>
     </section>
 
     <!-- JavaScript for Dynamic Job Loading -->
@@ -781,12 +681,35 @@
           .then(response => response.json())
           .then(data => {
             allJobs = data.jobs;
+            populateFilters(allJobs);
             renderJobs(allJobs);
           })
           .catch(error => {
             console.error('Error loading jobs:', error);
             jobsContainer.innerHTML = '<p class="text-center text-gray-600">Unable to load job listings at this time.</p>';
           });
+
+        // Populate filter dropdowns dynamically
+        function populateFilters(jobs) {
+          const divisions = [...new Set(jobs.map(job => job.division))];
+          const locations = [...new Set(jobs.map(job => job.location))];
+
+          // Populate division filter
+          divisions.forEach(division => {
+            const option = document.createElement('option');
+            option.value = division;
+            option.textContent = division;
+            divisionFilter.appendChild(option);
+          });
+
+          // Populate location filter
+          locations.forEach(location => {
+            const option = document.createElement('option');
+            option.value = location;
+            option.textContent = location;
+            locationFilter.appendChild(option);
+          });
+        }
 
         // Render jobs function
         function renderJobs(jobs) {
@@ -796,19 +719,25 @@
           }
 
           jobsContainer.innerHTML = jobs.map(job => `
-            <div class="job-card bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 relative overflow-hidden group">
-              <div class="p-6">
-                <h3 class="text-xl font-bold text-slate-900 mb-2">${job.title}</h3>
-                <p class="text-gray-600 mb-1">${job.location}</p>
-                <p class="text-blue-600 font-medium mb-4">${job.division}</p>
-                <a href="${job.applyLink}" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300">Apply Now</a>
+            <div class="relative group">
+              <div class="p-6 bg-white rounded shadow">
+                <h3 class="text-lg font-semibold">${job.title}</h3>
+                <p class="text-gray-600">${job.division}</p>
+                <span class="text-sm text-gray-500">${job.location}</span>
+                
+                <div class="flex justify-between items-center mt-4">
+                  <span class="text-lg font-semibold text-gray-900">$${job.salary || 'Competitive'}</span>
+                  <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                    Apply Now
+                  </button>
+                </div>
               </div>
-              
-              <!-- Description Overlay -->
-              <div class="absolute inset-0 bg-blue-600 bg-opacity-95 text-white p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div class="text-center">
-                  <h3 class="text-xl font-bold mb-4">${job.title}</h3>
-                  <p class="text-sm leading-relaxed">${job.description}</p>
+              <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-4 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
+                <p class="text-sm">${job.description}</p>
+                <div class="mt-auto">
+                  <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                    Apply Now
+                  </button>
                 </div>
               </div>
             </div>
