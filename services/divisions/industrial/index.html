@@ -407,9 +407,9 @@
                           <span>Food & Beverage</span>
                           <small>Processing plants</small>
                       </a>
-                      <a href="/services/industrial/government-municipal/" class="kse-dropdown-link" role="menuitem">
-                          <span>Government & Municipal</span>
-                          <small>Public infrastructure</small>
+                      <a href="/services/industrial/healthcare/" class="kse-dropdown-link" role="menuitem">
+                          <span>Healthcare Infrastructure</span>
+                          <small>Critical care facilities</small>
                       </a>
                   </div>
                     </li>
@@ -501,8 +501,8 @@
                          class="kse-mobile-dropdown-link">Advanced Manufacturing</a>
                       <a href="/services/industrial/food-beverage/" 
                          class="kse-mobile-dropdown-link">Food & Beverage</a>
-                      <a href="/services/industrial/government-municipal/" 
-                         class="kse-mobile-dropdown-link">Government & Municipal</a>
+                      <a href="/services/industrial/healthcare/" 
+                         class="kse-mobile-dropdown-link">Healthcare Infrastructure</a>
             </div>
                 </div>
           
@@ -578,7 +578,7 @@
             </h2>
             <div class="h-1 w-16 bg-blue-600 mx-auto mb-6" data-aos="fade-up" data-aos-delay="200"></div>
             <p class="text-lg text-gray-600 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="300">
-              Kansas Electric delivers full-scope industrial electrical infrastructure — from redundant power systems to precision control wiring.
+              Kansas Electric delivers full-scope industrial electrical infrastructure ï¿½ from redundant power systems to precision control wiring.
             </p>
           </div>
           
@@ -921,7 +921,7 @@
     <!-- Company Description -->
     <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
       <p class="text-sm text-white max-w-3xl mx-auto leading-relaxed">
-        Since 1948, Kansas Electric has powered some of the region's most essential facilities — from hospitals and manufacturers to mission-critical infrastructure. We bring decades of experience, a culture of safety, and future-focused innovation to every electrical project we touch.
+        Since 1948, Kansas Electric has powered some of the region's most essential facilities ï¿½ from hospitals and manufacturers to mission-critical infrastructure. We bring decades of experience, a culture of safety, and future-focused innovation to every electrical project we touch.
       </p>
     </div>
     
@@ -938,76 +938,117 @@
   <script src="../../../projects/stanley-black-decker/division-nav-direct.js" defer></script>
   <script src="../../../projects/stanley-black-decker/division-nav-fix.js" defer></script>
 
-  <!-- Kansas Electric Navigation Dropdown Script -->
-      <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const navItems = document.querySelectorAll('.kse-nav-item');
-
-        function closeAllDropdowns() {
-          document.querySelectorAll('.kse-dropdown').forEach(dropdown => {
-            dropdown.style.display = 'none';
-            dropdown.style.opacity = '0';
-            dropdown.style.visibility = 'hidden';
-            dropdown.style.pointerEvents = 'none';
-            dropdown.classList.remove('active', 'show');
-          });
-          
-          // Remove active states from nav items
-          document.querySelectorAll('.kse-nav-item').forEach(item => {
-            item.setAttribute('aria-expanded', 'false');
+  <!-- Navigation Dropdown Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navItems = document.querySelectorAll('.kse-nav-item');
+      
+      function closeAllDropdowns() {
+        document.querySelectorAll('.kse-dropdown').forEach(dropdown => {
+          dropdown.classList.remove('active', 'show');
+        });
+        
+        navItems.forEach(item => {
+          const link = item.querySelector('.kse-nav-link');
+          if (link) link.setAttribute('aria-expanded', 'false');
+        });
+      }
+      
+      navItems.forEach(item => {
+        const dropdownId = item.getAttribute('data-dropdown');
+        if (!dropdownId) return;
+        
+        const dropdown = document.getElementById(`${dropdownId}-dropdown`);
+        const link = item.querySelector('.kse-nav-link');
+        
+        if (dropdown && link) {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const isOpen = link.getAttribute('aria-expanded') === 'true';
+            
+            // Close all dropdowns first
+            closeAllDropdowns();
+            
+            // If this dropdown wasn't open, open it
+            if (!isOpen) {
+              dropdown.classList.add('active', 'show');
+              link.setAttribute('aria-expanded', 'true');
+            }
           });
         }
-
-        navItems.forEach(item => {
-          const dropdownId = item.getAttribute('data-dropdown');
-          const dropdown = document.getElementById(`${dropdownId}-dropdown`);
-          const navLink = item.querySelector('.kse-nav-link');
-
-          if (dropdown && navLink) {
-            // Attach event listener to the nav link, not the entire item
-            navLink.addEventListener('click', function (e) {
-              e.preventDefault();
-              e.stopPropagation();
-              
-              const isOpen = dropdown.classList.contains('active') || dropdown.classList.contains('show');
-
-              // Close all dropdowns first
-              closeAllDropdowns();
-              
-              // If this dropdown wasn't open, open it
-              if (!isOpen) {
-                dropdown.classList.add('active', 'show');
-                dropdown.style.display = dropdown.classList.contains('industries-grid') ? 'grid' : 'flex';
-                dropdown.style.opacity = '1';
-                dropdown.style.visibility = 'visible';
-                dropdown.style.pointerEvents = 'auto';
-                item.setAttribute('aria-expanded', 'true');
-              }
-            });
-
-            // Prevent dropdown content clicks from closing the dropdown
-            dropdown.addEventListener('click', function (e) {
-              e.stopPropagation();
-            });
-          }
-        });
-
-        // Close dropdowns when clicking outside the navigation
-        document.addEventListener('click', function (e) {
-          const isClickInside = e.target.closest('.kse-nav');
-          if (!isClickInside) {
-            closeAllDropdowns();
-          }
-        });
-
-        // Close dropdowns on escape key
-        document.addEventListener('keydown', function (e) {
-          if (e.key === 'Escape') {
-            closeAllDropdowns();
-          }
-        });
       });
-      </script>
+      
+      // Mobile menu toggle
+      const mobileToggle = document.querySelector('.kse-mobile-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileOverlay = document.querySelector('.kse-mobile-overlay');
+      
+      if (mobileToggle && mobileMenu) {
+        mobileToggle.addEventListener('click', function() {
+          const isOpen = mobileToggle.getAttribute('aria-expanded') === 'true';
+          
+          if (isOpen) {
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            mobileMenu.classList.remove('active', 'show');
+            if (mobileOverlay) mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+          } else {
+            mobileToggle.setAttribute('aria-expanded', 'true');
+            mobileMenu.classList.add('active', 'show');
+            if (mobileOverlay) mobileOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      }
+      
+      // Mobile dropdowns
+      const mobileNavItems = document.querySelectorAll('.kse-mobile-nav-item');
+      mobileNavItems.forEach(item => {
+        const link = item.querySelector('.kse-mobile-nav-link');
+        const dropdown = item.querySelector('.kse-mobile-dropdown');
+        
+        if (link && dropdown) {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const isOpen = link.getAttribute('aria-expanded') === 'true';
+            
+            if (isOpen) {
+              link.setAttribute('aria-expanded', 'false');
+              dropdown.classList.remove('active', 'show');
+            } else {
+              link.setAttribute('aria-expanded', 'true');
+              dropdown.classList.add('active', 'show');
+            }
+          });
+        }
+      });
+      
+      // Close dropdowns when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.kse-nav')) {
+          closeAllDropdowns();
+        }
+      });
+      
+      // Close dropdowns on escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeAllDropdowns();
+          
+          // Also close mobile menu if open
+          if (mobileMenu && mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.remove('active', 'show');
+            if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+            if (mobileOverlay) mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+          }
+        }
+      });
+    });
+  </script>
 
   <!-- Initialize AOS Animations -->
   <script>
