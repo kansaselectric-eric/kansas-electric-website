@@ -7,9 +7,9 @@
   <!-- Tailwind CSS v2.2.19 -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
-  <title>Careers - Kansas Electric</title>
+  <title>Careers at Kansas Electric | Now Hiring Electricians, Technicians, and Control Experts</title>
 
-  <meta name="description" content="At Kansas Electric, we don't just build electrical systems�we build careers. If you're looking to break free from union constraints and take control of your career, we offer higher pay, faster promotions, and more opportunities to work on high-impact industrial and commercial projects.">
+  <meta name="description" content="Join Kansas Electric's high-performing team. We're hiring industrial electricians, automation experts, and service technicians across the Midwest.">
 
   <meta property="og:title" content="Careers" />
   <meta property="twitter:title" content="Careers" />
@@ -32,6 +32,9 @@
   <link rel="manifest" href="../site.webmanifest">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  
+  <!-- AOS Library -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
   <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('Xbp1oaEWxyL7EdVj'); </script>
 
@@ -559,9 +562,9 @@
     </section>
 
     <!-- CULTURE SNAPSHOT SECTION -->
-    <section class="py-24 bg-gray-50">
+    <section role="region" aria-labelledby="life-at-kansas-electric" class="py-24 bg-gray-50" data-aos="fade-up" data-aos-duration="800">
       <div class="max-w-7xl mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">Life at Kansas Electric</h2>
+        <h2 id="life-at-kansas-electric" class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">Life at Kansas Electric</h2>
         <div class="h-1 w-16 bg-blue-600 mx-auto mb-12"></div>
         
         <!-- 3-Column Grid -->
@@ -602,19 +605,22 @@
     </section>
 
     <!-- JOBS SECTION -->
-    <section class="py-24 bg-white">
+    <section role="region" aria-labelledby="open-positions" class="py-24 bg-white">
       <div class="max-w-7xl mx-auto px-6">
-        <h2 class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">Open Positions</h2>
+        <h2 id="open-positions" class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">Open Positions</h2>
         <div class="h-1 w-16 bg-blue-600 mx-auto mb-12"></div>
         
         <!-- Filter Bar -->
-        <div class="flex flex-wrap gap-4 justify-center mb-8">
-          <select id="divisionFilter" class="border border-gray-300 px-4 py-2 rounded text-sm">
+        <div class="flex flex-wrap gap-4 justify-center items-center mb-8">
+          <select id="divisionFilter" class="appearance-none border border-gray-300 rounded px-4 py-2 bg-white shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option value="">All Divisions</option>
           </select>
-          <select id="locationFilter" class="border border-gray-300 px-4 py-2 rounded text-sm">
+          <select id="locationFilter" class="appearance-none border border-gray-300 rounded px-4 py-2 bg-white shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option value="">All Locations</option>
           </select>
+          <button id="clearFilters" class="text-sm underline text-blue-600 hover:text-blue-800 transition">
+            Clear Filters
+          </button>
         </div>
         
         <!-- Jobs Container -->
@@ -625,17 +631,17 @@
     </section>
 
     <!-- CTA BANNER -->
-    <section class="bg-gray-900 text-white py-16 px-6 text-center">
-      <h2 class="text-2xl font-semibold mb-4">Didn't see your exact fit?</h2>
+    <section role="region" aria-labelledby="general-application" class="bg-gray-900 text-white py-16 px-6 text-center">
+      <h2 id="general-application" class="text-2xl font-semibold mb-4">Didn't see your exact fit?</h2>
       <p class="mb-6 text-gray-300">We're always hiring for top talent across all divisions.</p>
-      <a href="https://forms.gle/YOUR-GENERAL-APPLICATION-FORM" target="_blank" class="inline-block bg-white text-gray-900 px-6 py-3 rounded font-medium hover:bg-gray-100 transition">
+      <a href="https://forms.gle/YOUR-GENERAL-APPLICATION-FORM" target="_blank" rel="noopener noreferrer" aria-label="Submit general application to Kansas Electric" class="inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition font-medium">
         Submit a General Application
       </a>
     </section>
 
     <!-- BENEFITS SECTION -->
-    <section class="bg-gray-100 py-16 px-6">
-      <h2 class="text-center text-3xl font-semibold mb-12">Benefits & Perks</h2>
+    <section role="region" aria-labelledby="benefits-perks" class="bg-gray-100 py-16 px-6" data-aos="fade-up" data-aos-duration="800">
+      <h2 id="benefits-perks" class="text-center text-3xl font-semibold mb-12">Benefits & Perks</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto text-center">
         <div class="p-6 bg-white shadow rounded">401(k) with Company Match</div>
         <div class="p-6 bg-white shadow rounded">Paid Travel for Job Sites</div>
@@ -647,8 +653,8 @@
     </section>
 
     <!-- TESTIMONIALS SECTION -->
-    <section class="py-20 px-6 bg-white text-center">
-      <h2 class="text-3xl font-semibold mb-12">What Our Team Says</h2>
+    <section role="region" aria-labelledby="team-testimonials" class="py-20 px-6 bg-white text-center" data-aos="zoom-in" data-aos-duration="800">
+      <h2 id="team-testimonials" class="text-3xl font-semibold mb-12">What Our Team Says</h2>
       <div class="max-w-4xl mx-auto space-y-12">
         <blockquote class="italic text-lg text-gray-700">
           "Working at Kansas Electric means I go home proud every day. It's more than a job — it's impact."
@@ -662,18 +668,26 @@
     </section>
 
     <!-- FINAL CTA SECTION -->
-    <section class="bg-blue-700 text-white py-16 text-center">
-      <h2 class="text-2xl font-semibold mb-4">Be part of something bigger than a job.</h2>
+    <section role="region" aria-labelledby="final-cta" class="bg-blue-700 text-white py-16 text-center" data-aos="fade-up" data-aos-duration="800">
+      <h2 id="final-cta" class="text-2xl font-semibold mb-4">Be part of something bigger than a job.</h2>
       <p class="mb-6">Be part of Kansas Electric.</p>
-      <a href="#jobs" class="bg-white text-blue-700 px-6 py-3 rounded hover:bg-gray-100 transition font-medium">Apply Today</a>
+      <a href="#open-positions" aria-label="Scroll to job listings and apply today" class="inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition font-medium">Apply Today</a>
     </section>
 
     <!-- JavaScript for Dynamic Job Loading -->
     <script>
+      // Mobile accordion toggle function
+      function toggleDesc(button) {
+        const desc = button.parentElement.nextElementSibling;
+        desc.classList.toggle('hidden');
+        button.textContent = desc.classList.contains('hidden') ? 'Details' : 'Hide';
+      }
+
       document.addEventListener('DOMContentLoaded', function() {
         const jobsContainer = document.getElementById('jobsContainer');
         const divisionFilter = document.getElementById('divisionFilter');
         const locationFilter = document.getElementById('locationFilter');
+        const clearFiltersBtn = document.getElementById('clearFilters');
         let allJobs = [];
 
         // Load jobs from JSON
@@ -718,8 +732,9 @@
             return;
           }
 
-          jobsContainer.innerHTML = jobs.map(job => `
-            <div class="relative group">
+          jobsContainer.innerHTML = jobs.map((job, index) => `
+            <!-- Desktop hover version -->
+            <div class="relative group hidden sm:block">
               <div class="p-6 bg-white rounded shadow">
                 <h3 class="text-lg font-semibold">${job.title}</h3>
                 <p class="text-gray-600">${job.division}</p>
@@ -727,21 +742,45 @@
                 
                 <div class="flex justify-between items-center mt-4">
                   <span class="text-lg font-semibold text-gray-900">$${job.salary || 'Competitive'}</span>
-                  <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors">
+                  <a href="${job.applyLink || '#'}" target="_blank" rel="noopener noreferrer" aria-label="Apply for ${job.title} role" class="inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition font-medium">
                     Apply Now
-                  </button>
+                  </a>
                 </div>
               </div>
               <div class="absolute inset-0 bg-black bg-opacity-80 text-white p-4 opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100">
                 <p class="text-sm">${job.description}</p>
                 <div class="mt-auto">
-                  <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                  <a href="${job.applyLink || '#'}" target="_blank" rel="noopener noreferrer" aria-label="Apply for ${job.title} role" class="inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition font-medium">
                     Apply Now
-                  </button>
+                  </a>
                 </div>
               </div>
             </div>
+
+            <!-- Mobile accordion version -->
+            <div class="border rounded shadow p-4 sm:hidden">
+              <div class="flex justify-between items-center">
+                <div>
+                  <h3 class="text-lg font-semibold">${job.title}</h3>
+                  <p class="text-sm text-gray-500">${job.location} · ${job.division}</p>
+                </div>
+                <button onclick="toggleDesc(this)" class="text-blue-600 text-sm">Details</button>
+              </div>
+              <div class="hidden mt-4 text-sm text-gray-700">
+                <p class="mb-4">${job.description}</p>
+                <a href="${job.applyLink || '#'}" target="_blank" rel="noopener noreferrer" aria-label="Apply for ${job.title} role" class="inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition font-medium">
+                  Apply Now
+                </a>
+              </div>
+            </div>
           `).join('');
+        }
+
+        // Clear filters function
+        function clearFilters() {
+          divisionFilter.value = '';
+          locationFilter.value = '';
+          renderJobs(allJobs);
         }
 
         // Filter jobs function
@@ -761,6 +800,21 @@
         // Event listeners for filters
         divisionFilter.addEventListener('change', filterJobs);
         locationFilter.addEventListener('change', filterJobs);
+        clearFiltersBtn.addEventListener('click', clearFilters);
+      });
+    </script>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        if (typeof AOS !== 'undefined') {
+          AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+          });
+        }
       });
     </script>
 
