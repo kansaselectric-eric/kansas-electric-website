@@ -1,0 +1,25 @@
+{
+  "jobs": [
+    {
+      "title": "Industrial Electrician",
+      "location": "Wichita, KS",
+      "division": "Industrial",
+      "description": "Install and maintain electrical systems in large-scale manufacturing environments. Must be able to read blueprints and conduit schematics.",
+      "applyLink": "https://forms.gle/YOUR-GOOGLE-FORM-ID"
+    },
+    {
+      "title": "Service Technician",
+      "location": "Emporia, KS",
+      "division": "Service & Maintenance",
+      "description": "Handle rapid-response electrical diagnostics and repairs across commercial accounts. Strong communication skills required.",
+      "applyLink": "https://forms.gle/YOUR-GOOGLE-FORM-ID"
+    },
+    {
+      "title": "Automation Controls Specialist",
+      "location": "Kansas City, MO",
+      "division": "Automation & Controls",
+      "description": "Configure and troubleshoot PLC and SCADA systems. Rockwell Automation experience preferred.",
+      "applyLink": "https://forms.gle/YOUR-GOOGLE-FORM-ID"
+    }
+  ]
+} 
