@@ -561,46 +561,45 @@
       </div>
     </section>
 
-    <!-- CULTURE SNAPSHOT SECTION -->
-    <section role="region" aria-labelledby="life-at-kansas-electric" class="py-24 bg-gray-50" data-aos="fade-up" data-aos-duration="800">
+    <!-- LIFE AT KANSAS ELECTRIC SECTION -->
+    <section role="region" aria-labelledby="life-at-kansas-electric" class="py-24 bg-white space-y-20">
       <div class="max-w-7xl mx-auto px-6">
         <h2 id="life-at-kansas-electric" class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">Life at Kansas Electric</h2>
         <div class="h-1 w-16 bg-blue-600 mx-auto mb-12"></div>
         
-        <!-- 3-Column Grid -->
-        <div class="grid md:grid-cols-3 gap-8">
-          
-          <!-- Card 1 -->
-          <div class="relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 group">
-            <div class="h-64 bg-cover bg-center" style="background-image: url('/assets/img/safety-culture.jpg');">
-              <div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-all duration-300"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <h3 class="text-white text-xl font-bold text-center px-4">Safety Isn't Just a Priority — It's Our Culture</h3>
-              </div>
-            </div>
+        <!-- Block 1: Image Left, Text Right -->
+        <div class="grid md:grid-cols-2 gap-8 items-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="h-64 md:h-96 bg-cover bg-center rounded-xl shadow-lg relative" style="background-image: url('/assets/img/2025 photos/KSE 1.jpg');">
+            <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl"></div>
           </div>
-
-          <!-- Card 2 -->
-          <div class="relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 group">
-            <div class="h-64 bg-cover bg-center" style="background-image: url('/assets/img/real-projects.jpg');">
-              <div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-all duration-300"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <h3 class="text-white text-xl font-bold text-center px-4">Real Projects. Real Impact.</h3>
-              </div>
-            </div>
+          <div class="text-left md:px-10">
+            <h3 class="text-2xl md:text-3xl font-bold text-slate-900">Powering the Backbone of American Industry</h3>
+            <p class="text-slate-600 text-base mt-3">From the heartland to mission-critical environments, our team builds the electrical systems that keep production moving and infrastructure running.</p>
           </div>
-
-          <!-- Card 3 -->
-          <div class="relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 group">
-            <div class="h-64 bg-cover bg-center" style="background-image: url('/assets/img/growth-pathways.jpg');">
-              <div class="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-all duration-300"></div>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <h3 class="text-white text-xl font-bold text-center px-4">Growth Pathways from Apprentice to PM</h3>
-              </div>
-            </div>
-          </div>
-
         </div>
+
+        <!-- Block 2: Text Left, Image Right -->
+        <div class="grid md:grid-cols-2 gap-8 items-center" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-left md:px-10 order-2 md:order-1">
+            <h3 class="text-2xl md:text-3xl font-bold text-slate-900">Hard Work. Real Respect.</h3>
+            <p class="text-slate-600 text-base mt-3">At Kansas Electric, pride is earned in the field. We back our crews with the support, training, and trust they need to lead — not just follow.</p>
+          </div>
+          <div class="h-64 md:h-96 bg-cover bg-center rounded-xl shadow-lg relative order-1 md:order-2" style="background-image: url('/assets/img/2025 photos/SS_Princeton_378.jpg');">
+            <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl"></div>
+          </div>
+        </div>
+
+        <!-- Block 3: Image Left, Text Right -->
+        <div class="grid md:grid-cols-2 gap-8 items-center" data-aos="fade-up" data-aos-delay="300">
+          <div class="h-64 md:h-96 bg-cover bg-center rounded-xl shadow-lg relative" style="background-image: url('/assets/img/2025 photos/pulling wire.jpg');">
+            <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl"></div>
+          </div>
+          <div class="text-left md:px-10">
+            <h3 class="text-2xl md:text-3xl font-bold text-slate-900">No Ceiling. Just Opportunity.</h3>
+            <p class="text-slate-600 text-base mt-3">From apprentices to project managers, we grow careers by promoting from within and delivering high-impact projects that build leaders.</p>
+          </div>
+        </div>
+        
       </div>
     </section>
 
@@ -612,12 +611,22 @@
         
         <!-- Filter Bar -->
         <div class="flex flex-wrap gap-4 justify-center items-center mb-8">
-          <select id="divisionFilter" class="appearance-none border border-gray-300 rounded px-4 py-2 bg-white shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option value="">All Divisions</option>
-          </select>
-          <select id="locationFilter" class="appearance-none border border-gray-300 rounded px-4 py-2 bg-white shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option value="">All Locations</option>
-          </select>
+          <div class="relative">
+            <select id="divisionFilter" class="appearance-none border border-gray-300 rounded px-4 py-2 bg-white shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10">
+              <option value="">All Divisions</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
+              <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M5.5 7l4.5 4 4.5-4z"/></svg>
+            </div>
+          </div>
+          <div class="relative">
+            <select id="locationFilter" class="appearance-none border border-gray-300 rounded px-4 py-2 bg-white shadow-sm text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 pr-10">
+              <option value="">All Locations</option>
+            </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-400">
+              <svg class="h-4 w-4 fill-current" viewBox="0 0 20 20"><path d="M5.5 7l4.5 4 4.5-4z"/></svg>
+            </div>
+          </div>
           <button id="clearFilters" class="text-sm underline text-blue-600 hover:text-blue-800 transition">
             Clear Filters
           </button>
@@ -691,7 +700,7 @@
         let allJobs = [];
 
         // Load jobs from JSON
-        fetch('/careers/jobs.json')
+        fetch('../careers/jobs.json')
           .then(response => response.json())
           .then(data => {
             allJobs = data.jobs;
