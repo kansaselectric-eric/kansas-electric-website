@@ -407,15 +407,15 @@
                           <span>Oil & Gas</span>
                           <small>Refineries & pipelines</small>
                       </a>
-                      <a href="/services/industrial/wastewater-treatment/" class="kse-dropdown-link" role="menuitem">
-                          <span>Water & Wastewater</span>
+                      <a href="/services/industrial/water-wastewater/" class="kse-dropdown-link" role="menuitem">
+                          <span>Water and Wastewater</span>
                           <small>Treatment facilities</small>
                       </a>
                       <a href="/services/industrial/data-centers/" class="kse-dropdown-link" role="menuitem">
                           <span>Data Centers</span>
                           <small>Mission critical facilities</small>
                       </a>
-                      <a href="/services/industrial/advanced-manufacturing/" class="kse-dropdown-link" role="menuitem">
+                      <a href="/services/industrial/manufacturing/" class="kse-dropdown-link" role="menuitem">
                           <span>Manufacturing</span>
                           <small>Production facilities</small>
                       </a>
@@ -437,25 +437,12 @@
                   </a>
               </li>
 
-              <!-- Careers Dropdown -->
-              <li class="kse-nav-item" data-dropdown="careers" role="none">
-                  <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="careers-dropdown">
+              <!-- Careers -->
+              <li class="kse-nav-item" role="none">
+                  <a href="/careers/" class="kse-nav-link" role="menuitem">
                       <span>Careers</span>
-                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                  </svg>
                   </a>
-                  <div class="kse-dropdown" id="careers-dropdown" role="menu" aria-hidden="true">
-                      <a href="/careers/" class="kse-dropdown-link" role="menuitem">
-                          <span>Open Positions</span>
-                          <small>Current job opportunities</small>
-                      </a>
-                      <a href="/careers/quick-apply/" class="kse-dropdown-link" role="menuitem">
-                          <span>Quick Apply</span>
-                          <small>Submit your resume</small>
-                      </a>
-            </div>
-          </li>
+              </li>
                   </ul>
                   
           <!-- CTA Button -->
@@ -508,9 +495,9 @@
                   </a>
                   <div class="kse-mobile-dropdown">
                       <a href="/services/industrial/oil-gas/" class="kse-mobile-dropdown-link">Oil & Gas</a>
-                      <a href="/services/industrial/wastewater-treatment/" class="kse-mobile-dropdown-link">Water & Wastewater</a>
+                      <a href="/services/industrial/water-wastewater/" class="kse-mobile-dropdown-link">Water and Wastewater</a>
                       <a href="/services/industrial/data-centers/" class="kse-mobile-dropdown-link">Data Centers</a>
-                      <a href="/services/industrial/advanced-manufacturing/" class="kse-mobile-dropdown-link">Manufacturing</a>
+                      <a href="/services/industrial/manufacturing/" class="kse-mobile-dropdown-link">Manufacturing</a>
                       <a href="/services/industrial/food-beverage/" class="kse-mobile-dropdown-link">Food & Beverage</a>
                       <a href="/services/industrial/healthcare/" class="kse-mobile-dropdown-link">Healthcare Infrastructure</a>
             </div>
@@ -533,18 +520,11 @@
               </div>
         
               <!-- Careers -->
-              <div class="kse-mobile-nav-item" data-dropdown="careers">
-                  <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false">
+              <div class="kse-mobile-nav-item">
+                  <a href="/careers/" class="kse-mobile-nav-link">
                       <span>Careers</span>
-                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                      </svg>
                   </a>
-                  <div class="kse-mobile-dropdown">
-                      <a href="/careers/" class="kse-mobile-dropdown-link">Open Positions</a>
-                      <a href="/careers/quick-apply/" class="kse-mobile-dropdown-link">Quick Apply</a>
-            </div>
-                </div>
+              </div>
 
               <!-- Mobile CTA -->
               <a href="/contact/" class="kse-mobile-nav-cta">Let's Engineer Your Next Power Move</a>
@@ -555,17 +535,21 @@
   <main id="content" class="flex-grow">
     
     <!-- SUPPLIERS PAGE CONTENT -->
-    <section class="relative bg-white py-20 px-6 md:px-12 lg:px-24" data-aos="fade-up" data-aos-duration="800">
-      <div class="max-w-4xl mx-auto text-center">
+    <section class="relative bg-white py-32 px-6 md:px-12 lg:px-24">
+      <div class="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-duration="800">
         <h1 class="text-4xl font-bold text-gray-800 mb-6">Become a Supplier</h1>
-        <p class="text-lg text-gray-600 mb-8">
+        <p class="text-lg text-gray-600 leading-relaxed mb-8">
           At Kansas Electric, we believe great partnerships power great projects. We're always looking for trusted suppliers and vendors who align with our values of reliability, integrity, and responsiveness.
         </p>
-        <p class="text-lg text-gray-600 mb-12">
+        <p class="text-lg text-gray-600 leading-relaxed mb-12">
           If you're interested in working with us, please fill out our supplier interest form using the link below.
         </p>
-        <a href="https://forms.gle/YOUR-GOOGLE-FORM-ID" target="_blank" class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-blue-700 transition">
-          Fill Out Our Supplier Form
+        <a href="https://forms.gle/YOUR-GOOGLE-FORM-ID" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           aria-label="Fill out our supplier form"
+           class="inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-blue-700 transition">
+           Fill Out Our Supplier Form
         </a>
       </div>
     </section>
