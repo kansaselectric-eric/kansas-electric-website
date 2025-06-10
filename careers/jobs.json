@@ -1,24 +1,38 @@
 {
   "jobs": [
     {
-      "title": "Industrial Electrician",
+      "title": "Foreman",
       "location": "Wichita, KS",
       "division": "Industrial",
-      "description": "Install and maintain electrical systems in large-scale manufacturing environments. Must be able to read blueprints and conduit schematics.",
+      "description": "Lead industrial crews in large-scale projects. Supervise safety, schedule, and quality control.",
       "applyLink": "https://forms.gle/YOUR-GOOGLE-FORM-ID"
     },
     {
-      "title": "Service Technician",
+      "title": "Estimator",
+      "location": "Newton, KS",
+      "division": "Administrative",
+      "description": "Manage estimates and pricing for commercial and industrial electrical jobs. Requires strong Excel and communication skills.",
+      "applyLink": "https://forms.gle/YOUR-GOOGLE-FORM-ID"
+    },
+    {
+      "title": "Apprentice",
       "location": "Emporia, KS",
-      "division": "Service & Maintenance",
-      "description": "Handle rapid-response electrical diagnostics and repairs across commercial accounts. Strong communication skills required.",
+      "division": "Commercial Electrical",
+      "description": "Assist journeymen with conduit, lighting installs, and power distribution in commercial environments. Must be enrolled in an approved apprenticeship program.",
       "applyLink": "https://forms.gle/YOUR-GOOGLE-FORM-ID"
     },
     {
-      "title": "Automation Controls Specialist",
-      "location": "Kansas City, MO",
+      "title": "Foreman",
+      "location": "Newton, KS",
+      "division": "Service & Maintenance",
+      "description": "Lead response team for rapid diagnostics and electrical service calls. Ability to coordinate with multiple customers daily.",
+      "applyLink": "https://forms.gle/YOUR-GOOGLE-FORM-ID"
+    },
+    {
+      "title": "Project Manager",
+      "location": "Newton, KS",
       "division": "Automation & Controls",
-      "description": "Configure and troubleshoot PLC and SCADA systems. Rockwell Automation experience preferred.",
+      "description": "Oversee scope, schedule, and budget for control system integrations. Coordinate subcontractors, Rockwell specs, and customer milestones.",
       "applyLink": "https://forms.gle/YOUR-GOOGLE-FORM-ID"
     }
   ]
