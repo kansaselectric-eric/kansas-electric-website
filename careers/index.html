@@ -31,7 +31,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
   <link rel="manifest" href="../site.webmanifest">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
   
   <!-- AOS Library -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -919,10 +919,13 @@
   </div>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const video = document.querySelector("video");
+    let observer;
 
-      const observer = new IntersectionObserver((entries) => {
+    document.addEventListener('DOMContentLoaded', () => {
+      const video = document.querySelector('video');
+      if (!video) return;
+
+      observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             video.play().catch(() => {});
@@ -932,7 +935,21 @@
         });
       }, { threshold: 0.1 });
 
-      if (video) observer.observe(video);
+      observer.observe(video);
+    });
+
+    window.addEventListener('beforeunload', () => {
+      if (observer) observer.disconnect();
+      
+      const video = document.querySelector('video');
+      if (video) {
+        video.pause();
+        video.removeAttribute('src');
+        while (video.firstChild) {
+          video.removeChild(video.firstChild);
+        }
+        video.load();
+      }
     });
   </script>
 </body>
