@@ -523,8 +523,8 @@
     <!-- HERO SECTION with Video Background -->
     <section class="relative h-screen overflow-hidden flex items-center justify-center">
       <!-- Video Background -->
-      <video autoplay muted loop playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover z-0" style="z-index: 0; backface-visibility:hidden; transform:translateZ(0);">
-        <source src="/assets/img/2025 photos/careers video.mp4" type="video/mp4">
+      <video autoplay muted loop playsinline preload="metadata" poster="/assets/img/2025 photos/fallback.jpg" class="absolute inset-0 w-full h-full object-cover z-0" style="z-index: 0; backface-visibility:hidden; transform:translateZ(0);">
+        <source src="/assets/img/2025 photos/careers video compressed.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       
@@ -793,7 +793,6 @@
   <style>
     .footer-custom {
       background-color: #0056D2;
-      background-image: url('/assets/img/noise.png');
       background-blend-mode: overlay;
     }
   </style>
@@ -919,12 +918,22 @@
     <a href="/contact/" class="block w-full h-full text-white">Let's Engineer Your Next Power Move</a>
   </div>
 
-  <script src="../assets/js/fancybox-carousel.js"></script>
-  <script src="../assets/js/careers-carousel.js"></script>
   <script>
-    const container = document.getElementById("employeeCarousel");
-    const options = { infinite: true };
-    new Carousel(container, options);
+    document.addEventListener("DOMContentLoaded", () => {
+      const video = document.querySelector("video");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.1 });
+
+      if (video) observer.observe(video);
+    });
   </script>
 </body>
 </html>

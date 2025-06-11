@@ -510,8 +510,8 @@
   <main id="content" class="flex-grow">
     <!-- SECTION: Hero Video -->
     <section class="relative h-screen overflow-hidden flex items-center justify-center">
-      <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0" style="backface-visibility:hidden; transform:translateZ(0);">
-        <source src="/assets/img/2025 photos/About Video.mp4" type="video/mp4">
+      <video autoplay muted loop playsinline preload="metadata" poster="/assets/img/2025 photos/fallback.jpg" class="absolute inset-0 w-full h-full object-cover z-0" style="backface-visibility:hidden; transform:translateZ(0);">
+        <source src="/assets/img/2025 photos/about video compressed.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
       <div class="absolute inset-0 bg-black bg-opacity-60 z-10"></div>
@@ -868,6 +868,24 @@
   <div class="fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-50 md:hidden hover:bg-blue-700 transition">
     <a href="/contact/" class="block w-full h-full text-white">Let's Engineer Your Next Power Move</a>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const video = document.querySelector("video");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.1 });
+
+      if (video) observer.observe(video);
+    });
+  </script>
 </body>
 </html>
 

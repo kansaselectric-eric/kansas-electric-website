@@ -339,8 +339,7 @@
   </style>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="./assets/js/homepage-carousel.js" defer></script>
-  <script src="./assets/js/video-init.js" defer></script>
+
 
   <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('Xbp1oaEWxyL7EdVj'); </script>
 
@@ -600,8 +599,7 @@
     }
   </style>
 
-  <!-- Special video force-play script to ensure videos work -->
-  <script src="./assets/js/video-force-play.js" defer></script>
+
   
 </head>
 <body class="font-poppins flex flex-col min-h-screen relative">
@@ -705,7 +703,7 @@
                   </ul>
                   
           <!-- CTA Button -->
-          <a href="/contact/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-all duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
+          <a href="/contact/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
 
           <!-- Mobile Hamburger -->
           <button class="kse-mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
@@ -799,9 +797,8 @@
   <!-- Hero Section with Video Background -->
   <section class="relative w-full h-screen min-h-screen overflow-hidden bg-black">
     <!-- Video Background -->
-    <video autoplay muted loop playsinline preload="auto" class="absolute inset-0 w-full h-full object-cover z-0" style="z-index: 0; backface-visibility:hidden; transform:translateZ(0);">
-      <source src="/assets/img/2025 photos/home page video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
+    <video id="bg-video" muted loop playsinline preload="none" poster="/assets/img/2025 photos/fallback.jpg" class="absolute inset-0 w-full h-full object-cover z-0" style="transform: translateZ(0); backface-visibility: hidden; will-change: transform">
+      <!-- Source will be injected via JS -->
     </video>
     
     <!-- Fallback Background Image -->
@@ -811,10 +808,10 @@
     ></div>
     
     <!-- Dark Overlay for Better Text Contrast -->
-    <div class="absolute inset-0 bg-black bg-opacity-40 z-10"></div>
+    <div class="absolute inset-0 bg-black bg-opacity-40 z-10" style="transform: translateZ(0); backface-visibility: hidden; will-change: opacity, transform"></div>
     
     <!-- Text Overlay Content -->
-    <div class="absolute inset-0 flex items-center justify-center z-20">
+    <div class="absolute inset-0 flex items-center justify-center z-20" style="transform: translateZ(0); backface-visibility: hidden; will-change: opacity, transform">
       <div class="text-center text-white px-6 max-w-4xl mx-auto">
         <!-- Logo -->
         <div class="mb-8">
@@ -839,7 +836,7 @@
         </p>
         
         <!-- CTA Button -->
-        <a href="/contact/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-all duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
+        <a href="/contact/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
       </div>
     </div>
     
@@ -851,51 +848,7 @@
     </div>
   </section>
 
-  <!-- Hero Video Initialization Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const heroVideo = document.querySelector('section video');
-      const fallbackDiv = document.querySelector('section div[style*="background-image"]');
-      
-      if (heroVideo) {
-        // Ensure video properties are set
-        heroVideo.muted = true;
-        heroVideo.loop = true;
-        heroVideo.autoplay = true;
-        heroVideo.playsInline = true;
-        
-        // Try to play the video
-        const playPromise = heroVideo.play();
-        
-        if (playPromise !== undefined) {
-          playPromise.then(() => {
-            // Video started playing successfully
-            heroVideo.style.opacity = '1';
-            if (fallbackDiv) {
-              fallbackDiv.style.opacity = '0';
-            }
-          }).catch((error) => {
-            // Auto-play was prevented or failed
-            console.log('Video autoplay failed:', error);
-            // Show fallback background image
-            if (fallbackDiv) {
-              fallbackDiv.style.opacity = '1';
-              fallbackDiv.style.zIndex = '2';
-            }
-          });
-        }
-        
-        // Handle video loading errors
-        heroVideo.addEventListener('error', function() {
-          console.log('Video failed to load');
-          if (fallbackDiv) {
-            fallbackDiv.style.opacity = '1';
-            fallbackDiv.style.zIndex = '2';
-          }
-        });
-      }
-    });
-  </script>
+
 
   <!-- AOS Animation Library -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -1377,7 +1330,6 @@
   <style>
     .footer-custom {
       background-color: #0056D2;
-      background-image: url('/assets/img/noise.png');
       background-blend-mode: overlay;
     }
   </style>
@@ -1427,36 +1379,7 @@
     </div>
   </footer>
 
-  <!-- Debug script for video carousel -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('Debug script running...');
-      
-      // Check if carousel exists
-      const carousel = document.getElementById('video-carousel');
-      console.log('Video carousel element:', carousel);
-      
-      if (carousel) {
-        // Check if videos exist
-        const videos = carousel.querySelectorAll('video');
-        console.log('Found videos:', videos.length);
-        
-        videos.forEach((video, index) => {
-          console.log(`Video ${index+1} source:`, video.querySelector('source').src);
-          console.log(`Video ${index+1} preload:`, video.preload);
-          console.log(`Video ${index+1} is active:`, video.classList.contains('active'));
-          
-          // Try to play each video to check for errors
-          video.addEventListener('error', function(e) {
-            console.error(`Error with video ${index+1}:`, e);
-          });
-          
-          // Check video loading state
-          console.log(`Video ${index+1} ready state:`, video.readyState);
-        });
-      }
-    });
-  </script>
+
   
   <!-- Navigation Dropdown Script -->
   <script>
@@ -1614,5 +1537,38 @@
   <div class="fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-50 md:hidden hover:bg-blue-700 transition">
     <a href="/contact/" class="block w-full h-full text-white">Let's Engineer Your Next Power Move</a>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const video = document.getElementById('bg-video');
+      if (!video) return;
+
+      // Dynamically add video source
+      const source = document.createElement('source');
+      source.src = '/assets/img/2025 photos/home page video compressed.mp4';
+      source.type = 'video/mp4';
+      video.appendChild(source);
+
+      video.load();
+
+      // Try to autoplay, fallback if not allowed
+      video.play().catch(() => {
+        window.addEventListener('click', () => video.play(), { once: true });
+      });
+    });
+
+    // Free memory on page exit
+    window.addEventListener('beforeunload', () => {
+      const video = document.getElementById('bg-video');
+      if (video) {
+        video.pause();
+        video.removeAttribute('src');
+        while (video.firstChild) {
+          video.removeChild(video.firstChild);
+        }
+        video.load();
+      }
+    });
+  </script>
 </body>
 </html>
