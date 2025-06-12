@@ -1514,33 +1514,61 @@
   </button>
 
   <!-- Custom Mobile Navigation Overlay/Menu -->
-  <div id="mobile-nav" class="fixed inset-0 z-[9998] bg-white bg-opacity-95 backdrop-blur-md transform translate-y-full transition-transform duration-300 ease-in-out sm:hidden">
+  <div id="mobile-nav" class="fixed inset-0 z-[9998] bg-white bg-opacity-95 backdrop-blur-md transform -translate-y-full transition-transform duration-300 ease-in-out sm:hidden">
     <div class="flex flex-col h-full justify-between p-8">
       <nav class="space-y-6 text-gray-800 text-lg font-semibold">
-        <a href="/services/divisions/industrial/">Industrial Electrical</a>
-        <a href="/services/divisions/commercial/">Commercial Electrical</a>
-        <a href="/services/divisions/service-maintenance/">Service & Maintenance</a>
-        <a href="/services/divisions/automation-control/">Automation & Controls</a>
+        <div>
+          <button class="w-full flex items-center justify-between py-2 font-semibold" onclick="this.nextElementSibling.classList.toggle('hidden')">
+            Services
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="pl-4 space-y-2 hidden">
+            <a href="/services/divisions/industrial/">Industrial Electrical</a>
+            <a href="/services/divisions/commercial/">Commercial Electrical</a>
+            <a href="/services/divisions/service-maintenance/">Service & Maintenance</a>
+            <a href="/services/divisions/automation-control/">Automation & Controls</a>
+          </div>
+        </div>
         <a href="/projects/">Projects</a>
+        <div>
+          <button class="w-full flex items-center justify-between py-2 font-semibold" onclick="this.nextElementSibling.classList.toggle('hidden')">
+            Industries We Serve
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div class="pl-4 space-y-2 hidden">
+            <a href="/services/industrial/oil-gas/">Oil & Gas</a>
+            <a href="/services/industrial/water-wastewater/">Water and Wastewater</a>
+            <a href="/services/industrial/data-centers/">Data Centers</a>
+            <a href="/services/industrial/manufacturing/">Manufacturing</a>
+            <a href="/services/industrial/food-beverage/">Food & Beverage</a>
+            <a href="/services/industrial/healthcare/">Healthcare Infrastructure</a>
+          </div>
+        </div>
         <a href="/about/">About</a>
         <a href="/careers/">Careers</a>
       </nav>
-      <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition duration-300 mt-12">
+      <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition duration-300 mt-12 sm:hidden">
         Let's Engineer Your Next Power Move
       </a>
     </div>
   </div>
-
   <script>
-    const toggleBtn = document.getElementById('mobile-nav-toggle');
+    const mobileNavToggle = document.getElementById('mobile-nav-toggle');
     const mobileNav = document.getElementById('mobile-nav');
-
-    toggleBtn.addEventListener('click', () => {
+    mobileNavToggle.addEventListener('click', () => {
       const isOpen = mobileNav.classList.contains('translate-y-0');
       mobileNav.classList.toggle('translate-y-0');
-      mobileNav.classList.toggle('translate-y-full');
+      mobileNav.classList.toggle('-translate-y-full');
       document.body.style.overflow = isOpen ? '' : 'hidden';
     });
   </script>
+  <style>
+  @media (min-width: 768px) {
+    #mobile-nav,
+    #mobile-nav-toggle {
+      display: none !important;
+    }
+  }
+  </style>
 </body>
 </html>
