@@ -202,7 +202,6 @@
   }
 
   .kse-mobile-toggle {
-    display: none;
     flex-direction: column;
     gap: 0.25rem;
     background: none;
@@ -305,10 +304,6 @@
     .kse-nav-menu,
     .kse-nav-cta {
       display: none;
-    }
-
-    .kse-mobile-toggle {
-      display: flex;
     }
     
     .kse-dropdown.industries-grid {
@@ -542,8 +537,8 @@
   <nav class="kse-nav" role="navigation" aria-label="Main navigation">
       <div class="kse-nav-container">
           <!-- Logo (Left Aligned) -->
-          <a href="./" class="kse-nav-logo">
-              <img src="./assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric - Homepage" width="178" height="40" loading="lazy">
+          <a href="./" class="kse-nav-logo flex items-center px-4 py-2">
+              <img src="./assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain" loading="lazy">
           </a>
 
           <!-- Desktop Navigation (Center) -->
@@ -635,10 +630,12 @@
                   </ul>
                   
           <!-- CTA Button -->
-          <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
+          <div class="flex items-center justify-center text-center">
+            <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center text-center sm:flex-row flex-col px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
+          </div>
 
           <!-- Mobile Hamburger -->
-          <button class="kse-mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+          <button class="kse-mobile-toggle block sm:hidden" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
               <span class="kse-hamburger-line"></span>
               <span class="kse-hamburger-line"></span>
               <span class="kse-hamburger-line"></span>
@@ -769,7 +766,9 @@
         </p>
         
         <!-- CTA Button -->
-        <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
+        <div class="flex items-center justify-center text-center">
+          <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center text-center sm:flex-row flex-col px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
+        </div>
       </div>
     </div>
     
@@ -826,10 +825,10 @@
       </div>
 
       <!-- Service cards grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 space-y-6 md:space-y-0">
         
         <!-- Card 1: Industrial Electrical -->
-        <a href="/services/divisions/industrial/" class="p-6 service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Industrial Electrical" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+        <a href="/services/divisions/industrial/" class="p-4 rounded-xl shadow service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out mb-6" role="link" aria-label="Learn more about Industrial Electrical" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Industrial Electrical</h3>
             <p class="text-sm text-gray-500 mt-1">Heavy infrastructure & power systems</p>
@@ -844,7 +843,7 @@
         </a>
         
         <!-- Card 2: Commercial Electrical -->
-        <a href="/services/divisions/commercial/" class="p-6 service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Commercial Electrical" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+        <a href="/services/divisions/commercial/" class="p-4 rounded-xl shadow service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out mb-6" role="link" aria-label="Learn more about Commercial Electrical" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Commercial Electrical</h3>
             <p class="text-sm text-gray-500 mt-1">Office buildings & retail spaces</p>
@@ -859,7 +858,7 @@
         </a>
         
         <!-- Card 3: Service & Maintenance -->
-        <a href="/services/divisions/service-maintenance/" class="p-6 service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Service & Maintenance" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+        <a href="/services/divisions/service-maintenance/" class="p-4 rounded-xl shadow service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out mb-6" role="link" aria-label="Learn more about Service & Maintenance" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Service & Maintenance</h3>
             <p class="text-sm text-gray-500 mt-1">24/7 support & preventive care</p>
@@ -874,7 +873,7 @@
         </a>
         
         <!-- Card 4: Automation & Controls -->
-        <a href="/services/divisions/automation-control/" class="p-6 service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Automation & Control Systems" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+        <a href="/services/divisions/automation-control/" class="p-4 rounded-xl shadow service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out mb-6" role="link" aria-label="Learn more about Automation & Control Systems" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Automation & Control Systems</h3>
             <p class="text-sm text-gray-500 mt-1">Smart systems & process control</p>
@@ -981,9 +980,9 @@
       </div>
       
       <!-- Industry cards grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 space-y-6 md:space-y-0">
         <!-- Healthcare -->
-        <a href="/services/industrial/healthcare/" class="p-6 industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Healthcare Infrastructure" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+        <a href="/services/industrial/healthcare/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out mb-6" role="link" aria-label="Learn more about Healthcare Infrastructure" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Healthcare Infrastructure</h3>
             <p class="text-sm text-gray-500 mt-1">Critical systems. Backup redundancy. Zero downtime.</p>
@@ -998,7 +997,7 @@
         </a>
         
         <!-- Food & Beverage -->
-        <a href="/services/industrial/food-beverage/" class="p-6 industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Food & Beverage" data-aos="fade-up" data-aos-duration="800" data-aos-delay="150">
+        <a href="/services/industrial/food-beverage/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out mb-6" role="link" aria-label="Learn more about Food & Beverage" data-aos="fade-up" data-aos-duration="800" data-aos-delay="150">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Food & Beverage</h3>
             <p class="text-sm text-gray-500 mt-1">Process control. Clean environments. Continuous production.</p>
@@ -1013,7 +1012,7 @@
         </a>
         
         <!-- Manufacturing -->
-        <a href="/services/industrial/advanced-manufacturing/" class="p-6 industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Advanced Manufacturing" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+        <a href="/services/industrial/advanced-manufacturing/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out mb-6" role="link" aria-label="Learn more about Advanced Manufacturing" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Advanced Manufacturing</h3>
             <p class="text-sm text-gray-500 mt-1">Smart automation. Precise control. Scalable infrastructure.</p>
@@ -1028,7 +1027,7 @@
         </a>
         
         <!-- Oil & Gas -->
-        <a href="/services/industrial/oil-gas/" class="p-6 industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Oil & Gas" data-aos="fade-up" data-aos-duration="800" data-aos-delay="250">
+        <a href="/services/industrial/oil-gas/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out mb-6" role="link" aria-label="Learn more about Oil & Gas" data-aos="fade-up" data-aos-duration="800" data-aos-delay="250">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Oil & Gas</h3>
             <p class="text-sm text-gray-500 mt-1">Hazardous locations. Pipeline control. Mission critical operations.</p>
@@ -1043,7 +1042,7 @@
         </a>
         
         <!-- Water & Wastewater -->
-        <a href="/services/industrial/wastewater-treatment/" class="p-6 industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Water & Wastewater" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+        <a href="/services/industrial/wastewater-treatment/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out mb-6" role="link" aria-label="Learn more about Water & Wastewater" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Water & Wastewater</h3>
             <p class="text-sm text-gray-500 mt-1">Treatment plants. Environmental compliance. Public health systems.</p>
@@ -1058,7 +1057,7 @@
         </a>
         
         <!-- Data Centers -->
-        <a href="/services/industrial/data-centers/" class="p-6 industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Data Centers" data-aos="fade-up" data-aos-duration="800" data-aos-delay="350">
+        <a href="/services/industrial/data-centers/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out mb-6" role="link" aria-label="Learn more about Data Centers" data-aos="fade-up" data-aos-duration="800" data-aos-delay="350">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Data Centers</h3>
             <p class="text-sm text-gray-500 mt-1">Mission critical systems. High availability. Scalable infrastructure.</p>
@@ -1470,8 +1469,8 @@
   </script>
   
   <!-- Mobile Sticky CTA Button -->
-  <div class="fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-50 md:hidden hover:bg-blue-700 transition">
-    <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="block w-full h-full text-white">Let's Engineer Your Next Power Move</a>
+  <div class="fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-50 md:hidden hover:bg-blue-700 transition" id="mobile-cta-button">
+    <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center text-center w-full h-full text-white px-4">Let's Engineer Your Next Power Move</a>
   </div>
 
   <script>

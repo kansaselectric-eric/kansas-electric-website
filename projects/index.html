@@ -480,8 +480,8 @@
   <nav class="kse-nav" role="navigation" aria-label="Main navigation">
       <div class="kse-nav-container">
           <!-- Logo (Left Aligned) -->
-          <a href="/" class="kse-nav-logo">
-              <img src="/assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric" width="178" height="40">
+          <a href="/" class="kse-nav-logo flex items-center px-4 py-2">
+              <img src="/assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric" class="h-12 sm:h-10 object-contain" loading="lazy">
           </a>
 
           <!-- Desktop Navigation (Center) -->
@@ -573,10 +573,12 @@
                   </ul>
                   
           <!-- CTA Button -->
-          <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="kse-nav-cta">Let's Engineer Your Next Power Move</a>
+          <div class="flex items-center justify-center text-center">
+            <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center text-center sm:flex-row flex-col px-4 kse-nav-cta">Let's Engineer Your Next Power Move</a>
+          </div>
 
           <!-- Mobile Hamburger -->
-          <button class="kse-mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+          <button class="kse-mobile-toggle block sm:hidden" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
               <span class="kse-hamburger-line"></span>
               <span class="kse-hamburger-line"></span>
               <span class="kse-hamburger-line"></span>
@@ -703,10 +705,10 @@
         </div>
         
         <div class="w-full">
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 space-y-6 md:space-y-0">
           
           <!-- Project Card 1 -->
-          <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between group" data-aos="fade-right" data-aos-delay="100">
+          <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-4 flex flex-col justify-between group mb-6" data-aos="fade-right" data-aos-delay="100">
             <div>
               <h3 class="text-lg md:text-xl font-semibold text-slate-900 mb-3">Manufacturing Expansion</h3>
               <p class="text-sm text-slate-600 mb-4">Complete electrical infrastructure for 80,000 sq ft manufacturing facility with redundant power systems and process automation.</p>
@@ -715,7 +717,7 @@
           </div>
           
           <!-- Project Card 2 -->
-          <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between group" data-aos="fade-left" data-aos-delay="100">
+          <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-4 flex flex-col justify-between group mb-6" data-aos="fade-left" data-aos-delay="100">
             <div>
               <h3 class="text-lg md:text-xl font-semibold text-slate-900 mb-3">Data Center Power Upgrade</h3>
               <p class="text-sm text-slate-600 mb-4">Mission-critical power systems with N+1 redundancy, automated failover protocols, and 24/7 monitoring capabilities.</p>
@@ -724,7 +726,7 @@
           </div>
           
           <!-- Project Card 3 -->
-          <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between group" data-aos="fade-right" data-aos-delay="200">
+          <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-4 flex flex-col justify-between group mb-6" data-aos="fade-right" data-aos-delay="200">
             <div>
               <h3 class="text-lg md:text-xl font-semibold text-slate-900 mb-3">Water Treatment Facility</h3>
               <p class="text-sm text-slate-600 mb-4">Complete electrical and automation controls for municipal water treatment infrastructure serving 150,000 residents.</p>
@@ -733,7 +735,7 @@
           </div>
           
           <!-- Project Card 4 -->
-          <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between group" data-aos="fade-left" data-aos-delay="200">
+          <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-4 flex flex-col justify-between group mb-6" data-aos="fade-left" data-aos-delay="200">
             <div>
               <h3 class="text-lg md:text-xl font-semibold text-slate-900 mb-3">Healthcare Campus</h3>
               <p class="text-sm text-slate-600 mb-4">Life-safety compliant electrical systems for 200-bed medical facility with emergency power and patient care technology.</p>
@@ -742,7 +744,7 @@
           </div>
           
           <!-- Project Card 5 -->
-          <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between group" data-aos="fade-right" data-aos-delay="300">
+          <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-4 flex flex-col justify-between group mb-6" data-aos="fade-right" data-aos-delay="300">
             <div>
               <h3 class="text-lg md:text-xl font-semibold text-slate-900 mb-3">Agricultural Processing</h3>
               <p class="text-sm text-slate-600 mb-4">High-voltage electrical systems for grain terminal operations with automated conveyor controls and safety systems.</p>
@@ -751,7 +753,7 @@
           </div>
           
           <!-- Project Card 6 -->
-          <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between group" data-aos="fade-left" data-aos-delay="300">
+          <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-4 flex flex-col justify-between group mb-6" data-aos="fade-left" data-aos-delay="300">
             <div>
               <h3 class="text-lg md:text-xl font-semibold text-slate-900 mb-3">Corporate Headquarters</h3>
               <p class="text-sm text-slate-600 mb-4">Smart building electrical infrastructure with energy management systems and scalable tenant improvement capabilities.</p>

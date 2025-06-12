@@ -328,8 +328,8 @@
   <nav class="kse-nav" role="navigation" aria-label="Main navigation">
       <div class="kse-nav-container">
           <!-- Logo (Left Aligned) -->
-          <a href="/" class="kse-nav-logo">
-              <img src="../assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric - Homepage" width="178" height="40">
+          <a href="/" class="kse-nav-logo flex items-center px-4 py-2">
+              <img src="../assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain" loading="lazy">
           </a>
 
           <!-- Desktop Navigation (Center) -->
@@ -421,10 +421,12 @@
                   </ul>
                   
           <!-- CTA Button -->
-          <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-all duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
+          <div class="flex items-center justify-center text-center">
+            <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center text-center sm:flex-row flex-col px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg text-lg transition-all duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
+          </div>
 
           <!-- Mobile Hamburger -->
-          <button class="kse-mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+          <button class="kse-mobile-toggle block sm:hidden" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
               <span class="kse-hamburger-line"></span>
               <span class="kse-hamburger-line"></span>
               <span class="kse-hamburger-line"></span>
