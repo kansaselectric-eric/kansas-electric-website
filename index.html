@@ -542,7 +542,6 @@
               <img src="./assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain" loading="lazy">
           </a>
 
-          <!-- Desktop Navigation (Center) -->
           <ul class="kse-nav-menu" role="menubar">
               <!-- Services Dropdown -->
               <li class="kse-nav-item" data-dropdown="services" role="none">
@@ -628,18 +627,14 @@
                       <span>Careers</span>
                   </a>
               </li>
-                  </ul>
-                  
-          <!-- CTA Button (only on sm and up) -->
-          <div class="hidden sm:flex items-center justify-center text-center">
-            <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center text-center sm:flex-row flex-col px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
-          </div>
+          </ul>
+          
+          <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="kse-nav-cta hidden sm:inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
 
-          <!-- Mobile Hamburger -->
           <button class="kse-mobile-toggle block sm:hidden z-50" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
-              <span class="kse-hamburger-line"></span>
-              <span class="kse-hamburger-line"></span>
-              <span class="kse-hamburger-line"></span>
+            <span class="kse-hamburger-line"></span>
+            <span class="kse-hamburger-line"></span>
+            <span class="kse-hamburger-line"></span>
           </button>
       </div>
       
@@ -1508,6 +1503,43 @@
         }
         video.load();
       }
+    });
+  </script>
+
+  <!-- Custom Mobile Navigation Trigger -->
+  <button id="mobile-nav-toggle" class="fixed top-4 right-4 z-[9999] block sm:hidden p-2 focus:outline-none" aria-label="Toggle mobile menu">
+    <div class="w-6 h-0.5 bg-gray-800 mb-1"></div>
+    <div class="w-6 h-0.5 bg-gray-800 mb-1"></div>
+    <div class="w-6 h-0.5 bg-gray-800"></div>
+  </button>
+
+  <!-- Custom Mobile Navigation Overlay/Menu -->
+  <div id="mobile-nav" class="fixed inset-0 z-[9998] bg-white bg-opacity-95 backdrop-blur-md transform translate-y-full transition-transform duration-300 ease-in-out sm:hidden">
+    <div class="flex flex-col h-full justify-between p-8">
+      <nav class="space-y-6 text-gray-800 text-lg font-semibold">
+        <a href="/services/divisions/industrial/">Industrial Electrical</a>
+        <a href="/services/divisions/commercial/">Commercial Electrical</a>
+        <a href="/services/divisions/service-maintenance/">Service & Maintenance</a>
+        <a href="/services/divisions/automation-control/">Automation & Controls</a>
+        <a href="/projects/">Projects</a>
+        <a href="/about/">About</a>
+        <a href="/careers/">Careers</a>
+      </nav>
+      <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition duration-300 mt-12">
+        Let's Engineer Your Next Power Move
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('mobile-nav-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+
+    toggleBtn.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.contains('translate-y-0');
+      mobileNav.classList.toggle('translate-y-0');
+      mobileNav.classList.toggle('translate-y-full');
+      document.body.style.overflow = isOpen ? '' : 'hidden';
     });
   </script>
 </body>
