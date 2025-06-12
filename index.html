@@ -629,7 +629,7 @@
               </li>
           </ul>
           
-          <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="kse-nav-cta hidden sm:inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
+          <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="kse-nav-cta hidden md:inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
 
           <button class="kse-mobile-toggle block sm:hidden z-50" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
             <span class="kse-hamburger-line"></span>
@@ -1465,8 +1465,8 @@
   </script>
   
   <!-- Mobile Sticky CTA Button -->
-  <div class="fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-50 md:hidden hover:bg-blue-700 transition" id="mobile-cta-button">
-    <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center text-center w-full h-full text-white px-4">Let's Engineer Your Next Power Move</a>
+  <div class="fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-[1100] md:hidden hover:bg-blue-700 transition" id="mobile-cta-button">
+    <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="block w-full">Let's Engineer Your Next Power Move</a>
   </div>
 
   <script>
@@ -1566,6 +1566,86 @@
   @media (min-width: 768px) {
     #mobile-nav,
     #mobile-nav-toggle {
+      display: none !important;
+    }
+  }
+  </style>
+
+  <!-- Mobile Nav Toggle Button (top-right) -->
+  <button id="new-mobile-menu-toggle" class="fixed top-3 right-3 z-50 p-2 bg-white rounded-md shadow md:hidden" aria-label="Open menu">
+    <div class="w-6 h-0.5 bg-gray-800 mb-1"></div>
+    <div class="w-6 h-0.5 bg-gray-800 mb-1"></div>
+    <div class="w-6 h-0.5 bg-gray-800"></div>
+  </button>
+
+  <!-- Full-Screen Mobile Menu Panel -->
+  <div id="new-mobile-menu" class="fixed inset-0 bg-white z-[9999] transform translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+    <div class="flex justify-between items-center p-4 border-b border-gray-200">
+      <img src="./assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric Logo" class="h-10">
+      <button id="close-mobile-menu" aria-label="Close menu" class="text-gray-700 text-2xl font-bold">&times;</button>
+    </div>
+    <nav class="overflow-y-auto h-full p-4 space-y-6 text-gray-800 text-base font-medium">
+      <a href="/projects/" class="block py-2 border-b border-gray-200">Projects</a>
+      <div>
+        <button class="w-full text-left py-2 border-b border-gray-200" onclick="toggleSubmenu(this)">Services</button>
+        <div class="pl-4 hidden space-y-2 text-sm text-gray-600">
+          <a href="/services/divisions/industrial/">Industrial Electrical</a>
+          <a href="/services/divisions/commercial/">Commercial Electrical</a>
+          <a href="/services/divisions/service-maintenance/">Service & Maintenance</a>
+          <a href="/services/divisions/automation-control/">Automation & Controls</a>
+        </div>
+      </div>
+      <div>
+        <button class="w-full text-left py-2 border-b border-gray-200" onclick="toggleSubmenu(this)">Industries We Serve</button>
+        <div class="pl-4 hidden space-y-2 text-sm text-gray-600">
+          <a href="/services/industrial/oil-gas/">Oil & Gas</a>
+          <a href="/services/industrial/water-wastewater/">Water and Wastewater</a>
+          <a href="/services/industrial/data-centers/">Data Centers</a>
+          <a href="/services/industrial/manufacturing/">Manufacturing</a>
+          <a href="/services/industrial/food-beverage/">Food & Beverage</a>
+          <a href="/services/industrial/healthcare/">Healthcare Infrastructure</a>
+        </div>
+      </div>
+      <div>
+        <button class="w-full text-left py-2 border-b border-gray-200" onclick="toggleSubmenu(this)">About</button>
+        <div class="pl-4 hidden space-y-2 text-sm text-gray-600">
+          <a href="/about/">Our Story</a>
+          <a href="/about/history/">History</a>
+          <a href="/about/locations/">Locations</a>
+          <a href="/about/community/">Community</a>
+        </div>
+      </div>
+      <a href="/careers/" class="block py-2 border-b border-gray-200">Careers</a>
+      <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" class="block py-2 border-b border-gray-200">Contact</a>
+      <a href="/suppliers/" class="block py-2 border-b border-gray-200">Become a Supplier</a>
+    </nav>
+  </div>
+
+  <script>
+  function toggleSubmenu(button) {
+    const submenu = button.nextElementSibling;
+    if (submenu.classList.contains("hidden")) {
+      submenu.classList.remove("hidden");
+    } else {
+      submenu.classList.add("hidden");
+    }
+  }
+
+  document.getElementById("new-mobile-menu-toggle").addEventListener("click", () => {
+    document.getElementById("new-mobile-menu").classList.remove("translate-x-full");
+    document.body.style.overflow = "hidden";
+  });
+
+  document.getElementById("close-mobile-menu").addEventListener("click", () => {
+    document.getElementById("new-mobile-menu").classList.add("translate-x-full");
+    document.body.style.overflow = "";
+  });
+  </script>
+
+  <style>
+  @media (min-width: 768px) {
+    #new-mobile-menu,
+    #new-mobile-menu-toggle {
       display: none !important;
     }
   }
