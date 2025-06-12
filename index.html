@@ -119,31 +119,31 @@
     transform: rotate(180deg);
   }
 
-  .kse-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-10px);
-    background-color: white;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    border-radius: 0.5rem;
-    padding: 1rem;
-    min-width: 16rem;
-    z-index: 50;
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.2s ease-out;
-  }
+      .kse-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      background-color: white;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      min-width: 12rem;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease-out, visibility 0.2s ease-out, transform 0.2s ease-out;
+    }
 
-  .kse-dropdown.industries-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-    min-width: 32rem;
-    max-width: 90vw;
-  }
+      .kse-dropdown.industries-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      min-width: 24rem;
+      max-width: 90vw;
+    }
 
   .kse-dropdown.active,
   .kse-dropdown.show {
@@ -312,7 +312,8 @@
     }
     
     .kse-dropdown.industries-grid {
-      min-width: 90vw;
+      min-width: 95vw;
+      grid-template-columns: 1fr;
     }
   }
   
@@ -396,11 +397,11 @@
 
     /* Global transition and hover effects */
     * {
-      transition: all 0.3s ease-out;
+      transition: background-color 0.3s ease-out, color 0.3s ease-out, border-color 0.3s ease-out;
     }
 
     button, .btn, .service-card, .industry-card, .project-card, .kse-nav-link, .kse-dropdown-link {
-      transition: all 0.25s ease-out;
+      transition: background-color 0.25s ease-out, transform 0.25s ease-out, box-shadow 0.25s ease-out;
     }
     
     button:hover, .btn:hover, .service-card:hover, .industry-card:hover, .project-card:hover {
@@ -542,7 +543,7 @@
       <div class="kse-nav-container">
           <!-- Logo (Left Aligned) -->
           <a href="./" class="kse-nav-logo">
-              <img src="./assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric - Homepage" width="178" height="40">
+              <img src="./assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric - Homepage" width="178" height="40" loading="lazy">
           </a>
 
           <!-- Desktop Navigation (Center) -->
@@ -726,7 +727,7 @@
 <article class="overflow-hidden">
 
   <!-- Hero Section with Video Background -->
-  <section class="relative w-full h-screen min-h-screen overflow-hidden bg-black">
+  <section class="relative w-full h-screen sm:h-auto sm:min-h-[calc(100vh-80px)] lg:h-screen lg:min-h-screen overflow-hidden bg-black">
     <!-- Video Background -->
     <video id="bg-video" muted loop playsinline preload="none" poster="/assets/img/2025 photos/fallback.jpg" class="absolute inset-0 w-full h-full object-cover z-0" style="transform: translateZ(0); backface-visibility: hidden; will-change: transform">
       <!-- Source will be injected via JS -->
@@ -749,19 +750,20 @@
           <img 
             src="./assets/img/ke-logo-white.svg" 
             alt="Kansas Electric - Electrical experts since 1948"
-            class="w-96 max-w-full h-auto mx-auto filter drop-shadow-2xl"
+            class="w-72 sm:w-80 md:w-96 max-w-full h-auto mx-auto filter drop-shadow-2xl"
             style="filter: drop-shadow(0 0 20px rgba(0,0,0,0.8)) drop-shadow(0 0 40px rgba(0,0,0,0.6));"
+            loading="lazy"
           >
         </div>
         
         <!-- Main Headline -->
-        <h1 class="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white"
+        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight text-white"
             style="text-shadow: 0 4px 8px rgba(0,0,0,0.8), 0 0 2px rgba(0,0,0,0.9);">
           Built for Power.<br>Engineered for Excellence.
         </h1>
         
         <!-- Supporting Text -->
-        <p class="text-lg md:text-xl mb-8 text-white max-w-2xl mx-auto leading-relaxed"
+        <p class="text-base sm:text-lg md:text-xl mb-8 text-white max-w-2xl mx-auto leading-relaxed px-4"
            style="text-shadow: 0 2px 4px rgba(0,0,0,0.8);">
           From hospitals to automation, we design and build the systems that power American infrastructure.
         </p>
@@ -891,7 +893,7 @@
   </section>
 
   <!-- Modern Hero Section with Background Image -->
-  <section class="relative h-screen min-h-screen bg-cover bg-center bg-no-repeat hero-partner-section" style="background-image: url('./assets/img/2025 photos/KSE 1.jpg');">
+  <section class="relative h-screen sm:h-auto sm:min-h-[60vh] lg:h-screen lg:min-h-screen bg-cover bg-center bg-no-repeat hero-partner-section" style="background-image: url('./assets/img/2025 photos/KSE 1.jpg');">
     <!-- Dark Overlay -->
     <div class="absolute inset-0 bg-black bg-opacity-60"></div>
     
@@ -1154,7 +1156,8 @@
             <div class="w-full h-full overflow-hidden">
               <img src="./assets/img/2025 photos/featured projects cards/Newton Medical Center Switchgear.jpg" 
                    alt="Cedar Creek wastewater treatment plant electrical systems - 25 MGD facility with power distribution and SCADA integration in Olathe, Kansas" 
-                   class="w-full h-full object-cover card-image">
+                   class="w-full h-full object-cover card-image"
+                   loading="lazy">
             </div>
             <!-- Dark gradient overlay for better contrast -->
             <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60"></div>
@@ -1184,7 +1187,8 @@
             <div class="w-full h-full overflow-hidden">
               <img src="./assets/img/2025 photos/featured projects cards/MKC Lyons.jpg" 
                    alt="MKC Lyons grain processing facility - Complete electrical design and construction for advanced automation systems in 55,000 sq. ft. processing plant" 
-                   class="w-full h-full object-cover card-image">
+                   class="w-full h-full object-cover card-image"
+                   loading="lazy">
             </div>
             <!-- Dark gradient overlay for better contrast -->
             <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60"></div>
@@ -1214,7 +1218,8 @@
             <div class="w-full h-full overflow-hidden">
               <img src="./assets/img/2025 photos/featured projects cards/Health Ministries Dental Clinic.jpg" 
                    alt="Health Ministries Dental Clinic electrical systems - Specialized power distribution for critical care dental facility in Newton, Kansas" 
-                   class="w-full h-full object-cover card-image">
+                   class="w-full h-full object-cover card-image"
+                   loading="lazy">
             </div>
             <!-- Dark gradient overlay for better contrast -->
             <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60"></div>

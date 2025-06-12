@@ -4086,7 +4086,7 @@ figure > figcaption::before {
 
 .main-menu .submenu {
   display: flex;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
 
 .main-menu .submenu .half {
@@ -4098,7 +4098,7 @@ figure > figcaption::before {
 .main-menu .submenu .sub-submenu {
   display: none;
   flex: 1;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
 
 .main-menu .submenu .service-link:hover + .sub-submenu {

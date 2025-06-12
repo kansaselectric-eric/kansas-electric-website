@@ -1,5 +1,29 @@
-// Enhanced navigation with dropdown support
+// Enhanced navigation with dropdown support and performance optimization
 document.addEventListener('DOMContentLoaded', function() {
+  // Utility functions for performance optimization
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+  
+  function throttle(func, limit) {
+    let inThrottle;
+    return function(...args) {
+      if (!inThrottle) {
+        func.apply(this, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
+  }
+  
   // Mobile menu toggle
   const mobileToggle = document.querySelector('[data-mobile-nav-toggle]');
   const mainNav = document.querySelector('[data-main-menu]');
@@ -40,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Dropdown menu functionality
   const navItems = document.querySelectorAll('.nav-item');
   
-  // For desktop: enhance hover behavior
+  // For desktop: enhance hover behavior with throttling
   if (window.innerWidth >= 1024) { // lg breakpoint
     navItems.forEach(item => {
       const submenu = item.querySelector('.submenu');
@@ -49,7 +73,8 @@ document.addEventListener('DOMContentLoaded', function() {
       // Add a small delay before showing/hiding to prevent accidental triggers
       let timeout;
       
-      item.addEventListener('mouseenter', () => {
+      // Throttled mouse enter handler
+      const throttledMouseEnter = throttle(() => {
         clearTimeout(timeout);
         
         // Hide all other submenus first
@@ -79,7 +104,9 @@ document.addEventListener('DOMContentLoaded', function() {
           // Ensure a third column is visible
           ensureThirdColumnVisible(submenu);
         }, 10);
-      });
+      }, 100);
+      
+      item.addEventListener('mouseenter', throttledMouseEnter);
       
       item.addEventListener('mouseleave', () => {
         timeout = setTimeout(() => {
@@ -211,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // Three-column menu functionality
+  // Three-column menu functionality with throttled hover
   function initThreeColumnMenu() {
     // Get all second column items
     const secondColumnItems = document.querySelectorAll('.second-column-item');
@@ -221,9 +248,9 @@ document.addEventListener('DOMContentLoaded', function() {
       const targetId = item.getAttribute('data-target');
       const targetContent = document.getElementById(targetId);
       
-      // Handle hover on desktop
+      // Handle hover on desktop with throttling
       if (window.innerWidth >= 1024) {
-        item.addEventListener('mouseenter', () => {
+        const throttledHover = throttle(() => {
           // Remove active class from all second column items
           secondColumnItems.forEach(i => i.classList.remove('active'));
           
@@ -239,7 +266,9 @@ document.addEventListener('DOMContentLoaded', function() {
           if (targetContent) {
             targetContent.classList.add('active');
           }
-        });
+        }, 150);
+        
+        item.addEventListener('mouseenter', throttledHover);
       }
       
       // Handle click on mobile
@@ -275,8 +304,8 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize three-column menu
   initThreeColumnMenu();
   
-  // Ensure video carousel remains visible
-  const ensureVideoVisibility = () => {
+  // Throttled video visibility function
+  const ensureVideoVisibility = throttle(() => {
     const carousel = document.getElementById('video-carousel');
     const homeSlider = document.querySelector('[data-home-slider]');
     const activeVideo = document.querySelector('#video-carousel video.active');
@@ -287,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function() {
       activeVideo.style.opacity = '1';
       activeVideo.style.visibility = 'visible';
     }
-  };
+  }, 300);
   
   // Run initially and after any menu interaction
   ensureVideoVisibility();
@@ -332,9 +361,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
-  // Run on load and resize
-  setSubmenuPosition();
-  window.addEventListener('resize', () => {
+  // Debounced resize handler
+  const debouncedResize = debounce(() => {
     setSubmenuPosition();
     initThreeColumnMenu(); // Reinitialize three-column menu on resize
     
@@ -345,10 +373,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize all third columns
     initializeThirdColumns();
-  });
+  }, 250);
   
-  // Also run when the page is fully loaded to ensure correct positioning
-  window.addEventListener('load', () => {
+  // Debounced load handler
+  const debouncedLoad = debounce(() => {
     setSubmenuPosition();
     initThreeColumnMenu(); // Ensure three-column menu is initialized
     
@@ -359,7 +387,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize all third columns
     initializeThirdColumns();
-  });
+  }, 100);
+  
+  // Run on load and resize with debouncing
+  setSubmenuPosition();
+  window.addEventListener('resize', debouncedResize);
+  window.addEventListener('load', debouncedLoad);
   
   // Run again after a short delay to ensure all elements are fully rendered
   setTimeout(() => {
@@ -375,9 +408,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeThirdColumns();
   }, 100);
   
-  // Add event listener for when the user hovers over a nav item
+  // Add throttled event listener for when the user hovers over a nav item
   document.querySelectorAll('.nav-item').forEach(item => {
-    item.addEventListener('mouseenter', () => {
+    const throttledHoverHandler = throttle(() => {
       // Recalculate submenu position when hovering
       setSubmenuPosition();
       
@@ -386,7 +419,9 @@ document.addEventListener('DOMContentLoaded', function() {
       if (submenu) {
         ensureThirdColumnVisible(submenu);
       }
-    });
+    }, 200);
+    
+    item.addEventListener('mouseenter', throttledHoverHandler);
   });
   
   // Add keyboard navigation support
@@ -447,27 +482,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // If no third column content is active, activate the first one
       if (!activeThirdColumnContent && thirdColumnContents.length > 0) {
-        // Also activate the corresponding second column item
-        const firstContent = thirdColumnContents[0];
-        const contentId = firstContent.id;
-        
-        // Find and activate the second column item that targets this content
-        const secondColumnItem = container.querySelector(`.second-column-item[data-target="${contentId}"]`);
-        if (secondColumnItem) {
-          // Remove active class from all second column items
-          container.querySelectorAll('.second-column-item').forEach(item => {
-            item.classList.remove('active');
-          });
-          
-          // Add active class to this item
-          secondColumnItem.classList.add('active');
-        }
-        
-        // Activate the first content
-        thirdColumnContents.forEach(content => {
-          content.classList.remove('active');
-        });
-        firstContent.classList.add('active');
+        thirdColumnContents[0].classList.add('active');
       }
     });
   }

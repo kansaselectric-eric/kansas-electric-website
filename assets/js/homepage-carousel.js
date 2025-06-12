@@ -1,4 +1,4 @@
-// Video carousel with simplified functionality
+// Video carousel with optimized functionality using IntersectionObserver
 document.addEventListener('DOMContentLoaded', function() {
   console.log('Homepage carousel script starting...');
   
@@ -24,6 +24,12 @@ document.addEventListener('DOMContentLoaded', function() {
     console.error('No video elements found in carousel');
     return;
   }
+  
+  // Initialize variables
+  let currentIndex = 0;
+  let isVisible = false;
+  let carouselInterval = null;
+  let userHasInteracted = false;
   
   // Log video details and force attributes
   videos.forEach((video, idx) => {
@@ -72,9 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
       video.style.display = 'block';
     }
   });
-  
-  // Initialize
-  let currentIndex = 0;
   
   // Function to switch videos with aggressive approach
   function showVideo(index) {
@@ -134,6 +137,59 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
   
+  // Function to start carousel rotation
+  function startCarousel() {
+    if (carouselInterval) return; // Prevent multiple intervals
+    
+    console.log('Starting carousel rotation');
+    carouselInterval = setInterval(function() {
+      if (isVisible) {
+        currentIndex = (currentIndex + 1) % videos.length;
+        showVideo(currentIndex);
+      }
+    }, 6000);
+  }
+  
+  // Function to stop carousel rotation
+  function stopCarousel() {
+    if (carouselInterval) {
+      console.log('Stopping carousel rotation');
+      clearInterval(carouselInterval);
+      carouselInterval = null;
+    }
+  }
+  
+  // Create IntersectionObserver to track when carousel is visible
+  const carouselObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const wasVisible = isVisible;
+      isVisible = entry.isIntersecting && entry.intersectionRatio > 0.1;
+      
+      console.log(`Carousel visibility changed: ${wasVisible} -> ${isVisible}`);
+      
+      if (isVisible && !wasVisible) {
+        // Carousel became visible - start rotation and ensure video is playing
+        startCarousel();
+        if (userHasInteracted) {
+          const activeVideo = videos[currentIndex];
+          if (activeVideo && activeVideo.paused) {
+            activeVideo.play().catch(e => console.warn('Could not play video when visible:', e));
+          }
+        }
+      } else if (!isVisible && wasVisible) {
+        // Carousel became hidden - pause videos to save resources
+        videos.forEach(v => v.pause());
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '0px',
+    threshold: [0, 0.1, 0.5]
+  });
+  
+  // Start observing the carousel
+  carouselObserver.observe(carousel);
+  
   // Start with the first video - force it to be visible and playing
   console.log('Starting with the first video');
   videos[0].style.opacity = '1';
@@ -142,21 +198,19 @@ document.addEventListener('DOMContentLoaded', function() {
   videos[0].classList.add('active');
   showVideo(0);
   
-  // Add a click handler to help with autoplay restrictions
+  // Add a click handler to help with autoplay restrictions (only once)
   document.addEventListener('click', function videoInitializer() {
     console.log('User interaction detected, trying to play videos again');
-    videos[currentIndex].play().catch(e => 
-      console.warn('Still could not play after user interaction:', e)
-    );
+    userHasInteracted = true;
+    
+    if (isVisible) {
+      videos[currentIndex].play().catch(e => 
+        console.warn('Still could not play after user interaction:', e)
+      );
+    }
+    
     document.removeEventListener('click', videoInitializer);
-  });
-  
-  // Switch videos every 6 seconds
-  console.log('Setting up interval to switch videos every 6 seconds');
-  setInterval(function() {
-    currentIndex = (currentIndex + 1) % videos.length;
-    showVideo(currentIndex);
-  }, 6000);
+  }, { once: true });
   
   // Also ensure the parent section is visible
   const homeSlider = document.querySelector('[data-home-slider]');
@@ -169,9 +223,13 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Home slider section not found');
   }
   
-  // Handle submenu hover behavior for services
+  // Handle submenu hover behavior for services with throttling
+  let hoverTimeout = null;
+  
   document.querySelectorAll(".service-link").forEach((link) => {
     link.addEventListener("mouseenter", function () {
+      if (hoverTimeout) clearTimeout(hoverTimeout);
+      
       const subSubmenu = this.nextElementSibling;
       if (subSubmenu) {
         subSubmenu.style.display = "flex";
@@ -181,13 +239,17 @@ document.addEventListener('DOMContentLoaded', function() {
     link.addEventListener("mouseleave", function () {
       const subSubmenu = this.nextElementSibling;
       if (subSubmenu) {
-        subSubmenu.style.display = "none";
+        hoverTimeout = setTimeout(() => {
+          subSubmenu.style.display = "none";
+        }, 150); // Small delay to prevent flickering
       }
     });
   });
   
-  // Force carousel visibility periodically
+  // Optimized visibility check (only when needed)
   function ensureCarouselVisibility() {
+    if (!isVisible) return; // Don't run if not visible
+    
     // Ensure carousel container is visible
     if (carousel) {
       carousel.style.opacity = '1';
@@ -211,8 +273,8 @@ document.addEventListener('DOMContentLoaded', function() {
       activeVideo.style.display = 'block';
       activeVideo.style.zIndex = '6';
       
-      // Make sure active video is playing
-      if (activeVideo.paused) {
+      // Make sure active video is playing (only if user has interacted)
+      if (userHasInteracted && activeVideo.paused) {
         activeVideo.play().catch(e => console.warn('Could not resume active video:', e));
       }
       
@@ -222,29 +284,48 @@ document.addEventListener('DOMContentLoaded', function() {
           v.style.opacity = '0';
           v.style.visibility = 'hidden';
           v.style.display = 'none';
-          v.pause();
+          if (!v.paused) v.pause();
         }
       });
     }
   }
   
-  // Run the safeguard periodically
-  setInterval(ensureCarouselVisibility, 500);
-  
-  // Run when interacting with navigation
-  document.querySelectorAll('.nav-item').forEach(item => {
-    item.addEventListener('mouseenter', ensureCarouselVisibility);
-    item.addEventListener('mouseleave', ensureCarouselVisibility);
+  // Throttled version of mouse move handler
+  let mouseMoveThrottled = false;
+  document.addEventListener('mousemove', function() {
+    if (!mouseMoveThrottled && isVisible) {
+      mouseMoveThrottled = true;
+      ensureCarouselVisibility();
+      setTimeout(() => { mouseMoveThrottled = false; }, 500);
+    }
   });
   
-  // Run when interacting with any part of the page
-  document.addEventListener('click', ensureCarouselVisibility);
-  document.addEventListener('mousemove', function() {
-    // Throttle to avoid excessive calls
-    if (!this.throttled) {
-      this.throttled = true;
-      ensureCarouselVisibility();
-      setTimeout(() => { this.throttled = false; }, 200);
+  // Page visibility API to pause/resume when tab becomes hidden/visible
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      // Tab is hidden - pause all videos and stop carousel
+      stopCarousel();
+      videos.forEach(v => v.pause());
+    } else if (isVisible) {
+      // Tab is visible again and carousel is in viewport - resume
+      startCarousel();
+      if (userHasInteracted) {
+        const activeVideo = videos[currentIndex];
+        if (activeVideo) {
+          activeVideo.play().catch(e => console.warn('Could not resume on tab focus:', e));
+        }
+      }
     }
+  });
+  
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', function() {
+    stopCarousel();
+    carouselObserver.disconnect();
+    videos.forEach(v => {
+      v.pause();
+      v.removeAttribute('src');
+      v.load();
+    });
   });
 });

@@ -1,7 +1,11 @@
-// Video force-play script
-// This script attempts multiple techniques to get videos playing
+// Video force-play script with IntersectionObserver optimization
+// This script attempts multiple techniques to get videos playing efficiently
 
 (function() {
+  let isCarouselVisible = false;
+  let carouselObserver = null;
+  let userHasInteracted = false;
+  
   // Wait for DOM to be ready
   function init() {
     console.log('[Video Force Play] Initializing...');
@@ -44,8 +48,11 @@
     // Try playing on user interaction
     setupUserInteractionPlayback();
     
-    // Monitor visibility
-    setupVisibilityChecking();
+    // Monitor visibility with IntersectionObserver
+    setupIntersectionObserver(carousel);
+    
+    // Page visibility API for tab focus/blur
+    setupPageVisibilityHandler();
   }
   
   // Apply all necessary attributes to a video
@@ -104,8 +111,8 @@
     video.addEventListener('pause', () => {
       console.log(`[Video Force Play] Video ${index+1} paused`);
       
-      // If this is the active video, try to resume it
-      if (video.classList.contains('active')) {
+      // If this is the active video and carousel is visible, try to resume it
+      if (video.classList.contains('active') && isCarouselVisible && userHasInteracted) {
         setTimeout(() => {
           console.log(`[Video Force Play] Attempting to resume paused active video ${index+1}`);
           video.play().catch(e => console.warn(`[Video Force Play] Could not resume video ${index+1}:`, e));
@@ -136,6 +143,12 @@
     
     // Ensure visible
     showVideo(video);
+    
+    // Only try to play if user has interacted or if it's initial load
+    if (!userHasInteracted && !isInitial) {
+      console.log('[Video Force Play] Waiting for user interaction before playing');
+      return;
+    }
     
     // First attempt: normal play
     const playPromise = video.play();
@@ -179,14 +192,17 @@
     
     function handleUserInteraction() {
       console.log('[Video Force Play] User interaction detected');
+      userHasInteracted = true;
       
-      // Find the active video or first video
-      const carousel = document.getElementById('video-carousel');
-      if (!carousel) return;
-      
-      const activeVideo = carousel.querySelector('video.active') || carousel.querySelector('video');
-      if (activeVideo) {
-        forcePlayVideo(activeVideo);
+      // If carousel is visible, try to play the active video
+      if (isCarouselVisible) {
+        const carousel = document.getElementById('video-carousel');
+        if (!carousel) return;
+        
+        const activeVideo = carousel.querySelector('video.active') || carousel.querySelector('video');
+        if (activeVideo) {
+          forcePlayVideo(activeVideo);
+        }
       }
       
       // Remove all event listeners
@@ -196,29 +212,111 @@
     }
   }
   
-  // Set up visibility checking
-  function setupVisibilityChecking() {
-    // Check every second that the active video is playing
-    setInterval(() => {
+  // Set up IntersectionObserver for visibility monitoring
+  function setupIntersectionObserver(carousel) {
+    carouselObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const wasVisible = isCarouselVisible;
+        isCarouselVisible = entry.isIntersecting && entry.intersectionRatio > 0.1;
+        
+        console.log(`[Video Force Play] Carousel visibility changed: ${wasVisible} -> ${isCarouselVisible}`);
+        
+        if (isCarouselVisible && !wasVisible) {
+          // Carousel became visible
+          ensureCarouselVisibility();
+          
+          // Try to play active video if user has interacted
+          if (userHasInteracted) {
+            const activeVideo = carousel.querySelector('video.active');
+            if (activeVideo && activeVideo.paused) {
+              forcePlayVideo(activeVideo);
+            }
+          }
+        } else if (!isCarouselVisible && wasVisible) {
+          // Carousel became hidden - pause videos to save resources
+          const videos = carousel.querySelectorAll('video');
+          videos.forEach(v => {
+            if (!v.paused) v.pause();
+          });
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '50px',
+      threshold: [0, 0.1, 0.5]
+    });
+    
+    carouselObserver.observe(carousel);
+  }
+  
+  // Handle page visibility changes
+  function setupPageVisibilityHandler() {
+    document.addEventListener('visibilitychange', function() {
       const carousel = document.getElementById('video-carousel');
       if (!carousel) return;
       
-      // Ensure carousel is visible
-      carousel.style.opacity = '1';
-      carousel.style.visibility = 'visible';
-      carousel.style.display = 'block';
-      
-      // Check the active video
-      const activeVideo = carousel.querySelector('video.active');
-      if (activeVideo) {
-        // If the video is paused, try to resume it
-        if (activeVideo.paused && !activeVideo.ended) {
-          console.log('[Video Force Play] Active video is paused, attempting to resume');
+      if (document.hidden) {
+        // Tab is hidden - pause all videos
+        const videos = carousel.querySelectorAll('video');
+        videos.forEach(v => {
+          if (!v.paused) v.pause();
+        });
+      } else if (isCarouselVisible && userHasInteracted) {
+        // Tab is visible again and carousel is in viewport - resume active video
+        const activeVideo = carousel.querySelector('video.active');
+        if (activeVideo && activeVideo.paused) {
           forcePlayVideo(activeVideo);
         }
       }
-    }, 1000);
+    });
   }
+  
+  // Ensure carousel visibility (called only when needed)
+  function ensureCarouselVisibility() {
+    if (!isCarouselVisible) return;
+    
+    const carousel = document.getElementById('video-carousel');
+    if (!carousel) return;
+    
+    // Ensure carousel is visible
+    carousel.style.opacity = '1';
+    carousel.style.visibility = 'visible';
+    carousel.style.display = 'block';
+    
+    // Check the active video only if visible
+    const activeVideo = carousel.querySelector('video.active');
+    if (activeVideo) {
+      // Ensure active video is properly displayed
+      showVideo(activeVideo);
+      
+      // If the video is paused and user has interacted, try to resume it
+      if (activeVideo.paused && !activeVideo.ended && userHasInteracted) {
+        console.log('[Video Force Play] Active video is paused, attempting to resume');
+        forcePlayVideo(activeVideo);
+      }
+    }
+  }
+  
+  // Cleanup function
+  function cleanup() {
+    if (carouselObserver) {
+      carouselObserver.disconnect();
+      carouselObserver = null;
+    }
+    
+    const carousel = document.getElementById('video-carousel');
+    if (carousel) {
+      const videos = carousel.querySelectorAll('video');
+      videos.forEach(v => {
+        v.pause();
+        v.removeAttribute('src');
+        v.load();
+      });
+    }
+  }
+  
+  // Cleanup on page unload
+  window.addEventListener('beforeunload', cleanup);
   
   // Run initialization on page load
   if (document.readyState === 'loading') {
