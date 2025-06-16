@@ -185,19 +185,8 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 80px;
-      background-color: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(229, 231, 235, 0.8);
       z-index: 1000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .mobile-top-bar img {
-      height: 40px;
-      width: auto;
+      backdrop-filter: blur(20px);
     }
 
     /* Hide mobile elements on desktop */
@@ -1674,8 +1663,11 @@
   </script>
 
   <!-- Mobile Top Bar -->
-  <div class="mobile-top-bar md:hidden">
-    <img src="./assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric" loading="lazy">
+  <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
+    <img src="./assets/img/kansas-electric-logo-color.svg"
+         alt="Kansas Electric"
+         class="h-10 w-auto object-contain mx-auto"
+         loading="lazy">
   </div>
 
   <!-- Mobile Menu Trigger -->

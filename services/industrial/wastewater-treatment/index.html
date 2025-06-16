@@ -30,9 +30,7 @@
   <link rel="manifest" href="/site.webmanifest">
   
   <!-- KSE Navigation Styles -->
-  <style>
-    .kse-dropdown,.kse-mobile-dropdown,.kse-mobile-menu{display:none;opacity:0;visibility:hidden;pointer-events:none}.kse-nav{position:fixed;top:0;left:0;right:0;background-color:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(229,231,235,.8);z-index:1000;transition:all .2s ease-in-out;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}.kse-nav-container{width:100%;display:flex;justify-content:space-between;align-items:center;padding-left:2rem;padding-right:2rem;height:80px;position:relative}.kse-nav-logo{display:flex;align-items:center;text-decoration:none;z-index:1001;margin-left:0}.kse-nav-logo img{height:40px;width:auto;margin-left:0}.kse-nav-menu{display:flex;align-items:center;gap:2rem;list-style:none;justify-content:center;flex:1}.kse-nav-item{position:relative}.kse-nav-link{display:flex;align-items:center;gap:.5rem;padding:1rem .75rem;text-decoration:none;color:#1f2937;font-weight:500;transition:all .2s ease-out}.kse-nav-link:hover{color:#2563eb}.kse-nav-caret{width:16px;height:16px;transition:transform .2s}.kse-nav-item[aria-expanded=true] .kse-nav-caret{transform:rotate(180deg)}.kse-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(-10px);background-color:#fff;box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -2px rgba(0,0,0,.05);border-radius:.5rem;padding:1rem;min-width:16rem;z-index:50;flex-direction:column;transition:all .2s ease-out}.kse-dropdown.industries-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;min-width:32rem;max-width:90vw}.kse-dropdown.active,.kse-dropdown.show{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);display:flex;pointer-events:auto}.kse-dropdown.industries-grid.active,.kse-dropdown.industries-grid.show{display:grid}.kse-dropdown-link{display:block;padding:.75rem;color:#374151;text-decoration:none;border-radius:.375rem;transition:background-color .2s}.kse-dropdown-link:hover{background-color:#f3f4f6}.kse-dropdown-link span{display:block;font-weight:500;margin-bottom:.25rem}.kse-dropdown-link small{display:block;color:#6b7280;font-size:.875rem}.kse-nav-cta{display:inline-block;background-color:#0056d2;color:#fff;padding:.75rem 1.5rem;border-radius:.375rem;font-weight:500;text-decoration:none;transition:all .2s ease-in-out;margin-right:0}.kse-nav-cta:hover{background-color:#0047b3;box-shadow:0 4px 12px rgba(0,86,210,.3)}.kse-mobile-toggle{display:none;flex-direction:column;gap:.25rem;background:0 0;border:none;padding:.5rem;cursor:pointer;margin-right:0}.kse-hamburger-line{width:1.5rem;height:2px;background-color:#374151;transition:all .3s}.kse-mobile-menu{position:fixed;top:80px;left:0;right:0;bottom:0;background-color:#fff;z-index:1000;overflow-y:auto;padding:1rem;transition:transform .3s ease;transform:translateX(100%)}.kse-mobile-menu.active,.kse-mobile-menu.show{transform:translateX(0)}.kse-mobile-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,.5);z-index:999;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}.kse-mobile-overlay.active{opacity:1;visibility:visible}.kse-mobile-nav-item{border-bottom:1px solid #e5e7eb}.kse-mobile-nav-link{display:flex;align-items:center;justify-content:space-between;padding:1rem 0;color:#374151;text-decoration:none;font-weight:500}.kse-mobile-dropdown{padding-left:1rem;border-top:1px solid #f3f4f6}.kse-mobile-dropdown.active,.kse-mobile-dropdown.show{display:block}.kse-mobile-dropdown-link{display:block;padding:.75rem 0;color:#6b7280;text-decoration:none;border-bottom:1px solid #f9fafb}.kse-mobile-nav-cta{display:block;background-color:#0056d2;color:#fff;padding:1rem;text-align:center;border-radius:.375rem;text-decoration:none;font-weight:500;margin-top:1rem}@media (max-width:768px){.kse-nav-menu,.kse-nav-cta{display:none}.kse-mobile-toggle{display:flex}.kse-dropdown.industries-grid{min-width:90vw}}@media (min-width:768px){.kse-nav-container{padding-left:2rem;padding-right:2rem}}@media (min-width:1024px){.kse-nav-container{padding-left:3rem;padding-right:3rem}}@media (min-width:1536px){.kse-nav-container{padding-left:4rem;padding-right:4rem}}
-  </style>
+  
 
   <!-- Global Transitions & Image Fade-in -->
   <style>
@@ -45,6 +43,45 @@
   <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  
+
+  <!-- Critical CSS that must load after main.css -->
+  <style>
+    img {
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    img.loaded {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    /* AOS alternative styles */
+    .aos-hide {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    .aos-show {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    /* AOS Fallback Styles - Ensure elements are visible even if animations fail */
+    [data-aos] {
+      opacity: 1 !important;
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+    
+    /* Ensure all AOS elements with opacity-100 class are visible */
+    .opacity-100 {
+      opacity: 1 !important;
+    }
+  </style>
 
   <!-- Anti-flicker style block to prevent dropdowns from flashing during load -->
   <style>
@@ -134,31 +171,31 @@
     transform: rotate(180deg);
   }
 
-  .kse-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-10px);
-    background-color: white;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    border-radius: 0.5rem;
-    padding: 1rem;
-    min-width: 16rem;
-    z-index: 50;
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.2s ease-out;
-  }
+      .kse-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      background-color: white;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      min-width: 12rem;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease-out, visibility 0.2s ease-out, transform 0.2s ease-out;
+    }
 
-  .kse-dropdown.industries-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-    min-width: 32rem;
-    max-width: 90vw;
-  }
+      .kse-dropdown.industries-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      min-width: 24rem;
+      max-width: 90vw;
+    }
 
   .kse-dropdown.active,
   .kse-dropdown.show {
@@ -217,7 +254,6 @@
   }
 
   .kse-mobile-toggle {
-    display: none;
     flex-direction: column;
     gap: 0.25rem;
     background: none;
@@ -225,6 +261,7 @@
     padding: 0.5rem;
     cursor: pointer;
     margin-right: 0;
+    z-index: 1001;
   }
 
   .kse-hamburger-line {
@@ -321,13 +358,10 @@
     .kse-nav-cta {
       display: none;
     }
-
-    .kse-mobile-toggle {
-      display: flex;
-    }
     
     .kse-dropdown.industries-grid {
-      min-width: 90vw;
+      min-width: 95vw;
+      grid-template-columns: 1fr;
     }
   }
   
@@ -352,57 +386,16 @@
     }
   }
   </style>
-
-  <!-- Critical CSS that must load after main.css -->
-  <style>
-    img {
-      opacity: 0;
-      transform: scale(1.02);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    
-    img.loaded {
-      opacity: 1;
-      transform: scale(1);
-    }
-    
-    /* AOS alternative styles */
-    .aos-hide {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    
-    .aos-show {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-
-    /* AOS Fallback Styles - Ensure elements are visible even if animations fail */
-    [data-aos] {
-      opacity: 1 !important;
-      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    }
-    
-    /* Ensure all AOS elements with opacity-100 class are visible */
-    .opacity-100 {
-      opacity: 1 !important;
-    }
-  </style>
 </head>
 <body class="font-poppins flex flex-col min-h-screen relative bg-white">
-  
-  <a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-yellow-400 inline-block"><span class="block py-2">Skip to content</span></a>
-
-    <!-- UNIFIED KANSAS ELECTRIC NAVIGATION -->
+  <!-- UNIFIED KANSAS ELECTRIC NAVIGATION -->
   <nav class="kse-nav" role="navigation" aria-label="Main navigation">
       <div class="kse-nav-container">
           <!-- Logo (Left Aligned) -->
-          <a href="/" class="kse-nav-logo">
-              <img src="/assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric - Homepage" width="178" height="40">
+          <a href="../../../" class="kse-nav-logo flex items-center px-4 py-2">
+              <img src="../../../assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain" loading="lazy">
           </a>
 
-          <!-- Desktop Navigation (Center) -->
           <ul class="kse-nav-menu" role="menubar">
               <!-- Services Dropdown -->
               <li class="kse-nav-item" data-dropdown="services" role="none">
@@ -452,15 +445,15 @@
                           <span>Oil & Gas</span>
                           <small>Refineries & pipelines</small>
                       </a>
-                      <a href="/services/industrial/wastewater-treatment/" class="kse-dropdown-link" role="menuitem">
-                          <span>Water & Wastewater</span>
+                      <a href="/services/industrial/water-wastewater/" class="kse-dropdown-link" role="menuitem">
+                          <span>Water and Wastewater</span>
                           <small>Treatment facilities</small>
                       </a>
                       <a href="/services/industrial/data-centers/" class="kse-dropdown-link" role="menuitem">
                           <span>Data Centers</span>
                           <small>Mission critical facilities</small>
                       </a>
-                      <a href="/services/industrial/advanced-manufacturing/" class="kse-dropdown-link" role="menuitem">
+                      <a href="/services/industrial/manufacturing/" class="kse-dropdown-link" role="menuitem">
                           <span>Manufacturing</span>
                           <small>Production facilities</small>
                       </a>
@@ -468,10 +461,10 @@
                           <span>Food & Beverage</span>
                           <small>Processing plants</small>
                       </a>
-                                            <a href="/services/industrial/healthcare/" class="kse-dropdown-link" role="menuitem">
+                      <a href="/services/industrial/healthcare/" class="kse-dropdown-link" role="menuitem">
                           <span>Healthcare Infrastructure</span>
                           <small>Critical care facilities</small>
-                      </a>
+                </a>
                 </div>
                     </li>
 
@@ -482,118 +475,72 @@
                   </a>
               </li>
 
-              <!-- Careers Dropdown -->
-              <li class="kse-nav-item" data-dropdown="careers" role="none">
-                  <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="careers-dropdown">
-                      <span>Careers</span>
-                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                  </svg>
-                  </a>
-                  <div class="kse-dropdown" id="careers-dropdown" role="menu" aria-hidden="true">
-                      <a href="/careers/" class="kse-dropdown-link" role="menuitem">
-                          <span>Open Positions</span>
-                          <small>Current job opportunities</small>
-                      </a>
-                      <a href="/careers/quick-apply/" class="kse-dropdown-link" role="menuitem">
-                          <span>Quick Apply</span>
-                          <small>Submit your resume</small>
-                      </a>
-            </div>
-          </li>
-                  </ul>
-                  
-          <!-- CTA Button -->
-          <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-all duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
-
-          <!-- Mobile Hamburger -->
-          <button class="kse-mobile-toggle" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
-              <span class="kse-hamburger-line"></span>
-              <span class="kse-hamburger-line"></span>
-              <span class="kse-hamburger-line"></span>
-          </button>
-      </div>
-      
-      <!-- Mobile Menu Overlay -->
-      <div class="kse-mobile-overlay" aria-hidden="true"></div>
-
-      <!-- Mobile Menu -->
-      <div class="kse-mobile-menu" id="mobile-menu" aria-hidden="true">
-          <nav role="navigation" aria-label="Mobile navigation">
-              <!-- Services -->
-              <div class="kse-mobile-nav-item" data-dropdown="services">
-                  <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false">
-                      <span>Services</span>
-                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                      </svg>
-                  </a>
-                  <div class="kse-mobile-dropdown">
-                      <a href="/services/divisions/industrial/" class="kse-mobile-dropdown-link">Industrial Electrical</a>
-                      <a href="/services/divisions/commercial/" class="kse-mobile-dropdown-link">Commercial Electrical</a>
-                      <a href="/services/divisions/service-maintenance/" class="kse-mobile-dropdown-link">Service & Maintenance</a>
-                      <a href="/services/divisions/automation-control/" class="kse-mobile-dropdown-link">Automation & Control Systems</a>
-                </div>
-              </div>
-        
-              <!-- Projects -->
-              <div class="kse-mobile-nav-item">
-                  <a href="/projects/" class="kse-mobile-nav-link">
-                      <span>Projects</span>
-                </a>
-              </div>
-        
-              <!-- Industries We Serve -->
-              <div class="kse-mobile-nav-item" data-dropdown="industries">
-                  <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false">
-                      <span>Industries We Serve</span>
-                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                      </svg>
-                  </a>
-                  <div class="kse-mobile-dropdown">
-                      <a href="/services/industrial/oil-gas/" class="kse-mobile-dropdown-link">Oil & Gas</a>
-                      <a href="/services/industrial/wastewater-treatment/" class="kse-mobile-dropdown-link">Water & Wastewater</a>
-                      <a href="/services/industrial/data-centers/" class="kse-mobile-dropdown-link">Data Centers</a>
-                      <a href="/services/industrial/advanced-manufacturing/" class="kse-mobile-dropdown-link">Manufacturing</a>
-                      <a href="/services/industrial/food-beverage/" class="kse-mobile-dropdown-link">Food & Beverage</a>
-                      <a href="/services/industrial/healthcare/" class="kse-mobile-dropdown-link">Healthcare Infrastructure</a>
-            </div>
-                </div>
-          
-              <!-- About -->
-              <div class="kse-mobile-nav-item" data-dropdown="about">
-                  <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false">
-                      <span>About</span>
-                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                      </svg>
-                  </a>
-                  <div class="kse-mobile-dropdown">
-                      <a href="/about/" class="kse-mobile-dropdown-link">Our Story</a>
-                      <a href="/about/history/" class="kse-mobile-dropdown-link">Our History</a>
-                      <a href="/about/locations/" class="kse-mobile-dropdown-link">Locations</a>
-                      <a href="/about/community/" class="kse-mobile-dropdown-link">Community</a>
-                </div>
-              </div>
-        
               <!-- Careers -->
-              <div class="kse-mobile-nav-item" data-dropdown="careers">
-                  <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false">
+              <li class="kse-nav-item" role="none">
+                  <a href="/careers/" class="kse-nav-link" role="menuitem">
                       <span>Careers</span>
-                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                      </svg>
                   </a>
-                  <div class="kse-mobile-dropdown">
-                      <a href="/careers/" class="kse-mobile-dropdown-link">Open Positions</a>
-                      <a href="/careers/quick-apply/" class="kse-mobile-dropdown-link">Quick Apply</a>
-            </div>
-                </div>
+              </li>
+          </ul>
+          
+          <a href="https://forms.gle/iJVRGxrcMVZXT6zN6"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="kse-nav-cta hidden md:inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg">
+               Let's Engineer Your Next Power Move
+            </a>
 
-              <!-- Mobile CTA -->
-              <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="kse-mobile-nav-cta">Let's Engineer Your Next Power Move</a>
-          </nav>
+          <!-- NEW: Fortune 500 Mobile Nav -->
+          <div class="fixed inset-0 z-50 bg-white md:hidden hidden" id="kse-mobile-nav">
+            <div class="p-6 flex justify-between items-center border-b">
+              <img src="/assets/img/kse-logo.png" alt="Kansas Electric" class="h-8">
+              <button id="kse-nav-close" class="text-gray-600 text-3xl font-bold">&times;</button>
+            </div>
+            <nav class="flex flex-col space-y-6 p-6 text-xl font-medium text-gray-800">
+              <a href="/" class="hover:text-blue-600">Home</a>
+              <div>
+                <button class="w-full text-left flex justify-between items-center hover:text-blue-600" onclick="toggleDropdown('servicesMenu')">
+                  Services
+                  <span class="text-gray-500">&#9662;</span>
+                </button>
+                <div id="servicesMenu" class="pl-4 mt-2 hidden flex-col space-y-2">
+                  <a href="/services/industrial/" class="hover:text-blue-600">Industrial Electrical</a>
+                  <a href="/services/commercial/" class="hover:text-blue-600">Commercial Electrical</a>
+                  <a href="/services/service/" class="hover:text-blue-600">Service & Maintenance</a>
+                  <a href="/services/automation/" class="hover:text-blue-600">Automation & Controls</a>
+                </div>
+              </div>
+              <div>
+                <button class="w-full text-left flex justify-between items-center hover:text-blue-600" onclick="toggleDropdown('industriesMenu')">
+                  Industries We Serve
+                  <span class="text-gray-500">&#9662;</span>
+                </button>
+                <div id="industriesMenu" class="pl-4 mt-2 hidden flex-col space-y-2">
+                  <a href="/industries/oil-gas/" class="hover:text-blue-600">Oil & Gas</a>
+                  <a href="/industries/water/" class="hover:text-blue-600">Water & Wastewater</a>
+                  <a href="/industries/data-centers/" class="hover:text-blue-600">Data Centers</a>
+                  <a href="/industries/manufacturing/" class="hover:text-blue-600">Manufacturing</a>
+                  <a href="/industries/food-beverage/" class="hover:text-blue-600">Food & Beverage</a>
+                  <a href="/services/industrial/healthcare/" class="hover:text-blue-600">Healthcare Infrastructure</a>
+                </div>
+              </div>
+              <a href="/projects/" class="hover:text-blue-600">Projects</a>
+              <a href="/careers/" class="hover:text-blue-600">Careers</a>
+              <a href="/suppliers/" class="hover:text-blue-600">Suppliers</a>
+            </nav>
+
+  <!-- Mobile Top Bar -->
+  <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
+    <img src="../../../assets/img/kansas-electric-logo-color.svg"
+         alt="Kansas Electric"
+         class="h-10 w-auto object-contain mx-auto"
+         loading="lazy">
+  </div>
+
+  
+  <a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-yellow-400 inline-block"><span class="block py-2">Skip to content</span></a>
+
+    
       </div>
   </nav>
 
@@ -757,6 +704,48 @@
   <!-- Link AOS CSS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   
+  
+  
+  <!-- Enhanced UI Scripts -->
+  <script>
+    // Image Fade-in Effect
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("img").forEach((img) => {
+        if (img.complete) {
+          img.classList.add("loaded");
+        } else {
+          img.addEventListener("load", () => img.classList.add("loaded"));
+        }
+      });
+    });
+    
+    // Scroll Reveal without AOS
+    const observerOptions = { threshold: 0.15 };
+    
+    const revealOnScroll = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('aos-show');
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+    
+    const scrollObserver = new IntersectionObserver(revealOnScroll, observerOptions);
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('[data-aos]').forEach(el => {
+        el.classList.add('aos-hide');
+        scrollObserver.observe(el);
+      });
+      
+      // Reset any transform styles on section headings
+      document.querySelectorAll(".section-heading").forEach(el => {
+        el.style.transform = "none";
+      });
+    });
+  </script>
+
   <!-- Navigation Dropdown Script -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -865,46 +854,6 @@
             document.body.style.overflow = '';
           }
         }
-      });
-    });
-  </script>
-  
-  <!-- Enhanced UI Scripts -->
-  <script>
-    // Image Fade-in Effect
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll("img").forEach((img) => {
-        if (img.complete) {
-          img.classList.add("loaded");
-        } else {
-          img.addEventListener("load", () => img.classList.add("loaded"));
-        }
-      });
-    });
-    
-    // Scroll Reveal without AOS
-    const observerOptions = { threshold: 0.15 };
-    
-    const revealOnScroll = (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('aos-show');
-          observer.unobserve(entry.target);
-        }
-      });
-    };
-    
-    const scrollObserver = new IntersectionObserver(revealOnScroll, observerOptions);
-    
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll('[data-aos]').forEach(el => {
-        el.classList.add('aos-hide');
-        scrollObserver.observe(el);
-      });
-      
-      // Reset any transform styles on section headings
-      document.querySelectorAll(".section-heading").forEach(el => {
-        el.style.transform = "none";
       });
     });
   </script>

@@ -37,6 +37,13 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+  
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- Critical CSS that must load after main.css -->
+  
+
   <!-- Anti-flicker style block to prevent dropdowns from flashing during load -->
   <style>
   .kse-dropdown,
@@ -46,77 +53,6 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-  }
-
-  /* Image Carousel Styles */
-  .carousel-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-
-  .carousel-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1.5s ease-in-out;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  .carousel-slide.active {
-    opacity: 1;
-  }
-
-  .carousel-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
-    z-index: 1;
-  }
-
-  .carousel-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    text-align: center;
-    color: white;
-    max-width: 900px;
-    width: 90%;
-  }
-
-  .carousel-nav {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-    display: flex;
-    gap: 12px;
-  }
-
-  .carousel-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  .carousel-dot.active {
-    background: rgba(255, 255, 255, 0.9);
-    transform: scale(1.2);
   }
 
   /* Adding essential navigation styles */
@@ -196,31 +132,31 @@
     transform: rotate(180deg);
   }
 
-  .kse-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-10px);
-    background-color: white;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    border-radius: 0.5rem;
-    padding: 1rem;
-    min-width: 16rem;
-    z-index: 50;
-    display: flex;
-    flex-direction: column;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.2s ease-out;
-  }
+      .kse-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      background-color: white;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      min-width: 12rem;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease-out, visibility 0.2s ease-out, transform 0.2s ease-out;
+    }
 
-  .kse-dropdown.industries-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-    min-width: 32rem;
-    max-width: 90vw;
-  }
+      .kse-dropdown.industries-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      min-width: 24rem;
+      max-width: 90vw;
+    }
 
   .kse-dropdown.active,
   .kse-dropdown.show {
@@ -279,7 +215,6 @@
   }
 
   .kse-mobile-toggle {
-    display: none;
     flex-direction: column;
     gap: 0.25rem;
     background: none;
@@ -287,6 +222,7 @@
     padding: 0.5rem;
     cursor: pointer;
     margin-right: 0;
+    z-index: 1001;
   }
 
   .kse-hamburger-line {
@@ -383,13 +319,10 @@
     .kse-nav-cta {
       display: none;
     }
-
-    .kse-mobile-toggle {
-      display: flex;
-    }
     
     .kse-dropdown.industries-grid {
-      min-width: 90vw;
+      min-width: 95vw;
+      grid-template-columns: 1fr;
     }
   }
   
@@ -414,77 +347,16 @@
     }
   }
   </style>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-  <!-- Critical CSS that must load after main.css -->
-  <style>
-    /* Global transition and hover effects */
-    * {
-      transition: all 0.3s ease-out;
-    }
-
-    button, .btn, .service-card, .industry-card, .project-card, .kse-nav-link, .kse-dropdown-link {
-      transition: all 0.25s ease-out;
-    }
-    
-    button:hover, .btn:hover, .service-card:hover, .industry-card:hover, .project-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    img {
-      opacity: 0;
-      transform: scale(1.02);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    
-    img.loaded {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .section-heading::after {
-      content: "";
-      display: block;
-      width: 48px;
-      height: 3px;
-      background-color: #2563eb;
-      margin-top: 8px;
-      border-radius: 2px;
-    }
-    
-    /* AOS alternative styles */
-    .aos-hide {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    
-    .aos-show {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    
-    /* Hero section fixed height */
-    .hero-tall {
-      height: 615px;
-    }
-  </style>
 </head>
 <body class="font-poppins flex flex-col min-h-screen relative">
-
-  <a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-ke-yellow inline-block"><span class="block py-2">Skip to content</span></a>
-
   <!-- UNIFIED KANSAS ELECTRIC NAVIGATION -->
   <nav class="kse-nav" role="navigation" aria-label="Main navigation">
       <div class="kse-nav-container">
           <!-- Logo (Left Aligned) -->
-          <a href="/" class="kse-nav-logo flex items-center px-4 py-2">
-              <img src="/assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric" class="h-12 sm:h-10 object-contain" loading="lazy">
+          <a href="../" class="kse-nav-logo flex items-center px-4 py-2">
+              <img src="../assets/img/kansas-electric-logo-color.svg" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain" loading="lazy">
           </a>
 
-          <!-- Desktop Navigation (Center) -->
           <ul class="kse-nav-menu" role="menubar">
               <!-- Services Dropdown -->
               <li class="kse-nav-item" data-dropdown="services" role="none">
@@ -550,10 +422,10 @@
                           <span>Food & Beverage</span>
                           <small>Processing plants</small>
                       </a>
-                                            <a href="/services/industrial/healthcare/" class="kse-dropdown-link" role="menuitem">
+                      <a href="/services/industrial/healthcare/" class="kse-dropdown-link" role="menuitem">
                           <span>Healthcare Infrastructure</span>
                           <small>Critical care facilities</small>
-                      </a>
+                </a>
                 </div>
                     </li>
 
@@ -570,85 +442,66 @@
                       <span>Careers</span>
                   </a>
               </li>
-                  </ul>
-                  
-          <!-- CTA Button -->
-          <div class="flex items-center justify-center text-center">
-            <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center text-center sm:flex-row flex-col px-4 kse-nav-cta">Let's Engineer Your Next Power Move</a>
-          </div>
-
-          <!-- Mobile Hamburger -->
-          <button class="kse-mobile-toggle block sm:hidden" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu">
-              <span class="kse-hamburger-line"></span>
-              <span class="kse-hamburger-line"></span>
-              <span class="kse-hamburger-line"></span>
-          </button>
-      </div>
-      
-      <!-- Mobile Menu Overlay -->
-      <div class="kse-mobile-overlay" aria-hidden="true"></div>
-
-      <!-- Mobile Menu -->
-      <div class="kse-mobile-menu" id="mobile-menu" aria-hidden="true">
-          <nav role="navigation" aria-label="Mobile navigation">
-              <!-- Services -->
-              <div class="kse-mobile-nav-item" data-dropdown="services">
-                  <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false">
-                      <span>Services</span>
-                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                      </svg>
-                  </a>
-                  <div class="kse-mobile-dropdown">
-                      <a href="/services/divisions/industrial/" class="kse-mobile-dropdown-link">Industrial Electrical</a>
-                      <a href="/services/divisions/commercial/" class="kse-mobile-dropdown-link">Commercial Electrical</a>
-                      <a href="/services/divisions/service-maintenance/" class="kse-mobile-dropdown-link">Service & Maintenance</a>
-                      <a href="/services/divisions/automation-control/" class="kse-mobile-dropdown-link">Automation & Control Systems</a>
-                </div>
-              </div>
-        
-              <!-- Projects -->
-              <div class="kse-mobile-nav-item">
-                  <a href="/projects/" class="kse-mobile-nav-link">
-                      <span>Projects</span>
-                </a>
-              </div>
-        
-              <!-- Industries We Serve -->
-              <div class="kse-mobile-nav-item" data-dropdown="industries">
-                  <a href="#" class="kse-mobile-nav-link" aria-haspopup="true" aria-expanded="false">
-                      <span>Industries We Serve</span>
-                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                      </svg>
-                  </a>
-                  <div class="kse-mobile-dropdown">
-                      <a href="/services/industrial/oil-gas/" class="kse-mobile-dropdown-link">Oil & Gas</a>
-                      <a href="/services/industrial/water-wastewater/" class="kse-mobile-dropdown-link">Water and Wastewater</a>
-                      <a href="/services/industrial/data-centers/" class="kse-mobile-dropdown-link">Data Centers</a>
-                      <a href="/services/industrial/manufacturing/" class="kse-mobile-dropdown-link">Manufacturing</a>
-                      <a href="/services/industrial/food-beverage/" class="kse-mobile-dropdown-link">Food & Beverage</a>
-                      <a href="/services/industrial/healthcare/" class="kse-mobile-dropdown-link">Healthcare Infrastructure</a>
-            </div>
-                </div>
+          </ul>
           
-              <!-- About -->
-              <div class="kse-mobile-nav-item">
-                  <a href="/about/" class="kse-mobile-nav-link">
-                      <span>About</span>
-                  </a>
-              </div>
-        
-              <!-- Careers -->
-              <div class="kse-mobile-nav-item">
-                  <a href="/careers/" class="kse-mobile-nav-link">
-                      <span>Careers</span>
-                  </a>
-              </div>
+          <a href="https://forms.gle/iJVRGxrcMVZXT6zN6"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="kse-nav-cta hidden md:inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg">
+               Let's Engineer Your Next Power Move
+            </a>
 
-              <!-- Mobile CTA -->
-              <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="kse-mobile-nav-cta">Let's Engineer Your Next Power Move</a>
-          </nav>
+          <!-- NEW: Fortune 500 Mobile Nav -->
+          <div class="fixed inset-0 z-50 bg-white md:hidden hidden" id="kse-mobile-nav">
+            <div class="p-6 flex justify-between items-center border-b">
+              <img src="/assets/img/kse-logo.png" alt="Kansas Electric" class="h-8">
+              <button id="kse-nav-close" class="text-gray-600 text-3xl font-bold">&times;</button>
+            </div>
+            <nav class="flex flex-col space-y-6 p-6 text-xl font-medium text-gray-800">
+              <a href="/" class="hover:text-blue-600">Home</a>
+              <div>
+                <button class="w-full text-left flex justify-between items-center hover:text-blue-600" onclick="toggleDropdown('servicesMenu')">
+                  Services
+                  <span class="text-gray-500">&#9662;</span>
+                </button>
+                <div id="servicesMenu" class="pl-4 mt-2 hidden flex-col space-y-2">
+                  <a href="/services/industrial/" class="hover:text-blue-600">Industrial Electrical</a>
+                  <a href="/services/commercial/" class="hover:text-blue-600">Commercial Electrical</a>
+                  <a href="/services/service/" class="hover:text-blue-600">Service & Maintenance</a>
+                  <a href="/services/automation/" class="hover:text-blue-600">Automation & Controls</a>
+                </div>
+              </div>
+              <div>
+                <button class="w-full text-left flex justify-between items-center hover:text-blue-600" onclick="toggleDropdown('industriesMenu')">
+                  Industries We Serve
+                  <span class="text-gray-500">&#9662;</span>
+                </button>
+                <div id="industriesMenu" class="pl-4 mt-2 hidden flex-col space-y-2">
+                  <a href="/industries/oil-gas/" class="hover:text-blue-600">Oil & Gas</a>
+                  <a href="/industries/water/" class="hover:text-blue-600">Water & Wastewater</a>
+                  <a href="/industries/data-centers/" class="hover:text-blue-600">Data Centers</a>
+                  <a href="/industries/manufacturing/" class="hover:text-blue-600">Manufacturing</a>
+                  <a href="/industries/food-beverage/" class="hover:text-blue-600">Food & Beverage</a>
+                  <a href="/services/industrial/healthcare/" class="hover:text-blue-600">Healthcare Infrastructure</a>
+                </div>
+              </div>
+              <a href="/projects/" class="hover:text-blue-600">Projects</a>
+              <a href="/careers/" class="hover:text-blue-600">Careers</a>
+              <a href="/suppliers/" class="hover:text-blue-600">Suppliers</a>
+            </nav>
+
+  <!-- Mobile Top Bar -->
+  <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
+    <img src="../assets/img/kansas-electric-logo-color.svg"
+         alt="Kansas Electric"
+         class="h-10 w-auto object-contain mx-auto"
+         loading="lazy">
+  </div>
+
+
+  <a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-ke-yellow inline-block"><span class="block py-2">Skip to content</span></a>
+
+  
     </div>
   </nav>
 
@@ -992,6 +845,101 @@
     </div>
   </footer>
 
+  
+  
+  <!-- Enhanced UI Scripts -->
+  <script>
+    // Image Carousel Script
+    document.addEventListener("DOMContentLoaded", () => {
+      const slides = document.querySelectorAll('.carousel-slide');
+      const dots = document.querySelectorAll('.carousel-dot');
+      let currentSlide = 0;
+      
+      function showSlide(index) {
+        // Hide all slides
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+        
+        // Show current slide
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+      }
+      
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+      
+      // Auto-advance every 5 seconds
+      setInterval(nextSlide, 5000);
+      
+      // Dot navigation
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          currentSlide = index;
+          showSlide(currentSlide);
+        });
+      });
+    });
+
+    // Image Fade-in Effect
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("img").forEach((img) => {
+        if (img.complete) {
+          img.classList.add("loaded");
+        } else {
+          img.addEventListener("load", () => img.classList.add("loaded"));
+        }
+      });
+    });
+    
+    // Scroll Reveal without AOS
+    const observerOptions = { threshold: 0.15 };
+    
+    const revealOnScroll = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('aos-show');
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+    
+    const scrollObserver = new IntersectionObserver(revealOnScroll, observerOptions);
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('[data-aos]').forEach(el => {
+        el.classList.add('aos-hide');
+        scrollObserver.observe(el);
+      });
+      
+      // Reset any transform styles on section headings
+      document.querySelectorAll(".section-heading").forEach(el => {
+        el.style.transform = "none";
+      });
+    });
+  </script>
+  
+  <!-- Mobile Sticky CTA Button -->
+  <div class="fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-50 md:hidden hover:bg-blue-700 transition">
+    <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="block w-full h-full text-white">Let's Engineer Your Next Power Move</a>
+  </div>
+
+  <!-- Logo animation script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize logo fade-ins with a slight delay for client logos
+      setTimeout(function() {
+        document.querySelectorAll('section img[alt*="ADM"], section img[alt*="AGCO"], section img[alt*="CNH"], section img[alt*="Michelin"], section img[alt*="MKC"], section img[alt*="Pfizer"]').forEach(function(img, index) {
+          setTimeout(function() {
+            img.classList.remove('opacity-60');
+            img.classList.add('opacity-80');
+          }, index * 100);
+        });
+      }, 500);
+    });
+  </script>
+
   <!-- Navigation Dropdown Script -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -1101,99 +1049,6 @@
           }
         }
       });
-    });
-  </script>
-  
-  <!-- Enhanced UI Scripts -->
-  <script>
-    // Image Carousel Script
-    document.addEventListener("DOMContentLoaded", () => {
-      const slides = document.querySelectorAll('.carousel-slide');
-      const dots = document.querySelectorAll('.carousel-dot');
-      let currentSlide = 0;
-      
-      function showSlide(index) {
-        // Hide all slides
-        slides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-        
-        // Show current slide
-        slides[index].classList.add('active');
-        dots[index].classList.add('active');
-      }
-      
-      function nextSlide() {
-        currentSlide = (currentSlide + 1) % slides.length;
-        showSlide(currentSlide);
-      }
-      
-      // Auto-advance every 5 seconds
-      setInterval(nextSlide, 5000);
-      
-      // Dot navigation
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-          currentSlide = index;
-          showSlide(currentSlide);
-        });
-      });
-    });
-
-    // Image Fade-in Effect
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll("img").forEach((img) => {
-        if (img.complete) {
-          img.classList.add("loaded");
-        } else {
-          img.addEventListener("load", () => img.classList.add("loaded"));
-        }
-      });
-    });
-    
-    // Scroll Reveal without AOS
-    const observerOptions = { threshold: 0.15 };
-    
-    const revealOnScroll = (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('aos-show');
-          observer.unobserve(entry.target);
-        }
-      });
-    };
-    
-    const scrollObserver = new IntersectionObserver(revealOnScroll, observerOptions);
-    
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll('[data-aos]').forEach(el => {
-        el.classList.add('aos-hide');
-        scrollObserver.observe(el);
-      });
-      
-      // Reset any transform styles on section headings
-      document.querySelectorAll(".section-heading").forEach(el => {
-        el.style.transform = "none";
-      });
-    });
-  </script>
-  
-  <!-- Mobile Sticky CTA Button -->
-  <div class="fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-50 md:hidden hover:bg-blue-700 transition">
-    <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="block w-full h-full text-white">Let's Engineer Your Next Power Move</a>
-  </div>
-
-  <!-- Logo animation script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Initialize logo fade-ins with a slight delay for client logos
-      setTimeout(function() {
-        document.querySelectorAll('section img[alt*="ADM"], section img[alt*="AGCO"], section img[alt*="CNH"], section img[alt*="Michelin"], section img[alt*="MKC"], section img[alt*="Pfizer"]').forEach(function(img, index) {
-          setTimeout(function() {
-            img.classList.remove('opacity-60');
-            img.classList.add('opacity-80');
-          }, index * 100);
-        });
-      }, 500);
     });
   </script>
 </body>

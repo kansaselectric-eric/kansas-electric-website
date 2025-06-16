@@ -16,7 +16,7 @@ def extract_home_navigation():
         content = f.read()
     
     # Extract the CSS styles (from <style> tag in head)
-    css_pattern = r'<!-- ANTI-FLICKER DEFENSIVE STYLES.*?</style>'
+    css_pattern = r'<!-- Anti-flicker style block.*?</style>'
     css_match = re.search(css_pattern, content, re.DOTALL)
     css_styles = css_match.group(0) if css_match else ""
     
@@ -25,14 +25,19 @@ def extract_home_navigation():
     nav_match = re.search(nav_pattern, content, re.DOTALL)
     nav_html = nav_match.group(0) if nav_match else ""
     
-    # Extract the JavaScript (Kansas Electric Navigation Dropdown Script)
-    js_pattern = r'<!-- Kansas Electric Navigation Dropdown Script -->\s*<script>.*?</script>'
+    # Extract the mobile top bar HTML
+    mobile_bar_pattern = r'<!-- Mobile Top Bar -->\s*<div class="mobile-top-bar.*?</div>'
+    mobile_bar_match = re.search(mobile_bar_pattern, content, re.DOTALL)
+    mobile_bar_html = mobile_bar_match.group(0) if mobile_bar_match else ""
+    
+    # Extract the JavaScript (Navigation Dropdown Script)
+    js_pattern = r'<!-- Navigation Dropdown Script -->\s*<script>.*?</script>'
     js_match = re.search(js_pattern, content, re.DOTALL)
     js_script = js_match.group(0) if js_match else ""
     
-    return css_styles, nav_html, js_script
+    return css_styles, nav_html, mobile_bar_html, js_script
 
-def update_page_navigation(file_path, css_styles, nav_html, js_script):
+def update_page_navigation(file_path, css_styles, nav_html, mobile_bar_html, js_script):
     """Update a single page's navigation with the home page navigation."""
     
     print(f"Updating navigation for: {file_path}")
@@ -51,12 +56,16 @@ def update_page_navigation(file_path, css_styles, nav_html, js_script):
             # Adjust paths in HTML
             adjusted_nav = nav_html.replace('href="./', f'href="{"../" * depth}')
             adjusted_nav = adjusted_nav.replace('src="./assets/', f'src="{"../" * depth}assets/')
+            
+            # Adjust paths in mobile bar HTML
+            adjusted_mobile_bar = mobile_bar_html.replace('src="./assets/', f'src="{"../" * depth}assets/')
         else:
             adjusted_css = css_styles
             adjusted_nav = nav_html
+            adjusted_mobile_bar = mobile_bar_html
         
         # Remove existing navigation styles - more comprehensive removal
-        content = re.sub(r'<!-- ANTI-FLICKER DEFENSIVE STYLES.*?</style>', '', content, flags=re.DOTALL)
+        content = re.sub(r'<!-- Anti-flicker style block.*?</style>', '', content, flags=re.DOTALL)
         content = re.sub(r'<!-- UNIFIED GLOBAL NAVIGATION SYSTEM -->.*?</style>', '', content, flags=re.DOTALL)
         content = re.sub(r'<style>.*?\.kse-nav.*?</style>', '', content, flags=re.DOTALL)
         content = re.sub(r'<style>.*?\.redesigned-nav.*?</style>', '', content, flags=re.DOTALL)
@@ -67,8 +76,11 @@ def update_page_navigation(file_path, css_styles, nav_html, js_script):
         content = re.sub(r'<nav class="redesigned-nav".*?</nav>', '', content, flags=re.DOTALL)
         content = re.sub(r'<header class="site-header".*?</header>', '', content, flags=re.DOTALL)
         
+        # Remove existing mobile top bar
+        content = re.sub(r'<!-- Mobile Top Bar -->.*?</div>', '', content, flags=re.DOTALL)
+        
         # Remove existing navigation JavaScript
-        content = re.sub(r'<!-- Kansas Electric Navigation Dropdown Script -->.*?</script>', '', content, flags=re.DOTALL)
+        content = re.sub(r'<!-- Navigation Dropdown Script -->.*?</script>', '', content, flags=re.DOTALL)
         
         # Insert new CSS styles in the head section
         head_end = content.find('</head>')
@@ -80,6 +92,12 @@ def update_page_navigation(file_path, css_styles, nav_html, js_script):
         if body_start != -1:
             body_end = content.find('>', body_start) + 1
             content = content[:body_end] + '\n  ' + adjusted_nav + '\n' + content[body_end:]
+        
+        # Insert mobile top bar after navigation
+        nav_end = content.find('</nav>')
+        if nav_end != -1:
+            nav_end = content.find('\n', nav_end) + 1
+            content = content[:nav_end] + '\n  ' + adjusted_mobile_bar + '\n' + content[nav_end:]
         
         # Insert JavaScript before closing body tag
         body_close = content.rfind('</body>')
@@ -131,12 +149,13 @@ def main():
     
     # Extract navigation components from home page
     print("📄 Extracting navigation from home page...")
-    css_styles, nav_html, js_script = extract_home_navigation()
+    css_styles, nav_html, mobile_bar_html, js_script = extract_home_navigation()
     
     if not css_styles or not nav_html or not js_script:
         print("❌ Failed to extract navigation components from home page")
         print(f"CSS found: {bool(css_styles)}")
         print(f"HTML found: {bool(nav_html)}")
+        print(f"Mobile bar found: {bool(mobile_bar_html)}")
         print(f"JS found: {bool(js_script)}")
         return
     
@@ -157,7 +176,7 @@ def main():
     updated_count = 0
     for file_path in html_files:
         try:
-            update_page_navigation(file_path, css_styles, nav_html, js_script)
+            update_page_navigation(file_path, css_styles, nav_html, mobile_bar_html, js_script)
             updated_count += 1
         except Exception as e:
             print(f"❌ Failed to update {file_path}: {str(e)}")
