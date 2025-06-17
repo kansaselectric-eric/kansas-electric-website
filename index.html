@@ -783,7 +783,7 @@
 <article class="overflow-hidden">
 
   <!-- Hero Section with Video Background -->
-  <section class="relative w-full h-screen sm:h-auto sm:min-h-[calc(100vh-80px)] lg:h-screen lg:min-h-screen overflow-hidden bg-black">
+  <section id="video-section" class="relative w-full h-screen sm:h-auto sm:min-h-[calc(100vh-80px)] md:min-h-[500px] lg:h-screen lg:min-h-screen overflow-hidden bg-black">
     <!-- Video Background -->
     <video id="bg-video" muted loop playsinline preload="none" poster="/assets/img/2025 photos/fallback.jpg" class="absolute inset-0 w-full h-full object-cover z-0" style="transform: translateZ(0); backface-visibility: hidden; will-change: transform">
       <!-- Source will be injected via JS -->
@@ -953,7 +953,7 @@
   </section>
 
   <!-- Modern Hero Section with Background Image -->
-  <section class="relative h-screen sm:h-auto sm:min-h-[60vh] lg:h-screen lg:min-h-screen bg-cover bg-center bg-no-repeat hero-partner-section" style="background-image: url('./assets/img/2025 photos/KSE 1.jpg');">
+  <section class="hero-partner-section relative bg-cover bg-center bg-no-repeat flex items-center justify-center text-white text-center px-4 py-24" style="background-image: url('./assets/img/2025 photos/KSE 1.jpg');">
     <!-- Dark Overlay -->
     <div class="absolute inset-0 bg-black bg-opacity-60"></div>
     
@@ -1004,15 +1004,13 @@
     </style>
     
     <!-- Text Content Container -->
-    <div class="relative z-10 flex flex-col justify-center items-center h-full text-white text-center px-4">
-      <div class="max-w-4xl mx-auto">
+    <div class="max-w-4xl mx-auto relative z-10">
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-relaxed drop-shadow-md fade-up-element delay-100 opacity-100 transition-opacity duration-500">
           Kansas Electric — Your Trusted Partner in Power
         </h2>
         <p class="text-lg mb-8 max-w-xl mx-auto partner-subheading fade-up-element delay-200">
           From hospitals to automation, we design and build the systems that power American infrastructure.
         </p>
-      </div>
     </div>
   </section>
 
@@ -1296,7 +1294,7 @@
   </style>
 
   <footer class="footer-custom text-white py-16 px-6 border-t border-white/10" data-aos="fade-up">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12 footer-grid-md-fix">
       <!-- Left Column: Tagline -->
       <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-3" data-aos="fade-up" data-aos-delay="100">
         <p class="text-white text-sm">Built for Power. Engineered for Excellence.</p>
