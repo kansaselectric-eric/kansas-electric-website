@@ -1590,81 +1590,86 @@
       </svg>
     </button>
     <div class="mobile-nav-content pb-32">
-      <a href="/" class="block px-6 py-4 font-medium text-gray-800 text-base hover:bg-gray-100 transition">Home</a>
+      <a href="/" class="block w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition text-right">Home</a>
       
-      <div class="border-t border-gray-200"></div>
+      <div class="relative z-10 border-t border-gray-200"></div>
       
       <div>
-        <button class="flex items-center justify-between w-full text-left px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition sticky top-0 bg-white z-10" onclick="toggleMobileDropdown('servicesMenu')">
-          <span>Services</span>
-          <svg class="w-4 h-4 transition-transform transform duration-300" id="servicesMenuCaret" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-          </svg>
+        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('servicesMenu')">
+          <span></span>
+          <span class="text-right">Services</span>
         </button>
-        <div id="servicesMenu" class="hidden flex flex-col space-y-1">
-          <a href="/services/divisions/industrial/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+        <div id="servicesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
+          <a href="/services/divisions/industrial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Industrial Electrical</div>
             <div class="text-xs text-gray-500">Heavy infrastructure & power systems</div>
           </a>
-          <a href="/services/divisions/commercial/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="/services/divisions/commercial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Commercial Electrical</div>
             <div class="text-xs text-gray-500">Office buildings & retail spaces</div>
           </a>
-          <a href="/services/divisions/service-maintenance/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="/services/divisions/service-maintenance/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Service & Maintenance</div>
             <div class="text-xs text-gray-500">24/7 support & preventive care</div>
           </a>
-          <a href="/services/divisions/automation-control/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="/services/divisions/automation-control/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Automation & Control Systems</div>
             <div class="text-xs text-gray-500">Smart systems & process control</div>
           </a>
         </div>
       </div>
       
-      <div class="border-t border-gray-200"></div>
+      <div class="relative z-10 border-t border-gray-200"></div>
       
       <div>
-        <button class="flex items-center justify-between w-full text-left px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition sticky top-0 bg-white z-10" onclick="toggleMobileDropdown('industriesMenu')">
-          <span>Industries We Serve</span>
-          <svg class="w-4 h-4 transition-transform transform duration-300" id="industriesMenuCaret" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-          </svg>
+        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('industriesMenu')">
+          <span></span>
+          <span class="text-right">Industries We Serve</span>
         </button>
-        <div id="industriesMenu" class="hidden flex flex-col space-y-1">
-          <a href="/services/industrial/oil-gas/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+        <div id="industriesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
+          <a href="/services/industrial/oil-gas/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Oil & Gas</div>
             <div class="text-xs text-gray-500">Refineries & pipelines</div>
           </a>
-          <a href="/services/industrial/water-wastewater/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="/services/industrial/water-wastewater/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Water and Wastewater</div>
             <div class="text-xs text-gray-500">Treatment facilities</div>
           </a>
-          <a href="/services/industrial/data-centers/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="/services/industrial/data-centers/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Data Centers</div>
             <div class="text-xs text-gray-500">Mission critical facilities</div>
           </a>
-          <a href="/services/industrial/manufacturing/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="/services/industrial/manufacturing/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Manufacturing</div>
             <div class="text-xs text-gray-500">Production facilities</div>
           </a>
-          <a href="/services/industrial/food-beverage/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="/services/industrial/food-beverage/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Food & Beverage</div>
             <div class="text-xs text-gray-500">Processing plants</div>
           </a>
-          <a href="/services/industrial/healthcare/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="/services/industrial/healthcare/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Healthcare Infrastructure</div>
             <div class="text-xs text-gray-500">Critical care facilities</div>
           </a>
         </div>
       </div>
       
-      <div class="border-t border-gray-200"></div>
+      <div class="relative z-10 border-t border-gray-200"></div>
       
-      <a href="/projects/" class="block px-6 py-4 font-medium text-gray-800 text-base hover:bg-gray-100 transition">Projects</a>
-      <div class="border-t border-gray-200"></div>
-      <a href="/about/" class="block px-6 py-4 font-medium text-gray-800 text-base hover:bg-gray-100 transition">About</a>
-      <div class="border-t border-gray-200"></div>
-      <a href="/careers/" class="block px-6 py-4 font-medium text-gray-800 text-base hover:bg-gray-100 transition">Careers</a>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/projects/'">
+        <span></span>
+        <span class="text-right">Projects</span>
+      </button>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/about/'">
+        <span></span>
+        <span class="text-right">About</span>
+      </button>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/careers/'">
+        <span></span>
+        <span class="text-right">Careers</span>
+      </button>
       
       <div class="px-6 pt-6 pb-10">
         <a href="https://forms.gle/iJVRGxrcMVZXT6zN6"
