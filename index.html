@@ -134,65 +134,12 @@
 
 
 
-    /* Additional CSS refinement for tighter layout control */
-    #servicesMenu a,
-    #industriesMenu a {
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
     /* Graceful text handling - expand height instead of awkward wrapping */
     .mobile-nav-content a {
       word-wrap: break-word;
       overflow-wrap: break-word;
       hyphens: auto;
       min-height: fit-content;
-    }
-
-    /* Ensure titles don't wrap awkwardly */
-    #servicesMenu .text-base,
-    #industriesMenu .text-base {
-      line-height: 1.25;
-      word-spacing: normal;
-    }
-
-    /* Perfect subheading spacing */
-    #servicesMenu .text-sm,
-    #industriesMenu .text-sm {
-      line-height: 1.4;
-      color: #6b7280;
-    }
-
-    /* Mobile submenu layout control */
-    #servicesMenu a,
-    #industriesMenu a {
-      display: block;
-      padding-top: 1rem !important;
-      padding-bottom: 1rem !important;
-      border-bottom: 1px solid #e5e7eb !important;
-    }
-
-    #servicesMenu .flex,
-    #industriesMenu .flex {
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Normalize submenu text styling to match "Industrial Electrical" */
-    #servicesMenu span.text-base,
-    #industriesMenu span.text-base {
-      line-height: 1.25 !important;
-      font-weight: 500 !important;
-      color: #1f2937 !important;
-      display: block;
-    }
-
-    #servicesMenu span.text-sm,
-    #industriesMenu span.text-sm {
-      line-height: 1.4 !important;
-      color: #6b7280 !important;
-      display: block;
     }
 
     /* Mobile Top Bar */
@@ -822,75 +769,7 @@
                Let's Engineer Your Next Power Move
             </a>
 
-          <!-- NEW: Fortune 500 Mobile Nav -->
-          <div class="fixed inset-0 z-50 bg-white md:hidden hidden" id="kse-mobile-nav">
-            <div class="p-6 flex justify-between items-center border-b">
-              <img src="/assets/img/kse-logo.png" alt="Kansas Electric" class="h-8">
-              <button id="kse-nav-close" class="text-gray-600 text-3xl font-bold">&times;</button>
-            </div>
-            <nav class="flex flex-col space-y-6 p-6 text-xl font-medium text-gray-800">
-              <a href="/" class="hover:text-blue-600">Home</a>
-              <div>
-                <button class="w-full text-left flex justify-between items-center hover:text-blue-600" onclick="toggleDropdown('servicesMenu')">
-                  Services
-                  <span class="text-gray-500">&#9662;</span>
-                </button>
-                <div id="servicesMenu" class="pl-4 mt-2 hidden flex-col space-y-2">
-                  <a href="/services/industrial/" class="hover:text-blue-600">Industrial Electrical</a>
-                  <a href="/services/commercial/" class="hover:text-blue-600">Commercial Electrical</a>
-                  <a href="/services/service/" class="hover:text-blue-600">Service & Maintenance</a>
-                  <a href="/services/automation/" class="hover:text-blue-600">Automation & Controls</a>
-                </div>
-              </div>
-              <div>
-                <button class="w-full text-left flex justify-between items-center hover:text-blue-600" onclick="toggleDropdown('industriesMenu')">
-                  Industries We Serve
-                  <span class="text-gray-500">&#9662;</span>
-                </button>
-                <div id="industriesMenu" class="pl-4 mt-2 hidden flex-col">
-                  <a href="/services/industrial/oil-gas/" class="block px-6 py-4 border-b border-gray-100 hover:bg-gray-50">
-                    <div class="flex flex-col justify-start items-start space-y-0">
-                      <span class="text-base font-medium text-gray-800 leading-snug">Oil & Gas</span>
-                      <span class="text-sm text-gray-500 leading-tight">Refineries & pipelines</span>
-                    </div>
-                  </a>
-                  <a href="/services/industrial/water-wastewater/" class="block px-6 py-4 border-b border-gray-100 hover:bg-gray-50">
-                    <div class="flex flex-col justify-start items-start space-y-0">
-                      <span class="text-base font-medium text-gray-800 leading-snug">Water and Wastewater</span>
-                      <span class="text-sm text-gray-500 leading-tight">Treatment facilities</span>
-                    </div>
-                  </a>
-                  <a href="/services/industrial/data-centers/" class="block px-6 py-4 border-b border-gray-100 hover:bg-gray-50">
-                    <div class="flex flex-col justify-start items-start space-y-0">
-                      <span class="text-base font-medium text-gray-800 leading-snug">Data Centers</span>
-                      <span class="text-sm text-gray-500 leading-tight">Mission critical facilities</span>
-                    </div>
-                  </a>
-                  <a href="/services/industrial/manufacturing/" class="block px-6 py-4 border-b border-gray-100 hover:bg-gray-50">
-                    <div class="flex flex-col justify-start items-start space-y-0">
-                      <span class="text-base font-medium text-gray-800 leading-snug">Manufacturing</span>
-                      <span class="text-sm text-gray-500 leading-tight">Production facilities</span>
-                    </div>
-                  </a>
-                  <a href="/services/industrial/food-beverage/" class="block px-6 py-4 border-b border-gray-100 hover:bg-gray-50">
-                    <div class="flex flex-col justify-start items-start space-y-0">
-                      <span class="text-base font-medium text-gray-800 leading-snug">Food & Beverage</span>
-                      <span class="text-sm text-gray-500 leading-tight">Processing plants</span>
-                    </div>
-                  </a>
-                  <a href="/services/industrial/healthcare/" class="block px-6 py-4 border-b border-gray-100 hover:bg-gray-50">
-                    <div class="flex flex-col justify-start items-start space-y-0">
-                      <span class="text-base font-medium text-gray-800 leading-snug">Healthcare Infrastructure</span>
-                      <span class="text-sm text-gray-500 leading-tight">Critical care facilities</span>
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <a href="/projects/" class="hover:text-blue-600">Projects</a>
-              <a href="/careers/" class="hover:text-blue-600">Careers</a>
-              <a href="/suppliers/" class="hover:text-blue-600">Suppliers</a>
-            </nav>
-          </div>
+
 
           <button id="kse-nav-toggle" class="block md:hidden text-white text-3xl z-[1001] absolute top-6 right-6">
             &#9776;
@@ -978,27 +857,6 @@
   </script>
 
   <!-- Mobile Navigation Toggle Script -->
-  <script>
-    function toggleDropdown(id) {
-      const menu = document.getElementById(id);
-      if (menu.classList.contains('hidden')) {
-        menu.classList.remove('hidden');
-      } else {
-        menu.classList.add('hidden');
-      }
-    }
-
-    const toggleBtn = document.getElementById('kse-nav-toggle');
-    const closeBtn = document.getElementById('kse-nav-close');
-    const menuOverlay = document.getElementById('kse-mobile-nav');
-
-    toggleBtn.addEventListener('click', () => {
-      menuOverlay.classList.remove('hidden');
-    });
-    closeBtn.addEventListener('click', () => {
-      menuOverlay.classList.add('hidden');
-    });
-  </script>
 
   <!-- Link AOS CSS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -1743,30 +1601,22 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
           </svg>
         </button>
-        <div id="servicesMenu" class="pl-4 mt-2 hidden flex-col">
-          <a href="/services/divisions/industrial/" class="block px-6 py-4 border-b border-gray-100 hover:bg-gray-50">
-            <div class="flex flex-col justify-start items-start space-y-0">
-              <span class="text-base font-medium text-gray-800 leading-snug">Industrial Electrical</span>
-              <span class="text-sm text-gray-500 leading-tight">Heavy infrastructure & power systems</span>
-            </div>
+        <div id="servicesMenu" class="hidden flex flex-col space-y-1">
+          <a href="/services/divisions/industrial/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Industrial Electrical</div>
+            <div class="text-xs text-gray-500">Heavy infrastructure & power systems</div>
           </a>
-          <a href="/services/divisions/commercial/" class="block px-6 py-4 border-b border-gray-100 hover:bg-gray-50">
-            <div class="flex flex-col justify-start items-start space-y-0">
-              <span class="text-base font-medium text-gray-800 leading-snug">Commercial Electrical</span>
-              <span class="text-sm text-gray-500 leading-tight">Office buildings & retail spaces</span>
-            </div>
+          <a href="/services/divisions/commercial/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Commercial Electrical</div>
+            <div class="text-xs text-gray-500">Office buildings & retail spaces</div>
           </a>
-          <a href="/services/divisions/service-maintenance/" class="block px-6 py-4 border-b border-gray-100 hover:bg-gray-50">
-            <div class="flex flex-col justify-start items-start space-y-0">
-              <span class="text-base font-medium text-gray-800 leading-snug">Service & Maintenance</span>
-              <span class="text-sm text-gray-500 leading-tight">24/7 support & preventive care</span>
-            </div>
+          <a href="/services/divisions/service-maintenance/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Service & Maintenance</div>
+            <div class="text-xs text-gray-500">24/7 support & preventive care</div>
           </a>
-          <a href="/services/divisions/automation-control/" class="block px-6 py-4 border-b border-gray-100 hover:bg-gray-50">
-            <div class="flex flex-col justify-start items-start space-y-0">
-              <span class="text-base font-medium text-gray-800 leading-snug">Automation & Control Systems</span>
-              <span class="text-sm text-gray-500 leading-tight">Smart systems & process control</span>
-            </div>
+          <a href="/services/divisions/automation-control/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Automation & Control Systems</div>
+            <div class="text-xs text-gray-500">Smart systems & process control</div>
           </a>
         </div>
       </div>
@@ -1780,42 +1630,30 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
           </svg>
         </button>
-        <div id="industriesMenu" class="pl-4 mt-2 hidden flex-col">
-          <a href="/services/industrial/oil-gas/" class="block px-6 py-4 border-b border-gray-100 hover:bg-gray-50">
-            <div class="flex flex-col justify-start items-start space-y-0">
-              <div class="text-base font-medium text-gray-800 leading-snug">Oil & Gas</div>
-              <div class="text-sm text-gray-500 leading-tight">Refineries & pipelines</div>
-            </div>
+        <div id="industriesMenu" class="hidden flex flex-col space-y-1">
+          <a href="/services/industrial/oil-gas/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Oil & Gas</div>
+            <div class="text-xs text-gray-500">Refineries & pipelines</div>
           </a>
-          <a href="/services/industrial/water-wastewater/" class="block px-6 py-4 border-b border-gray-100 hover:bg-gray-50">
-            <div class="flex flex-col items-start">
-              <div class="text-base font-medium text-gray-800 leading-snug">Water and Wastewater</div>
-              <div class="text-sm text-gray-500 leading-tight">Treatment facilities</div>
-            </div>
+          <a href="/services/industrial/water-wastewater/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Water and Wastewater</div>
+            <div class="text-xs text-gray-500">Treatment facilities</div>
           </a>
-          <a href="/services/industrial/data-centers/" class="block px-6 py-4 border-b border-gray-100 hover:bg-gray-50">
-            <div class="flex flex-col items-start">
-              <div class="text-base font-medium text-gray-800 leading-snug">Data Centers</div>
-              <div class="text-sm text-gray-500 leading-tight">Mission critical facilities</div>
-            </div>
+          <a href="/services/industrial/data-centers/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Data Centers</div>
+            <div class="text-xs text-gray-500">Mission critical facilities</div>
           </a>
-          <a href="/services/industrial/manufacturing/" class="block px-6 py-4 border-b border-gray-100 hover:bg-gray-50">
-            <div class="flex flex-col items-start">
-              <div class="text-base font-medium text-gray-800 leading-snug">Manufacturing</div>
-              <div class="text-sm text-gray-500 leading-tight">Production facilities</div>
-            </div>
+          <a href="/services/industrial/manufacturing/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Manufacturing</div>
+            <div class="text-xs text-gray-500">Production facilities</div>
           </a>
-          <a href="/services/industrial/food-beverage/" class="block px-6 py-4 border-b border-gray-100 hover:bg-gray-50">
-            <div class="flex flex-col items-start">
-              <div class="text-base font-medium text-gray-800 leading-snug">Food & Beverage</div>
-              <div class="text-sm text-gray-500 leading-tight">Processing plants</div>
-            </div>
+          <a href="/services/industrial/food-beverage/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Food & Beverage</div>
+            <div class="text-xs text-gray-500">Processing plants</div>
           </a>
-          <a href="/services/industrial/healthcare/" class="block px-6 py-4 border-b border-gray-100 hover:bg-gray-50">
-            <div class="flex flex-col items-start">
-              <div class="text-base font-medium text-gray-800 leading-snug">Healthcare Infrastructure</div>
-              <div class="text-sm text-gray-500 leading-tight">Critical care facilities</div>
-            </div>
+          <a href="/services/industrial/healthcare/" class="block w-full px-6 py-2 border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Healthcare Infrastructure</div>
+            <div class="text-xs text-gray-500">Critical care facilities</div>
           </a>
         </div>
       </div>
@@ -1922,11 +1760,9 @@
       const isHidden = menu.classList.contains('hidden');
       if (isHidden) {
         menu.classList.remove('hidden');
-        menu.classList.add('flex', 'flex-col');
         caret?.classList.add('rotate-180');
       } else {
         menu.classList.add('hidden');
-        menu.classList.remove('flex', 'flex-col');
         caret?.classList.remove('rotate-180');
       }
     }
