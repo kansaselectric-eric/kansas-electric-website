@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="/assets/css/main.css">
   
   <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
   <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -29,8 +29,149 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   
-  <!-- KSE Navigation Styles -->
-  
+  <!-- Custom CTA visibility overrides -->
+  <style>
+    @media (max-width: 767px) {
+      .kse-nav-cta {
+        display: none !important;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .kse-nav-cta {
+        display: inline-block !important;
+      }
+    }
+
+    /* Mobile Navigation Styles */
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      width: 100vw;
+      z-index: 1000;
+      background-color: white;
+      border-radius: 1rem 0 0 1rem !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      max-width: 384px; /* 24rem */
+      width: 90vw;
+      height: 85vh;
+      overflow-y: scroll;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+      backdrop-filter: blur(16px);
+      padding-top: 1.5rem; /* Add breathing room from top */
+    }
+
+    .mobile-nav-overlay.active {
+      transform: translateX(0);
+    }
+
+    .mobile-nav-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    }
+
+    .mobile-nav-backdrop.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu-trigger {
+      position: fixed;
+      top: 33.333333%;
+      right: 0;
+      transform: translateY(-50%);
+      background-color: white;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem 0 0 0.5rem;
+      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      z-index: 950;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #1f2937;
+      transition: all 0.2s ease;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .mobile-menu-trigger:hover {
+      background-color: #f9fafb;
+      box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .mobile-nav-content {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+    }
+
+    .mobile-nav-close {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      color: #6b7280;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.2s ease, transform 0.2s ease;
+      z-index: 10;
+      padding: 0.5rem;
+    }
+
+    .mobile-nav-close:hover {
+      color: #000000;
+      transform: translateX(-0.25rem);
+    }
+
+    /* All mobile navigation styles are now handled by Tailwind classes in HTML */
+
+    /* Graceful text handling - expand height instead of awkward wrapping */
+    .mobile-nav-content a {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      min-height: fit-content;
+    }
+
+    .mobile-nav-content button {
+      text-align: center;
+      justify-content: center;
+    }
+
+    .mobile-nav-content a,
+    .mobile-nav-content button {
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    /* Mobile Top Bar */
+    .mobile-top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+    }
+
+    /* Hide mobile elements on desktop */
+    @media (min-width: 768px) {
+      .mobile-nav-overlay,
+      .mobile-nav-backdrop,
+      .mobile-sticky-cta,
+      .mobile-menu-trigger,
+      .mobile-top-bar {
+        display: none !important;
+      }
+    }
+  </style>
 
   <!-- Global Transitions & Image Fade-in -->
   <style>
@@ -41,7 +182,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   <!-- AOS Animation Library -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   
@@ -130,7 +271,6 @@
   .kse-nav-logo img {
     height: 40px;
     width: auto;
-    margin-left: -4.0rem;
   }
 
   .kse-nav-menu {
@@ -388,6 +528,123 @@
   </style>
 </head>
 <body class="font-poppins flex flex-col min-h-screen relative bg-white">
+
+  <!-- Mobile Top Bar -->
+  <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
+    <img src="../../../assets/img/kansas-electric-logo-color.svg"
+         alt="Kansas Electric"
+         class="h-10 w-auto object-contain mx-auto"
+         loading="lazy">
+  </div>
+
+  <!-- Mobile Menu Trigger -->
+  <div class="mobile-menu-trigger md:hidden" id="mobileMenuTrigger">
+    MENU →
+  </div>
+
+  <!-- Mobile Navigation Backdrop -->
+  <div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop"></div>
+
+  <!-- Mobile Navigation Overlay -->
+  <nav class="mobile-nav-overlay md:hidden fixed inset-0 bg-white z-[999]" id="mobileNavOverlay">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <div class="mobile-nav-content w-full px-6 pb-32">
+      <a href="../../../" class="block w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition text-center">Home</a>
+      
+      <div class="relative z-10 border-t border-gray-200"></div>
+      
+      <div>
+        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('servicesMenu')">
+          <span>Services</span>
+        </button>
+        <div id="servicesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
+          <a href="/services/divisions/industrial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Industrial Electrical</div>
+            <div class="text-xs text-gray-500">Heavy infrastructure & power systems</div>
+          </a>
+          <a href="/services/divisions/commercial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Commercial Electrical</div>
+            <div class="text-xs text-gray-500">Office buildings & retail spaces</div>
+          </a>
+          <a href="/services/divisions/service-maintenance/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Service & Maintenance</div>
+            <div class="text-xs text-gray-500">24/7 support & preventive care</div>
+          </a>
+          <a href="/services/divisions/automation-control/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Automation & Control Systems</div>
+            <div class="text-xs text-gray-500">Smart systems & process control</div>
+          </a>
+        </div>
+      </div>
+      
+      <div class="relative z-10 border-t border-gray-200"></div>
+      
+      <div>
+        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('industriesMenu')">
+          <span>Industries We Serve</span>
+        </button>
+        <div id="industriesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
+          <a href="/services/industrial/oil-gas/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Oil & Gas</div>
+            <div class="text-xs text-gray-500">Refineries & pipelines</div>
+          </a>
+          <a href="/services/industrial/water-wastewater/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Water and Wastewater</div>
+            <div class="text-xs text-gray-500">Treatment facilities</div>
+          </a>
+          <a href="/services/industrial/data-centers/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Data Centers</div>
+            <div class="text-xs text-gray-500">Mission critical facilities</div>
+          </a>
+          <a href="/services/industrial/manufacturing/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Manufacturing</div>
+            <div class="text-xs text-gray-500">Production facilities</div>
+          </a>
+          <a href="/services/industrial/food-beverage/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Food & Beverage</div>
+            <div class="text-xs text-gray-500">Processing plants</div>
+          </a>
+          <a href="/services/industrial/healthcare/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Healthcare Infrastructure</div>
+            <div class="text-xs text-gray-500">Critical care facilities</div>
+          </a>
+        </div>
+      </div>
+      
+      <div class="relative z-10 border-t border-gray-200"></div>
+      
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/projects/'">
+        <span>Projects</span>
+      </button>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/about/'">
+        <span>About</span>
+      </button>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/careers/'">
+        <span>Careers</span>
+      </button>
+      
+      <div class="px-6 pt-6 pb-10">
+        <a href="https://forms.gle/iJVRGxrcMVZXT6zN6"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition">
+          Let's Engineer Your Next Power Move
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Sticky CTA Button -->
+  <div class="mobile-sticky-cta fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-[999] md:hidden hover:bg-blue-700 transition">
+    <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="block w-full">Let's Engineer Your Next Power Move</a>
+  </div>
+
   <!-- UNIFIED KANSAS ELECTRIC NAVIGATION -->
   <nav class="kse-nav" role="navigation" aria-label="Main navigation">
       <div class="kse-nav-container">
@@ -406,19 +663,19 @@
                   </svg>
                 </a>
                   <div class="kse-dropdown" id="services-dropdown" role="menu" aria-hidden="true">
-                      <a href="/services/divisions/industrial/" class="kse-dropdown-link" role="menuitem">
+                      <a href="../../../services/divisions/industrial/" class="kse-dropdown-link" role="menuitem">
                           <span>Industrial Electrical</span>
                           <small>Heavy infrastructure & power systems</small>
                       </a>
-                      <a href="/services/divisions/commercial/" class="kse-dropdown-link" role="menuitem">
+                      <a href="../../../services/divisions/commercial/" class="kse-dropdown-link" role="menuitem">
                           <span>Commercial Electrical</span>
                           <small>Office buildings & retail spaces</small>
                       </a>
-                      <a href="/services/divisions/service-maintenance/" class="kse-dropdown-link" role="menuitem">
+                      <a href="../../../services/divisions/service-maintenance/" class="kse-dropdown-link" role="menuitem">
                           <span>Service & Maintenance</span>
                           <small>24/7 support & preventive care</small>
                       </a>
-                      <a href="/services/divisions/automation-control/" class="kse-dropdown-link" role="menuitem">
+                      <a href="../../../services/divisions/automation-control/" class="kse-dropdown-link" role="menuitem">
                           <span>Automation & Control Systems</span>
                           <small>Smart systems & process control</small>
                 </a>
@@ -427,7 +684,7 @@
 
               <!-- Projects (standalone link) -->
               <li class="kse-nav-item" role="none">
-                  <a href="/projects/" class="kse-nav-link" role="menuitem">
+                  <a href="../../../projects/" class="kse-nav-link" role="menuitem">
                       <span>Projects</span>
                   </a>
               </li>
@@ -441,27 +698,27 @@
                   </svg>
                   </a>
                   <div class="kse-dropdown industries-grid" id="industries-dropdown" role="menu" aria-hidden="true">
-                      <a href="/services/industrial/oil-gas/" class="kse-dropdown-link" role="menuitem">
+                      <a href="../oil-gas/" class="kse-dropdown-link" role="menuitem">
                           <span>Oil & Gas</span>
                           <small>Refineries & pipelines</small>
                       </a>
-                      <a href="/services/industrial/water-wastewater/" class="kse-dropdown-link" role="menuitem">
+                      <a href="../water-wastewater/" class="kse-dropdown-link" role="menuitem">
                           <span>Water and Wastewater</span>
                           <small>Treatment facilities</small>
                       </a>
-                      <a href="/services/industrial/data-centers/" class="kse-dropdown-link" role="menuitem">
+                      <a href="../data-centers/" class="kse-dropdown-link" role="menuitem">
                           <span>Data Centers</span>
                           <small>Mission critical facilities</small>
                       </a>
-                      <a href="/services/industrial/manufacturing/" class="kse-dropdown-link" role="menuitem">
+                      <a href="../manufacturing/" class="kse-dropdown-link" role="menuitem">
                           <span>Manufacturing</span>
                           <small>Production facilities</small>
                       </a>
-                      <a href="/services/industrial/food-beverage/" class="kse-dropdown-link" role="menuitem">
+                      <a href="../food-beverage/" class="kse-dropdown-link" role="menuitem">
                           <span>Food & Beverage</span>
                           <small>Processing plants</small>
                       </a>
-                      <a href="/services/industrial/healthcare/" class="kse-dropdown-link" role="menuitem">
+                      <a href="../healthcare/" class="kse-dropdown-link" role="menuitem">
                           <span>Healthcare Infrastructure</span>
                           <small>Critical care facilities</small>
                 </a>
@@ -470,14 +727,14 @@
 
               <!-- About (direct link) -->
               <li class="kse-nav-item" role="none">
-                  <a href="/about/" class="kse-nav-link" role="menuitem">
+                  <a href="../../../about/" class="kse-nav-link" role="menuitem">
                       <span>About</span>
                   </a>
               </li>
 
               <!-- Careers -->
               <li class="kse-nav-item" role="none">
-                  <a href="/careers/" class="kse-nav-link" role="menuitem">
+                  <a href="../../../careers/" class="kse-nav-link" role="menuitem">
                       <span>Careers</span>
                   </a>
               </li>
@@ -490,59 +747,11 @@
                Let's Engineer Your Next Power Move
             </a>
 
-          <!-- NEW: Fortune 500 Mobile Nav -->
-          <div class="fixed inset-0 z-50 bg-white md:hidden hidden" id="kse-mobile-nav">
-            <div class="p-6 flex justify-between items-center border-b">
-              <img src="/assets/img/kse-logo.png" alt="Kansas Electric" class="h-8">
-              <button id="kse-nav-close" class="text-gray-600 text-3xl font-bold">&times;</button>
-            </div>
-            <nav class="flex flex-col space-y-6 p-6 text-xl font-medium text-gray-800">
-              <a href="/" class="hover:text-blue-600">Home</a>
-              <div>
-                <button class="w-full text-left flex justify-between items-center hover:text-blue-600" onclick="toggleDropdown('servicesMenu')">
-                  Services
-                  <span class="text-gray-500">&#9662;</span>
-                </button>
-                <div id="servicesMenu" class="pl-4 mt-2 hidden flex-col space-y-2">
-                  <a href="/services/industrial/" class="hover:text-blue-600">Industrial Electrical</a>
-                  <a href="/services/commercial/" class="hover:text-blue-600">Commercial Electrical</a>
-                  <a href="/services/service/" class="hover:text-blue-600">Service & Maintenance</a>
-                  <a href="/services/automation/" class="hover:text-blue-600">Automation & Controls</a>
-                </div>
-              </div>
-              <div>
-                <button class="w-full text-left flex justify-between items-center hover:text-blue-600" onclick="toggleDropdown('industriesMenu')">
-                  Industries We Serve
-                  <span class="text-gray-500">&#9662;</span>
-                </button>
-                <div id="industriesMenu" class="pl-4 mt-2 hidden flex-col space-y-2">
-                  <a href="/industries/oil-gas/" class="hover:text-blue-600">Oil & Gas</a>
-                  <a href="/industries/water/" class="hover:text-blue-600">Water & Wastewater</a>
-                  <a href="/industries/data-centers/" class="hover:text-blue-600">Data Centers</a>
-                  <a href="/industries/manufacturing/" class="hover:text-blue-600">Manufacturing</a>
-                  <a href="/industries/food-beverage/" class="hover:text-blue-600">Food & Beverage</a>
-                  <a href="/services/industrial/healthcare/" class="hover:text-blue-600">Healthcare Infrastructure</a>
-                </div>
-              </div>
-              <a href="/projects/" class="hover:text-blue-600">Projects</a>
-              <a href="/careers/" class="hover:text-blue-600">Careers</a>
-              <a href="/suppliers/" class="hover:text-blue-600">Suppliers</a>
-            </nav>
 
-  <!-- Mobile Top Bar -->
-  <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
-    <img src="../../../assets/img/kansas-electric-logo-color.svg"
-         alt="Kansas Electric"
-         class="h-10 w-auto object-contain mx-auto"
-         loading="lazy">
-  </div>
-
-  
-  <a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-yellow-400 inline-block"><span class="block py-2">Skip to content</span></a>
-
-    
       </div>
   </nav>
+
+  <a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-yellow-400 inline-block"><span class="block py-2">Skip to content</span></a>
 
   <main id="content" class="flex-grow">
     <!-- SECTION: Hero -->
@@ -636,20 +845,19 @@
   <style>
     .footer-custom {
       background-color: #0056D2;
-      background-image: url('/assets/img/noise.png');
       background-blend-mode: overlay;
     }
   </style>
 
   <footer class="footer-custom text-white py-16 px-6 border-t border-white/10" data-aos="fade-up">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+    <div class="max-w-7xl mx-auto flex flex-col space-y-12 items-center text-center">
       <!-- Left Column: Tagline -->
-      <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-3" data-aos="fade-up" data-aos-delay="100">
+      <div class="flex flex-col items-center space-y-3" data-aos="fade-up" data-aos-delay="100">
         <p class="text-white text-sm">Built for Power. Engineered for Excellence.</p>
       </div>
       
       <!-- Center Column: Contact -->
-      <div class="flex flex-col items-center justify-center space-y-3" data-aos="fade-up" data-aos-delay="200">
+      <div class="flex flex-col items-center space-y-3" data-aos="fade-up" data-aos-delay="200">
         <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Contact</h3>
         <a href="tel:3162834750" class="text-white font-medium hover:text-white transition-colors text-base">
           (316) 283-4750
@@ -660,14 +868,14 @@
       </div>
       
       <!-- Right Column: Links -->
-      <div class="flex flex-col items-center md:items-end text-center md:text-right space-y-3" data-aos="fade-up" data-aos-delay="300">
+      <div class="flex flex-col items-center space-y-3" data-aos="fade-up" data-aos-delay="300">
         <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Links</h3>
         <a href="https://www.linkedin.com/company/kansas-electric/" class="text-white hover:text-gray-200 transition-colors" aria-label="Kansas Electric LinkedIn profile">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6" alt="Kansas Electric LinkedIn profile">
             <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
           </svg>
         </a>
-        <a href="./suppliers/" class="text-sm text-white hover:text-white hover:underline transition-colors">
+        <a href="../../../suppliers/" class="text-sm text-white hover:text-white hover:underline transition-colors">
           Interested in becoming a supplier?
         </a>
       </div>
@@ -683,68 +891,14 @@
     <!-- Copyright -->
     <div class="mt-8 text-center text-gray-200 text-sm" data-aos="fade-up" data-aos-delay="500">
       &copy; 2025 Kansas Electric. All rights reserved.
+      <a href="../../../assets/documents/04.01.2022-kansas-electric-terms-and-conditions.pdf" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="block mt-2 text-white hover:text-gray-200 text-sm underline transition-colors">
+        Terms and Conditions
+      </a>
     </div>
   </footer>
-
-  <!-- AOS Animation Library -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    // Initialize AOS animations
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof AOS !== 'undefined') {
-        AOS.init({
-          duration: 800,
-          once: true,
-          offset: 100
-        });
-      }
-    });
-  </script>
-
-  <!-- Link AOS CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  
-  
-  
-  <!-- Enhanced UI Scripts -->
-  <script>
-    // Image Fade-in Effect
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll("img").forEach((img) => {
-        if (img.complete) {
-          img.classList.add("loaded");
-        } else {
-          img.addEventListener("load", () => img.classList.add("loaded"));
-        }
-      });
-    });
-    
-    // Scroll Reveal without AOS
-    const observerOptions = { threshold: 0.15 };
-    
-    const revealOnScroll = (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('aos-show');
-          observer.unobserve(entry.target);
-        }
-      });
-    };
-    
-    const scrollObserver = new IntersectionObserver(revealOnScroll, observerOptions);
-    
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll('[data-aos]').forEach(el => {
-        el.classList.add('aos-hide');
-        scrollObserver.observe(el);
-      });
-      
-      // Reset any transform styles on section headings
-      document.querySelectorAll(".section-heading").forEach(el => {
-        el.style.transform = "none";
-      });
-    });
-  </script>
 
   <!-- Navigation Dropdown Script -->
   <script>
@@ -788,52 +942,6 @@
         }
       });
       
-      // Mobile menu toggle
-      const mobileToggle = document.querySelector('.kse-mobile-toggle');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileOverlay = document.querySelector('.kse-mobile-overlay');
-      
-      if (mobileToggle && mobileMenu) {
-        mobileToggle.addEventListener('click', function() {
-          const isOpen = mobileToggle.getAttribute('aria-expanded') === 'true';
-          
-          if (isOpen) {
-            mobileToggle.setAttribute('aria-expanded', 'false');
-            mobileMenu.classList.remove('active', 'show');
-            if (mobileOverlay) mobileOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-          } else {
-            mobileToggle.setAttribute('aria-expanded', 'true');
-            mobileMenu.classList.add('active', 'show');
-            if (mobileOverlay) mobileOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-          }
-        });
-      }
-      
-      // Mobile dropdowns
-      const mobileNavItems = document.querySelectorAll('.kse-mobile-nav-item');
-      mobileNavItems.forEach(item => {
-        const link = item.querySelector('.kse-mobile-nav-link');
-        const dropdown = item.querySelector('.kse-mobile-dropdown');
-        
-        if (link && dropdown) {
-          link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const isOpen = link.getAttribute('aria-expanded') === 'true';
-            
-            if (isOpen) {
-              link.setAttribute('aria-expanded', 'false');
-              dropdown.classList.remove('active', 'show');
-            } else {
-              link.setAttribute('aria-expanded', 'true');
-              dropdown.classList.add('active', 'show');
-            }
-          });
-        }
-      });
-      
       // Close dropdowns when clicking outside
       document.addEventListener('click', function(e) {
         if (!e.target.closest('.kse-nav')) {
@@ -845,15 +953,126 @@
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
           closeAllDropdowns();
-          
-          // Also close mobile menu if open
-          if (mobileMenu && mobileMenu.classList.contains('active')) {
-            mobileMenu.classList.remove('active', 'show');
-            if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
-            if (mobileOverlay) mobileOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-          }
         }
+      });
+    });
+  </script>
+
+  <!-- Mobile Navigation Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Mobile navigation elements
+      const mobileMenuTrigger = document.getElementById('mobileMenuTrigger');
+      const mobileNavClose = document.getElementById('mobileNavClose');
+      const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+      const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+
+      // Function to open mobile menu
+      function openMobileMenu() {
+        if (mobileNavOverlay && mobileNavBackdrop) {
+          mobileNavOverlay.classList.add('active');
+          mobileNavBackdrop.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+
+      // Function to close mobile menu
+      function closeMobileMenu() {
+        if (mobileNavOverlay && mobileNavBackdrop) {
+          mobileNavOverlay.classList.remove('active');
+          mobileNavBackdrop.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+
+      // Event listeners
+      if (mobileMenuTrigger) {
+        mobileMenuTrigger.addEventListener('click', openMobileMenu);
+      }
+
+      if (mobileNavClose) {
+        mobileNavClose.addEventListener('click', closeMobileMenu);
+      }
+
+      if (mobileNavBackdrop) {
+        mobileNavBackdrop.addEventListener('click', closeMobileMenu);
+      }
+
+      // Close menu on escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeMobileMenu();
+        }
+      });
+    });
+
+    // Mobile dropdown toggle function
+    function toggleMobileDropdown(id) {
+      const menu = document.getElementById(id);
+      const caret = document.getElementById(id + 'Caret');
+
+      const isHidden = menu.classList.contains('hidden');
+      if (isHidden) {
+        menu.classList.remove('hidden');
+        caret?.classList.add('rotate-180');
+      } else {
+        menu.classList.add('hidden');
+        caret?.classList.remove('rotate-180');
+      }
+    }
+  </script>
+
+  <!-- AOS Animation Library -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    // Initialize AOS animations
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          duration: 800,
+          once: true,
+          offset: 100
+        });
+      }
+    });
+  </script>
+
+  <!-- Enhanced UI Scripts -->
+  <script>
+    // Image Fade-in Effect
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("img").forEach((img) => {
+        if (img.complete) {
+          img.classList.add("loaded");
+        } else {
+          img.addEventListener("load", () => img.classList.add("loaded"));
+        }
+      });
+    });
+    
+    // Scroll Reveal without AOS
+    const observerOptions = { threshold: 0.15 };
+    
+    const revealOnScroll = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('aos-show');
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+    
+    const scrollObserver = new IntersectionObserver(revealOnScroll, observerOptions);
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('[data-aos]').forEach(el => {
+        el.classList.add('aos-hide');
+        scrollObserver.observe(el);
+      });
+      
+      // Reset any transform styles on section headings
+      document.querySelectorAll(".section-heading").forEach(el => {
+        el.style.transform = "none";
       });
     });
   </script>
