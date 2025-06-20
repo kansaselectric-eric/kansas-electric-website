@@ -33,9 +33,7 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-  <!-- AOS Animation Library -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   
   <!-- Custom CTA visibility overrides -->
   <style>
@@ -90,26 +88,52 @@
     }
 
     .mobile-menu-trigger {
-      position: fixed;
-      top: 33.333333%;
-      right: 0;
-      transform: translateY(-50%);
-      background-color: white;
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.5rem 0 0 0.5rem;
-      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      z-index: 950;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: #1f2937;
-      transition: all 0.2s ease;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      position: fixed !important;
+      top: 50% !important;
+      right: 0 !important;
+      transform: translateY(-50%) translateX(0) !important;
+      background: white !important;
+      color: #2D3748 !important;
+      padding: 0.5rem 0.75rem !important;
+      border-radius: 0.5rem 0 0 0.5rem !important;
+      box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1), -2px 0 8px rgba(0, 0, 0, 0.05) !important;
+      cursor: pointer !important;
+      z-index: 99999 !important;
+      font-size: 0.75rem !important;
+      font-weight: 600 !important;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+      letter-spacing: 0.025em !important;
+      /* CRITICAL: Prevent jumping during page load */
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 1 !important;
+      transition: all 0.3s ease !important;
+      border: none !important;
+      outline: none !important;
+      /* Make it small and edge-positioned */
+      width: auto !important;
+      height: auto !important;
+      max-width: 80px !important;
+      text-align: center !important;
+      /* Remove from document flow completely */
+      margin: 0 !important;
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+      left: auto !important;
+      bottom: auto !important;
+      /* Match Industrial page styling */
+      border: 1px solid rgba(229, 231, 235, 0.8) !important;
     }
 
     .mobile-menu-trigger:hover {
-      background-color: #f9fafb;
-      box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+      background: #f8f9fa !important;
+      box-shadow: -6px 0 20px rgba(0, 0, 0, 0.15), -3px 0 10px rgba(0, 0, 0, 0.1) !important;
+      transform: translateY(-50%) translateX(-3px) !important;
+      color: #0076C5 !important;
+    }
+
+    .mobile-menu-trigger:active {
+      transform: translateY(-50%) translateX(1px) !important;
     }
 
     .mobile-nav-content {
@@ -169,14 +193,48 @@
       backdrop-filter: blur(20px);
     }
 
-    /* Hide mobile elements on desktop */
+    /* Hide mobile elements on desktop - CRITICAL FIX */
     @media (min-width: 768px) {
       .mobile-nav-overlay,
       .mobile-nav-backdrop,
       .mobile-sticky-cta,
       .mobile-menu-trigger,
-      .mobile-top-bar {
+      .mobile-top-bar,
+      #mobileMenuTrigger {
         display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+    }
+
+    /* Show mobile trigger ONLY on mobile - PROPER POSITIONING */
+    @media (max-width: 767px) {
+      .mobile-menu-trigger,
+      #mobileMenuTrigger {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: fixed !important;
+        top: 50% !important;
+        right: 0 !important;
+        transform: translateY(-50%) !important;
+        z-index: 99999 !important;
+        pointer-events: auto !important;
+      }
+
+      /* Ensure mobile sticky CTA is always visible */
+      .mobile-sticky-cta {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: fixed !important;
+        bottom: 1rem !important;
+        left: 1rem !important;
+        right: 1rem !important;
+        z-index: 9999 !important;
+        pointer-events: auto !important;
+        transform: none !important;
       }
     }
   </style>
@@ -229,6 +287,19 @@
     height: 40px;
     width: auto;
     margin-left: -4.0rem;
+  }
+
+  /* Mobile logo centering */
+  @media (max-width: 767px) {
+    .kse-nav-logo img {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+    
+    .kse-nav-logo {
+      justify-content: center !important;
+      width: 100% !important;
+    }
   }
 
   .kse-nav-menu {
@@ -489,7 +560,7 @@
 <body class="font-poppins flex flex-col min-h-screen relative bg-white">
 
   <!-- Mobile Top Bar -->
-  <div class="mobile-top-bar flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
+  <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
     <img src="../../../assets/img/kansas-electric-logo-color.svg"
          alt="Kansas Electric"
          class="h-10 w-auto object-contain mx-auto"
@@ -502,7 +573,7 @@
   </div>
 
   <!-- Mobile Navigation Backdrop -->
-  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
+  <div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop"></div>
 
   <!-- Mobile Navigation Overlay -->
   <nav class="mobile-nav-overlay md:hidden" id="mobileNavOverlay">
@@ -600,7 +671,7 @@
   </nav>
 
   <!-- Mobile Sticky CTA Button -->
-  <div class="mobile-sticky-cta fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-[999] hover:bg-blue-700 transition">
+  <div class="mobile-sticky-cta fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-[999] md:hidden hover:bg-blue-700 transition">
     <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="block w-full">Let's Engineer Your Next Power Move</a>
   </div>
 
@@ -708,9 +779,7 @@
 
 
 
-          <button id="kse-nav-toggle" class="block md:hidden text-white text-3xl z-[1001] absolute top-6 right-6">
-            &#9776;
-          </button>
+
       </div>
   </nav>
 
@@ -978,6 +1047,7 @@
   <!-- Mobile Navigation Script -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      
       // Mobile navigation elements
       const mobileMenuTrigger = document.getElementById('mobileMenuTrigger');
       const mobileNavClose = document.getElementById('mobileNavClose');
@@ -1072,9 +1142,38 @@
         AOS.init({
           duration: 800,
           once: true,
-          offset: 100
+          offset: 100,
+          // Disable AOS on mobile devices to prevent navigation issues
+          disable: function() {
+            var maxWidth = 768;
+            return window.innerWidth < maxWidth;
+          }
         });
       }
+
+      // SIMPLIFIED: Just remove AOS attributes that might interfere
+      function cleanupAOSAttributes() {
+        if (window.innerWidth < 768) {
+          const mobileElements = [
+            document.getElementById('mobileMenuTrigger'),
+            document.querySelector('.mobile-menu-trigger'),
+            document.querySelector('.mobile-top-bar'),
+            document.querySelector('.mobile-sticky-cta')
+          ];
+
+          mobileElements.forEach(element => {
+            if (element) {
+              // Remove any AOS attributes that might be interfering
+              element.removeAttribute('data-aos');
+              element.removeAttribute('data-aos-delay');
+              element.removeAttribute('data-aos-duration');
+            }
+          });
+        }
+      }
+
+      // Run once after DOM is ready
+      cleanupAOSAttributes();
     });
   </script>
 </body>
