@@ -16,18 +16,26 @@
   <meta property="og:image" content="/assets/img/og-kansas-electric-1200x627.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   
-  <!-- Tailwind & Main Styles -->
+  <!-- Tailwind CSS v2.2.19 -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/main.css">
-  
-  <!-- AOS -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- 
+    Tailwind Safelist Classes (if using JIT/purge):
+    bg-white, bg-gray-50, border-slate-200, hover:bg-gray-50, 
+    shadow-md, hover:shadow-lg, rounded-2xl, transition-all, duration-300
+  -->
 
-  <!-- Favicon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../../../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../../favicon-16x16.png">
+  <link rel="manifest" href="../../../site.webmanifest">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   
   <!-- Custom CTA visibility overrides -->
   <style>
@@ -48,8 +56,6 @@
       position: fixed;
       top: 0;
       right: 0;
-      left: 0;
-      width: 100vw;
       z-index: 1000;
       background-color: white;
       border-radius: 1rem 0 0 1rem !important;
@@ -107,10 +113,10 @@
     }
 
     .mobile-nav-content {
+      padding: 1rem 0;
       display: flex;
       flex-direction: column;
       height: 100%;
-      width: 100%;
     }
 
     .mobile-nav-close {
@@ -132,6 +138,8 @@
     }
 
     /* All mobile navigation styles are now handled by Tailwind classes in HTML */
+
+
 
     /* Graceful text handling - expand height instead of awkward wrapping */
     .mobile-nav-content a {
@@ -170,57 +178,6 @@
       .mobile-top-bar {
         display: none !important;
       }
-    }
-  </style>
-
-  <!-- Global Transitions & Image Fade-in -->
-  <style>
-    img{opacity:0;transform:scale(1.02);transition:opacity .6s ease,transform .6s ease}
-    img.loaded{opacity:1;transform:scale(1)}
-  </style>
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-  <!-- AOS Animation Library -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-  
-
-  <!-- Critical CSS that must load after main.css -->
-  <style>
-    img {
-      opacity: 0;
-      transform: scale(1.02);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    
-    img.loaded {
-      opacity: 1;
-      transform: scale(1);
-    }
-    
-    /* AOS alternative styles */
-    .aos-hide {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    
-    .aos-show {
-      opacity: 1 !important;
-      transform: translateY(0) !important;
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-
-    /* AOS Fallback Styles - Ensure elements are visible even if animations fail */
-    [data-aos] {
-      opacity: 1 !important;
-      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    }
-    
-    /* Ensure all AOS elements with opacity-100 class are visible */
-    .opacity-100 {
-      opacity: 1 !important;
     }
   </style>
 
@@ -271,6 +228,7 @@
   .kse-nav-logo img {
     height: 40px;
     width: auto;
+    margin-left: -4.0rem;
   }
 
   .kse-nav-menu {
@@ -525,12 +483,13 @@
       padding-right: 4rem;
     }
   }
+
   </style>
 </head>
 <body class="font-poppins flex flex-col min-h-screen relative bg-white">
 
   <!-- Mobile Top Bar -->
-  <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
+  <div class="mobile-top-bar flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
     <img src="../../../assets/img/kansas-electric-logo-color.svg"
          alt="Kansas Electric"
          class="h-10 w-auto object-contain mx-auto"
@@ -538,21 +497,21 @@
   </div>
 
   <!-- Mobile Menu Trigger -->
-  <div class="mobile-menu-trigger md:hidden" id="mobileMenuTrigger">
+  <div class="mobile-menu-trigger" id="mobileMenuTrigger">
     MENU →
   </div>
 
   <!-- Mobile Navigation Backdrop -->
-  <div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop"></div>
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
 
   <!-- Mobile Navigation Overlay -->
-  <nav class="mobile-nav-overlay md:hidden fixed inset-0 bg-white z-[999]" id="mobileNavOverlay">
+  <nav class="mobile-nav-overlay md:hidden" id="mobileNavOverlay">
     <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
       </svg>
     </button>
-    <div class="mobile-nav-content w-full px-6 pb-32">
+    <div class="mobile-nav-content pb-32">
       <a href="../../../" class="block w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition text-center">Home</a>
       
       <div class="relative z-10 border-t border-gray-200"></div>
@@ -562,19 +521,19 @@
           <span>Services</span>
         </button>
         <div id="servicesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
-          <a href="/services/divisions/industrial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="../../../services/divisions/industrial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Industrial Electrical</div>
             <div class="text-xs text-gray-500">Heavy infrastructure & power systems</div>
           </a>
-          <a href="/services/divisions/commercial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="../../../services/divisions/commercial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Commercial Electrical</div>
             <div class="text-xs text-gray-500">Office buildings & retail spaces</div>
           </a>
-          <a href="/services/divisions/service-maintenance/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="../../../services/divisions/service-maintenance/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Service & Maintenance</div>
             <div class="text-xs text-gray-500">24/7 support & preventive care</div>
           </a>
-          <a href="/services/divisions/automation-control/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="../../../services/divisions/automation-control/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Automation & Control Systems</div>
             <div class="text-xs text-gray-500">Smart systems & process control</div>
           </a>
@@ -588,27 +547,27 @@
           <span>Industries We Serve</span>
         </button>
         <div id="industriesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
-          <a href="/services/industrial/oil-gas/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="../oil-gas/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Oil & Gas</div>
             <div class="text-xs text-gray-500">Refineries & pipelines</div>
           </a>
-          <a href="/services/industrial/water-wastewater/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="../water-wastewater/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Water and Wastewater</div>
             <div class="text-xs text-gray-500">Treatment facilities</div>
           </a>
-          <a href="/services/industrial/data-centers/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="../data-centers/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Data Centers</div>
             <div class="text-xs text-gray-500">Mission critical facilities</div>
           </a>
-          <a href="/services/industrial/manufacturing/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="../manufacturing/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Manufacturing</div>
             <div class="text-xs text-gray-500">Production facilities</div>
           </a>
-          <a href="/services/industrial/food-beverage/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="../food-beverage/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Food & Beverage</div>
             <div class="text-xs text-gray-500">Processing plants</div>
           </a>
-          <a href="/services/industrial/healthcare/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+          <a href="../healthcare/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
             <div class="text-sm font-medium text-gray-900">Healthcare Infrastructure</div>
             <div class="text-xs text-gray-500">Critical care facilities</div>
           </a>
@@ -617,15 +576,15 @@
       
       <div class="relative z-10 border-t border-gray-200"></div>
       
-      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/projects/'">
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../../../projects/'">
         <span>Projects</span>
       </button>
       <div class="relative z-10 border-t border-gray-200"></div>
-      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/about/'">
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../../../about/'">
         <span>About</span>
       </button>
       <div class="relative z-10 border-t border-gray-200"></div>
-      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/careers/'">
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../../../careers/'">
         <span>Careers</span>
       </button>
       
@@ -641,7 +600,7 @@
   </nav>
 
   <!-- Mobile Sticky CTA Button -->
-  <div class="mobile-sticky-cta fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-[999] md:hidden hover:bg-blue-700 transition">
+  <div class="mobile-sticky-cta fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-[999] hover:bg-blue-700 transition">
     <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="block w-full">Let's Engineer Your Next Power Move</a>
   </div>
 
@@ -748,6 +707,10 @@
             </a>
 
 
+
+          <button id="kse-nav-toggle" class="block md:hidden text-white text-3xl z-[1001] absolute top-6 right-6">
+            &#9776;
+          </button>
       </div>
   </nav>
 
@@ -755,7 +718,7 @@
 
   <main id="content" class="flex-grow">
     <!-- SECTION: Hero -->
-    <section class="relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image:url('/assets/img/2025 photos/Pipeline-construction-in-Kansas-2020.jpg');">
+    <section class="relative h-screen flex items-center justify-center bg-cover bg-center" style="background-image:url('../../../assets/img/2025 photos/Pipeline-construction-in-Kansas-2020.jpg');">
       <div class="absolute inset-0 bg-black/60"></div>
       <div class="relative z-10 text-center text-white px-6" data-aos="fade-up">
         <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-4">Oil, Gas &amp; Carbon Capture</h1>
@@ -777,26 +740,26 @@
           </p>
         </div>
         <div data-aos="fade-left">
-          <img src="/assets/img/2025 photos/P1000262.jpg" alt="Kansas Electric pipeline electrical installation" class="rounded-xl shadow-lg w-full h-auto object-cover">
+          <img src="../../../assets/img/2025 photos/P1000262.jpg" alt="Kansas Electric pipeline electrical installation" class="rounded-xl shadow-lg w-full h-auto object-cover">
         </div>
       </div>
     </section>
 
     <!-- SECTION: Featured Project or Scope Highlight -->
     <section class="relative py-24 bg-gray-900 text-white">
-      <div class="absolute inset-0 w-full h-full object-cover opacity-30" style="background-image: url('/assets/img/2025 photos/SS_Princeton_378.jpg'); background-position: center 30%;"></div>
-      <div class="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div class="absolute inset-0 w-full h-full object-cover opacity-30" style="background-image: url('../../../assets/img/2025 photos/SS_Princeton_378.jpg'); background-position: center 30%;"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
         <div data-aos="fade-right">
           <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Project: Southern Star Princeton Interconnect</h2>
           <p class="text-lg text-slate-200 mb-6">All electrical and instrumentation work for Southern Star's Princeton receipt interconnect, supporting critical natural gas transmission infrastructure.</p>
-          <a href="/projects/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105 shadow-lg">Explore Our Projects</a>
+          <a href="../../../projects/" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105 shadow-lg">Explore Our Projects</a>
         </div>
       </div>
     </section>
 
     <!-- SECTION: Capabilities Overview -->
     <section class="py-24 bg-gray-50 border-y border-gray-200">
-      <div class="max-w-7xl mx-auto px-6">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
         <div class="text-center mb-16" data-aos="fade-up">
           <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Specialized Capabilities</h2>
           <div class="h-1 w-16 bg-blue-600 mx-auto mb-6"></div>
@@ -834,7 +797,7 @@
     <!-- SECTION: CTA -->
     <section class="relative py-24 bg-slate-900">
       <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.1%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-      <div class="relative z-10 max-w-7xl mx-auto px-6 text-center" data-aos="fade-up">
+      <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 text-center" data-aos="fade-up">
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-gray-900">Let's Engineer Your Next Power Move</h2>
         <p class="text-xl mb-8 leading-relaxed text-slate-300 max-w-3xl mx-auto">Ready to energize your next pipeline or carbon-capture project? Our experts are standing by to deliver solutions that exceed expectations.</p>
         <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-lg text-lg transition-all duration-300 hover:scale-105 shadow-lg">Request a Project Consultation</a>
@@ -849,8 +812,8 @@
     }
   </style>
 
-  <footer class="footer-custom text-white py-16 px-6 border-t border-white/10" data-aos="fade-up">
-    <div class="max-w-7xl mx-auto flex flex-col space-y-12 items-center text-center">
+  <footer class="footer-custom text-white py-16 border-t border-white/10" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col space-y-12 items-center text-center">
       <!-- Left Column: Tagline -->
       <div class="flex flex-col items-center space-y-3" data-aos="fade-up" data-aos-delay="100">
         <p class="text-white text-sm">Built for Power. Engineered for Excellence.</p>
@@ -942,6 +905,52 @@
         }
       });
       
+      // Mobile menu toggle
+      const mobileToggle = document.querySelector('.kse-mobile-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileOverlay = document.querySelector('.kse-mobile-overlay');
+      
+      if (mobileToggle && mobileMenu) {
+        mobileToggle.addEventListener('click', function() {
+          const isOpen = mobileToggle.getAttribute('aria-expanded') === 'true';
+          
+          if (isOpen) {
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            mobileMenu.classList.remove('active', 'show');
+            if (mobileOverlay) mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+          } else {
+            mobileToggle.setAttribute('aria-expanded', 'true');
+            mobileMenu.classList.add('active', 'show');
+            if (mobileOverlay) mobileOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      }
+      
+      // Mobile dropdowns
+      const mobileNavItems = document.querySelectorAll('.kse-mobile-nav-item');
+      mobileNavItems.forEach(item => {
+        const link = item.querySelector('.kse-mobile-nav-link');
+        const dropdown = item.querySelector('.kse-mobile-dropdown');
+        
+        if (link && dropdown) {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const isOpen = link.getAttribute('aria-expanded') === 'true';
+            
+            if (isOpen) {
+              link.setAttribute('aria-expanded', 'false');
+              dropdown.classList.remove('active', 'show');
+            } else {
+              link.setAttribute('aria-expanded', 'true');
+              dropdown.classList.add('active', 'show');
+            }
+          });
+        }
+      });
+      
       // Close dropdowns when clicking outside
       document.addEventListener('click', function(e) {
         if (!e.target.closest('.kse-nav')) {
@@ -953,6 +962,14 @@
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
           closeAllDropdowns();
+          
+          // Also close mobile menu if open
+          if (mobileMenu && mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.remove('active', 'show');
+            if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+            if (mobileOverlay) mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+          }
         }
       });
     });
@@ -1004,6 +1021,28 @@
           closeMobileMenu();
         }
       });
+
+      // Remove old mobile navigation elements
+      const oldMobileNav = document.getElementById('kse-mobile-nav');
+      if (oldMobileNav) {
+        oldMobileNav.remove();
+      }
+
+      // Remove duplicate mobile elements
+      const mobileHeader = document.querySelector('.mobile-header');
+      if (mobileHeader) {
+        mobileHeader.remove();
+      }
+
+      const mobileNavPanel = document.querySelector('.mobile-nav-panel');
+      if (mobileNavPanel) {
+        mobileNavPanel.remove();
+      }
+
+      const oldMobileCta = document.getElementById('mobile-cta-button');
+      if (oldMobileCta) {
+        oldMobileCta.remove();
+      }
     });
 
     // Mobile dropdown toggle function
@@ -1020,13 +1059,15 @@
         caret?.classList.remove('rotate-180');
       }
     }
+
+    // Keep only essential menu functionality
   </script>
 
-  <!-- AOS Animation Library -->
+  <!-- AOS Styles + Script -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
-    // Initialize AOS animations
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       if (typeof AOS !== 'undefined') {
         AOS.init({
           duration: 800,
@@ -1034,46 +1075,6 @@
           offset: 100
         });
       }
-    });
-  </script>
-
-  <!-- Enhanced UI Scripts -->
-  <script>
-    // Image Fade-in Effect
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll("img").forEach((img) => {
-        if (img.complete) {
-          img.classList.add("loaded");
-        } else {
-          img.addEventListener("load", () => img.classList.add("loaded"));
-        }
-      });
-    });
-    
-    // Scroll Reveal without AOS
-    const observerOptions = { threshold: 0.15 };
-    
-    const revealOnScroll = (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('aos-show');
-          observer.unobserve(entry.target);
-        }
-      });
-    };
-    
-    const scrollObserver = new IntersectionObserver(revealOnScroll, observerOptions);
-    
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll('[data-aos]').forEach(el => {
-        el.classList.add('aos-hide');
-        scrollObserver.observe(el);
-      });
-      
-      // Reset any transform styles on section headings
-      document.querySelectorAll(".section-heading").forEach(el => {
-        el.style.transform = "none";
-      });
     });
   </script>
 </body>
