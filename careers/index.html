@@ -1200,12 +1200,32 @@
         border-radius: 0.5rem !important;
       }
 
-      /* Fix footer layout on mobile */
-      footer .max-w-7xl.mx-auto.grid.grid-cols-1.md\\:grid-cols-3.gap-12 {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 2rem !important;
-        text-align: center !important;
+      /* Footer mobile responsive layout */
+      @media (max-width: 768px) {
+        footer .max-w-7xl {
+          display: grid !important;
+          grid-template-columns: 1fr !important;
+          gap: 2rem !important;
+        }
+        
+        footer .grid > div {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          text-align: center !important;
+          justify-content: center !important;
+        }
+        
+        /* Ensure proper spacing between footer sections */
+        footer .grid > div:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+        
+        /* Hide any duplicate elements that might be causing issues */
+        footer .grid > div * {
+          position: relative;
+          z-index: 1;
+        }
       }
 
       /* Ensure job container is clickable */
@@ -1347,7 +1367,7 @@
     <!-- Company Description -->
     <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
       <p class="text-sm text-white max-w-3xl mx-auto leading-relaxed">
-        Since 1948, Kansas Electric has powered some of the region's most essential facilities � from hospitals and manufacturers to mission-critical infrastructure. We bring decades of experience, a culture of safety, and future-focused innovation to every electrical project we touch.
+        Since 1948, Kansas Electric has powered some of the region's most essential facilities - from hospitals and manufacturers to mission-critical infrastructure. We bring decades of experience, a culture of safety, and future-focused innovation to every electrical project we touch.
       </p>
     </div>
     
