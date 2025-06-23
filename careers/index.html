@@ -362,7 +362,7 @@
   </div>
 
   <!-- Mobile Navigation Backdrop -->
-  <div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop" style="display: none;"></div>
+  <div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop"></div>
 
   <!-- Mobile Navigation Overlay -->
   <nav class="mobile-nav-overlay md:hidden" id="mobileNavOverlay" style="transform: translateX(100%);">
@@ -772,6 +772,17 @@
         }
 
         function capitalizeWords(str) {
+          // Handle state abbreviations specifically (check for lowercase since input is lowercased)
+          if (str.includes(', ks') || str.includes(',ks')) {
+            return str.replace(/\b\w+/g, word => {
+              // Keep KS fully capitalized
+              if (word.toLowerCase() === 'ks') {
+                return 'KS';
+              }
+              // Capitalize first letter of other words
+              return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+            });
+          }
           return str.replace(/\b\w/g, l => l.toUpperCase());
         }
 
@@ -865,7 +876,7 @@
       position: fixed;
       top: 0;
       right: 0;
-      z-index: 1000;
+      z-index: 10000;
       background-color: white;
       border-radius: 1rem 0 0 1rem !important;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -887,15 +898,17 @@
       position: fixed;
       inset: 0;
       background-color: rgba(0, 0, 0, 0.5);
-      z-index: 999;
+      z-index: 9999;
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+      pointer-events: none;
     }
 
     .mobile-nav-backdrop.active {
       opacity: 1;
       visibility: visible;
+      pointer-events: auto;
     }
 
     .mobile-menu-trigger {
@@ -1007,10 +1020,10 @@
       box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
     }
 
-    /* Desktop Navigation Padding */
+    /* Desktop Navigation - No extra padding needed */
     @media (min-width: 769px) {
       .kse-nav {
-        padding-top: 80px;
+        padding-top: 0;
       }
     }
 
@@ -1029,12 +1042,34 @@
       }
       
       body {
-        padding-top: 0;
+        padding-top: 0 !important;
       }
     }
 
-    /* Show mobile trigger ONLY on mobile - PROPER POSITIONING */
+    /* Hide main navigation on mobile */
     @media (max-width: 767px) {
+      .kse-nav {
+        display: none !important;
+      }
+    }
+
+    /* Show mobile elements ONLY on mobile - PROPER POSITIONING */
+    @media (max-width: 767px) {
+      /* Show mobile top bar */
+      .mobile-top-bar {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1001 !important;
+        background: white !important;
+        border-bottom: 1px solid #e5e7eb !important;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
+      }
+
       .mobile-menu-trigger,
       #mobileMenuTrigger {
         display: block !important;
@@ -1062,8 +1097,40 @@
         transform: none !important;
       }
       
+      /* Only add body padding on mobile */
       body {
         padding-top: 80px !important;
+      }
+
+      /* Mobile filter styling */
+      #divisionFilter,
+      #locationFilter {
+        width: 100% !important;
+        padding: 12px 16px !important;
+        font-size: 16px !important;
+        border-radius: 8px !important;
+        border: 2px solid #e5e7eb !important;
+        background-color: white !important;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e") !important;
+        background-position: right 12px center !important;
+        background-repeat: no-repeat !important;
+        background-size: 16px !important;
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+      }
+
+      #divisionFilter:focus,
+      #locationFilter:focus {
+        outline: none !important;
+        border-color: #3b82f6 !important;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+      }
+
+      /* Center filter container on mobile */
+      .flex.flex-col.md\\:flex-row.gap-4.mb-6 {
+        align-items: center !important;
+        text-align: center !important;
       }
       
       /* Ensure main content is visible */
@@ -1099,6 +1166,58 @@
         display: block !important;
         visibility: visible !important;
       }
+
+      /* Fix mobile clickability issues */
+      select, button, a, input {
+        pointer-events: auto !important;
+        touch-action: manipulation !important;
+      }
+
+      /* Ensure mobile elements have proper z-index */
+      .mobile-nav-overlay {
+        z-index: 10000 !important;
+      }
+
+      .mobile-nav-backdrop {
+        z-index: 9999 !important;
+      }
+
+      /* Fix Life at Kansas Electric section for mobile - proper stacking */
+      .grid.md\\:grid-cols-2.gap-8.items-center {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+      }
+
+      /* Ensure proper order: image first, then text for each section */
+      .grid.md\\:grid-cols-2.gap-8.items-center > div {
+        order: unset !important;
+        width: 100% !important;
+      }
+
+      /* Make images responsive and properly sized on mobile */
+      .grid.md\\:grid-cols-2.gap-8.items-center img {
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 0.5rem !important;
+      }
+
+      /* Fix footer layout on mobile */
+      footer .max-w-7xl.mx-auto.grid.grid-cols-1.md\\:grid-cols-3.gap-12 {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+        text-align: center !important;
+      }
+
+      /* Ensure job container is clickable */
+      #jobsContainer {
+        pointer-events: auto !important;
+      }
+
+      #jobsContainer * {
+        pointer-events: auto !important;
+      }
     }
   </style>
 
@@ -1117,26 +1236,43 @@
 
       // Function to open mobile menu
       function openMobileMenu() {
+        console.log('Opening mobile menu...');
         if (mobileNavOverlay && mobileNavBackdrop) {
+          console.log('Elements found, adding active class');
           mobileNavOverlay.classList.add('active');
           mobileNavBackdrop.classList.add('active');
+          mobileNavOverlay.style.transform = 'translateX(0)';
+          mobileNavBackdrop.style.display = 'block';
           // Don't set overflow hidden to prevent content disappearing
           // document.body.style.overflow = 'hidden';
+        } else {
+          console.log('Mobile nav elements not found');
         }
       }
 
       // Function to close mobile menu
       function closeMobileMenu() {
+        console.log('Closing mobile menu...');
         if (mobileNavOverlay && mobileNavBackdrop) {
           mobileNavOverlay.classList.remove('active');
           mobileNavBackdrop.classList.remove('active');
+          mobileNavOverlay.style.transform = 'translateX(100%)';
+          mobileNavBackdrop.style.display = 'none';
           document.body.style.overflow = '';
         }
       }
 
       // Event listeners
       if (mobileMenuTrigger) {
-        mobileMenuTrigger.addEventListener('click', openMobileMenu);
+        console.log('Mobile menu trigger found, adding click listener');
+        mobileMenuTrigger.addEventListener('click', function(e) {
+          console.log('Mobile menu trigger clicked');
+          e.preventDefault();
+          e.stopPropagation();
+          openMobileMenu();
+        });
+      } else {
+        console.log('Mobile menu trigger NOT found');
       }
 
       if (mobileNavClose) {

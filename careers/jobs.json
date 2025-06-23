@@ -1,38 +1,66 @@
 {
   "jobs": [
     {
-      "title": "Foreman",
-      "location": "Wichita, KS",
-      "division": "Industrial",
-      "description": "Lead industrial crews in large-scale projects. Supervise safety, schedule, and quality control.",
+      "title": "Apprentice",
+      "location": "Newton, KS",
+      "division": "Electrical",
+      "description": "Assist journeymen with conduit installation, lighting, and power distribution. Must be enrolled in an approved apprenticeship program or willing to enroll.",
       "applyLink": "https://forms.gle/yhE3qB33LhvvVzt37"
     },
     {
-      "title": "Estimator",
+      "title": "Journeyman",
       "location": "Newton, KS",
-      "division": "Administrative",
-      "description": "Manage estimates and pricing for commercial and industrial electrical jobs. Requires strong Excel and communication skills.",
+      "division": "Electrical",
+      "description": "Perform electrical installations, maintenance, and troubleshooting. Valid Kansas electrical license required.",
+      "applyLink": "https://forms.gle/yhE3qB33LhvvVzt37"
+    },
+    {
+      "title": "Foreman",
+      "location": "Newton, KS",
+      "division": "Electrical",
+      "description": "Lead electrical crews on commercial and industrial projects. Supervise safety, schedule, and quality control.",
+      "applyLink": "https://forms.gle/yhE3qB33LhvvVzt37"
+    },
+    {
+      "title": "Apprentice",
+      "location": "Wichita, KS",
+      "division": "Electrical",
+      "description": "Assist journeymen with conduit installation, lighting, and power distribution. Must be enrolled in an approved apprenticeship program or willing to enroll.",
+      "applyLink": "https://forms.gle/yhE3qB33LhvvVzt37"
+    },
+    {
+      "title": "Journeyman",
+      "location": "Wichita, KS",
+      "division": "Electrical",
+      "description": "Perform electrical installations, maintenance, and troubleshooting. Valid Kansas electrical license required.",
+      "applyLink": "https://forms.gle/yhE3qB33LhvvVzt37"
+    },
+    {
+      "title": "Foreman",
+      "location": "Wichita, KS",
+      "division": "Electrical",
+      "description": "Lead electrical crews on commercial and industrial projects. Supervise safety, schedule, and quality control.",
       "applyLink": "https://forms.gle/yhE3qB33LhvvVzt37"
     },
     {
       "title": "Apprentice",
       "location": "Emporia, KS",
-      "division": "Commercial Electrical",
-      "description": "Assist journeymen with conduit, lighting installs, and power distribution in commercial environments. Must be enrolled in an approved apprenticeship program.",
+      "division": "Electrical",
+      "description": "Assist journeymen with conduit installation, lighting, and power distribution. Must be enrolled in an approved apprenticeship program or willing to enroll.",
+      "applyLink": "https://forms.gle/yhE3qB33LhvvVzt37"
+    },
+    {
+      "title": "Journeyman",
+      "location": "Emporia, KS",
+      "division": "Electrical",
+      "description": "Perform electrical installations, maintenance, and troubleshooting. Valid Kansas electrical license required.",
       "applyLink": "https://forms.gle/yhE3qB33LhvvVzt37"
     },
     {
       "title": "Foreman",
-      "location": "Newton, KS",
-      "division": "Service & Maintenance",
-      "description": "Lead response team for rapid diagnostics and electrical service calls. Ability to coordinate with multiple customers daily.",
-      "applyLink": "https://forms.gle/yhE3qB33LhvvVzt37"
-    },
-    {
-      "title": "Project Manager",
-      "location": "Newton, KS",
-      "division": "Automation & Controls",
-      "description": "Oversee scope, schedule, and budget for control system integrations. Coordinate subcontractors, Rockwell specs, and customer milestones.",
+      "location": "Emporia, KS",
+      "division": "Electrical",
+      "description": "Lead electrical crews on commercial and industrial projects. Supervise safety, schedule, and quality control.",
       "applyLink": "https://forms.gle/yhE3qB33LhvvVzt37"
     }
   ]
