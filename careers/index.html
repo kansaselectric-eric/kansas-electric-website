@@ -794,11 +794,16 @@
 
         // Render jobs function
         function renderJobs(jobs) {
+          // Clear any existing job posting JSON-LD scripts
+          const existingJobScripts = document.querySelectorAll('script[type="application/ld+json"][data-job-posting="true"]');
+          existingJobScripts.forEach(script => script.remove());
+
           if (jobs.length === 0) {
             jobsContainer.innerHTML = "<p class='text-center text-gray-500 mt-6'>No matching jobs found. Please check back soon or submit a general application below.</p>";
             return;
           }
 
+          // Render the visual job cards
           jobsContainer.innerHTML = jobs.map((job, index) => `
             <div class="bg-white shadow-md hover:shadow-xl transition-transform hover:scale-[1.01] duration-300 rounded-lg p-6 space-y-2">
               <span class="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded">
@@ -812,6 +817,40 @@
               </a>
             </div>
           `).join('');
+
+          // Inject JSON-LD structured data for each job
+          jobs.forEach(job => {
+            const structuredData = {
+              "@context": "https://schema.org/",
+              "@type": "JobPosting",
+              "title": job.title,
+              "description": job.description,
+              "datePosted": new Date().toISOString().split('T')[0],
+              "employmentType": "FULL_TIME",
+              "hiringOrganization": {
+                "@type": "Organization",
+                "name": "Kansas Electric",
+                "sameAs": "https://www.kansaselectric.com",
+                "logo": "https://www.kansaselectric.com/assets/img/kansas-electric-logo-color.svg"
+              },
+              "jobLocation": {
+                "@type": "Place",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": job.location,
+                  "addressRegion": "KS",
+                  "addressCountry": "US"
+                }
+              },
+              "validThrough": "2025-08-01T00:00"
+            };
+
+            const script = document.createElement("script");
+            script.type = "application/ld+json";
+            script.setAttribute("data-job-posting", "true");
+            script.text = JSON.stringify(structuredData);
+            document.head.appendChild(script);
+          });
         }
 
         // Clear filters function
