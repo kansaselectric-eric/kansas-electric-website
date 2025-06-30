@@ -4,6 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
+  <!-- Global site tag (gtag.js) - Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16834266553"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'AW-16834266553');
+  </script>
+  
   <!-- Tailwind CSS v2.2.19 -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <!-- 
@@ -1292,6 +1301,95 @@
           offset: 100
         });
       }
+    });
+  </script>
+
+  <!-- UL Panel Shop Tracking Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Track CTA clicks to UL Panel Quote page
+      const ctaLinks = document.querySelectorAll('a[href*="request-a-ul-panel-quote"], button[onclick*="request-a-ul-panel-quote"]');
+      
+      ctaLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          // Fire gtag event for CTA click
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'click', {
+              event_category: 'CTA',
+              event_label: 'UL Panel Quote CTA'
+            });
+          }
+        });
+      });
+
+      // Scroll depth tracking
+      let scrollDepthTracked = {
+        '25': false,
+        '50': false,
+        '75': false,
+        '100': false
+      };
+
+      function trackScrollDepth() {
+        const scrollPosition = window.scrollY;
+        const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercentage = Math.round((scrollPosition / documentHeight) * 100);
+
+        // Track each milestone once
+        if (scrollPercentage >= 25 && !scrollDepthTracked['25']) {
+          scrollDepthTracked['25'] = true;
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'scroll_depth', {
+              event_category: 'Scroll',
+              event_label: 'UL Panel Page - 25%'
+            });
+          }
+        }
+        
+        if (scrollPercentage >= 50 && !scrollDepthTracked['50']) {
+          scrollDepthTracked['50'] = true;
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'scroll_depth', {
+              event_category: 'Scroll',
+              event_label: 'UL Panel Page - 50%'
+            });
+          }
+        }
+        
+        if (scrollPercentage >= 75 && !scrollDepthTracked['75']) {
+          scrollDepthTracked['75'] = true;
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'scroll_depth', {
+              event_category: 'Scroll',
+              event_label: 'UL Panel Page - 75%'
+            });
+          }
+        }
+        
+        if (scrollPercentage >= 100 && !scrollDepthTracked['100']) {
+          scrollDepthTracked['100'] = true;
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'scroll_depth', {
+              event_category: 'Scroll',
+              event_label: 'UL Panel Page - 100%'
+            });
+          }
+        }
+      }
+
+      // Throttled scroll listener for performance
+      let ticking = false;
+      function requestTick() {
+        if (!ticking) {
+          requestAnimationFrame(trackScrollDepth);
+          ticking = true;
+          setTimeout(function() {
+            ticking = false;
+          }, 100); // Throttle to every 100ms
+        }
+      }
+
+      window.addEventListener('scroll', requestTick);
     });
   </script>
 </body>

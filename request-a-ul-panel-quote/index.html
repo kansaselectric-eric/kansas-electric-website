@@ -4,6 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
+  <!-- Global site tag (gtag.js) - Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16834266553"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'AW-16834266553');
+  </script>
+  
   <!-- Tailwind CSS v2.2.19 -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
@@ -1083,7 +1092,153 @@
       }
     });
   </script>
-</body>
-</html>
+
+  <!-- UL Panel Quote Form Tracking Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const iframe = document.querySelector('iframe[src*="docs.google.com/forms"]');
+      let formStartTracked = false;
+      let formAbandonTimer = null;
+      let formSubmitTracked = false;
+
+      if (!iframe) return;
+
+      // Track form start when iframe comes into view or gains focus
+      function trackFormStart() {
+        if (formStartTracked) return;
+        
+        formStartTracked = true;
+        
+        // Fire form start event
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'form_start', {
+            event_category: 'Form',
+            event_label: 'UL Panel Quote Form'
+          });
+        }
+
+        // Start 2-minute abandon timer
+        formAbandonTimer = setTimeout(function() {
+          if (!formSubmitTracked) {
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'form_abandon', {
+                event_category: 'Form',
+                event_label: 'UL Panel Quote Form'
+              });
+            }
+          }
+        }, 120000); // 2 minutes = 120,000ms
+      }
+
+      // IntersectionObserver to detect when form comes into view
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+            trackFormStart();
+          }
+        });
+      }, { threshold: 0.5 });
+
+      observer.observe(iframe);
+
+      // Also track if iframe gains focus
+      iframe.addEventListener('focus', trackFormStart);
+      iframe.addEventListener('click', trackFormStart);
+
+      // Listen for messages from the iframe (form submission detection)
+      window.addEventListener('message', function(event) {
+        // Check if message is from Google Forms
+        if (event.origin !== 'https://docs.google.com') return;
+        
+        // Check for form submission indicators
+        if (event.data && typeof event.data === 'string') {
+          if (event.data.includes('formResponse') || 
+              event.data.includes('submitted') || 
+              event.data.includes('thank you')) {
+            trackFormSubmit();
+          }
+        }
+      });
+
+      // Alternative method: Monitor iframe URL changes for formResponse
+      let lastUrl = '';
+      function checkIframeUrl() {
+        try {
+          const currentUrl = iframe.contentWindow.location.href;
+          if (currentUrl !== lastUrl) {
+            lastUrl = currentUrl;
+            if (currentUrl.includes('formResponse')) {
+              trackFormSubmit();
+            }
+          }
+        } catch (e) {
+          // Cross-origin restrictions prevent URL access
+          // This is expected for Google Forms iframes
+        }
+      }
+
+      // Check URL periodically (this may not work due to cross-origin restrictions)
+      setInterval(checkIframeUrl, 1000);
+
+      // Monitor for navigation away from the form
+      window.addEventListener('beforeunload', function() {
+        if (formStartTracked && !formSubmitTracked && formAbandonTimer) {
+          clearTimeout(formAbandonTimer);
+          if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_abandon', {
+              event_category: 'Form',
+              event_label: 'UL Panel Quote Form'
+            });
+          }
+        }
+      });
+
+      function trackFormSubmit() {
+        if (formSubmitTracked) return;
+        
+        formSubmitTracked = true;
+        
+        // Clear abandon timer since form was submitted
+        if (formAbandonTimer) {
+          clearTimeout(formAbandonTimer);
+          formAbandonTimer = null;
+        }
+
+                 // Fire conversion event
+         if (typeof gtag !== 'undefined') {
+           gtag('event', 'conversion', {
+             send_to: 'AW-16834266553/-ZuECMmV8OYaELmLmts-'
+           });
+         }
+      }
+
+      // Alternative form submission detection using iframe load events
+      iframe.addEventListener('load', function() {
+        setTimeout(function() {
+          try {
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            const thankYouMessage = iframeDoc.querySelector('[data-response="true"], .freebirdFormviewerViewResponseConfirmationMessage');
+            
+            if (thankYouMessage) {
+              trackFormSubmit();
+            }
+          } catch (e) {
+            // Cross-origin restrictions - expected
+          }
+        }, 1000);
+      });
+    });
+  </script>
+
+  <!-- Conversion snippet for UL Panel Quote Submission -->
+  <script>
+    window.addEventListener('message', function(event) {
+      if (event.origin.includes('google.com') && event.data && typeof event.data === 'string' && event.data.includes('formResponse')) {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-16834266553/-ZuECMmV8OYaELmLmts-'
+        });
+      }
+    });
+  </script>
 </body>
 </html> 
