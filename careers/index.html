@@ -773,7 +773,7 @@
         // Populate filter dropdowns dynamically
         function populateFilters(jobs) {
           const uniqueDivisions = [...new Set(jobs.map(job => job.division.toLowerCase()))];
-          const uniqueLocations = [...new Set(jobs.map(job => job.location.toLowerCase()))];
+          const uniqueLocations = [...new Set(jobs.flatMap(job => job.locations).map(location => location.toLowerCase()))];
 
           divisionFilter.innerHTML = '<option value="all">All Divisions</option>';
           uniqueDivisions.forEach(division => {
@@ -819,46 +819,49 @@
                 ${job.division}
               </span>
               <h3 class="text-xl font-semibold text-gray-900">${job.title}</h3>
-              <p class="text-sm text-gray-500">${job.location}</p>
-              <p class="text-gray-700 mt-2">${job.description}</p>
-              <a href="${job.applyLink}" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded">
-                Apply Now
+              <p class="text-sm text-gray-500">${job.locations.join(', ')}</p>
+              <p class="text-gray-700 mt-2">${job.summary}</p>
+              <a href="/careers/${job.slug}" class="inline-block mt-4 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded">
+                View Job Description
               </a>
             </div>
           `).join('');
 
           // Inject JSON-LD structured data for each job
           jobs.forEach(job => {
-            const structuredData = {
-              "@context": "https://schema.org/",
-              "@type": "JobPosting",
-              "title": job.title,
-              "description": job.description,
-              "datePosted": new Date().toISOString().split('T')[0],
-              "employmentType": "FULL_TIME",
-              "hiringOrganization": {
-                "@type": "Organization",
-                "name": "Kansas Electric",
-                "sameAs": "https://www.kansaselectric.com",
-                "logo": "https://www.kansaselectric.com/assets/img/kansas-electric-logo-color.svg"
-              },
-              "jobLocation": {
-                "@type": "Place",
-                "address": {
-                  "@type": "PostalAddress",
-                  "addressLocality": job.location,
-                  "addressRegion": "KS",
-                  "addressCountry": "US"
-                }
-              },
-              "validThrough": "2025-08-01T00:00"
-            };
+            // Create structured data for each location
+            job.locations.forEach(location => {
+              const structuredData = {
+                "@context": "https://schema.org/",
+                "@type": "JobPosting",
+                "title": job.title,
+                "description": job.summary,
+                "datePosted": new Date().toISOString().split('T')[0],
+                "employmentType": "FULL_TIME",
+                "hiringOrganization": {
+                  "@type": "Organization",
+                  "name": "Kansas Electric",
+                  "sameAs": "https://www.kansaselectric.com",
+                  "logo": "https://www.kansaselectric.com/assets/img/kansas-electric-logo-color.svg"
+                },
+                "jobLocation": {
+                  "@type": "Place",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": location,
+                    "addressRegion": "KS",
+                    "addressCountry": "US"
+                  }
+                },
+                "validThrough": "2025-08-01T00:00"
+              };
 
-            const script = document.createElement("script");
-            script.type = "application/ld+json";
-            script.setAttribute("data-job-posting", "true");
-            script.text = JSON.stringify(structuredData);
-            document.head.appendChild(script);
+              const script = document.createElement("script");
+              script.type = "application/ld+json";
+              script.setAttribute("data-job-posting", "true");
+              script.text = JSON.stringify(structuredData);
+              document.head.appendChild(script);
+            });
           });
         }
 
@@ -876,7 +879,7 @@
 
           const filteredJobs = allJobs.filter(job => {
             return (selectedDivision === "all" || job.division.toLowerCase() === selectedDivision) &&
-                   (selectedLocation === "all" || job.location.toLowerCase() === selectedLocation);
+                   (selectedLocation === "all" || job.locations.some(location => location.toLowerCase() === selectedLocation));
           });
 
           renderJobs(filteredJobs);
@@ -1336,6 +1339,15 @@
         }
       }
 
+      // Function to toggle mobile menu
+      function toggleMobileMenu() {
+        if (mobileNavOverlay && mobileNavOverlay.classList.contains('active')) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      }
+
       // Event listeners
       if (mobileMenuTrigger) {
         console.log('Mobile menu trigger found, adding click listener');
@@ -1343,7 +1355,7 @@
           console.log('Mobile menu trigger clicked');
           e.preventDefault();
           e.stopPropagation();
-          openMobileMenu();
+          toggleMobileMenu();
         });
       } else {
         console.log('Mobile menu trigger NOT found');

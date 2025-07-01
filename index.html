@@ -160,6 +160,13 @@
       right: 0;
       z-index: 1000;
       backdrop-filter: blur(20px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+      background-color: white;
+      border-bottom: 1px solid #e5e7eb;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
     }
 
     /* Hide mobile elements on desktop */
@@ -170,6 +177,55 @@
       .mobile-menu-trigger,
       .mobile-top-bar {
         display: none !important;
+      }
+    }
+
+    /* Show mobile elements ONLY on mobile - PROPER POSITIONING */
+    @media (max-width: 767px) {
+      /* Show mobile top bar */
+      .mobile-top-bar {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1001 !important;
+        background: white !important;
+        border-bottom: 1px solid #e5e7eb !important;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
+      }
+
+      .mobile-menu-trigger {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: fixed !important;
+        top: 50% !important;
+        right: 0 !important;
+        transform: translateY(-50%) !important;
+        z-index: 99999 !important;
+        pointer-events: auto !important;
+      }
+
+      /* Ensure mobile sticky CTA is always visible */
+      .mobile-sticky-cta {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: fixed !important;
+        bottom: 1rem !important;
+        left: 1rem !important;
+        right: 1rem !important;
+        z-index: 9999 !important;
+        pointer-events: auto !important;
+        transform: none !important;
+      }
+      
+      /* Only add body padding on mobile */
+      body {
+        padding-top: 80px !important;
       }
     }
   </style>
@@ -674,6 +730,126 @@
   
 </head>
 <body class="font-poppins flex flex-col min-h-screen relative">
+
+  <!-- Mobile Top Bar -->
+  <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
+    <img src="./assets/img/kansas-electric-logo-color.svg"
+         alt="Kansas Electric"
+         class="h-10 w-auto object-contain mx-auto"
+         loading="lazy">
+  </div>
+
+  <!-- Mobile Menu Trigger -->
+  <div class="mobile-menu-trigger md:hidden" id="mobileMenuTrigger">
+    MENU →
+  </div>
+
+  <!-- Mobile Navigation Backdrop -->
+  <div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop"></div>
+
+  <!-- Mobile Navigation Overlay -->
+  <nav class="mobile-nav-overlay md:hidden" id="mobileNavOverlay">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <div class="mobile-nav-content pb-32">
+      <a href="/" class="block w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition text-center">Home</a>
+      
+      <div class="relative z-10 border-t border-gray-200"></div>
+      
+      <div>
+        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('servicesMenu')">
+          <span>Services</span>
+        </button>
+        <div id="servicesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
+          <a href="/services/divisions/industrial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Industrial Electrical</div>
+            <div class="text-xs text-gray-500">Heavy infrastructure & power systems</div>
+          </a>
+          <a href="/services/divisions/commercial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Commercial Electrical</div>
+            <div class="text-xs text-gray-500">Office buildings & retail spaces</div>
+          </a>
+          <a href="/services/divisions/service-maintenance/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Service & Maintenance</div>
+            <div class="text-xs text-gray-500">24/7 support & preventive care</div>
+          </a>
+          <a href="/services/divisions/automation-control/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Automation & Control Systems</div>
+            <div class="text-xs text-gray-500">Smart systems & process control</div>
+          </a>
+          <a href="/services/divisions/ul-panel-shop/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">UL Panel Shop</div>
+            <div class="text-xs text-gray-500">Custom UL 508A certified panels</div>
+          </a>
+        </div>
+      </div>
+      
+      <div class="relative z-10 border-t border-gray-200"></div>
+      
+      <div>
+        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('industriesMenu')">
+          <span>Industries We Serve</span>
+        </button>
+        <div id="industriesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
+          <a href="/services/industrial/oil-gas/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Oil & Gas</div>
+            <div class="text-xs text-gray-500">Refineries & pipelines</div>
+          </a>
+          <a href="/services/industrial/wastewater-treatment/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Water and Wastewater</div>
+            <div class="text-xs text-gray-500">Treatment facilities</div>
+          </a>
+          <a href="/services/industrial/data-centers/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Data Centers</div>
+            <div class="text-xs text-gray-500">Mission critical facilities</div>
+          </a>
+          <a href="/services/industrial/advanced-manufacturing/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Manufacturing</div>
+            <div class="text-xs text-gray-500">Production facilities</div>
+          </a>
+          <a href="/services/industrial/food-beverage/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Food & Beverage</div>
+            <div class="text-xs text-gray-500">Processing plants</div>
+          </a>
+          <a href="/services/industrial/healthcare/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Healthcare Infrastructure</div>
+            <div class="text-xs text-gray-500">Critical care facilities</div>
+          </a>
+        </div>
+      </div>
+      
+      <div class="relative z-10 border-t border-gray-200"></div>
+      
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/projects/'">
+        <span>Projects</span>
+      </button>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/about/'">
+        <span>About</span>
+      </button>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/careers/'">
+        <span>Careers</span>
+      </button>
+      
+      <div class="px-6 pt-6 pb-10">
+        <a href="https://forms.gle/iJVRGxrcMVZXT6zN6"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition">
+          Let's Engineer Your Next Power Move
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Sticky CTA Button -->
+  <div class="mobile-sticky-cta fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-[999] md:hidden hover:bg-blue-700 transition">
+    <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="block w-full">Let's Engineer Your Next Power Move</a>
+  </div>
 
   <a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-ke-yellow inline-block"><span class="block py-2">Skip to content</span></a>
 
@@ -1549,130 +1725,7 @@
     });
   </script>
 
-  <!-- Mobile Top Bar -->
-  <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
-    <img src="./assets/img/kansas-electric-logo-color.svg"
-         alt="Kansas Electric"
-         class="h-10 w-auto object-contain mx-auto"
-         loading="lazy">
-  </div>
 
-  <!-- Mobile Menu Trigger -->
-  <div class="mobile-menu-trigger md:hidden" id="mobileMenuTrigger">
-    MENU →
-  </div>
-
-  <!-- Mobile Navigation Backdrop -->
-  <div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop"></div>
-
-  <!-- Mobile Navigation Overlay -->
-  <nav class="mobile-nav-overlay md:hidden" id="mobileNavOverlay">
-    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-      </svg>
-    </button>
-    <div class="mobile-nav-content pb-32">
-      <a href="/" class="block w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition text-right">Home</a>
-      
-      <div class="relative z-10 border-t border-gray-200"></div>
-      
-      <div>
-        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('servicesMenu')">
-          <span></span>
-          <span class="text-right">Services</span>
-        </button>
-        <div id="servicesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
-          <a href="/services/divisions/industrial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
-            <div class="text-sm font-medium text-gray-900">Industrial Electrical</div>
-            <div class="text-xs text-gray-500">Heavy infrastructure & power systems</div>
-          </a>
-          <a href="/services/divisions/commercial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
-            <div class="text-sm font-medium text-gray-900">Commercial Electrical</div>
-            <div class="text-xs text-gray-500">Office buildings & retail spaces</div>
-          </a>
-          <a href="/services/divisions/service-maintenance/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
-            <div class="text-sm font-medium text-gray-900">Service & Maintenance</div>
-            <div class="text-xs text-gray-500">24/7 support & preventive care</div>
-          </a>
-          <a href="/services/divisions/automation-control/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
-            <div class="text-sm font-medium text-gray-900">Automation & Control Systems</div>
-            <div class="text-xs text-gray-500">Smart systems & process control</div>
-          </a>
-          <a href="/services/divisions/ul-panel-shop/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
-            <div class="text-sm font-medium text-gray-900">UL Panel Shop</div>
-            <div class="text-xs text-gray-500">Custom UL 508A certified panels</div>
-          </a>
-        </div>
-      </div>
-      
-      <div class="relative z-10 border-t border-gray-200"></div>
-      
-      <div>
-        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('industriesMenu')">
-          <span></span>
-          <span class="text-right">Industries We Serve</span>
-        </button>
-        <div id="industriesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
-          <a href="/services/industrial/oil-gas/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
-            <div class="text-sm font-medium text-gray-900">Oil & Gas</div>
-            <div class="text-xs text-gray-500">Refineries & pipelines</div>
-          </a>
-          <a href="/services/industrial/wastewater-treatment/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
-            <div class="text-sm font-medium text-gray-900">Water and Wastewater</div>
-            <div class="text-xs text-gray-500">Treatment facilities</div>
-          </a>
-          <a href="/services/industrial/data-centers/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
-            <div class="text-sm font-medium text-gray-900">Data Centers</div>
-            <div class="text-xs text-gray-500">Mission critical facilities</div>
-          </a>
-          <a href="/services/industrial/advanced-manufacturing/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
-            <div class="text-sm font-medium text-gray-900">Manufacturing</div>
-            <div class="text-xs text-gray-500">Production facilities</div>
-          </a>
-          <a href="/services/industrial/food-beverage/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
-            <div class="text-sm font-medium text-gray-900">Food & Beverage</div>
-            <div class="text-xs text-gray-500">Processing plants</div>
-          </a>
-          <a href="/services/industrial/healthcare/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
-            <div class="text-sm font-medium text-gray-900">Healthcare Infrastructure</div>
-            <div class="text-xs text-gray-500">Critical care facilities</div>
-          </a>
-        </div>
-      </div>
-      
-      <div class="relative z-10 border-t border-gray-200"></div>
-      
-      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/projects/'">
-        <span></span>
-        <span class="text-right">Projects</span>
-      </button>
-      <div class="relative z-10 border-t border-gray-200"></div>
-      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/about/'">
-        <span></span>
-        <span class="text-right">About</span>
-      </button>
-      <div class="relative z-10 border-t border-gray-200"></div>
-      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/careers/'">
-        <span></span>
-        <span class="text-right">Careers</span>
-      </button>
-      
-      <div class="px-6 pt-6 pb-10">
-        <a href="https://forms.gle/iJVRGxrcMVZXT6zN6"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition">
-          Let's Engineer Your Next Power Move
-        </a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Mobile Sticky CTA Button -->
-  <div class="mobile-sticky-cta fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-[999] md:hidden hover:bg-blue-700 transition">
-    <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="block w-full">Let's Engineer Your Next Power Move</a>
-  </div>
 
   <!-- Mobile Navigation Script -->
   <script>
@@ -1701,9 +1754,18 @@
         }
       }
 
+      // Function to toggle mobile menu
+      function toggleMobileMenu() {
+        if (mobileNavOverlay && mobileNavOverlay.classList.contains('active')) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      }
+
       // Event listeners
       if (mobileMenuTrigger) {
-        mobileMenuTrigger.addEventListener('click', openMobileMenu);
+        mobileMenuTrigger.addEventListener('click', toggleMobileMenu);
       }
 
       if (mobileNavClose) {

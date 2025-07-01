@@ -1017,9 +1017,18 @@
         }
       }
 
+      // Function to toggle mobile menu
+      function toggleMobileMenu() {
+        if (mobileNavOverlay && mobileNavOverlay.classList.contains('active')) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      }
+
       // Event listeners
       if (mobileMenuTrigger) {
-        mobileMenuTrigger.addEventListener('click', openMobileMenu);
+        mobileMenuTrigger.addEventListener('click', toggleMobileMenu);
       }
 
       if (mobileNavClose) {

@@ -1144,9 +1144,17 @@
         }
       }
 
+      function toggleMobileMenu() {
+        if (mobileNavOverlay && mobileNavOverlay.classList.contains('active')) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      }
+
       // Mobile menu trigger click
       if (mobileMenuTrigger) {
-        mobileMenuTrigger.addEventListener('click', openMobileMenu);
+        mobileMenuTrigger.addEventListener('click', toggleMobileMenu);
       }
 
       // Mobile menu close button click
