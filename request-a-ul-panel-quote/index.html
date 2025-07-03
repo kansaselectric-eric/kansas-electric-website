@@ -1254,5 +1254,29 @@
       }
     });
   </script>
+
+  <!-- Google Form Submission Tracking -->
+  <script>
+window.addEventListener('DOMContentLoaded', function () {
+  const observer = new MutationObserver(function () {
+    const iframe = document.querySelector('iframe[src*="google.com/forms"]');
+    if (iframe) {
+      try {
+        const innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+        const bodyText = innerDoc.body.innerText || '';
+        if (bodyText.includes("Thanks for reaching out to Kansas Electric. We'll review your request and follow up shortly.")) {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({ event: 'ulPanelFormSubmitted' });
+          observer.disconnect(); // Stop observing once triggered
+        }
+      } catch (e) {
+        // Ignore CORS issues silently
+      }
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+});
+</script>
 </body>
 </html> 
