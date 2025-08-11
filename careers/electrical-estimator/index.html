@@ -221,6 +221,44 @@
     }
   }
   </style>
+
+  <!-- JSON-LD Structured Data for Job Posting -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "JobPosting",
+  "title": "Electrical Estimator",
+  "description": "Estimate electrical scopes of work, prepare bids, coordinate with PMs and clients, and support the preconstruction pipeline at Kansas Electric. Compensation depends on experience. Salary range: $65,000–$90,000/year.",
+  "identifier": {
+    "@type": "PropertyValue",
+    "name": "Kansas Electric",
+    "value": "electrical-estimator"
+  },
+  "datePosted": "2025-07-05",
+  "employmentType": "FULL_TIME",
+  "hiringOrganization": {
+    "@type": "Organization",
+    "name": "Kansas Electric",
+    "sameAs": "https://www.kansaselectric.com",
+    "logo": "https://www.kansaselectric.com/assets/img/kansas-electric-logo-color.svg"
+  },
+  "jobLocation": {
+    "@type": "Place",
+    "address": { "@type": "PostalAddress", "addressLocality": "Newton", "addressRegion": "KS", "addressCountry": "US" }
+  },
+  "baseSalary": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": {
+      "@type": "QuantitativeValue",
+      "minValue": 65000,
+      "maxValue": 90000,
+      "unitText": "YEAR"
+    }
+  },
+  "directApply": true
+}
+  </script>
 </head>
 <body class="font-poppins flex flex-col min-h-screen relative bg-white">
 

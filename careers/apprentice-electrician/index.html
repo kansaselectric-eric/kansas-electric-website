@@ -221,6 +221,45 @@
     }
   }
   </style>
+
+  <!-- JSON-LD Structured Data for Job Posting -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "JobPosting",
+  "title": "Apprentice Electrician",
+  "description": "Assist licensed electricians on job sites across Kansas. Learn commercial and industrial electrical systems through real projects and mentoring. Compensation depends on experience. Hourly range: $18–$23/hr.",
+  "identifier": {
+    "@type": "PropertyValue",
+    "name": "Kansas Electric",
+    "value": "apprentice-electrician"
+  },
+  "datePosted": "2025-07-05",
+  "employmentType": "FULL_TIME",
+  "hiringOrganization": {
+    "@type": "Organization",
+    "name": "Kansas Electric",
+    "sameAs": "https://www.kansaselectric.com",
+    "logo": "https://www.kansaselectric.com/assets/img/kansas-electric-logo-color.svg"
+  },
+  "jobLocation": [
+    { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Wichita", "addressRegion": "KS", "addressCountry": "US" }},
+    { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Newton", "addressRegion": "KS", "addressCountry": "US" }},
+    { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Emporia", "addressRegion": "KS", "addressCountry": "US" }}
+  ],
+  "baseSalary": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": {
+      "@type": "QuantitativeValue",
+      "minValue": 18,
+      "maxValue": 23,
+      "unitText": "HOUR"
+    }
+  },
+  "directApply": true
+}
+  </script>
 </head>
 <body class="font-poppins flex flex-col min-h-screen relative bg-white">
 

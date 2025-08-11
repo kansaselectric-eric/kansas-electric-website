@@ -221,6 +221,45 @@
     }
   }
   </style>
+
+  <!-- JSON-LD Structured Data for Job Posting -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "JobPosting",
+  "title": "Journeyman Electrician",
+  "description": "Perform complex installations, troubleshoot systems, and lead small crews across commercial and industrial job sites in Kansas and nearby states. Compensation depends on experience. Hourly range: $30–$38/hr.",
+  "identifier": {
+    "@type": "PropertyValue",
+    "name": "Kansas Electric",
+    "value": "journeyman-electrician"
+  },
+  "datePosted": "2025-07-05",
+  "employmentType": "FULL_TIME",
+  "hiringOrganization": {
+    "@type": "Organization",
+    "name": "Kansas Electric",
+    "sameAs": "https://www.kansaselectric.com",
+    "logo": "https://www.kansaselectric.com/assets/img/kansas-electric-logo-color.svg"
+  },
+  "jobLocation": [
+    { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Wichita", "addressRegion": "KS", "addressCountry": "US" }},
+    { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Newton", "addressRegion": "KS", "addressCountry": "US" }},
+    { "@type": "Place", "address": { "@type": "PostalAddress", "addressLocality": "Emporia", "addressRegion": "KS", "addressCountry": "US" }}
+  ],
+  "baseSalary": {
+    "@type": "MonetaryAmount",
+    "currency": "USD",
+    "value": {
+      "@type": "QuantitativeValue",
+      "minValue": 30,
+      "maxValue": 38,
+      "unitText": "HOUR"
+    }
+  },
+  "directApply": true
+}
+  </script>
 </head>
 <body class="font-poppins flex flex-col min-h-screen relative bg-white">
 
