@@ -206,7 +206,7 @@
 
   .kse-nav-cta {
     display: inline-block;
-    background-color: #F7941E;
+    background-color: #0056D2;
     color: white;
     padding: 0.75rem 1.5rem;
     border-radius: 0.375rem;
@@ -217,8 +217,8 @@
   }
 
   .kse-nav-cta:hover {
-    background-color: #e8851a;
-    box-shadow: 0 4px 12px rgba(247, 148, 30, 0.3);
+    background-color: #0047b3;
+    box-shadow: 0 4px 12px rgba(0, 86, 210, 0.3);
   }
 
   .kse-mobile-toggle {
@@ -311,7 +311,7 @@
 
   .kse-mobile-nav-cta {
     display: block;
-    background-color: #F7941E;
+    background-color: #0056D2;
     color: white;
     padding: 1rem;
     text-align: center;
@@ -326,6 +326,12 @@
     .kse-nav-cta {
       display: none;
     }
+    .kse-nav-container {
+      justify-content: center;
+    }
+    .kse-nav-logo img {
+      margin-left: 0;
+    }
     
     .kse-dropdown.industries-grid {
       min-width: 95vw;
@@ -338,12 +344,18 @@
       padding-left: 2rem;
       padding-right: 2rem;
     }
+    .kse-nav-logo img {
+      height: 48px;
+    }
   }
   
   @media (min-width: 1024px) {
     .kse-nav-container {
       padding-left: 3rem;
       padding-right: 3rem;
+    }
+    .kse-nav-logo img {
+      height: 64px;
     }
   }
   
@@ -367,10 +379,10 @@
       <div class="kse-nav-container">
           <!-- Logo (Left Aligned) -->
           <a href="../" class="kse-nav-logo flex items-center px-4 py-2">
-              <!-- Mobile/Tablet Button Logo -->
-              <img src="../assets/img/2025 photos/new logo 2025/Final Files/Button/Raster/Kansas Electric Button [CMYK-2k].png" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain lg:hidden" loading="lazy">
+              <!-- Mobile/Tablet Logo -->
+              <img src="../assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain lg:hidden" loading="lazy">
               <!-- Desktop Full Logo -->
-              <img src="../assets/img/2025 photos/new logo 2025/Final Files/Raster/Kansas Electric [CMYK-2k].png" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain hidden lg:block" loading="lazy">
+              <img src="../assets/img/2025 photos/new logo 2025/Final Files/Vector/kse logo desktop.png" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain hidden lg:block" loading="lazy">
           </a>
 
           <ul class="kse-nav-menu" role="menubar">
@@ -468,16 +480,16 @@
              target="_blank"
              rel="noopener noreferrer"
              class="kse-nav-cta hidden md:inline-block text-white font-bold px-6 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg"
-             style="background-color: #F7941E;"
-             onmouseover="this.style.backgroundColor='#e8851a'"
-             onmouseout="this.style.backgroundColor='#F7941E'">
+             style="background-color: #0056D2;"
+             onmouseover="this.style.backgroundColor='#0047b3'"
+             onmouseout="this.style.backgroundColor='#0056D2'">
                Let's Engineer Your Next Power Move
             </a>
 
           <!-- NEW: Fortune 500 Mobile Nav -->
           <div class="fixed inset-0 z-50 bg-white md:hidden hidden" id="kse-mobile-nav">
             <div class="p-6 flex justify-between items-center border-b">
-              <img src="/assets/img/kse-logo.png" alt="Kansas Electric" class="h-8">
+              <img src="/assets/img/2025 photos/new logo 2025/Final Files/Button/Vector/Kansas Electric Button [CMYK].svg" alt="Kansas Electric" class="h-8">
               <button id="kse-nav-close" class="text-gray-600 text-3xl font-bold">&times;</button>
             </div>
             <nav class="flex flex-col space-y-6 p-6 text-xl font-medium text-gray-800">
@@ -516,7 +528,7 @@
 
   <!-- Mobile Top Bar -->
   <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
-    <img src="../assets/img/2025 photos/new logo 2025/Final Files/Button/Raster/Kansas Electric Button [CMYK-2k].png"
+    <img src="../assets/img/2025 photos/new logo 2025/Final Files/Button/Vector/Kansas Electric Button [CMYK].svg"
          alt="Kansas Electric"
          class="h-10 w-auto object-contain mx-auto"
          loading="lazy">
@@ -546,9 +558,9 @@
            rel="noopener noreferrer" 
            aria-label="Fill out our supplier form"
            class="inline-block text-white font-semibold px-6 py-3 rounded-xl transition"
-           style="background-color: #F7941E;"
-           onmouseover="this.style.backgroundColor='#e8851a'"
-           onmouseout="this.style.backgroundColor='#F7941E'">
+           style="background-color: #0056D2;"
+           onmouseover="this.style.backgroundColor='#0047b3'"
+           onmouseout="this.style.backgroundColor='#0056D2'">
            Fill Out Our Supplier Form
         </a>
       </div>
@@ -577,7 +589,7 @@
         <a href="tel:3162834750" class="text-white font-medium hover:text-white transition-colors text-base">
           (316) 283-4750
         </a>
-        <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="inline-block text-white font-medium py-3 px-6 rounded-md transition-colors duration-300 text-center transition-transform duration-300 ease-in-out hover:scale-105" style="background-color: #F7941E; filter: drop-shadow(0 0 6px rgba(255,255,255,0.1));" onmouseover="this.style.backgroundColor='#e8851a'" onmouseout="this.style.backgroundColor='#F7941E'">
+        <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="inline-block text-white font-medium py-3 px-6 rounded-md transition-colors duration-300 text-center transition-transform duration-300 ease-in-out hover:scale-105" style="background-color: #0056D2; filter: drop-shadow(0 0 6px rgba(255,255,255,0.1));" onmouseover="this.style.backgroundColor='#0047b3'" onmouseout="this.style.backgroundColor='#0056D2'">
           Let's Engineer Your Next Power Move
         </a>
       </div>
@@ -626,7 +638,7 @@
   </script>
   
   <!-- Mobile Sticky CTA Button -->
-  <div class="fixed bottom-4 left-4 right-4 text-white py-3 rounded-lg text-center font-semibold shadow-md z-50 md:hidden transition" style="background-color: #F7941E;">
+  <div class="fixed bottom-4 left-4 right-4 text-white py-3 rounded-lg text-center font-semibold shadow-md z-50 md:hidden transition" style="background-color: #0056D2;">
     <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="block w-full h-full text-white">Let's Engineer Your Next Power Move</a>
   </div>
 
@@ -743,3 +755,4 @@
   </script>
 </body>
 </html> 
+

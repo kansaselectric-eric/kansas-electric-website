@@ -2845,6 +2845,19 @@ figure > figcaption::before {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+/* Standardize navigation logo sizing to match Suppliers page across site */
+@media (min-width: 768px) {
+  nav.kse-nav .kse-nav-logo img {
+    height: 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  nav.kse-nav .kse-nav-logo img {
+    height: 64px;
+  }
+}
+
 .hover\:translate-x-2:hover {
   --tw-translate-x: 0.5rem;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
