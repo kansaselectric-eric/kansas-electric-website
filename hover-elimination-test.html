@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -163,7 +163,7 @@
 
   .kse-nav-cta {
     display: inline-block;
-    background-color: #0056D2;
+    background-color: #00458C;
     color: white;
     padding: 0.75rem 1.5rem;
     border-radius: 0.375rem;
@@ -174,7 +174,7 @@
   }
 
   .kse-nav-cta:hover {
-    background-color: #0047b3;
+    background-color: #00386F;
     box-shadow: 0 4px 12px rgba(0, 86, 210, 0.3);
   }
 
@@ -268,7 +268,7 @@
 
   .kse-mobile-nav-cta {
     display: block;
-    background-color: #0056D2;
+    background-color: #00458C;
     color: white;
     padding: 1rem;
     text-align: center;
@@ -468,12 +468,12 @@
 
     <div class="test-container">
         <div class="test-header">
-            <h1>🚫 Hover Elimination Test</h1>
+            <h1>?? Hover Elimination Test</h1>
             <p>Comprehensive testing for click-only navigation behavior</p>
         </div>
         
         <div class="instructions">
-            <h3>🔍 Testing Instructions</h3>
+            <h3>?? Testing Instructions</h3>
             <ol>
                 <li><strong>Hover Test:</strong> Move your mouse over navigation items - NO dropdowns should appear</li>
                 <li><strong>Click Test:</strong> Click on navigation items with dropdowns - they SHOULD open</li>
@@ -484,7 +484,7 @@
         </div>
         
         <div class="test-section">
-            <h2>🔗 Test Pages</h2>
+            <h2>?? Test Pages</h2>
             <div class="test-links">
                 <a href="/" class="test-link">Home Page</a>
                 <a href="/about/" class="test-link">About Page</a>
@@ -496,7 +496,7 @@
         </div>
         
         <div class="test-section">
-            <h2>✅ Hover Elimination Checklist</h2>
+            <h2>? Hover Elimination Checklist</h2>
             <ul class="checklist">
                 <li id="test-1"><span class="status-indicator status-pending"></span><strong>No Hover Dropdowns:</strong> Hovering over "Services" does NOT open dropdown</li>
                 <li id="test-2"><span class="status-indicator status-pending"></span><strong>No Hover Dropdowns:</strong> Hovering over "Projects" does NOT open dropdown</li>
@@ -516,33 +516,33 @@
         </div>
         
         <div class="test-section">
-            <h2>🐛 Debug Information</h2>
+            <h2>?? Debug Information</h2>
             <div class="debug-info">
                 <h3>Files Modified:</h3>
                 <ul>
-                    <li>✅ projects/stanley-black-decker/hover-fix.js - NEW: Nuclear hover elimination</li>
-                    <li>✅ projects/stanley-black-decker/click-navigation.css - Enhanced with maximum specificity overrides</li>
-                    <li>✅ index.html - Added hover-fix.js script</li>
-                    <li>✅ about/index.html - Added hover-fix.js script</li>
+                    <li>? projects/stanley-black-decker/hover-fix.js - NEW: Nuclear hover elimination</li>
+                    <li>? projects/stanley-black-decker/click-navigation.css - Enhanced with maximum specificity overrides</li>
+                    <li>? index.html - Added hover-fix.js script</li>
+                    <li>? about/index.html - Added hover-fix.js script</li>
                 </ul>
                 
                 <h3>Key Features Implemented:</h3>
                 <ul>
-                    <li>🚫 Event capture phase hover prevention</li>
-                    <li>🎯 Maximum CSS specificity overrides</li>
-                    <li>🔄 Continuous hover monitoring (50ms intervals)</li>
-                    <li>🖱️ Click-only dropdown triggers</li>
-                    <li>📐 Full-width dropdown alignment</li>
-                    <li>♿ Keyboard navigation support</li>
-                    <li>📱 Mobile responsiveness preserved</li>
+                    <li>?? Event capture phase hover prevention</li>
+                    <li>?? Maximum CSS specificity overrides</li>
+                    <li>?? Continuous hover monitoring (50ms intervals)</li>
+                    <li>??? Click-only dropdown triggers</li>
+                    <li>?? Full-width dropdown alignment</li>
+                    <li>? Keyboard navigation support</li>
+                    <li>?? Mobile responsiveness preserved</li>
                 </ul>
             </div>
         </div>
         
         <div class="test-section">
-            <h2>📊 Expected Behavior</h2>
+            <h2>?? Expected Behavior</h2>
             <div class="debug-info">
-                <h3>✅ SHOULD Work:</h3>
+                <h3>? SHOULD Work:</h3>
                 <ul>
                     <li>Clicking navigation items opens dropdowns</li>
                     <li>Only one dropdown open at a time</li>
@@ -554,7 +554,7 @@
                     <li>Mobile menu functionality preserved</li>
                 </ul>
                 
-                <h3>❌ SHOULD NOT Work:</h3>
+                <h3>? SHOULD NOT Work:</h3>
                 <ul>
                     <li>Hovering over navigation items</li>
                     <li>Any hover-triggered dropdown behavior</li>
@@ -565,7 +565,7 @@
         </div>
         
         <div class="test-section">
-            <h2>🖥️ Console Output</h2>
+            <h2>??? Console Output</h2>
             <div class="console-log" id="console-output">
                 Console messages will appear here...
             </div>
@@ -592,14 +592,14 @@
         };
         
         // Log test page initialization
-        console.log('🧪 Hover Elimination Test Page Loaded');
-        console.log('📊 Viewport:', window.innerWidth + 'x' + window.innerHeight);
-        console.log('📱 Mobile View:', window.innerWidth < 1024);
+        console.log('?? Hover Elimination Test Page Loaded');
+        console.log('?? Viewport:', window.innerWidth + 'x' + window.innerHeight);
+        console.log('?? Mobile View:', window.innerWidth < 1024);
         
         // Monitor navigation interactions
         document.addEventListener('click', function(e) {
             if (e.target.closest('.main-navigation')) {
-                console.log('🖱️ Navigation Click:', e.target.textContent?.trim() || 'Unknown');
+                console.log('??? Navigation Click:', e.target.textContent?.trim() || 'Unknown');
             }
         });
         
@@ -608,7 +608,7 @@
         document.addEventListener('mouseenter', function(e) {
             if (e.target.closest('.main-navigation')) {
                 hoverAttempts++;
-                console.log('🚫 Hover Attempt Blocked #' + hoverAttempts + ':', e.target.textContent?.trim() || 'Unknown');
+                console.log('?? Hover Attempt Blocked #' + hoverAttempts + ':', e.target.textContent?.trim() || 'Unknown');
             }
         }, true);
         
@@ -631,13 +631,13 @@
         
         // Auto-test some basic functionality
         setTimeout(function() {
-            console.log('🔍 Running automated tests...');
+            console.log('?? Running automated tests...');
             
             // Test if hover-fix.js loaded
             if (typeof window.hoverFixLoaded !== 'undefined') {
-                console.log('✅ Hover fix script loaded successfully');
+                console.log('? Hover fix script loaded successfully');
             } else {
-                console.log('❌ Hover fix script may not have loaded');
+                console.log('? Hover fix script may not have loaded');
             }
             
             // Test if dropdowns are hidden by default
@@ -651,9 +651,9 @@
             });
             
             if (hiddenCount === submenus.length) {
-                console.log('✅ All dropdowns properly hidden by default');
+                console.log('? All dropdowns properly hidden by default');
             } else {
-                console.log('❌ Some dropdowns may be visible by default');
+                console.log('? Some dropdowns may be visible by default');
             }
             
         }, 1000);
@@ -845,5 +845,6 @@
   </script>
 </body>
 </html> 
+
 
 

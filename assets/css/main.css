@@ -2845,6 +2845,37 @@ figure > figcaption::before {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+/* Brand color consolidation: force all site blues to #00458C */
+:root {
+  --ke-brand-blue: #00458C;
+}
+
+/* Tailwind utility overrides (backgrounds) */
+.bg-blue-600, .hover\:bg-blue-600:hover, .focus\:bg-blue-600:focus,
+.bg-ke-blue { background-color: var(--ke-brand-blue) !important; }
+
+/* Darker hover state */
+.hover\:bg-blue-700:hover, .focus\:bg-blue-700:focus,
+.bg-ke-blue-dark { background-color: #00386F !important; }
+
+/* Text accents */
+.text-blue-600, .hover\:text-blue-600:hover, .focus\:text-blue-600:focus,
+.text-ke-blue, .hover\:text-ke-blue:hover { color: var(--ke-brand-blue) !important; }
+
+/* Badges and light tints */
+.bg-blue-100 { background-color: rgba(0, 69, 140, 0.10) !important; }
+.text-blue-800 { color: #002E5A !important; }
+.border-blue-200 { border-color: rgba(0, 69, 140, 0.30) !important; }
+
+/* Borders and rings */
+.border-blue-600, .focus\:ring-blue-500:focus, .ring-blue-500 { border-color: var(--ke-brand-blue) !important; box-shadow: 0 0 0 2px rgba(0,69,140,0.4) !important; }
+
+/* Decorative rules previously using older blue */
+.border-decoration::before, .main-navigation > li > a::before, .blue-btn,
+.group:hover .group-hover\:bg-ke-blue, .group:focus .group-focus\:bg-ke-blue {
+  background-color: var(--ke-brand-blue) !important;
+}
+
 /* Standardize navigation logo sizing to match Suppliers page across site */
 @media (min-width: 768px) {
   nav.kse-nav .kse-nav-logo img {
