@@ -1,4 +1,5 @@
-// Enhanced navigation with dropdown support and performance optimization
+// I unify desktop dropdowns and mobile toggles here to avoid spaghetti
+// and keep behavior consistent across breakpoints.
 document.addEventListener('DOMContentLoaded', function() {
   // Utility functions for performance optimization
   function debounce(func, wait) {

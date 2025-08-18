@@ -1,0 +1,195 @@
+/* I consolidated the mobile navigation styles into this file.
+ * I keep desktop unaffected and scope changes to <= 767px where needed.
+ */
+
+@media (max-width: 767px) {
+  /* I hide the header CTA on mobile; the logo is enough */
+  .kse-nav-cta,
+  .kse-mobile-nav-cta,
+  .mobile-header-cta,
+  .header-cta,
+  .top-cta { display: none !important; }
+
+  /* I hide legacy/mobile menu frameworks we no longer use */
+  [data-mobile-nav-toggle],
+  [data-main-menu],
+  .main-navigation,
+  nav.kse-nav, /* hide desktop nav on small screens so only the centered logo shows */
+  .redesigned-mobile-toggle,
+  .redesigned-mobile-menu,
+  .redesigned-mobile-overlay,
+  .redesigned-nav-menu,
+  #kse-nav-toggle,
+  .kse-nav-toggle {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+  }
+
+  /* I make sure the header centers the logo nicely */
+  .site-header .md\:w-11\/12,
+  .kse-nav-container,
+  nav.kse-nav .kse-nav-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  nav.kse-nav .kse-nav-logo,
+  .site-header .w-auto,
+  .redesigned-nav .redesigned-nav-logo {
+    margin: 0 auto !important;
+  }
+
+  /* Make sure the visible logo link always sits on top on legacy headers */
+  .md\:w-11\/12 a[href],
+  nav.kse-nav .kse-nav-logo {
+    position: relative !important;
+    z-index: 1100 !important;
+    pointer-events: auto !important;
+  }
+
+  .redesigned-nav .redesigned-nav-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* Mobile top bar and trigger placement */
+  .mobile-top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    background-color: white;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .mobile-menu-trigger {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem 0 0 0.5rem;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 99999;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #1f2937;
+    transition: all 0.2s ease;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .mobile-menu-trigger:hover {
+    background-color: #f9fafb;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Slide-in panel and backdrop */
+  .mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: white;
+    border-radius: 1rem 0 0 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    max-width: 384px;
+    width: 90vw;
+    height: 85vh;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    backdrop-filter: blur(16px);
+    pointer-events: none; /* don't intercept when hidden */
+  }
+
+  .mobile-nav-overlay.active { transform: translateX(0); pointer-events: auto; }
+
+  .mobile-nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    pointer-events: none; /* default off */
+  }
+
+  .mobile-nav-backdrop.active { opacity: 1; visibility: visible; pointer-events: auto; }
+
+  .mobile-nav-content { padding: 1rem 0; display: flex; flex-direction: column; height: 100%; }
+
+  .mobile-nav-close {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: #6b7280;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+    z-index: 10;
+    padding: 0.5rem;
+  }
+
+  .mobile-nav-close:hover { color: #000000; transform: translateX(-0.25rem); }
+
+  /* Sticky CTA */
+  .mobile-sticky-cta {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 9999;
+  }
+
+  /* If a page added arbitrary padding, remove it unless top-bar is present */
+  body { padding-top: 0 !important; }
+  .mobile-top-bar ~ * body { padding-top: 80px !important; }
+}
+
+/* I even out card spacing on small screens */
+@media (max-width: 767px) {
+  .grid.grid-cols-1 > a.service-card,
+  .grid.grid-cols-1 > a.industry-card,
+  .service-card,
+  .industry-card,
+  .project-card {
+    margin-bottom: 1rem !important;
+  }
+  .grid.grid-cols-1 > a.service-card:last-child,
+  .grid.grid-cols-1 > a.industry-card:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+@media (min-width: 768px) {
+  /* I hide mobile-only elements on desktop */
+  .mobile-nav-overlay,
+  .mobile-nav-backdrop,
+  .mobile-sticky-cta,
+  .mobile-menu-trigger,
+  .mobile-top-bar { display: none !important; }
+}
+
+/* AOS-like helper classes I rely on for scroll reveal */
+.aos-hide { opacity: 0; transform: translateY(20px); }
+.aos-show { opacity: 1 !important; transform: translateY(0) !important; transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+
+/* Image fade-in I like for perceived speed */
+img { opacity: 0; transform: scale(1.02); transition: opacity 0.6s ease, transform 0.6s ease; }
+img.loaded { opacity: 1; transform: scale(1); }
+
+

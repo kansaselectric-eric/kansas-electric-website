@@ -24,6 +24,7 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/mobile-nav.css">
 
   <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
@@ -35,8 +36,6 @@
   <link rel="stylesheet" href="projects/stanley-black-decker/mobile-nav-overhaul.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="$1assets/js/navigation-fixed.js" defer></script>
-
   <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('Xbp1oaEWxyL7EdVj'); </script>
 
   
@@ -44,7 +43,7 @@
   
 
 
-  <!-- Anti-flicker style block to prevent dropdowns from flashing during load -->
+  
   <style>
   .kse-dropdown,
   .kse-mobile-dropdown,
@@ -349,16 +348,84 @@
   </style>
 </head>
 <body class="font-poppins flex flex-col min-h-screen relative">
-  <!-- UNIFIED KANSAS ELECTRIC NAVIGATION -->
+
+  <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
+    <img src="./assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg"
+         alt="Kansas Electric" class="h-10 w-auto object-contain mx-auto" loading="lazy">
+  </div>
+
+  <div class="mobile-menu-trigger" id="mobileMenuTrigger">MENU</div>
+
+  <div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop"></div>
+
+  <nav class="mobile-nav-overlay md:hidden" id="mobileNavOverlay">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <div class="mobile-nav-content pb-32">
+      <a href="./" class="block w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition text-center">Home</a>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <div>
+        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('servicesMenu')">
+          <span>Services</span>
+        </button>
+        <div id="servicesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
+          <a href="./services/divisions/industrial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Industrial Electrical</div>
+            <div class="text-xs text-gray-500">Heavy infrastructure & power systems</div>
+          </a>
+          <a href="./services/divisions/commercial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Commercial Electrical</div>
+            <div class="text-xs text-gray-500">Office buildings & retail spaces</div>
+          </a>
+          <a href="./services/divisions/service-maintenance/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Service & Maintenance</div>
+            <div class="text-xs text-gray-500">24/7 support & preventive care</div>
+          </a>
+          <a href="./services/divisions/automation-control/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Automation & Control Systems</div>
+            <div class="text-xs text-gray-500">Smart systems & process control</div>
+          </a>
+        </div>
+      </div>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <div>
+        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('industriesMenu')">
+          <span>Industries We Serve</span>
+        </button>
+        <div id="industriesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
+          <a href="./services/industrial/oil-gas/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Oil & Gas</div><div class="text-xs text-gray-500">Refineries & pipelines</div></a>
+          <a href="./services/industrial/wastewater-treatment/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Water and Wastewater</div><div class="text-xs text-gray-500">Treatment facilities</div></a>
+          <a href="./services/industrial/data-centers/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Data Centers</div><div class="text-xs text-gray-500">Mission critical facilities</div></a>
+          <a href="./services/industrial/advanced-manufacturing/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Manufacturing</div><div class="text-xs text-gray-500">Production facilities</div></a>
+          <a href="./services/industrial/food-beverage/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Food & Beverage</div><div class="text-xs text-gray-500">Processing plants</div></a>
+          <a href="./services/industrial/healthcare/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Healthcare Infrastructure</div><div class="text-xs text-gray-500">Critical care facilities</div></a>
+        </div>
+      </div>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='./projects/'"><span>Projects</span></button>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='./about/'"><span>About</span></button>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='./careers/'"><span>Careers</span></button>
+      <div class="px-6 pt-6 pb-10">
+        <a href="./request-a-quote/" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition">Let's Engineer Your Next Power Move</a>
+      </div>
+    </div>
+  </nav>
+    
+  
   <nav class="kse-nav" role="navigation" aria-label="Main navigation">
       <div class="kse-nav-container">
-          <!-- Logo (Left Aligned) -->
+          
           <a href="./" class="kse-nav-logo flex items-center px-4 py-2">
               <img src="./assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain" loading="lazy">
           </a>
 
           <ul class="kse-nav-menu" role="menubar">
-              <!-- Services Dropdown -->
+              
               <li class="kse-nav-item" data-dropdown="services" role="none">
                   <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="services-dropdown">
                       <span>Services</span>
@@ -386,14 +453,14 @@
                 </div>
                     </li>
 
-              <!-- Projects (standalone link) -->
+              
               <li class="kse-nav-item" role="none">
                   <a href="/projects/" class="kse-nav-link" role="menuitem">
                       <span>Projects</span>
                   </a>
               </li>
 
-              <!-- Industries We Serve Dropdown -->
+              
               <li class="kse-nav-item" data-dropdown="industries" role="none">
                   <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="industries-dropdown">
                       <span>Industries We Serve</span>
@@ -429,14 +496,14 @@
                 </div>
                     </li>
 
-              <!-- About (direct link) -->
+              
               <li class="kse-nav-item" role="none">
                   <a href="/about/" class="kse-nav-link" role="menuitem">
                       <span>About</span>
                   </a>
               </li>
 
-              <!-- Careers -->
+              
               <li class="kse-nav-item" role="none">
                   <a href="/careers/" class="kse-nav-link" role="menuitem">
                       <span>Careers</span>
@@ -451,7 +518,7 @@
                Let's Engineer Your Next Power Move
             </a>
 
-          <!-- NEW: Fortune 500 Mobile Nav -->
+          
           <div class="fixed inset-0 z-50 bg-white md:hidden hidden" id="kse-mobile-nav">
             <div class="p-6 flex justify-between items-center border-b">
               <img src="/assets/img/2025 photos/new logo 2025/Final Files/Button/Vector/Kansas Electric Button [CMYK].svg" alt="Kansas Electric" class="h-8">
@@ -490,14 +557,6 @@
               <a href="/suppliers/" class="hover:text-blue-600">Suppliers</a>
             </nav>
 
-  <!-- Mobile Top Bar -->
-  <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
-    <img src="./assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg"
-         alt="Kansas Electric"
-         class="h-10 w-auto object-contain mx-auto"
-         loading="lazy">
-  </div>
-
   
 
   
@@ -506,12 +565,12 @@
   <a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-ke-yellow inline-block"><span class="block py-2">Skip to content</span></a>
 
   <nav class="site-header relative z-10">
-    <!-- <a class="py-2 text-ke-gray-dark block bg-ke-yellow hover:bg-ke-yellow-dark transition duration-200 text-center text-lg font-semibold uppercase" href="./job-openings/">Now Hiring! <span class="block text-base normal-case font-normal">Click to fill out an application</span></a> -->
-    <!-- <a class="py-2 text-ke-gray-dark block bg-ke-yellow hover:bg-ke-yellow-dark transition duration-200 text-center text-lg font-semibold uppercase" href="https://www.indeed.com/cmp/Kansas-Electric/jobs">Now hiring experienced apprentices and electricians! <span class="block text-base normal-case font-normal">Click to fill out an application</span></a> -->
+    
+    
     
     <div class="bg-ke-blue">
       <div class="md:w-11/12 mx-auto flex flex-row md:items-center">
-        <!-- News Ticker with flex-grow to take available space -->
+        
         <div class="ticker-container flex-grow">
           <div class="ticker-wrapper">
             <div class="ticker-scroll">
@@ -535,7 +594,7 @@
             </div>
           </div>
         </div>
-        <!-- 24/7 Support -->
+        
         <div class="flex-shrink-0 whitespace-nowrap">
           <p class="text-white font-semibold flex items-center support-container">
             <span class="support-label">24/7 Support:</span>
@@ -554,7 +613,7 @@
         <span class="line block h-1 w-6 mb-1 bg-ke-gray rounded-full"></span>
         <span class="line block h-1 w-6 bg-ke-gray rounded-full"></span>
       </a>
-          <!-- Fortune 500 Navigation -->
+          
     
         </div>
     </nav>
@@ -589,7 +648,7 @@
                   </ul>
                 </div>
                 <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
-                  <!-- All Projects (default) -->
+                  
                   <ul class="third-column-content active" id="all-projects">
                     <li>
                       <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/stanley-black-decker/">Stanley Black & Decker - Network Upgrades</a>
@@ -611,7 +670,7 @@
                     </li>
                   </ul>
                   
-                  <!-- Industrial Projects -->
+                  
                   <ul class="third-column-content" id="industrial-projects">
                     <li>
                       <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/industrial/project1/">To be filled in later..</a>
@@ -630,7 +689,7 @@
                     </li>
                   </ul>
                   
-                  <!-- Commercial Projects -->
+                  
                   <ul class="third-column-content" id="commercial-projects">
                     <li>
                       <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/commercial/project1/">To be filled in later..</a>
@@ -649,7 +708,7 @@
                     </li>
                   </ul>
                   
-                  <!-- Service and Maintenance Projects -->
+                  
                   <ul class="third-column-content" id="service-maintenance-projects">
                     <li>
                       <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/service/project1/">To be filled in later..</a>
@@ -668,7 +727,7 @@
                     </li>
                   </ul>
                   
-                  <!-- Automation and Control Systems Projects -->
+                  
                   <ul class="third-column-content" id="automation-projects">
                     <li>
                       <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./projects/automation/project1/">To be filled in later..</a>
@@ -709,7 +768,7 @@
                   </ul>
                 </div>
                 <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
-                  <!-- Who We Are (default) -->
+                  
                   <ul class="third-column-content active" id="who-we-are">
                     <li>
                       <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./about/">Who We Are</a>
@@ -722,7 +781,7 @@
                     </li>
                   </ul>
                   
-                  <!-- Company News -->
+                  
                   <ul class="third-column-content" id="company-news">
                     <li>
                       <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./company-news/">Company News</a>
@@ -766,7 +825,7 @@
                   </ul>
                 </div>
                 <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
-                  <!-- Administrative (default) -->
+                  
                   <ul class="third-column-content active" id="administrative">
                     <li>
                       <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/administrative/position1/">To be filled in later..</a>
@@ -776,7 +835,7 @@
                     </li>
                   </ul>
                   
-                  <!-- Project Management -->
+                  
                   <ul class="third-column-content" id="project-management">
                     <li>
                       <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/project-management/position1/">To be filled in later..</a>
@@ -786,7 +845,7 @@
                     </li>
                   </ul>
                   
-                  <!-- Electricians -->
+                  
                   <ul class="third-column-content" id="electricians">
                     <li>
                       <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/electricians/position1/">To be filled in later..</a>
@@ -796,7 +855,7 @@
                     </li>
                   </ul>
                   
-                  <!-- Engineering -->
+                  
                   <ul class="third-column-content" id="engineering">
                     <li>
                       <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/engineering/position1/">To be filled in later..</a>
@@ -806,7 +865,7 @@
                     </li>
                   </ul>
                   
-                  <!-- Estimating -->
+                  
                   <ul class="third-column-content" id="estimating">
                     <li>
                       <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/estimating/position1/">To be filled in later..</a>
@@ -816,7 +875,7 @@
                     </li>
                   </ul>
                   
-                  <!-- Apprenticeships -->
+                  
                   <ul class="third-column-content" id="apprenticeships">
                     <li>
                       <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="./careers/apprenticeship/">To be filled in later..</a>
@@ -857,7 +916,7 @@
 
   </main>
 
-  <!-- FOOTER START -->
+  
 <footer class="bg-ke-gray-dark text-white" style="background-color:#00458C">
   <div class="md:w-11/12 md:mx-auto md:flex md:justify-between py-12 md:pb-12 md:pt-20 border-b border-ke-gray px-6 md:px-0">
     <a href="."><img class="w-auto h-12" src="./assets/img/ke-logo-white.svg" alt="Kansas Electric" width="300" height="60"></a>
@@ -924,7 +983,7 @@
     <div class="text-ke-gray-light text-sm block mb-2 md:mb-0">&copy; 2025 Kansas Electric &nbsp;|&nbsp; <a class="hover:underline" href="./assets/documents/04.01.2022-kansas-electric-terms-and-conditions.pdf">Terms &amp; Conditions</a></div>
   </div>
 </footer>
-<!-- FOOTER END --> 
+ 
   <script src="./assets/js/project-posts-footer-links.js"></script>
 
   
@@ -1010,193 +1069,13 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<script src="projects/stanley-black-decker/mobile-hamburger.js" defer></script>
-<script src="projects/stanley-black-decker/mobile-nav-overhaul.js" defer></script>
+
+      
 
   
-
-  <!-- Kansas Electric Navigation Dropdown Script -->
-      <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const navItems = document.querySelectorAll('.kse-nav-item');
-
-        function closeAllDropdowns() {
-          document.querySelectorAll('.kse-dropdown').forEach(dropdown => {
-            dropdown.style.display = 'none';
-            dropdown.style.opacity = '0';
-            dropdown.style.visibility = 'hidden';
-            dropdown.style.pointerEvents = 'none';
-            dropdown.classList.remove('active', 'show');
-          });
-          
-          // Remove active states from nav items
-          document.querySelectorAll('.kse-nav-item').forEach(item => {
-            item.setAttribute('aria-expanded', 'false');
-          });
-        }
-
-        navItems.forEach(item => {
-          const dropdownId = item.getAttribute('data-dropdown');
-          const dropdown = document.getElementById(`${dropdownId}-dropdown`);
-          const navLink = item.querySelector('.kse-nav-link');
-
-          if (dropdown && navLink) {
-            // Attach event listener to the nav link, not the entire item
-            navLink.addEventListener('click', function (e) {
-              e.preventDefault();
-              e.stopPropagation();
-              
-              const isOpen = dropdown.classList.contains('active') || dropdown.classList.contains('show');
-
-              // Close all dropdowns first
-              closeAllDropdowns();
-              
-              // If this dropdown wasn't open, open it
-              if (!isOpen) {
-                dropdown.classList.add('active', 'show');
-                dropdown.style.display = dropdown.classList.contains('industries-grid') ? 'grid' : 'flex';
-                dropdown.style.opacity = '1';
-                dropdown.style.visibility = 'visible';
-                dropdown.style.pointerEvents = 'auto';
-                item.setAttribute('aria-expanded', 'true');
-              }
-            });
-
-            // Prevent dropdown content clicks from closing the dropdown
-            dropdown.addEventListener('click', function (e) {
-              e.stopPropagation();
-            });
-          }
-        });
-
-        // Close dropdowns when clicking outside the navigation
-        document.addEventListener('click', function (e) {
-          const isClickInside = e.target.closest('.kse-nav');
-          if (!isClickInside) {
-            closeAllDropdowns();
-          }
-        });
-
-        // Close dropdowns on escape key
-        document.addEventListener('keydown', function (e) {
-          if (e.key === 'Escape') {
-            closeAllDropdowns();
-          }
-        });
-      });
-      </script>
-
-  <!-- Navigation Dropdown Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const navItems = document.querySelectorAll('.kse-nav-item');
-      
-      function closeAllDropdowns() {
-        document.querySelectorAll('.kse-dropdown').forEach(dropdown => {
-          dropdown.classList.remove('active', 'show');
-        });
-        
-        navItems.forEach(item => {
-          const link = item.querySelector('.kse-nav-link');
-          if (link) link.setAttribute('aria-expanded', 'false');
-        });
-      }
-      
-      navItems.forEach(item => {
-        const dropdownId = item.getAttribute('data-dropdown');
-        if (!dropdownId) return;
-        
-        const dropdown = document.getElementById(`${dropdownId}-dropdown`);
-        const link = item.querySelector('.kse-nav-link');
-        
-        if (dropdown && link) {
-          link.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const isOpen = link.getAttribute('aria-expanded') === 'true';
-            
-            // Close all dropdowns first
-            closeAllDropdowns();
-            
-            // If this dropdown wasn't open, open it
-            if (!isOpen) {
-              dropdown.classList.add('active', 'show');
-              link.setAttribute('aria-expanded', 'true');
-            }
-          });
-        }
-      });
-      
-      // Mobile menu toggle
-      const mobileToggle = document.querySelector('.kse-mobile-toggle');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileOverlay = document.querySelector('.kse-mobile-overlay');
-      
-      if (mobileToggle && mobileMenu) {
-        mobileToggle.addEventListener('click', function() {
-          const isOpen = mobileToggle.getAttribute('aria-expanded') === 'true';
-          
-          if (isOpen) {
-            mobileToggle.setAttribute('aria-expanded', 'false');
-            mobileMenu.classList.remove('active', 'show');
-            if (mobileOverlay) mobileOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-          } else {
-            mobileToggle.setAttribute('aria-expanded', 'true');
-            mobileMenu.classList.add('active', 'show');
-            if (mobileOverlay) mobileOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-          }
-        });
-      }
-      
-      // Mobile dropdowns
-      const mobileNavItems = document.querySelectorAll('.kse-mobile-nav-item');
-      mobileNavItems.forEach(item => {
-        const link = item.querySelector('.kse-mobile-nav-link');
-        const dropdown = item.querySelector('.kse-mobile-dropdown');
-        
-        if (link && dropdown) {
-          link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const isOpen = link.getAttribute('aria-expanded') === 'true';
-            
-            if (isOpen) {
-              link.setAttribute('aria-expanded', 'false');
-              dropdown.classList.remove('active', 'show');
-            } else {
-              link.setAttribute('aria-expanded', 'true');
-              dropdown.classList.add('active', 'show');
-            }
-          });
-        }
-      });
-      
-      // Close dropdowns when clicking outside
-      document.addEventListener('click', function(e) {
-        if (!e.target.closest('.kse-nav')) {
-          closeAllDropdowns();
-        }
-      });
-      
-      // Close dropdowns on escape key
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-          closeAllDropdowns();
-          
-          // Also close mobile menu if open
-          if (mobileMenu && mobileMenu.classList.contains('active')) {
-            mobileMenu.classList.remove('active', 'show');
-            if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
-            if (mobileOverlay) mobileOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-          }
-        }
-      });
-    });
-  </script>
+  
+  <script src="./assets/js/reveal.js" defer></script>
+  <script src="./assets/js/navigation-unified.js" defer></script>
 </body>
 </html>
 

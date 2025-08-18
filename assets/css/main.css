@@ -955,7 +955,9 @@ video {
   height: 0.25rem;
   width: 3rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(0 118 197 / var(--tw-bg-opacity));
+  background-color: rgb(255 122 0 / var(--tw-bg-opacity));
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .blue-btn {
@@ -2888,6 +2890,42 @@ figure > figcaption::before {
     height: 64px;
   }
 }
+
+/* Ensure the logo link remains clickable and not offset off-screen */
+nav.kse-nav .kse-nav-logo { cursor: pointer; position: relative; z-index: 1001; }
+nav.kse-nav .kse-nav-logo img { margin-left: 0 !important; }
+nav.kse-nav { position: sticky; top: 0; z-index: 1000; }
+
+/* Desktop hover fallback for KSE nav dropdowns */
+@media (min-width: 1024px) {
+  .kse-nav .kse-nav-item:hover > .kse-dropdown,
+  .kse-nav .kse-nav-item[aria-expanded="true"] > .kse-dropdown {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(-50%) translateY(0) !important;
+    display: flex !important;
+    pointer-events: auto !important;
+  }
+  .kse-nav .kse-nav-item:hover > .kse-dropdown.industries-grid,
+  .kse-nav .kse-nav-item[aria-expanded="true"] > .kse-dropdown.industries-grid {
+    display: grid !important;
+  }
+}
+
+/* Global: remove legacy body top padding that created gaps under the nav */
+@media (min-width: 1024px) {
+  body { padding-top: 0 !important; }
+  main > section:first-of-type { margin-top: 0 !important; padding-top: 0 !important; }
+}
+
+/* Section dividers: standardize to brand orange. Center only when markup adds mx-auto */
+.h-1.w-16.bg-blue-600 {
+  background-color: #FF7A00 !important;
+  border-radius: 2px !important;
+}
+
+/* Any 4px top border that used the brand blue becomes orange for section accents */
+.border-t-4.border-ke-blue { border-color: #FF7A00 !important; }
 
 .hover\:translate-x-2:hover {
   --tw-translate-x: 0.5rem;

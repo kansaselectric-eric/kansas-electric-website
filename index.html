@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <!-- Google Tag Manager -->
+  
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-NX8X8X37');</script>
-  <!-- End Google Tag Manager -->
+  
   
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
@@ -34,202 +34,16 @@
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="stylesheet" href="./assets/css/main.css">
+  <link rel="stylesheet" href="./assets/css/mobile-nav.css">
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/img/2025 photos/new logo 2025/Final Files/Button/Vector/Kansas Electric Button [CMYK].svg">
   <link rel="icon" type="image/svg+xml" href="./assets/img/2025 photos/new logo 2025/Final Files/Button/Vector/Kansas Electric Button [CMYK].svg">
   <link rel="icon" type="image/svg+xml" sizes="any" href="./assets/img/2025 photos/new logo 2025/Final Files/Button/Vector/Kansas Electric Button [CMYK].svg">
   <link rel="manifest" href="./site.webmanifest">
   <link rel="stylesheet" href="projects/stanley-black-decker/mobile-responsive.css">
 
-  <!-- Custom CTA visibility overrides -->
-  <style>
-    @media (max-width: 767px) {
-      .kse-nav-cta {
-        display: none !important;
-      }
-    }
+  
 
-    @media (min-width: 768px) {
-      .kse-nav-cta {
-        display: inline-block !important;
-      }
-    }
-
-    /* Mobile Navigation Styles */
-    .mobile-nav-overlay {
-      position: fixed;
-      top: 0;
-      right: 0;
-      z-index: 1000;
-      background-color: white;
-      border-radius: 1rem 0 0 1rem;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      max-width: 384px; /* 24rem */
-      width: 90vw;
-      height: 85vh;
-      overflow-y: auto;
-      transform: translateX(100%);
-      transition: transform 0.3s ease-in-out;
-      backdrop-filter: blur(16px);
-    }
-
-    .mobile-nav-overlay.active {
-      transform: translateX(0);
-    }
-
-    .mobile-nav-backdrop {
-      position: fixed;
-      inset: 0;
-      background-color: rgba(0, 0, 0, 0.5);
-      z-index: 999;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    }
-
-    .mobile-nav-backdrop.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .mobile-menu-trigger {
-      position: fixed;
-      top: 33.333333%;
-      right: 0;
-      transform: translateY(-50%);
-      background-color: white;
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.5rem 0 0 0.5rem;
-      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
-      cursor: pointer;
-      z-index: 950;
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: #1f2937;
-      transition: all 0.2s ease;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    .mobile-menu-trigger:hover {
-      background-color: #f9fafb;
-      box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15);
-    }
-
-    .mobile-nav-content {
-      padding: 1rem 0;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .mobile-nav-close {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      color: #6b7280;
-      background: none;
-      border: none;
-      cursor: pointer;
-      transition: color 0.2s ease, transform 0.2s ease;
-      z-index: 10;
-      padding: 0.5rem;
-    }
-
-    .mobile-nav-close:hover {
-      color: #000000;
-      transform: translateX(-0.25rem);
-    }
-
-    /* All mobile navigation styles are now handled by Tailwind classes in HTML */
-
-
-
-    /* Graceful text handling - expand height instead of awkward wrapping */
-    .mobile-nav-content a {
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      hyphens: auto;
-      min-height: fit-content;
-    }
-
-    /* Mobile Top Bar */
-    .mobile-top-bar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      backdrop-filter: blur(20px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 80px;
-      background-color: white;
-      border-bottom: 1px solid #e5e7eb;
-      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-    }
-
-    /* Hide mobile elements on desktop */
-    @media (min-width: 768px) {
-      .mobile-nav-overlay,
-      .mobile-nav-backdrop,
-      .mobile-sticky-cta,
-      .mobile-menu-trigger,
-      .mobile-top-bar {
-        display: none !important;
-      }
-    }
-
-    /* Show mobile elements ONLY on mobile - PROPER POSITIONING */
-    @media (max-width: 767px) {
-      /* Show mobile top bar */
-      .mobile-top-bar {
-        display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        z-index: 1001 !important;
-        background: white !important;
-        border-bottom: 1px solid #e5e7eb !important;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
-      }
-
-      .mobile-menu-trigger {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: fixed !important;
-        top: 50% !important;
-        right: 0 !important;
-        transform: translateY(-50%) !important;
-        z-index: 99999 !important;
-        pointer-events: auto !important;
-      }
-
-      /* Ensure mobile sticky CTA is always visible */
-      .mobile-sticky-cta {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: fixed !important;
-        bottom: 1rem !important;
-        left: 1rem !important;
-        right: 1rem !important;
-        z-index: 9999 !important;
-        pointer-events: auto !important;
-        transform: none !important;
-      }
-      
-      /* Only add body padding on mobile */
-      body {
-        padding-top: 80px !important;
-      }
-    }
-  </style>
-
-  <!-- Anti-flicker style block to prevent dropdowns from flashing during load -->
+  
   <style>
   .kse-dropdown,
   .kse-mobile-dropdown,
@@ -538,7 +352,7 @@
 
   <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('Xbp1oaEWxyL7EdVj'); </script>
 
-  <!-- Critical CSS that must load after main.css -->
+  
   <style>
     /* Override fade-in class to ensure elements are visible */
     .fade-in {
@@ -619,8 +433,8 @@
       display: block;
       width: 48px;
       height: 3px;
-      background-color: #00458C;
-      margin-top: 8px;
+      background-color: #FF7A00;
+      margin: 8px auto 0; /* I center this underline under the heading */
       border-radius: 2px;
     }
     
@@ -730,28 +544,30 @@
 </head>
 <body class="font-poppins flex flex-col min-h-screen relative">
 
-  <!-- Google Tag Manager (noscript) -->
+  
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NX8X8X37"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+  
 
-  <!-- Mobile Top Bar -->
+  
   <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
-    <img src="./assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg"
-         alt="Kansas Electric"
-         class="h-10 w-auto object-contain mx-auto"
-         loading="lazy">
+    <a href="./" style="z-index:1100; pointer-events:auto;">
+      <img src="./assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg"
+           alt="Kansas Electric"
+           class="h-10 w-auto object-contain mx-auto"
+           loading="lazy">
+    </a>
   </div>
 
-  <!-- Mobile Menu Trigger -->
+  
   <div class="mobile-menu-trigger md:hidden" id="mobileMenuTrigger">
     MENU
   </div>
 
-  <!-- Mobile Navigation Backdrop -->
+  
   <div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop"></div>
 
-  <!-- Mobile Navigation Overlay -->
+  
   <nav class="mobile-nav-overlay md:hidden" id="mobileNavOverlay">
     <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -850,23 +666,23 @@
     </div>
   </nav>
 
-  <!-- Mobile Sticky CTA Button -->
+  
   <div class="mobile-sticky-cta fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-[999] md:hidden hover:bg-blue-700 transition">
     <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="block w-full">Let's Engineer Your Next Power Move</a>
   </div>
 
   <a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-ke-yellow inline-block"><span class="block py-2">Skip to content</span></a>
 
-  <!-- UNIFIED KANSAS ELECTRIC NAVIGATION -->
+  
   <nav class="kse-nav" role="navigation" aria-label="Main navigation">
       <div class="kse-nav-container">
-          <!-- Logo (Left Aligned) -->
+          
           <a href="./" class="kse-nav-logo flex items-center px-4 py-2">
               <img src="./assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain" loading="lazy">
           </a>
 
           <ul class="kse-nav-menu" role="menubar">
-              <!-- Services Dropdown -->
+              
               <li class="kse-nav-item" data-dropdown="services" role="none">
                   <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="services-dropdown">
                       <span>Services</span>
@@ -898,14 +714,14 @@
                 </div>
                     </li>
 
-              <!-- Projects (standalone link) -->
+              
               <li class="kse-nav-item" role="none">
                   <a href="/projects/" class="kse-nav-link" role="menuitem">
                       <span>Projects</span>
                   </a>
               </li>
 
-              <!-- Industries We Serve Dropdown -->
+              
               <li class="kse-nav-item" data-dropdown="industries" role="none">
                   <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="industries-dropdown">
                       <span>Industries We Serve</span>
@@ -941,14 +757,14 @@
                 </div>
                     </li>
 
-              <!-- About (direct link) -->
+              
               <li class="kse-nav-item" role="none">
                   <a href="/about/" class="kse-nav-link" role="menuitem">
                       <span>About</span>
                   </a>
               </li>
 
-              <!-- Careers -->
+              
               <li class="kse-nav-item" role="none">
                   <a href="/careers/" class="kse-nav-link" role="menuitem">
                       <span>Careers</span>
@@ -976,47 +792,47 @@
 
 <article class="overflow-hidden">
 
-  <!-- Hero Section with Video Background -->
+  
   <section id="video-section" class="relative w-full h-screen sm:h-auto sm:min-h-[calc(100vh-80px)] md:min-h-[500px] lg:h-screen lg:min-h-screen overflow-hidden bg-black">
-    <!-- Video Background -->
+    
     <video id="bg-video" muted loop playsinline preload="none" poster="/assets/img/2025 photos/fallback.jpg" class="absolute inset-0 w-full h-full object-cover z-0" style="transform: translateZ(0); backface-visibility: hidden; will-change: transform">
-      <!-- Source will be injected via JS -->
+      
     </video>
     
-    <!-- Fallback Background Image -->
+    
     <div 
       class="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat z-0"
       style="z-index: 1;"
     ></div>
     
-    <!-- Dark Overlay for Better Text Contrast -->
+    
     <div class="absolute inset-0 bg-black bg-opacity-40 z-10" style="transform: translateZ(0); backface-visibility: hidden; will-change: opacity, transform"></div>
     
-    <!-- Text Overlay Content -->
+    
     <div class="absolute inset-0 flex items-center justify-center z-20" style="transform: translateZ(0); backface-visibility: hidden; will-change: opacity, transform">
       <div class="text-center text-white px-6 max-w-4xl mx-auto">
         
         
-        <!-- Main Headline -->
+        
         <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight text-white"
             style="text-shadow: 0 4px 8px rgba(0,0,0,0.8), 0 0 2px rgba(0,0,0,0.9);">
           Built for Power.<br>Engineered for Excellence.
         </h1>
         
-        <!-- Supporting Text -->
+        
         <p class="text-base sm:text-lg md:text-xl mb-8 text-white max-w-2xl mx-auto leading-relaxed px-4"
            style="text-shadow: 0 2px 4px rgba(0,0,0,0.8);">
           From hospitals to automation, we design and build the systems that power American infrastructure.
         </p>
         
-        <!-- CTA Button (only on sm and up) -->
+        
         <div class="hidden sm:flex items-center justify-center text-center">
           <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center text-center sm:flex-row flex-col px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
         </div>
       </div>
     </div>
     
-    <!-- Scroll Indicator -->
+    
     <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
       <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
         <div class="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
@@ -1026,27 +842,13 @@
 
 
 
-  <!-- AOS Animation Library -->
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    // Initialize AOS animations
-    document.addEventListener('DOMContentLoaded', function() {
-      if (typeof AOS !== 'undefined') {
-        AOS.init({
-          duration: 800,
-          once: true,
-          offset: 100
-        });
-      }
-    });
-  </script>
+  
 
-  <!-- Mobile Navigation Toggle Script -->
+  
 
-  <!-- Link AOS CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  
 
-  <!-- What We Do Section - Made Identical to Industries We Power -->
+  
   <section class="py-20 bg-gray-100 border-t border-gray-200">
     <style>
       .service-card {
@@ -1062,7 +864,7 @@
       }
     </style>
     <div class="w-full px-6 md:px-10 lg:px-16" aria-labelledby="what-we-do-heading">
-      <!-- Section heading and paragraph -->
+      
       <div class="mb-16 text-center">
         <h2 id="what-we-do-heading" class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight section-heading" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0" opacity-100 transition-opacity duration-500>What We Do</h2>
         <p class="text-lg text-gray-500 mb-4 leading-relaxed max-w-3xl mx-auto" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
@@ -1070,10 +872,10 @@
         </p>
       </div>
 
-      <!-- Service cards grid -->
+      
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         
-        <!-- Card 1: Industrial Electrical -->
+        
         <a href="/services/divisions/industrial/" class="p-4 rounded-xl shadow service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Industrial Electrical" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Industrial Electrical</h3>
@@ -1088,7 +890,7 @@
           </div>
         </a>
         
-        <!-- Card 2: Commercial Electrical -->
+        
         <a href="/services/divisions/commercial/" class="p-4 rounded-xl shadow service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Commercial Electrical" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Commercial Electrical</h3>
@@ -1103,7 +905,7 @@
           </div>
         </a>
         
-        <!-- Card 3: Service & Maintenance -->
+        
         <a href="/services/divisions/service-maintenance/" class="p-4 rounded-xl shadow service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Service & Maintenance" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Service & Maintenance</h3>
@@ -1118,7 +920,7 @@
           </div>
         </a>
         
-        <!-- Card 4: Automation & Controls -->
+        
         <a href="/services/divisions/automation-control/" class="p-4 rounded-xl shadow service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Automation & Control Systems" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Automation & Control Systems</h3>
@@ -1137,12 +939,12 @@
     </div>
   </section>
 
-  <!-- Modern Hero Section with Background Image -->
+  
   <section class="hero-partner-section relative bg-cover bg-center bg-no-repeat flex items-center justify-center text-white text-center px-4 py-24" style="background-image: url('./assets/img/2025 photos/KSE 1.jpg');">
-    <!-- Dark Overlay -->
+    
     <div class="absolute inset-0 bg-black bg-opacity-60"></div>
     
-    <!-- Mobile-specific background position and animations -->
+    
     <style>
       @media (max-width: 768px) {
         .hero-partner-section {
@@ -1188,7 +990,7 @@
       }
     </style>
     
-    <!-- Text Content Container -->
+    
     <div class="max-w-4xl mx-auto relative z-10">
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-relaxed drop-shadow-md fade-up-element delay-100 opacity-100 transition-opacity duration-500">
           Kansas Electric — Your Trusted Partner in Power
@@ -1199,7 +1001,7 @@
     </div>
   </section>
 
-  <!-- Industries We Power Section -->
+  
   <section class="py-20 bg-gray-100 border-t border-gray-200">
     <style>
       .industry-card {
@@ -1215,7 +1017,7 @@
       }
     </style>
     <div class="w-full px-6 md:px-10 lg:px-16" aria-labelledby="industries-heading">
-      <!-- Section heading and paragraph -->
+      
       <div class="mb-16 text-center">
         <h2 id="industries-heading" class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight section-heading" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0" opacity-100 transition-opacity duration-500>Industries We Power</h2>
         <p class="text-lg text-gray-500 mb-4 leading-relaxed max-w-3xl mx-auto" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
@@ -1223,9 +1025,9 @@
         </p>
       </div>
       
-      <!-- Industry cards grid -->
+      
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Healthcare -->
+        
         <a href="/services/industrial/healthcare/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Healthcare Infrastructure" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Healthcare Infrastructure</h3>
@@ -1240,7 +1042,7 @@
           </div>
         </a>
         
-        <!-- Food & Beverage -->
+        
         <a href="/services/industrial/food-beverage/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Food & Beverage" data-aos="fade-up" data-aos-duration="800" data-aos-delay="150">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Food & Beverage</h3>
@@ -1255,7 +1057,7 @@
           </div>
         </a>
         
-        <!-- Manufacturing -->
+        
         <a href="/services/industrial/advanced-manufacturing/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Advanced Manufacturing" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Advanced Manufacturing</h3>
@@ -1270,7 +1072,7 @@
           </div>
         </a>
         
-        <!-- Oil & Gas -->
+        
         <a href="/services/industrial/oil-gas/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Oil & Gas" data-aos="fade-up" data-aos-duration="800" data-aos-delay="250">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Oil & Gas</h3>
@@ -1285,7 +1087,7 @@
           </div>
         </a>
         
-        <!-- Water & Wastewater -->
+        
         <a href="/services/industrial/wastewater-treatment/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Water & Wastewater" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Water & Wastewater</h3>
@@ -1300,7 +1102,7 @@
           </div>
         </a>
         
-        <!-- Data Centers -->
+        
         <a href="/services/industrial/data-centers/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Data Centers" data-aos="fade-up" data-aos-duration="800" data-aos-delay="350">
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Data Centers</h3>
@@ -1318,7 +1120,7 @@
     </div>
   </section>
 
-  <!-- Featured Projects Section -->
+  
   <section class="border-t border-gray-200 py-20 bg-white">
     <style>
       /* Enhanced text styling for projects */
@@ -1385,25 +1187,25 @@
       }
     </style>
     <div class="w-full px-6 md:px-10 lg:px-16">
-      <!-- Section heading and paragraph -->
+      
       <div class="mb-16 text-center">
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight section-heading" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0" opacity-100 transition-opacity duration-500>Industrial Excellence in Action</h2>
         <p class="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">Real-world installations that showcase our capabilities and commitment to industrial precision.</p>
       </div>
       
-      <!-- Project Cards -->
+      
       <div class="grid grid-cols-1 gap-y-8">
-        <!-- Project Card 1 - Text on Left -->
+        
         <div class="relative w-full min-h-[350px] md:h-[450px] overflow-hidden rounded-xl shadow-lg project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
-          <!-- Background Image -->
+          
           <img src="./assets/img/2025 photos/featured projects cards/Newton Medical Center Switchgear.jpg"
                alt="Cedar Creek wastewater treatment plant electrical systems - 25 MGD facility with power distribution and SCADA integration in Olathe, Kansas"
                class="absolute inset-0 w-full h-full min-h-full object-cover z-0" loading="lazy" />
 
-          <!-- Gradient Overlay -->
+          
           <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60 z-0"></div>
 
-          <!-- Text Overlay -->
+          
           <div class="absolute inset-0 z-10 flex flex-col justify-end p-2 sm:p-3 md:p-6 text-white mt-[-1.25rem] md:mt-0">
             <div class="text-sm font-bold tracking-wider uppercase mb-1" style="text-shadow: 0 1px 3px rgba(0,0,0,0.85);">Water Infrastructure</div>
             <h2 class="text-xl md:text-2xl font-bold leading-tight mb-2" style="text-shadow: 0 2px 4px rgba(0,0,0,0.85);">Cedar Creek Expansion</h2>
@@ -1412,17 +1214,17 @@
           </div>
         </div>
         
-        <!-- Project Card 2 - Text on Right -->
+        
         <div class="relative w-full min-h-[350px] md:h-[450px] overflow-hidden rounded-xl shadow-lg project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-          <!-- Background Image -->
+          
           <img src="./assets/img/2025 photos/featured projects cards/MKC Lyons.jpg"
                alt="MKC Lyons grain processing facility - Complete electrical design and construction for advanced automation systems in 55,000 sq. ft. processing plant"
                class="absolute inset-0 w-full h-full min-h-full object-cover z-0" loading="lazy" />
 
-          <!-- Gradient Overlay -->
+          
           <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60 z-0"></div>
 
-          <!-- Text Overlay -->
+          
           <div class="absolute inset-0 z-10 flex flex-col justify-end p-2 sm:p-3 md:p-6 text-white mt-[-1.25rem] md:mt-0">
             <div class="text-sm font-bold tracking-wider uppercase mb-1" style="text-shadow: 0 1px 3px rgba(0,0,0,0.85);">Grain Processing</div>
             <h2 class="text-xl md:text-2xl font-bold leading-tight mb-2" style="text-shadow: 0 2px 4px rgba(0,0,0,0.85);">MKC Lyons Facility</h2>
@@ -1431,17 +1233,17 @@
           </div>
         </div>
         
-        <!-- Project Card 3 - Text on Left -->
+        
         <div class="relative w-full min-h-[350px] md:h-[450px] overflow-hidden rounded-xl shadow-lg project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
-          <!-- Background Image -->
+          
           <img src="./assets/img/2025 photos/featured projects cards/Health Ministries Dental Clinic.jpg"
                alt="Health Ministries Dental Clinic electrical systems - Specialized power distribution for critical care dental facility in Newton, Kansas"
                class="absolute inset-0 w-full h-full min-h-full object-cover z-0" loading="lazy" />
 
-          <!-- Gradient Overlay -->
+          
           <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60 z-0"></div>
 
-          <!-- Text Overlay -->
+          
           <div class="absolute inset-0 z-10 flex flex-col justify-end p-2 sm:p-3 md:p-6 text-white mt-[-1.25rem] md:mt-0">
             <div class="text-sm font-bold tracking-wider uppercase mb-1" style="text-shadow: 0 1px 3px rgba(0,0,0,0.85);">Healthcare</div>
             <h2 class="text-xl md:text-2xl font-bold leading-tight mb-2" style="text-shadow: 0 2px 4px rgba(0,0,0,0.85);">Health Ministries Dental Clinic</h2>
@@ -1454,7 +1256,7 @@
     </div>
   </section>
 
-  <!-- Final CTA Section -->
+  
   <section class="bg-gray-50 py-24 px-6 md:px-10 lg:px-16">
     <div class="max-w-4xl mx-auto text-center">
       <div class="shadow-md rounded-xl bg-white p-12">
@@ -1480,12 +1282,12 @@
 
   <footer class="footer-custom text-white py-16 px-6 border-t border-white/10" data-aos="fade-up">
     <div class="max-w-7xl mx-auto flex flex-col space-y-12 items-center text-center">
-      <!-- Left Column: Tagline -->
+      
       <div class="flex flex-col items-center space-y-3" data-aos="fade-up" data-aos-delay="100">
         <p class="text-white text-sm">Built for Power. Engineered for Excellence.</p>
       </div>
       
-      <!-- Center Column: Contact -->
+      
       <div class="flex flex-col items-center space-y-3" data-aos="fade-up" data-aos-delay="200">
         <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Contact</h3>
         <a href="tel:3162834750" class="text-white font-medium hover:text-white transition-colors text-base">
@@ -1496,7 +1298,7 @@
         </a>
       </div>
       
-      <!-- Right Column: Links -->
+      
       <div class="flex flex-col items-center space-y-3" data-aos="fade-up" data-aos-delay="300">
         <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Links</h3>
         <a href="https://www.linkedin.com/company/kansas-electric/" class="text-white hover:text-gray-200 transition-colors" aria-label="Kansas Electric LinkedIn profile">
@@ -1510,14 +1312,14 @@
       </div>
     </div>
     
-    <!-- Company Description -->
+    
     <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
       <p class="text-sm text-white max-w-3xl mx-auto leading-relaxed">
         Since 1948, Kansas Electric has powered some of the region's most essential facilities — from hospitals and manufacturers to mission-critical infrastructure. We bring decades of experience, a culture of safety, and future-focused innovation to every electrical project we touch.
       </p>
     </div>
     
-    <!-- Copyright -->
+    
     <div class="mt-8 text-center text-gray-200 text-sm" data-aos="fade-up" data-aos-delay="500">
       &copy; 2025 Kansas Electric. All rights reserved.
       <a href="/assets/documents/04.01.2022-kansas-electric-terms-and-conditions.pdf" 
@@ -1531,157 +1333,10 @@
 
 
   
-  <!-- Navigation Dropdown Script -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const navItems = document.querySelectorAll('.kse-nav-item');
-      
-      function closeAllDropdowns() {
-        document.querySelectorAll('.kse-dropdown').forEach(dropdown => {
-          dropdown.classList.remove('active', 'show');
-        });
-        
-        navItems.forEach(item => {
-          const link = item.querySelector('.kse-nav-link');
-          if (link) link.setAttribute('aria-expanded', 'false');
-        });
-      }
-      
-      navItems.forEach(item => {
-        const dropdownId = item.getAttribute('data-dropdown');
-        if (!dropdownId) return;
-        
-        const dropdown = document.getElementById(`${dropdownId}-dropdown`);
-        const link = item.querySelector('.kse-nav-link');
-        
-        if (dropdown && link) {
-          link.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const isOpen = link.getAttribute('aria-expanded') === 'true';
-            
-            // Close all dropdowns first
-            closeAllDropdowns();
-            
-            // If this dropdown wasn't open, open it
-            if (!isOpen) {
-              dropdown.classList.add('active', 'show');
-              link.setAttribute('aria-expanded', 'true');
-            }
-          });
-        }
-      });
-      
-      // Mobile menu toggle
-      const mobileToggle = document.querySelector('.kse-mobile-toggle');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileOverlay = document.querySelector('.kse-mobile-overlay');
-      
-      if (mobileToggle && mobileMenu) {
-        mobileToggle.addEventListener('click', function() {
-          const isOpen = mobileToggle.getAttribute('aria-expanded') === 'true';
-          
-          if (isOpen) {
-            mobileToggle.setAttribute('aria-expanded', 'false');
-            mobileMenu.classList.remove('active', 'show');
-            if (mobileOverlay) mobileOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-          } else {
-            mobileToggle.setAttribute('aria-expanded', 'true');
-            mobileMenu.classList.add('active', 'show');
-            if (mobileOverlay) mobileOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-          }
-        });
-      }
-      
-      // Mobile dropdowns
-      const mobileNavItems = document.querySelectorAll('.kse-mobile-nav-item');
-      mobileNavItems.forEach(item => {
-        const link = item.querySelector('.kse-mobile-nav-link');
-        const dropdown = item.querySelector('.kse-mobile-dropdown');
-        
-        if (link && dropdown) {
-          link.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            const isOpen = link.getAttribute('aria-expanded') === 'true';
-            
-            if (isOpen) {
-              link.setAttribute('aria-expanded', 'false');
-              dropdown.classList.remove('active', 'show');
-            } else {
-              link.setAttribute('aria-expanded', 'true');
-              dropdown.classList.add('active', 'show');
-            }
-          });
-        }
-      });
-      
-      // Close dropdowns when clicking outside
-      document.addEventListener('click', function(e) {
-        if (!e.target.closest('.kse-nav')) {
-          closeAllDropdowns();
-        }
-      });
-      
-      // Close dropdowns on escape key
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-          closeAllDropdowns();
-          
-          // Also close mobile menu if open
-          if (mobileMenu && mobileMenu.classList.contains('active')) {
-            mobileMenu.classList.remove('active', 'show');
-            if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
-            if (mobileOverlay) mobileOverlay.classList.remove('active');
-            document.body.style.overflow = '';
-          }
-        }
-      });
-    });
-  </script>
   
-  <!-- Enhanced UI Scripts -->
-  <script>
-    // Image Fade-in Effect
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll("img").forEach((img) => {
-        if (img.complete) {
-          img.classList.add("loaded");
-        } else {
-          img.addEventListener("load", () => img.classList.add("loaded"));
-        }
-      });
-    });
-    
-    // Scroll Reveal without AOS
-    const observerOptions = { threshold: 0.15 };
-    
-    const revealOnScroll = (entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('aos-show');
-          observer.unobserve(entry.target);
-        }
-      });
-    };
-    
-    const scrollObserver = new IntersectionObserver(revealOnScroll, observerOptions);
-    
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll('[data-aos]').forEach(el => {
-        el.classList.add('aos-hide');
-        scrollObserver.observe(el);
-      });
-      
-      // Reset any transform styles on section headings
-      document.querySelectorAll(".section-heading").forEach(el => {
-        el.style.transform = "none";
-      });
-    });
-  </script>
+  
+  
+  <script src="./assets/js/reveal.js" defer></script>
   
   <script>
     let observer;
@@ -1722,7 +1377,7 @@
 
 
 
-  <!-- Mobile Navigation Script -->
+  
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Mobile navigation elements
