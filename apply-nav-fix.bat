@@ -1,3 +1,4 @@
+:: I keep this tiny batch as a convenience runner.
 @echo off
 powershell.exe -ExecutionPolicy Bypass -File "%~dp0apply-nav-fix.ps1"
 echo.

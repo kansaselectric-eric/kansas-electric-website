@@ -1,3 +1,4 @@
+:: I keep this tiny batch as a convenience runner.
 @echo off
 echo Removing ticker from all pages except index.html...
 

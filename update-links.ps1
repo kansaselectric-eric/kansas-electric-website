@@ -1,3 +1,4 @@
+# I use this script to automate repetitive tasks; no manual edits needed.
 $filesToUpdate = @(
     "index.html",
     "about\index.html",

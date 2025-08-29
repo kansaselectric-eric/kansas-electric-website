@@ -1,0 +1,1518 @@
+<!-- page skeleton: unified nav/footer; keep markup lean; comments stay light. -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NX8X8X37');</script>
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <title>Careers at Kansas Electric | Now Hiring Electricians, Technicians, and Control Experts</title>
+
+  <meta name="description" content="Join Kansas Electric's high-performing team. We're hiring industrial electricians, automation experts, and service technicians across the Midwest.">
+
+  <meta property="og:title" content="Careers" />
+  <meta property="twitter:title" content="Careers" />
+  
+  <meta property="og:description" content="At Kansas Electric, we don't just build electrical systems�we build careers. If you're looking to break free from union constraints and take control of your career, we offer higher pay, faster promotions, and more opportunities to work on high-impact industrial and commercial projects." />
+  <meta property="twitter:description" content="At Kansas Electric, we don't just build electrical systems�we build careers. If you're looking to break free from union constraints and take control of your career, we offer higher pay, faster promotions, and more opportunities to work on high-impact industrial and commercial projects." />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kansas Electric" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="../careers/" />
+  <meta property="og:image" content="../assets/img/og-kansas-electric-1200x627.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/mobile-nav.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+  <link rel="manifest" href="../site.webmanifest">
+
+<script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('Xbp1oaEWxyL7EdVj'); </script>
+
+<style>
+  .kse-dropdown,
+  .kse-mobile-dropdown,
+  .kse-mobile-menu {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Adding essential navigation styles */
+  .kse-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+    z-index: 1000;
+    transition: all 0.2s ease-in-out;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .kse-nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    height: 80px;
+    position: relative;
+  }
+
+  .kse-nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    z-index: 1001;
+    margin-left: 0;
+  }
+
+  .kse-nav-logo img {
+    height: 40px;
+    width: auto;
+    margin-left: -4.0rem;
+  }
+
+  .kse-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .kse-nav-item {
+    position: relative;
+  }
+
+  .kse-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0.75rem;
+    text-decoration: none;
+    color: #1f2937;
+    font-weight: 500;
+    transition: all 0.2s ease-out;
+  }
+
+  .kse-nav-link:hover {
+    color: #F7941E;
+  }
+
+  .kse-nav-caret {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s;
+  }
+
+  .kse-nav-item[aria-expanded="true"] .kse-nav-caret {
+    transform: rotate(180deg);
+  }
+
+      .kse-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      background-color: white;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      min-width: 12rem;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease-out, visibility 0.2s ease-out, transform 0.2s ease-out;
+    }
+
+      .kse-dropdown.industries-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      min-width: 24rem;
+      max-width: 90vw;
+    }
+
+  .kse-dropdown.active,
+  .kse-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    display: flex;
+    pointer-events: auto;
+  }
+
+  .kse-dropdown.industries-grid.active,
+  .kse-dropdown.industries-grid.show {
+    display: grid;
+  }
+
+  .kse-dropdown-link {
+    display: block;
+    padding: 0.75rem;
+    color: #374151;
+    text-decoration: none;
+    border-radius: 0.375rem;
+    transition: background-color 0.2s;
+  }
+
+  .kse-dropdown-link:hover {
+    background-color: #f3f4f6;
+  }
+
+  .kse-dropdown-link span {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .kse-dropdown-link small {
+    display: block;
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+
+  .kse-nav-cta {
+    display: inline-block;
+    background-color: #00458C;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    margin-right: 0;
+  }
+
+  .kse-nav-cta:hover {
+    background-color: #00386F;
+    box-shadow: 0 4px 12px rgba(0, 86, 210, 0.3);
+  }
+
+  .kse-mobile-toggle {
+    flex-direction: column;
+    gap: 0.25rem;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    margin-right: 0;
+    z-index: 1001;
+  }
+
+  .kse-hamburger-line {
+    width: 1.5rem;
+    height: 2px;
+    background-color: #374151;
+    transition: all 0.3s;
+  }
+
+  .kse-mobile-menu {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+  }
+
+  .kse-mobile-menu.active,
+  .kse-mobile-menu.show {
+    transform: translateX(0);
+  }
+
+  .kse-mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .kse-mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .kse-mobile-nav-item {
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .kse-mobile-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    color: #374151;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .kse-mobile-dropdown {
+    padding-left: 1rem;
+    border-top: 1px solid #f3f4f6;
+    display: none;
+  }
+
+  .kse-mobile-dropdown.active,
+  .kse-mobile-dropdown.show {
+    display: block;
+  }
+
+  .kse-mobile-dropdown-link {
+    display: block;
+    padding: 0.75rem 0;
+    color: #6b7280;
+    text-decoration: none;
+    border-bottom: 1px solid #f9fafb;
+  }
+
+  .kse-mobile-nav-cta {
+    display: block;
+    background-color: #00458C;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .kse-nav-menu,
+    .kse-nav-cta {
+      display: none;
+    }
+    
+    .kse-dropdown.industries-grid {
+      min-width: 95vw;
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .kse-nav-container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .kse-nav-container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+  
+  @media (min-width: 1536px) {
+    .kse-nav-container {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+  </style>
+</head>
+<body class="font-poppins flex flex-col min-h-screen relative bg-white">
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NX8X8X37"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<a href="#content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-400 text-black px-4 py-2 rounded-md z-50">Skip to main content</a>
+
+<div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
+    <img src="../assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg"
+         alt="Kansas Electric"
+         class="h-10 w-auto object-contain mx-auto"
+         loading="lazy">
+  </div>
+
+<div class="mobile-menu-trigger" id="mobileMenuTrigger">
+    MENU
+  </div>
+
+<div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop"></div>
+
+<nav class="mobile-nav-overlay md:hidden" id="mobileNavOverlay" style="transform: translateX(100%);">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <div class="mobile-nav-content pb-32">
+      <a href="../" class="block w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition text-center">Home</a>
+      
+      <div class="relative z-10 border-t border-gray-200"></div>
+      
+      <div>
+        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('servicesMenu')">
+          <span>Services</span>
+        </button>
+        <div id="servicesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
+          <a href="../services/divisions/industrial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Industrial Electrical</div>
+            <div class="text-xs text-gray-500">Heavy infrastructure & power systems</div>
+          </a>
+          <a href="../services/divisions/commercial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Commercial Electrical</div>
+            <div class="text-xs text-gray-500">Office buildings & retail spaces</div>
+          </a>
+          <a href="../services/divisions/service-maintenance/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Service & Maintenance</div>
+            <div class="text-xs text-gray-500">24/7 support & preventive care</div>
+          </a>
+          <a href="../services/divisions/automation-control/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Automation & Control Systems</div>
+            <div class="text-xs text-gray-500">Smart systems & process control</div>
+          </a>
+          <a href="/services/divisions/ul-panel-shop/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">UL Panel Shop</div>
+            <div class="text-xs text-gray-500">Custom UL 508A certified panels</div>
+          </a>
+        </div>
+      </div>
+      
+      <div class="relative z-10 border-t border-gray-200"></div>
+      
+      <div>
+        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('industriesMenu')">
+          <span>Industries We Serve</span>
+        </button>
+        <div id="industriesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
+          <a href="../services/industrial/oil-gas/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Oil & Gas</div>
+            <div class="text-xs text-gray-500">Refineries & pipelines</div>
+          </a>
+          <a href="../services/industrial/wastewater-treatment/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Water and Wastewater</div>
+            <div class="text-xs text-gray-500">Treatment facilities</div>
+          </a>
+          <a href="../services/industrial/data-centers/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Data Centers</div>
+            <div class="text-xs text-gray-500">Mission critical facilities</div>
+          </a>
+          <a href="../services/industrial/advanced-manufacturing/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Manufacturing</div>
+            <div class="text-xs text-gray-500">Production facilities</div>
+          </a>
+          <a href="../services/industrial/food-beverage/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Food & Beverage</div>
+            <div class="text-xs text-gray-500">Processing plants</div>
+          </a>
+          <a href="../services/industrial/healthcare/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Healthcare Infrastructure</div>
+            <div class="text-xs text-gray-500">Critical care facilities</div>
+          </a>
+        </div>
+      </div>
+      
+      <div class="relative z-10 border-t border-gray-200"></div>
+      
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../projects/'">
+        <span>Projects</span>
+      </button>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../about/'">
+        <span>About</span>
+      </button>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../careers/'">
+        <span>Careers</span>
+      </button>
+      
+      <div class="px-6 pt-6 pb-10">
+        <a href="https://forms.gle/iJVRGxrcMVZXT6zN6"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition">
+          Let's Engineer Your Next Power Move
+        </a>
+      </div>
+    </div>
+  </nav>
+
+<div class="mobile-sticky-cta fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-[999] md:hidden hover:bg-blue-700 transition">
+    <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="block w-full">Let's Engineer Your Next Power Move</a>
+  </div>
+
+<nav class="kse-nav" role="navigation" aria-label="Main navigation">
+      <div class="kse-nav-container">
+          
+          <a href="../" class="kse-nav-logo flex items-center px-4 py-2">
+              <img src="../assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain" loading="lazy">
+          </a>
+
+          <ul class="kse-nav-menu" role="menubar">
+              
+              <li class="kse-nav-item" data-dropdown="services" role="none">
+                  <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="services-dropdown">
+                      <span>Services</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+                  <div class="kse-dropdown" id="services-dropdown" role="menu" aria-hidden="true">
+                      <a href="../services/divisions/industrial/" class="kse-dropdown-link" role="menuitem">
+                          <span>Industrial Electrical</span>
+                          <small>Heavy infrastructure & power systems</small>
+                      </a>
+                      <a href="../services/divisions/commercial/" class="kse-dropdown-link" role="menuitem">
+                          <span>Commercial Electrical</span>
+                          <small>Office buildings & retail spaces</small>
+                      </a>
+                      <a href="../services/divisions/service-maintenance/" class="kse-dropdown-link" role="menuitem">
+                          <span>Service & Maintenance</span>
+                          <small>24/7 support & preventive care</small>
+                      </a>
+                      <a href="../services/divisions/automation-control/" class="kse-dropdown-link" role="menuitem">
+                          <span>Automation & Control Systems</span>
+                          <small>Smart systems & process control</small>
+                      </a>
+                      <a href="/services/divisions/ul-panel-shop/" class="kse-dropdown-link" role="menuitem">
+                          <span>UL Panel Shop</span>
+                          <small>Custom UL 508A certified panels</small>
+                      </a>
+                </div>
+                    </li>
+
+<li class="kse-nav-item" role="none">
+                  <a href="../projects/" class="kse-nav-link" role="menuitem">
+                      <span>Projects</span>
+                  </a>
+              </li>
+
+<li class="kse-nav-item" data-dropdown="industries" role="none">
+                  <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="industries-dropdown">
+                      <span>Industries We Serve</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                  </a>
+                  <div class="kse-dropdown industries-grid" id="industries-dropdown" role="menu" aria-hidden="true">
+                      <a href="../services/industrial/oil-gas/" class="kse-dropdown-link" role="menuitem">
+                          <span>Oil & Gas</span>
+                          <small>Refineries & pipelines</small>
+                      </a>
+                      <a href="../services/industrial/wastewater-treatment/" class="kse-dropdown-link" role="menuitem">
+                          <span>Water and Wastewater</span>
+                          <small>Treatment facilities</small>
+                      </a>
+                      <a href="../services/industrial/data-centers/" class="kse-dropdown-link" role="menuitem">
+                          <span>Data Centers</span>
+                          <small>Mission critical facilities</small>
+                      </a>
+                      <a href="../services/industrial/advanced-manufacturing/" class="kse-dropdown-link" role="menuitem">
+                          <span>Manufacturing</span>
+                          <small>Production facilities</small>
+                      </a>
+                      <a href="../services/industrial/food-beverage/" class="kse-dropdown-link" role="menuitem">
+                          <span>Food & Beverage</span>
+                          <small>Processing plants</small>
+                      </a>
+                      <a href="../services/industrial/healthcare/" class="kse-dropdown-link" role="menuitem">
+                          <span>Healthcare Infrastructure</span>
+                          <small>Critical care facilities</small>
+                </a>
+                </div>
+                    </li>
+
+<li class="kse-nav-item" role="none">
+                  <a href="../about/" class="kse-nav-link" role="menuitem">
+                      <span>About</span>
+                  </a>
+              </li>
+
+<li class="kse-nav-item" role="none">
+                  <a href="../careers/" class="kse-nav-link" role="menuitem">
+                      <span>Careers</span>
+                  </a>
+              </li>
+          </ul>
+          
+          <a href="https://forms.gle/iJVRGxrcMVZXT6zN6"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="kse-nav-cta hidden md:inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg">
+               Let's Engineer Your Next Power Move
+            </a>
+      </div>
+  </nav>
+
+  <main id="content" class="flex-grow">
+
+<section class="relative h-screen overflow-hidden flex items-center justify-center">
+      
+      <video autoplay muted loop playsinline preload="metadata" poster="/assets/img/2025 photos/fallback.jpg" class="absolute inset-0 w-full h-full object-cover z-0" style="z-index: 0; backface-visibility:hidden; transform:translateZ(0);">
+        <source src="/assets/img/2025 photos/careers video compressed.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+<div class="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat z-0" style="background-image: url('/assets/img/careers-bg-fallback.jpg');"></div>
+
+<div class="absolute inset-0 bg-black bg-opacity-60 z-10"></div>
+
+<div class="relative z-20 text-center text-white px-6">
+        <h1 class="text-5xl md:text-6xl font-bold mb-4">Work With Purpose. Power the Future.</h1>
+        <p class="text-xl md:text-2xl text-slate-200 max-w-3xl mx-auto">Join a team that builds the backbone of America's infrastructure.</p>
+      </div>
+    </section>
+
+<section role="region" aria-labelledby="life-at-kansas-electric" class="py-24 bg-white space-y-16 md:space-y-20">
+      <div class="w-full px-6 lg:px-12">
+        <h2 id="life-at-kansas-electric" class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">Life at Kansas Electric</h2>
+        <div class="h-1 w-16 bg-blue-600 mx-auto mb-6"></div>
+        <p class="text-lg text-slate-600 text-center max-w-3xl mx-auto mt-4 mb-12">
+          We're not just building electrical systems — we're building careers, character, and the backbone of American industry.
+        </p>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center" data-aos="fade-up" data-aos-delay="100">
+          <div class="relative group order-1 md:order-1">
+            <div class="h-64 md:h-96 bg-cover bg-center rounded-xl shadow-xl relative transform transition-transform duration-300 group-hover:scale-[1.02]" style="background-image: url('/assets/img/2025 photos/KSE 1.jpg');">
+              <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl"></div>
+            </div>
+          </div>
+          <div class="text-left md:px-10 order-2 md:order-2" data-aos="fade-left" data-aos-delay="150">
+            <h3 class="text-2xl md:text-3xl font-bold text-slate-900">Powering the Backbone of American Industry</h3>
+            <p class="text-slate-600 text-base mt-3">From the heartland to mission-critical environments, our team builds the electrical systems that keep production moving and infrastructure running.</p>
+          </div>
+        </div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center" data-aos="fade-up" data-aos-delay="200">
+          <div class="relative group order-1 md:order-2">
+            <div class="h-64 md:h-96 bg-cover bg-center rounded-xl shadow-xl relative transform transition-transform duration-300 group-hover:scale-[1.02]" style="background-image: url('/assets/img/2025 photos/SS_Princeton_378.jpg');">
+              <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl"></div>
+            </div>
+          </div>
+          <div class="text-left md:px-10 order-2 md:order-1" data-aos="fade-right" data-aos-delay="150">
+            <h3 class="text-2xl md:text-3xl font-bold text-slate-900">Hard Work. Real Respect.</h3>
+            <p class="text-slate-600 text-base mt-3">At Kansas Electric, pride is earned in the field. We back our crews with the support, training, and trust they need to lead — not just follow.</p>
+          </div>
+        </div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center" data-aos="fade-up" data-aos-delay="300">
+          <div class="relative group order-1 md:order-1">
+            <div class="h-64 md:h-96 bg-cover bg-center rounded-xl shadow-xl relative transform transition-transform duration-300 group-hover:scale-[1.02]" style="background-image: url('/assets/img/2025 photos/pulling wire.jpg');">
+              <div class="absolute inset-0 bg-black bg-opacity-40 rounded-xl"></div>
+            </div>
+          </div>
+          <div class="text-left md:px-10 order-2 md:order-2" data-aos="fade-left" data-aos-delay="150">
+            <h3 class="text-2xl md:text-3xl font-bold text-slate-900">No Ceiling. Just Opportunity.</h3>
+            <p class="text-slate-600 text-base mt-3">From apprentices to project managers, we grow careers by promoting from within and delivering high-impact projects that build leaders.</p>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+<section role="region" aria-labelledby="open-positions" class="py-24 bg-gray-50">
+      <div class="max-w-7xl mx-auto px-6">
+        <h2 id="open-positions" class="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">Open Positions</h2>
+        <div class="h-1 w-16 bg-blue-600 mx-auto mb-12"></div>
+        
+        <p class="text-center text-slate-600 max-w-2xl mx-auto mb-6">
+          Explore open roles across our Industrial, Commercial, Service, and Automation divisions. We hire leaders — not just labor.
+        </p>
+
+<div class="flex flex-wrap gap-4 justify-center items-center mb-8">
+          <div class="relative w-full md:w-auto">
+            <select id="divisionFilter" class="appearance-none pr-8 pl-4 py-2 border border-gray-300 rounded-md text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="all">All Divisions</option>
+            </select>
+            <div class="pointer-events-none absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+              ▼
+            </div>
+          </div>
+          <div class="relative w-full md:w-auto">
+            <select id="locationFilter" class="appearance-none pr-8 pl-4 py-2 border border-gray-300 rounded-md text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <option value="all">All Locations</option>
+            </select>
+            <div class="pointer-events-none absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+              ▼
+            </div>
+          </div>
+          <button id="clearFilters" class="text-sm underline text-blue-600 hover:text-blue-800 transition">
+            Clear Filters
+          </button>
+        </div>
+
+<div id="jobsContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+        </div>
+      </div>
+    </section>
+
+<section role="region" aria-labelledby="general-application" class="bg-white py-16 px-6 text-center">
+      <h2 id="general-application" class="text-2xl font-semibold mb-4 text-slate-900">Didn't see your exact fit?</h2>
+      <p class="mb-6 text-gray-600">We're always hiring for top talent across all divisions.</p>
+      <a href="https://forms.gle/yhE3qB33LhvvVzt37" target="_blank" rel="noopener noreferrer" aria-label="Submit general application to Kansas Electric" class="inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition font-medium">
+        Submit a General Application
+      </a>
+    </section>
+
+<section role="region" aria-labelledby="benefits-perks" class="bg-gray-100 py-16 px-6" data-aos="fade-up" data-aos-duration="800">
+      <h2 id="benefits-perks" class="text-center text-3xl font-semibold mb-12">Benefits & Perks</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto text-center">
+        <div class="p-6 bg-white shadow rounded">401(k) with Company Match</div>
+        <div class="p-6 bg-white shadow rounded">Paid Travel for Job Sites</div>
+        <div class="p-6 bg-white shadow rounded">Company Truck for Leads</div>
+        <div class="p-6 bg-white shadow rounded">Continuing Education Paid</div>
+        <div class="p-6 bg-white shadow rounded">$1,500 Employee Referral Bonus</div>
+        <div class="p-6 bg-white shadow rounded">Family-Friendly Hours (Service Division)</div>
+      </div>
+    </section>
+
+<section role="region" aria-labelledby="team-testimonials" class="py-20 px-6 bg-white text-center" data-aos="zoom-in" data-aos-duration="800">
+      <h2 id="team-testimonials" class="text-3xl font-semibold mb-12">What Our Team Says</h2>
+      <div class="max-w-4xl mx-auto space-y-12">
+        <blockquote class="italic text-lg text-gray-700">
+          "Working at Kansas Electric means I go home proud every day. It's more than a job — it's impact."
+        </blockquote>
+        <blockquote class="italic text-lg text-gray-700">
+          "They supported me from apprenticeship through licensing. I'm now leading crews across the state."
+        </blockquote>
+      </div>
+    </section>
+
+<section role="region" aria-labelledby="final-cta" class="bg-gray-50 py-16 text-center" data-aos="fade-up" data-aos-duration="800">
+      <h2 id="final-cta" class="text-2xl font-semibold mb-4 text-slate-900">Be part of something bigger than a job.</h2>
+      <p class="mb-6 text-gray-800">Be part of Kansas Electric.</p>
+      <a href="#open-positions" aria-label="Scroll to job listings and apply today" class="inline-block bg-blue-600 text-white px-5 py-2 rounded hover:bg-blue-700 transition font-medium">Apply Today</a>
+    </section>
+
+<script>
+      // Mobile accordion toggle function
+      function toggleDesc(button) {
+        const desc = button.parentElement.nextElementSibling;
+        desc.classList.toggle('hidden');
+        button.textContent = desc.classList.contains('hidden') ? 'Details' : 'Hide';
+      }
+
+      document.addEventListener('DOMContentLoaded', function() {
+        const jobsContainer = document.getElementById('jobsContainer');
+        const divisionFilter = document.getElementById('divisionFilter');
+        const locationFilter = document.getElementById('locationFilter');
+        const clearFiltersBtn = document.getElementById('clearFilters');
+        let allJobs = [];
+
+        // Load jobs from JSON
+        fetch('../careers/jobs.json')
+          .then(response => response.json())
+          .then(data => {
+            allJobs = data.jobs;
+            populateFilters(allJobs);
+            renderJobs(allJobs);
+          })
+          .catch(error => {
+            console.error('Error loading jobs:', error);
+            jobsContainer.innerHTML = '<p class="text-center text-gray-600">Unable to load job listings at this time.</p>';
+          });
+
+        // Populate filter dropdowns dynamically
+        function populateFilters(jobs) {
+          const uniqueDivisions = [...new Set(jobs.map(job => job.division.toLowerCase()))];
+          const uniqueLocations = [...new Set(jobs.flatMap(job => job.locations).map(location => location.toLowerCase()))];
+
+          divisionFilter.innerHTML = '<option value="all">All Divisions</option>';
+          uniqueDivisions.forEach(division => {
+            divisionFilter.innerHTML += `<option value="${division}">${capitalizeWords(division)}</option>`;
+          });
+
+          locationFilter.innerHTML = '<option value="all">All Locations</option>';
+          uniqueLocations.forEach(location => {
+            locationFilter.innerHTML += `<option value="${location}">${capitalizeWords(location)}</option>`;
+          });
+        }
+
+        function capitalizeWords(str) {
+          // Handle state abbreviations specifically (check for lowercase since input is lowercased)
+          if (str.includes(', ks') || str.includes(',ks')) {
+            return str.replace(/\b\w+/g, word => {
+              // Keep KS fully capitalized
+              if (word.toLowerCase() === 'ks') {
+                return 'KS';
+              }
+              // Capitalize first letter of other words
+              return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+            });
+          }
+          return str.replace(/\b\w/g, l => l.toUpperCase());
+        }
+
+        // Render jobs function
+        function renderJobs(jobs) {
+          // Clear any existing job posting JSON-LD scripts
+          const existingJobScripts = document.querySelectorAll('script[type="application/ld+json"][data-job-posting="true"]');
+          existingJobScripts.forEach(script => script.remove());
+
+          if (jobs.length === 0) {
+            jobsContainer.innerHTML = "<p class='text-center text-gray-500 mt-6'>No matching jobs found. Please check back soon or submit a general application below.</p>";
+            return;
+          }
+
+          // Render the visual job cards
+          jobsContainer.innerHTML = jobs.map((job, index) => `
+            <div class="bg-white shadow-md hover:shadow-xl transition-transform hover:scale-[1.01] duration-300 rounded-lg p-6 space-y-2">
+              <span class="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded">
+                ${job.division}
+              </span>
+              <h3 class="text-xl font-semibold text-gray-900">${job.title}</h3>
+              <p class="text-sm text-gray-500">${job.locations.join(', ')}</p>
+              <p class="text-gray-700 mt-2">${job.summary}</p>
+              <a href="/careers/${job.slug}" class="inline-block mt-4 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded">
+                View Job Description
+              </a>
+            </div>
+          `).join('');
+
+          // Inject JSON-LD structured data for each job
+          jobs.forEach(job => {
+            // Create structured data for each location
+            job.locations.forEach(location => {
+              const structuredData = {
+                "@context": "https://schema.org/",
+                "@type": "JobPosting",
+                "title": job.title,
+                "description": job.summary,
+                "datePosted": new Date().toISOString().split('T')[0],
+                "employmentType": "FULL_TIME",
+                "hiringOrganization": {
+                  "@type": "Organization",
+                  "name": "Kansas Electric",
+                  "sameAs": "https://www.kansaselectric.com",
+                  "logo": "https://www.kansaselectric.com/assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg"
+                },
+                "jobLocation": {
+                  "@type": "Place",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressLocality": location,
+                    "addressRegion": "KS",
+                    "addressCountry": "US"
+                  }
+                },
+                "validThrough": "2025-08-01T00:00"
+              };
+
+              const script = document.createElement("script");
+              script.type = "application/ld+json";
+              script.setAttribute("data-job-posting", "true");
+              script.text = JSON.stringify(structuredData);
+              document.head.appendChild(script);
+            });
+          });
+        }
+
+        // Clear filters function
+        function clearFilters() {
+          divisionFilter.value = 'all';
+          locationFilter.value = 'all';
+          renderJobs(allJobs);
+        }
+
+        // Filter jobs function
+        function filterJobs() {
+          const selectedDivision = divisionFilter.value.toLowerCase();
+          const selectedLocation = locationFilter.value.toLowerCase();
+
+          const filteredJobs = allJobs.filter(job => {
+            return (selectedDivision === "all" || job.division.toLowerCase() === selectedDivision) &&
+                   (selectedLocation === "all" || job.locations.some(location => location.toLowerCase() === selectedLocation));
+          });
+
+          renderJobs(filteredJobs);
+        }
+
+        // Event listeners for filters
+        divisionFilter.addEventListener('change', filterJobs);
+        locationFilter.addEventListener('change', filterJobs);
+        clearFiltersBtn.addEventListener('click', clearFilters);
+      });
+    </script>
+
+<script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Mobile detection function
+        function isMobile() {
+          return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // Remove AOS attributes on mobile devices
+        if (isMobile()) {
+          const aosElements = document.querySelectorAll('[data-aos]');
+          aosElements.forEach(element => {
+            element.removeAttribute('data-aos');
+            element.removeAttribute('data-aos-delay');
+            element.removeAttribute('data-aos-duration');
+            element.removeAttribute('data-aos-offset');
+          });
+        }
+
+        // Initialize AOS with mobile disabled
+        if (typeof AOS !== 'undefined') {
+          AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+            disable: 'mobile'
+          });
+        }
+      });
+    </script>
+
+  </main>
+
+<style>
+    /* Mobile Navigation Styles */
+    .mobile-nav-overlay {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 10000;
+      background-color: white;
+      border-radius: 1rem 0 0 1rem !important;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      max-width: 384px; /* 24rem */
+      width: 90vw;
+      height: 85vh;
+      overflow-y: scroll;
+      transform: translateX(100%);
+      transition: transform 0.3s ease-in-out;
+      backdrop-filter: blur(16px);
+      padding-top: 1.5rem; /* Add breathing room from top */
+    }
+
+    .mobile-nav-overlay.active {
+      transform: translateX(0);
+    }
+
+    .mobile-nav-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+      pointer-events: none;
+    }
+
+    .mobile-nav-backdrop.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .mobile-menu-trigger {
+      position: fixed !important;
+      top: 50% !important;
+      right: 0 !important;
+      transform: translateY(-50%) translateX(0) !important;
+      background: white !important;
+      color: #2D3748 !important;
+      padding: 0.5rem 0.75rem !important;
+      border-radius: 0.5rem 0 0 0.5rem !important;
+      box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1), -2px 0 8px rgba(0, 0, 0, 0.05) !important;
+      cursor: pointer !important;
+      z-index: 99999 !important;
+      font-size: 0.75rem !important;
+      font-weight: 600 !important;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+      letter-spacing: 0.025em !important;
+      /* CRITICAL: Prevent jumping during page load */
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 1 !important;
+      transition: all 0.3s ease !important;
+      border: none !important;
+      outline: none !important;
+      /* Make it small and edge-positioned */
+      width: auto !important;
+      height: auto !important;
+      max-width: 80px !important;
+      text-align: center !important;
+      /* Remove from document flow completely */
+      margin: 0 !important;
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+      left: auto !important;
+      bottom: auto !important;
+      /* Match Industrial page styling */
+      border: 1px solid rgba(229, 231, 235, 0.8) !important;
+    }
+
+    .mobile-menu-trigger:hover {
+      background: #f8f9fa !important;
+      box-shadow: -6px 0 20px rgba(0, 0, 0, 0.15), -3px 0 10px rgba(0, 0, 0, 0.1) !important;
+      transform: translateY(-50%) translateX(-3px) !important;
+      color: #0076C5 !important;
+    }
+
+    .mobile-menu-trigger:active {
+      transform: translateY(-50%) translateX(1px) !important;
+    }
+
+    .mobile-nav-content {
+      padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .mobile-nav-close {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      color: #6b7280;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.2s ease, transform 0.2s ease;
+      z-index: 10;
+      padding: 0.5rem;
+    }
+
+    .mobile-nav-close:hover {
+      color: #000000;
+      transform: translateX(-0.25rem);
+    }
+
+    /* Graceful text handling - expand height instead of awkward wrapping */
+    .mobile-nav-content a {
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      hyphens: auto;
+      min-height: fit-content;
+    }
+
+    .mobile-nav-content button {
+      text-align: center;
+      justify-content: center;
+    }
+
+    .mobile-nav-content a,
+    .mobile-nav-content button {
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    /* Mobile Top Bar */
+    .mobile-top-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+      background-color: white;
+      border-bottom: 1px solid #e5e7eb;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    }
+
+    /* Desktop Navigation - No extra padding needed */
+    @media (min-width: 769px) {
+      .kse-nav {
+        padding-top: 0;
+      }
+    }
+
+    /* Hide mobile elements on desktop - CRITICAL FIX */
+    @media (min-width: 768px) {
+      .mobile-nav-overlay,
+      .mobile-nav-backdrop,
+      .mobile-sticky-cta,
+      .mobile-menu-trigger,
+      .mobile-top-bar,
+      #mobileMenuTrigger {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+      
+      body {
+        padding-top: 0 !important;
+      }
+    }
+
+    /* Hide main navigation on mobile */
+    @media (max-width: 767px) {
+      .kse-nav {
+        display: none !important;
+      }
+    }
+
+    /* Show mobile elements ONLY on mobile - PROPER POSITIONING */
+    @media (max-width: 767px) {
+      /* Show mobile top bar */
+      .mobile-top-bar {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1001 !important;
+        background: white !important;
+        border-bottom: 1px solid #e5e7eb !important;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
+      }
+
+      .mobile-menu-trigger,
+      #mobileMenuTrigger {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: fixed !important;
+        top: 50% !important;
+        right: 0 !important;
+        transform: translateY(-50%) !important;
+        z-index: 99999 !important;
+        pointer-events: auto !important;
+      }
+
+      /* Ensure mobile sticky CTA is always visible */
+      .mobile-sticky-cta {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: fixed !important;
+        bottom: 1rem !important;
+        left: 1rem !important;
+        right: 1rem !important;
+        z-index: 9999 !important;
+        pointer-events: auto !important;
+        transform: none !important;
+      }
+      
+      /* Only add body padding on mobile */
+      body {
+        padding-top: 80px !important;
+      }
+
+      /* Mobile filter styling */
+      #divisionFilter,
+      #locationFilter {
+        width: 100% !important;
+        padding: 12px 16px !important;
+        font-size: 16px !important;
+        border-radius: 8px !important;
+        border: 2px solid #e5e7eb !important;
+        background-color: white !important;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e") !important;
+        background-position: right 12px center !important;
+        background-repeat: no-repeat !important;
+        background-size: 16px !important;
+        appearance: none !important;
+        -webkit-appearance: none !important;
+        -moz-appearance: none !important;
+      }
+
+      #divisionFilter:focus,
+      #locationFilter:focus {
+        outline: none !important;
+        border-color: #3b82f6 !important;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+      }
+
+      /* Center filter container on mobile */
+      .flex.flex-col.md\\:flex-row.gap-4.mb-6 {
+        align-items: center !important;
+        text-align: center !important;
+      }
+      
+      /* Ensure main content is visible */
+      main#content {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative !important;
+        z-index: 1 !important;
+      }
+      
+      /* Force sections to be visible */
+      section {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+      
+      /* Ensure video section doesn't break layout */
+      .relative.h-screen {
+        min-height: 100vh !important;
+        display: flex !important;
+      }
+      
+      /* Force content visibility on mobile */
+      html, body {
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+      }
+      
+      /* Ensure all content is visible */
+      body, main, section, div, nav {
+        display: block !important;
+        visibility: visible !important;
+      }
+
+      /* Fix mobile clickability issues */
+      select, button, a, input {
+        pointer-events: auto !important;
+        touch-action: manipulation !important;
+      }
+
+      /* Ensure mobile elements have proper z-index */
+      .mobile-nav-overlay {
+        z-index: 10000 !important;
+      }
+
+      .mobile-nav-backdrop {
+        z-index: 9999 !important;
+      }
+
+      /* Fix Life at Kansas Electric section for mobile - proper stacking */
+      .grid.md\\:grid-cols-2.gap-8.items-center {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2rem !important;
+      }
+
+      /* Ensure proper order: image first, then text for each section */
+      .grid.md\\:grid-cols-2.gap-8.items-center > div {
+        order: unset !important;
+        width: 100% !important;
+      }
+
+      /* Make images responsive and properly sized on mobile */
+      .grid.md\\:grid-cols-2.gap-8.items-center img {
+        width: 100% !important;
+        height: auto !important;
+        border-radius: 0.5rem !important;
+      }
+
+      /* Footer mobile responsive layout */
+      @media (max-width: 768px) {
+        footer .max-w-7xl {
+          display: grid !important;
+          grid-template-columns: 1fr !important;
+          gap: 2rem !important;
+        }
+        
+        footer .grid > div {
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          text-align: center !important;
+          justify-content: center !important;
+        }
+        
+        /* Ensure proper spacing between footer sections */
+        footer .grid > div:not(:last-child) {
+          margin-bottom: 1rem;
+        }
+        
+        /* Hide any duplicate elements that might be causing issues */
+        footer .grid > div * {
+          position: relative;
+          z-index: 1;
+        }
+      }
+
+      /* Ensure job container is clickable */
+      #jobsContainer {
+        pointer-events: auto !important;
+      }
+
+      #jobsContainer * {
+        pointer-events: auto !important;
+      }
+    }
+  </style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      
+      // Reset body overflow on page load
+      document.body.style.overflow = '';
+      
+      // Mobile navigation elements
+      const mobileMenuTrigger = document.getElementById('mobileMenuTrigger');
+      const mobileNavClose = document.getElementById('mobileNavClose');
+      const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+      const mobileNavBackdrop = document.getElementById('mobileNavBackdrop');
+
+      // Function to open mobile menu
+      function openMobileMenu() {
+        console.log('Opening mobile menu...');
+        if (mobileNavOverlay && mobileNavBackdrop) {
+          console.log('Elements found, adding active class');
+          mobileNavOverlay.classList.add('active');
+          mobileNavBackdrop.classList.add('active');
+          mobileNavOverlay.style.transform = 'translateX(0)';
+          mobileNavBackdrop.style.display = 'block';
+          // Don't set overflow hidden to prevent content disappearing
+          // document.body.style.overflow = 'hidden';
+        } else {
+          console.log('Mobile nav elements not found');
+        }
+      }
+
+      // Function to close mobile menu
+      function closeMobileMenu() {
+        console.log('Closing mobile menu...');
+        if (mobileNavOverlay && mobileNavBackdrop) {
+          mobileNavOverlay.classList.remove('active');
+          mobileNavBackdrop.classList.remove('active');
+          mobileNavOverlay.style.transform = 'translateX(100%)';
+          mobileNavBackdrop.style.display = 'none';
+          document.body.style.overflow = '';
+        }
+      }
+
+      // Function to toggle mobile menu
+      function toggleMobileMenu() {
+        if (mobileNavOverlay && mobileNavOverlay.classList.contains('active')) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      }
+
+      // Event listeners
+      if (mobileMenuTrigger) {
+        console.log('Mobile menu trigger found, adding click listener');
+        mobileMenuTrigger.addEventListener('click', function(e) {
+          console.log('Mobile menu trigger clicked');
+          e.preventDefault();
+          e.stopPropagation();
+          toggleMobileMenu();
+        });
+      } else {
+        console.log('Mobile menu trigger NOT found');
+      }
+
+      if (mobileNavClose) {
+        mobileNavClose.addEventListener('click', closeMobileMenu);
+      }
+
+      if (mobileNavBackdrop) {
+        mobileNavBackdrop.addEventListener('click', closeMobileMenu);
+      }
+
+      // Close menu on escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeMobileMenu();
+        }
+      });
+    });
+
+    // Mobile dropdown toggle function
+    function toggleMobileDropdown(id) {
+      const menu = document.getElementById(id);
+      const caret = document.getElementById(id + 'Caret');
+
+      const isHidden = menu.classList.contains('hidden');
+      if (isHidden) {
+        menu.classList.remove('hidden');
+        caret?.classList.add('rotate-180');
+      } else {
+        menu.classList.add('hidden');
+        caret?.classList.remove('rotate-180');
+      }
+    }
+  </script>
+
+  <style>
+    .footer-custom {
+      background-color: #00458C;
+      background-blend-mode: overlay;
+    }
+  </style>
+
+  <footer class="footer-custom text-white py-16 px-6 border-t border-white/10" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+      
+      <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-3" data-aos="fade-up" data-aos-delay="100">
+        <p class="text-white text-sm">Built for Power. Engineered for Excellence.</p>
+      </div>
+
+<div class="flex flex-col items-center justify-center space-y-3" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Contact</h3>
+        <a href="tel:3162834750" class="text-white font-medium hover:text-white transition-colors text-base">
+          (316) 283-4750
+        </a>
+        <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="inline-block bg-[#e8851a] text-white font-medium py-3 px-6 rounded-md hover:bg-[#003a94] transition-colors duration-300 text-center transition-transform duration-300 ease-in-out hover:scale-105" style="filter: drop-shadow(0 0 6px rgba(255,255,255,0.1));">
+          Let's Engineer Your Next Power Move
+        </a>
+      </div>
+
+<div class="flex flex-col items-center md:items-end text-center md:text-right space-y-3" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Links</h3>
+        <a href="https://www.linkedin.com/company/kansas-electric/" class="text-white hover:text-gray-200 transition-colors" aria-label="Kansas Electric LinkedIn profile">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6" alt="Kansas Electric LinkedIn profile">
+            <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
+          </svg>
+        </a>
+        <a href="../suppliers/" class="text-sm text-white hover:text-white hover:underline transition-colors">
+          Interested in becoming a supplier?
+        </a>
+      </div>
+    </div>
+
+<div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
+      <p class="text-sm text-white max-w-3xl mx-auto leading-relaxed">
+        Since 1948, Kansas Electric has powered some of the region's most essential facilities - from hospitals and manufacturers to mission-critical infrastructure. We bring decades of experience, a culture of safety, and future-focused innovation to every electrical project we touch.
+      </p>
+    </div>
+
+<div class="mt-8 text-center text-gray-200 text-sm" data-aos="fade-up" data-aos-delay="500">
+      &copy; 2025 Kansas Electric. All rights reserved.
+      <a href="../assets/documents/04.01.2022-kansas-electric-terms-and-conditions.pdf" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="block mt-2 text-white hover:text-gray-200 text-sm underline transition-colors">
+        Terms and Conditions
+      </a>
+    </div>
+  </footer>
+
+<script>
+    let observer;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const video = document.querySelector('video');
+      if (!video) return;
+
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.1 });
+
+      observer.observe(video);
+    });
+
+    window.addEventListener('beforeunload', () => {
+      if (observer) observer.disconnect();
+      
+      const video = document.querySelector('video');
+      if (video) {
+        video.pause();
+        video.removeAttribute('src');
+        while (video.firstChild) {
+          video.removeChild(video.firstChild);
+        }
+        video.load();
+      }
+    });
+  </script>
+
+<script>
+  // Immediate execution to ensure content is visible
+  (function() {
+    document.body.style.overflow = '';
+    document.body.style.visibility = 'visible';
+    document.body.style.opacity = '1';
+    document.body.style.display = 'block';
+    
+    // Force main content to be visible
+    const main = document.getElementById('content');
+    if (main) {
+      main.style.display = 'block';
+      main.style.visibility = 'visible';
+      main.style.opacity = '1';
+    }
+  })();
+  </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Mobile detection function
+    function isMobile() {
+      return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+
+    // Remove AOS attributes on mobile devices
+    if (isMobile()) {
+      console.log('Mobile device detected, removing AOS attributes');
+      const elementsWithAOS = document.querySelectorAll('[data-aos]');
+      elementsWithAOS.forEach(element => {
+        element.removeAttribute('data-aos');
+        element.removeAttribute('data-aos-delay');
+        element.removeAttribute('data-aos-duration');
+        element.removeAttribute('data-aos-easing');
+        element.removeAttribute('data-aos-mirror');
+        element.removeAttribute('data-aos-once');
+        element.removeAttribute('data-aos-anchor-placement');
+        // Ensure element is visible
+        element.style.opacity = '1';
+        element.style.transform = 'none';
+        element.style.visibility = 'visible';
+      });
+    } else {
+      // Initialize AOS on desktop only
+      if (typeof AOS !== 'undefined') {
+        AOS.init({
+          duration: 800,
+          easing: 'ease-in-out',
+          once: true,
+          mirror: false,
+          disable: 'mobile'
+        });
+      }
+    }
+
+    // Force body overflow reset
+    document.body.style.overflow = '';
+    
+    // Ensure main content is visible
+    const mainContent = document.getElementById('content');
+    if (mainContent) {
+      mainContent.style.display = 'block';
+      mainContent.style.visibility = 'visible';
+      mainContent.style.opacity = '1';
+    }
+  });
+  </script>
+  <script src="../assets/js/reveal.js" defer></script>
+</body>
+</html>
+

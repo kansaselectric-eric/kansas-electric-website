@@ -17,7 +17,6 @@ ROOT = Path(__file__).resolve().parents[1]
 
 LOGO_ANCHOR = re.compile(r'(<a\s+[^>]*class="[^"]*kse-nav-logo[^"]*"\s+href=")([^"]*)("[^>]*>)', re.IGNORECASE)
 
-
 def rel_prefix(page: Path) -> str:
     rel = os.path.relpath(ROOT, page.parent).replace('\\', '/')
     if rel == '.':
@@ -25,7 +24,6 @@ def rel_prefix(page: Path) -> str:
     if not rel.endswith('/'):
         rel += '/'
     return rel
-
 
 def process_file(p: Path, apply: bool) -> tuple[bool, str]:
     html = p.read_text(encoding='utf-8', errors='ignore')
@@ -36,7 +34,6 @@ def process_file(p: Path, apply: bool) -> tuple[bool, str]:
     if n and apply:
         p.write_text(new_html, encoding='utf-8')
     return bool(n), f'updated {n} logo link(s)' if n else 'no changes'
-
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -63,8 +60,6 @@ def main() -> None:
     mode = 'APPLY' if args.apply else 'DRY-RUN'
     print(f'\n[{mode}] scanned={scanned} changed={changed}')
 
-
 if __name__ == '__main__':
     main()
-
 

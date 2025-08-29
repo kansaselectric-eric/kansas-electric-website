@@ -1,29 +1,26 @@
+﻿<!-- page skeleton: unified nav/footer; keep markup lean; comments stay light. -->
 ﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
-  
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-NX8X8X37');</script>
-  
-  
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
   <title>Home - Kansas Electric</title>
 
   <meta name="description" content="From lighting to equipment automation, grain terminals to hospitals, Kansas Electric is a full-service electrical design and construction company that builds the systems that power our lives.">
 
-  
-  <meta property="og:title" content="Home" />
+<meta property="og:title" content="Home" />
   <meta property="twitter:title" content="Home" />
-  
-  
-  <meta property="og:description" content="From lighting to equipment automation, grain terminals to hospitals, Kansas Electric is a full-service electrical design and construction company that builds the systems that power our lives." />
+
+<meta property="og:description" content="From lighting to equipment automation, grain terminals to hospitals, Kansas Electric is a full-service electrical design and construction company that builds the systems that power our lives." />
   <meta property="twitter:description" content="From lighting to equipment automation, grain terminals to hospitals, Kansas Electric is a full-service electrical design and construction company that builds the systems that power our lives." />
   
   <meta property="og:type" content="website" />
@@ -41,10 +38,8 @@
   <link rel="manifest" href="./site.webmanifest">
   <link rel="stylesheet" href="projects/stanley-black-decker/mobile-responsive.css">
 
-  
+<style>
 
-  
-  <style>
   .kse-dropdown,
   .kse-mobile-dropdown,
   .kse-mobile-menu {
@@ -345,15 +340,13 @@
       padding-right: 4rem;
     }
   }
-  </style>
-
-
-
-
-  <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('Xbp1oaEWxyL7EdVj'); </script>
-
   
-  <style>
+</style>
+
+<script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('Xbp1oaEWxyL7EdVj'); </script>
+
+<style>
+
     /* Override fade-in class to ensure elements are visible */
     .fade-in {
       opacity: 1 !important;
@@ -537,20 +530,17 @@
     .animate-bounce {
       animation: bounce 2s infinite;
     }
-  </style>
-
-
   
+</style>
+
 </head>
 <body class="font-poppins flex flex-col min-h-screen relative">
 
-  
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NX8X8X37"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NX8X8X37"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  
 
-  
-  <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
+<!-- container: mobile top bar -->
+<div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
     <a href="./" style="z-index:1100; pointer-events:auto;">
       <img src="./assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg"
            alt="Kansas Electric"
@@ -559,102 +549,135 @@
     </a>
   </div>
 
-  
-  <div class="mobile-menu-trigger md:hidden" id="mobileMenuTrigger">
+<!-- container: mobileMenuTrigger -->
+<div class="mobile-menu-trigger md:hidden" id="mobileMenuTrigger">
     MENU
   </div>
 
-  
-  <div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop"></div>
+<!-- container: mobileNavBackdrop -->
+<div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop"></div>
 
-  
-  <nav class="mobile-nav-overlay md:hidden" id="mobileNavOverlay">
+<!-- navigation: mobileNavOverlay -->
+<nav class="mobile-nav-overlay md:hidden" id="mobileNavOverlay">
     <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
       </svg>
     </button>
+    <!-- container: mobile nav content -->
     <div class="mobile-nav-content pb-32">
       <a href="/" class="block w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition text-center">Home</a>
       
+      <!-- container: relative -->
       <div class="relative z-10 border-t border-gray-200"></div>
       
+      <!-- div -->
       <div>
         <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('servicesMenu')">
           <span>Services</span>
         </button>
+        <!-- container: servicesMenu -->
         <div id="servicesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
           <a href="/services/divisions/industrial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Industrial Electrical</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Heavy infrastructure & power systems</div>
           </a>
           <a href="/services/divisions/commercial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Commercial Electrical</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Office buildings & retail spaces</div>
           </a>
           <a href="/services/divisions/service-maintenance/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Service & Maintenance</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">24/7 support & preventive care</div>
           </a>
           <a href="/services/divisions/automation-control/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Automation & Control Systems</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Smart systems & process control</div>
           </a>
           <a href="/services/divisions/ul-panel-shop/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">UL Panel Shop</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Custom UL 508A certified panels</div>
           </a>
         </div>
       </div>
       
+      <!-- container: relative -->
       <div class="relative z-10 border-t border-gray-200"></div>
       
+      <!-- div -->
       <div>
         <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('industriesMenu')">
           <span>Industries We Serve</span>
         </button>
+        <!-- container: industriesMenu -->
         <div id="industriesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
           <a href="/services/industrial/oil-gas/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Oil & Gas</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Refineries & pipelines</div>
           </a>
           <a href="/services/industrial/wastewater-treatment/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Water and Wastewater</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Treatment facilities</div>
           </a>
           <a href="/services/industrial/data-centers/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Data Centers</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Mission critical facilities</div>
           </a>
           <a href="/services/industrial/advanced-manufacturing/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Manufacturing</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Production facilities</div>
           </a>
           <a href="/services/industrial/food-beverage/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Food & Beverage</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Processing plants</div>
           </a>
           <a href="/services/industrial/healthcare/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Healthcare Infrastructure</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Critical care facilities</div>
           </a>
         </div>
       </div>
       
+      <!-- container: relative -->
       <div class="relative z-10 border-t border-gray-200"></div>
       
       <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/projects/'">
         <span>Projects</span>
       </button>
+      <!-- container: relative -->
       <div class="relative z-10 border-t border-gray-200"></div>
       <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/about/'">
         <span>About</span>
       </button>
+      <!-- container: relative -->
       <div class="relative z-10 border-t border-gray-200"></div>
       <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/careers/'">
         <span>Careers</span>
       </button>
       
+      <!-- container: px 6 -->
       <div class="px-6 pt-6 pb-10">
         <a href="https://forms.gle/iJVRGxrcMVZXT6zN6"
            target="_blank"
@@ -666,21 +689,23 @@
     </div>
   </nav>
 
-  
-  <div class="mobile-sticky-cta fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-[999] md:hidden hover:bg-blue-700 transition">
+<!-- container: mobile sticky cta -->
+<div class="mobile-sticky-cta fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-[999] md:hidden hover:bg-blue-700 transition">
     <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="block w-full">Let's Engineer Your Next Power Move</a>
   </div>
 
   <a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-ke-yellow inline-block"><span class="block py-2">Skip to content</span></a>
 
-  
-  <nav class="kse-nav" role="navigation" aria-label="Main navigation">
+<!-- navigation: kse nav -->
+<nav class="kse-nav" role="navigation" aria-label="Main navigation">
+      <!-- container: kse nav container -->
       <div class="kse-nav-container">
           
           <a href="./" class="kse-nav-logo flex items-center px-4 py-2">
               <img src="./assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain" loading="lazy">
           </a>
 
+          <!-- ul/ol: kse nav menu -->
           <ul class="kse-nav-menu" role="menubar">
               
               <li class="kse-nav-item" data-dropdown="services" role="none">
@@ -690,6 +715,7 @@
                           <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                   </svg>
                 </a>
+                  <!-- container: services dropdown -->
                   <div class="kse-dropdown" id="services-dropdown" role="menu" aria-hidden="true">
                       <a href="/services/divisions/industrial/" class="kse-dropdown-link" role="menuitem">
                           <span>Industrial Electrical</span>
@@ -714,21 +740,20 @@
                 </div>
                     </li>
 
-              
-              <li class="kse-nav-item" role="none">
+<li class="kse-nav-item" role="none">
                   <a href="/projects/" class="kse-nav-link" role="menuitem">
                       <span>Projects</span>
                   </a>
               </li>
 
-              
-              <li class="kse-nav-item" data-dropdown="industries" role="none">
+<li class="kse-nav-item" data-dropdown="industries" role="none">
                   <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="industries-dropdown">
                       <span>Industries We Serve</span>
                       <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                           <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                   </svg>
                   </a>
+                  <!-- container: industries dropdown -->
                   <div class="kse-dropdown industries-grid" id="industries-dropdown" role="menu" aria-hidden="true">
                       <a href="/services/industrial/oil-gas/" class="kse-dropdown-link" role="menuitem">
                           <span>Oil & Gas</span>
@@ -757,15 +782,13 @@
                 </div>
                     </li>
 
-              
-              <li class="kse-nav-item" role="none">
+<li class="kse-nav-item" role="none">
                   <a href="/about/" class="kse-nav-link" role="menuitem">
                       <span>About</span>
                   </a>
               </li>
 
-              
-              <li class="kse-nav-item" role="none">
+<li class="kse-nav-item" role="none">
                   <a href="/careers/" class="kse-nav-link" role="menuitem">
                       <span>Careers</span>
                   </a>
@@ -779,78 +802,69 @@
                Let's Engineer Your Next Power Move
             </a>
 
-
-
-          <button id="kse-nav-toggle" class="block md:hidden text-white text-3xl z-[1001] absolute top-6 right-6">
+<button id="kse-nav-toggle" class="block md:hidden text-white text-3xl z-[1001] absolute top-6 right-6">
             &#9776;
           </button>
       </div>
   </nav>
 
+  <!-- main: content -->
   <main id="content" class="flex-grow">
-    
 
+<!-- article: overflow hidden -->
 <article class="overflow-hidden">
 
-  
-  <section id="video-section" class="relative w-full h-screen sm:h-auto sm:min-h-[calc(100vh-80px)] md:min-h-[500px] lg:h-screen lg:min-h-screen overflow-hidden bg-black">
+<!-- section: video section -->
+<section id="video-section" class="relative w-full h-screen sm:h-auto sm:min-h-[calc(100vh-80px)] md:min-h-[500px] lg:h-screen lg:min-h-screen overflow-hidden bg-black">
     
     <video id="bg-video" muted loop playsinline preload="none" poster="/assets/img/2025 photos/fallback.jpg" class="absolute inset-0 w-full h-full object-cover z-0" style="transform: translateZ(0); backface-visibility: hidden; will-change: transform">
       
     </video>
-    
-    
-    <div 
+
+<div 
       class="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat z-0"
       style="z-index: 1;"
     ></div>
-    
-    
-    <div class="absolute inset-0 bg-black bg-opacity-40 z-10" style="transform: translateZ(0); backface-visibility: hidden; will-change: opacity, transform"></div>
-    
-    
-    <div class="absolute inset-0 flex items-center justify-center z-20" style="transform: translateZ(0); backface-visibility: hidden; will-change: opacity, transform">
+
+<!-- container: absolute -->
+<div class="absolute inset-0 bg-black bg-opacity-40 z-10" style="transform: translateZ(0); backface-visibility: hidden; will-change: opacity, transform"></div>
+
+<!-- container: absolute -->
+<div class="absolute inset-0 flex items-center justify-center z-20" style="transform: translateZ(0); backface-visibility: hidden; will-change: opacity, transform">
+      <!-- container: text center -->
       <div class="text-center text-white px-6 max-w-4xl mx-auto">
-        
-        
-        
-        <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight text-white"
+
+<h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight text-white"
             style="text-shadow: 0 4px 8px rgba(0,0,0,0.8), 0 0 2px rgba(0,0,0,0.9);">
           Built for Power.<br>Engineered for Excellence.
         </h1>
-        
-        
-        <p class="text-base sm:text-lg md:text-xl mb-8 text-white max-w-2xl mx-auto leading-relaxed px-4"
+
+<p class="text-base sm:text-lg md:text-xl mb-8 text-white max-w-2xl mx-auto leading-relaxed px-4"
            style="text-shadow: 0 2px 4px rgba(0,0,0,0.8);">
           From hospitals to automation, we design and build the systems that power American infrastructure.
         </p>
-        
-        
-        <div class="hidden sm:flex items-center justify-center text-center">
+
+<!-- container: hidden -->
+<div class="hidden sm:flex items-center justify-center text-center">
           <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center text-center sm:flex-row flex-col px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
         </div>
       </div>
     </div>
-    
-    
-    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+
+<!-- container: absolute -->
+<div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+      <!-- container: w 6 -->
       <div class="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+        <!-- container: w 1 -->
         <div class="w-1 h-3 bg-white rounded-full mt-2 animate-bounce"></div>
       </div>
     </div>
   </section>
 
-
-
-  
-
-  
-
-  
-
-  
-  <section class="py-20 bg-gray-100 border-t border-gray-200">
+<!-- section: py 20 -->
+<section class="py-20 bg-gray-100 border-t border-gray-200">
     <style>
+
       .service-card {
         background-color: #ffffff;
         border-radius: 0.75rem;
@@ -862,9 +876,12 @@
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         transform: translateY(-2px);
       }
-    </style>
+    
+</style>
+    <!-- container: w full -->
     <div class="w-full px-6 md:px-10 lg:px-16" aria-labelledby="what-we-do-heading">
       
+      <!-- container: mb 16 -->
       <div class="mb-16 text-center">
         <h2 id="what-we-do-heading" class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight section-heading" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0" opacity-100 transition-opacity duration-500>What We Do</h2>
         <p class="text-lg text-gray-500 mb-4 leading-relaxed max-w-3xl mx-auto" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
@@ -872,11 +889,11 @@
         </p>
       </div>
 
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        
-        <a href="/services/divisions/industrial/" class="p-4 rounded-xl shadow service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Industrial Electrical" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+<!-- container: grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+<a href="/services/divisions/industrial/" class="p-4 rounded-xl shadow service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Industrial Electrical" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+          <!-- container: flex -->
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Industrial Electrical</h3>
             <p class="text-sm text-gray-500 mt-1">Heavy infrastructure & power systems</p>
@@ -889,9 +906,9 @@
             </span>
           </div>
         </a>
-        
-        
-        <a href="/services/divisions/commercial/" class="p-4 rounded-xl shadow service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Commercial Electrical" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+
+<a href="/services/divisions/commercial/" class="p-4 rounded-xl shadow service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Commercial Electrical" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+          <!-- container: flex -->
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Commercial Electrical</h3>
             <p class="text-sm text-gray-500 mt-1">Office buildings & retail spaces</p>
@@ -904,9 +921,9 @@
             </span>
           </div>
         </a>
-        
-        
-        <a href="/services/divisions/service-maintenance/" class="p-4 rounded-xl shadow service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Service & Maintenance" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+
+<a href="/services/divisions/service-maintenance/" class="p-4 rounded-xl shadow service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Service & Maintenance" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+          <!-- container: flex -->
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Service & Maintenance</h3>
             <p class="text-sm text-gray-500 mt-1">24/7 support & preventive care</p>
@@ -919,9 +936,9 @@
             </span>
           </div>
         </a>
-        
-        
-        <a href="/services/divisions/automation-control/" class="p-4 rounded-xl shadow service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Automation & Control Systems" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+
+<a href="/services/divisions/automation-control/" class="p-4 rounded-xl shadow service-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Automation & Control Systems" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
+          <!-- container: flex -->
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Automation & Control Systems</h3>
             <p class="text-sm text-gray-500 mt-1">Smart systems & process control</p>
@@ -939,13 +956,14 @@
     </div>
   </section>
 
-  
-  <section class="hero-partner-section relative bg-cover bg-center bg-no-repeat flex items-center justify-center text-white text-center px-4 py-24" style="background-image: url('./assets/img/2025 photos/KSE 1.jpg');">
+<!-- section: hero partner section -->
+<section class="hero-partner-section relative bg-cover bg-center bg-no-repeat flex items-center justify-center text-white text-center px-4 py-24" style="background-image: url('./assets/img/2025 photos/KSE 1.jpg');">
     
+    <!-- container: absolute -->
     <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-    
-    
-    <style>
+
+<style>
+
       @media (max-width: 768px) {
         .hero-partner-section {
           background-position: center center !important;
@@ -988,10 +1006,11 @@
         background-color: #00458C;
         border-color: #F7941E;
       }
-    </style>
     
-    
-    <div class="max-w-4xl mx-auto relative z-10">
+</style>
+
+<!-- container: max w 4xl -->
+<div class="max-w-4xl mx-auto relative z-10">
         <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-relaxed drop-shadow-md fade-up-element delay-100 opacity-100 transition-opacity duration-500">
           Kansas Electric — Your Trusted Partner in Power
         </h2>
@@ -1001,9 +1020,10 @@
     </div>
   </section>
 
-  
-  <section class="py-20 bg-gray-100 border-t border-gray-200">
+<!-- section: py 20 -->
+<section class="py-20 bg-gray-100 border-t border-gray-200">
     <style>
+
       .industry-card {
         background-color: #ffffff;
         border-radius: 0.75rem;
@@ -1015,20 +1035,24 @@
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         transform: translateY(-2px);
       }
-    </style>
+    
+</style>
+    <!-- container: w full -->
     <div class="w-full px-6 md:px-10 lg:px-16" aria-labelledby="industries-heading">
       
+      <!-- container: mb 16 -->
       <div class="mb-16 text-center">
         <h2 id="industries-heading" class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight section-heading" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0" opacity-100 transition-opacity duration-500>Industries We Power</h2>
         <p class="text-lg text-gray-500 mb-4 leading-relaxed max-w-3xl mx-auto" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
           Strategic electrical systems for mission-critical industries that demand precision, uptime, and performance.
         </p>
       </div>
-      
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+<!-- container: grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         
         <a href="/services/industrial/healthcare/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Healthcare Infrastructure" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
+          <!-- container: flex -->
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Healthcare Infrastructure</h3>
             <p class="text-sm text-gray-500 mt-1">Critical systems. Backup redundancy. Zero downtime.</p>
@@ -1041,9 +1065,9 @@
             </span>
           </div>
         </a>
-        
-        
-        <a href="/services/industrial/food-beverage/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Food & Beverage" data-aos="fade-up" data-aos-duration="800" data-aos-delay="150">
+
+<a href="/services/industrial/food-beverage/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Food & Beverage" data-aos="fade-up" data-aos-duration="800" data-aos-delay="150">
+          <!-- container: flex -->
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Food & Beverage</h3>
             <p class="text-sm text-gray-500 mt-1">Process control. Clean environments. Continuous production.</p>
@@ -1056,9 +1080,9 @@
             </span>
           </div>
         </a>
-        
-        
-        <a href="/services/industrial/advanced-manufacturing/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Advanced Manufacturing" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+
+<a href="/services/industrial/advanced-manufacturing/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Advanced Manufacturing" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+          <!-- container: flex -->
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Advanced Manufacturing</h3>
             <p class="text-sm text-gray-500 mt-1">Smart automation. Precise control. Scalable infrastructure.</p>
@@ -1071,9 +1095,9 @@
             </span>
           </div>
         </a>
-        
-        
-        <a href="/services/industrial/oil-gas/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Oil & Gas" data-aos="fade-up" data-aos-duration="800" data-aos-delay="250">
+
+<a href="/services/industrial/oil-gas/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Oil & Gas" data-aos="fade-up" data-aos-duration="800" data-aos-delay="250">
+          <!-- container: flex -->
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Oil & Gas</h3>
             <p class="text-sm text-gray-500 mt-1">Hazardous locations. Pipeline control. Mission critical operations.</p>
@@ -1086,9 +1110,9 @@
             </span>
           </div>
         </a>
-        
-        
-        <a href="/services/industrial/wastewater-treatment/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Water & Wastewater" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+
+<a href="/services/industrial/wastewater-treatment/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Water & Wastewater" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+          <!-- container: flex -->
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Water & Wastewater</h3>
             <p class="text-sm text-gray-500 mt-1">Treatment plants. Environmental compliance. Public health systems.</p>
@@ -1101,9 +1125,9 @@
             </span>
           </div>
         </a>
-        
-        
-        <a href="/services/industrial/data-centers/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Data Centers" data-aos="fade-up" data-aos-duration="800" data-aos-delay="350">
+
+<a href="/services/industrial/data-centers/" class="p-4 rounded-xl shadow industry-card hover:shadow-lg hover:scale-[1.01] transition-transform duration-200 ease-in-out" role="link" aria-label="Learn more about Data Centers" data-aos="fade-up" data-aos-duration="800" data-aos-delay="350">
+          <!-- container: flex -->
           <div class="flex flex-col space-y-1">
             <h3 class="font-semibold text-lg text-left">Data Centers</h3>
             <p class="text-sm text-gray-500 mt-1">Mission critical systems. High availability. Scalable infrastructure.</p>
@@ -1120,9 +1144,10 @@
     </div>
   </section>
 
-  
-  <section class="border-t border-gray-200 py-20 bg-white">
+<!-- section: border t -->
+<section class="border-t border-gray-200 py-20 bg-white">
     <style>
+
       /* Enhanced text styling for projects */
       .project-category {
         text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
@@ -1185,66 +1210,73 @@
       .project-card:hover .card-image {
         transform: scale(1.03);
       }
-    </style>
+    
+</style>
+    <!-- container: w full -->
     <div class="w-full px-6 md:px-10 lg:px-16">
       
+      <!-- container: mb 16 -->
       <div class="mb-16 text-center">
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight section-heading" data-aos="fade-up" data-aos-duration="800" data-aos-delay="0" opacity-100 transition-opacity duration-500>Industrial Excellence in Action</h2>
         <p class="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="100">Real-world installations that showcase our capabilities and commitment to industrial precision.</p>
       </div>
-      
-      
-      <div class="grid grid-cols-1 gap-y-8">
+
+<!-- container: grid -->
+<div class="grid grid-cols-1 gap-y-8">
         
+        <!-- container: relative -->
         <div class="relative w-full min-h-[350px] md:h-[450px] overflow-hidden rounded-xl shadow-lg project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="100">
           
           <img src="./assets/img/2025 photos/featured projects cards/Newton Medical Center Switchgear.jpg"
                alt="Cedar Creek wastewater treatment plant electrical systems - 25 MGD facility with power distribution and SCADA integration in Olathe, Kansas"
                class="absolute inset-0 w-full h-full min-h-full object-cover z-0" loading="lazy" />
 
-          
-          <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60 z-0"></div>
+<!-- container: absolute -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60 z-0"></div>
 
-          
-          <div class="absolute inset-0 z-10 flex flex-col justify-end p-2 sm:p-3 md:p-6 text-white mt-[-1.25rem] md:mt-0">
+<!-- container: absolute -->
+<div class="absolute inset-0 z-10 flex flex-col justify-end p-2 sm:p-3 md:p-6 text-white mt-[-1.25rem] md:mt-0">
+            <!-- container: text sm -->
             <div class="text-sm font-bold tracking-wider uppercase mb-1" style="text-shadow: 0 1px 3px rgba(0,0,0,0.85);">Water Infrastructure</div>
             <h2 class="text-xl md:text-2xl font-bold leading-tight mb-2" style="text-shadow: 0 2px 4px rgba(0,0,0,0.85);">Cedar Creek Expansion</h2>
             <p class="text-sm mb-1" style="text-shadow: 0 1px 2px rgba(0,0,0,0.85);">25 MGD Treatment Plant • 40,000 sq. ft. • Olathe, Kansas</p>
             <p class="text-sm" style="text-shadow: 0 1px 2px rgba(0,0,0,0.85);">Complete electrical systems for a 25 MGD wastewater treatment plant, including power distribution and SCADA integration.</p>
           </div>
         </div>
-        
-        
-        <div class="relative w-full min-h-[350px] md:h-[450px] overflow-hidden rounded-xl shadow-lg project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
+
+<!-- container: relative -->
+<div class="relative w-full min-h-[350px] md:h-[450px] overflow-hidden rounded-xl shadow-lg project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
           
           <img src="./assets/img/2025 photos/featured projects cards/MKC Lyons.jpg"
                alt="MKC Lyons grain processing facility - Complete electrical design and construction for advanced automation systems in 55,000 sq. ft. processing plant"
                class="absolute inset-0 w-full h-full min-h-full object-cover z-0" loading="lazy" />
 
-          
-          <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60 z-0"></div>
+<!-- container: absolute -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60 z-0"></div>
 
-          
-          <div class="absolute inset-0 z-10 flex flex-col justify-end p-2 sm:p-3 md:p-6 text-white mt-[-1.25rem] md:mt-0">
+<!-- container: absolute -->
+<div class="absolute inset-0 z-10 flex flex-col justify-end p-2 sm:p-3 md:p-6 text-white mt-[-1.25rem] md:mt-0">
+            <!-- container: text sm -->
             <div class="text-sm font-bold tracking-wider uppercase mb-1" style="text-shadow: 0 1px 3px rgba(0,0,0,0.85);">Grain Processing</div>
             <h2 class="text-xl md:text-2xl font-bold leading-tight mb-2" style="text-shadow: 0 2px 4px rgba(0,0,0,0.85);">MKC Lyons Facility</h2>
             <p class="text-sm mb-1" style="text-shadow: 0 1px 2px rgba(0,0,0,0.85);">Processing Plant • 55,000 sq. ft. • Lyons, Kansas</p>
             <p class="text-sm" style="text-shadow: 0 1px 2px rgba(0,0,0,0.85);">Complete electrical design and construction for a state-of-the-art grain processing facility with advanced automation systems.</p>
           </div>
         </div>
-        
-        
-        <div class="relative w-full min-h-[350px] md:h-[450px] overflow-hidden rounded-xl shadow-lg project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
+
+<!-- container: relative -->
+<div class="relative w-full min-h-[350px] md:h-[450px] overflow-hidden rounded-xl shadow-lg project-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="300">
           
           <img src="./assets/img/2025 photos/featured projects cards/Health Ministries Dental Clinic.jpg"
                alt="Health Ministries Dental Clinic electrical systems - Specialized power distribution for critical care dental facility in Newton, Kansas"
                class="absolute inset-0 w-full h-full min-h-full object-cover z-0" loading="lazy" />
 
-          
-          <div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60 z-0"></div>
+<!-- container: absolute -->
+<div class="absolute inset-0 bg-gradient-to-b from-black/40 to-black/60 z-0"></div>
 
-          
-          <div class="absolute inset-0 z-10 flex flex-col justify-end p-2 sm:p-3 md:p-6 text-white mt-[-1.25rem] md:mt-0">
+<!-- container: absolute -->
+<div class="absolute inset-0 z-10 flex flex-col justify-end p-2 sm:p-3 md:p-6 text-white mt-[-1.25rem] md:mt-0">
+            <!-- container: text sm -->
             <div class="text-sm font-bold tracking-wider uppercase mb-1" style="text-shadow: 0 1px 3px rgba(0,0,0,0.85);">Healthcare</div>
             <h2 class="text-xl md:text-2xl font-bold leading-tight mb-2" style="text-shadow: 0 2px 4px rgba(0,0,0,0.85);">Health Ministries Dental Clinic</h2>
             <p class="text-sm mb-1" style="text-shadow: 0 1px 2px rgba(0,0,0,0.85);">Medical Facility • 8,500 sq. ft. • Newton, Kansas</p>
@@ -1256,9 +1288,11 @@
     </div>
   </section>
 
-  
-  <section class="bg-gray-50 py-24 px-6 md:px-10 lg:px-16">
+<!-- section: bg gray 50 -->
+<section class="bg-gray-50 py-24 px-6 md:px-10 lg:px-16">
+    <!-- container: max w 4xl -->
     <div class="max-w-4xl mx-auto text-center">
+      <!-- container: shadow md -->
       <div class="shadow-md rounded-xl bg-white p-12">
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900">Ready to power your facility with precision and scale?</h2>
         <p class="text-lg text-gray-700 mt-4 max-w-2xl mx-auto">
@@ -1274,21 +1308,26 @@
   </main>
 
   <style>
+
     .footer-custom {
       background-color: #00458C;
       background-blend-mode: overlay;
     }
-  </style>
+  
+</style>
 
+  <!-- footer: footer custom -->
   <footer class="footer-custom text-white py-16 px-6 border-t border-white/10" data-aos="fade-up">
+    <!-- container: max w 7xl -->
     <div class="max-w-7xl mx-auto flex flex-col space-y-12 items-center text-center">
       
+      <!-- container: flex -->
       <div class="flex flex-col items-center space-y-3" data-aos="fade-up" data-aos-delay="100">
         <p class="text-white text-sm">Built for Power. Engineered for Excellence.</p>
       </div>
-      
-      
-      <div class="flex flex-col items-center space-y-3" data-aos="fade-up" data-aos-delay="200">
+
+<!-- container: flex -->
+<div class="flex flex-col items-center space-y-3" data-aos="fade-up" data-aos-delay="200">
         <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Contact</h3>
         <a href="tel:3162834750" class="text-white font-medium hover:text-white transition-colors text-base">
           (316) 283-4750
@@ -1297,9 +1336,9 @@
           Let's Engineer Your Next Power Move
         </a>
       </div>
-      
-      
-      <div class="flex flex-col items-center space-y-3" data-aos="fade-up" data-aos-delay="300">
+
+<!-- container: flex -->
+<div class="flex flex-col items-center space-y-3" data-aos="fade-up" data-aos-delay="300">
         <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Links</h3>
         <a href="https://www.linkedin.com/company/kansas-electric/" class="text-white hover:text-gray-200 transition-colors" aria-label="Kansas Electric LinkedIn profile">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6" alt="Kansas Electric LinkedIn profile">
@@ -1311,16 +1350,16 @@
         </a>
       </div>
     </div>
-    
-    
-    <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
+
+<!-- container: mt 12 -->
+<div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
       <p class="text-sm text-white max-w-3xl mx-auto leading-relaxed">
         Since 1948, Kansas Electric has powered some of the region's most essential facilities — from hospitals and manufacturers to mission-critical infrastructure. We bring decades of experience, a culture of safety, and future-focused innovation to every electrical project we touch.
       </p>
     </div>
-    
-    
-    <div class="mt-8 text-center text-gray-200 text-sm" data-aos="fade-up" data-aos-delay="500">
+
+<!-- container: mt 8 -->
+<div class="mt-8 text-center text-gray-200 text-sm" data-aos="fade-up" data-aos-delay="500">
       &copy; 2025 Kansas Electric. All rights reserved.
       <a href="/assets/documents/04.01.2022-kansas-electric-terms-and-conditions.pdf" 
          target="_blank" 
@@ -1331,12 +1370,7 @@
     </div>
   </footer>
 
-
-  
-  
-  
-  
-  <script src="./assets/js/reveal.js" defer></script>
+<script src="./assets/js/reveal.js" defer></script>
   
   <script>
     let observer;
@@ -1345,9 +1379,9 @@
       const video = document.getElementById('bg-video');
       if (!video) return;
 
-      // Dynamically add video source
+      // Dynamically add video source (use high-quality file)
       const source = document.createElement('source');
-      source.src = '/assets/img/2025 photos/home page video compressed.mp4';
+      source.src = '/assets/img/2025 photos/home page video.mp4';
       source.type = 'video/mp4';
       video.appendChild(source);
 
@@ -1375,10 +1409,7 @@
     });
   </script>
 
-
-
-  
-  <script>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
       // Mobile navigation elements
       const mobileMenuTrigger = document.getElementById('mobileMenuTrigger');
@@ -1475,7 +1506,3 @@
   </script>
 </body>
 </html>
-
-
-
-

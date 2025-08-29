@@ -1,3 +1,4 @@
+:: I keep this tiny batch as a convenience runner.
 @echo off
 echo Running script to fix navigation-fixed.js paths in all HTML files...
 powershell -ExecutionPolicy Bypass -File "%~dp0fix-navigation-paths.ps1"

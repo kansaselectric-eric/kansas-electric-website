@@ -20,7 +20,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-
 def rel_prefix(page: Path) -> str:
     rel = os.path.relpath(ROOT, page.parent).replace('\\', '/')
     if rel == '.':
@@ -28,7 +27,6 @@ def rel_prefix(page: Path) -> str:
     if not rel.endswith('/'):
         rel += '/'
     return rel
-
 
 def build_mobile_nav(prefix: str) -> str:
     # MENU trigger + backdrop + overlay with core sections; sticky CTA preserved
@@ -101,7 +99,6 @@ def build_mobile_nav(prefix: str) -> str:
   </nav>
     '''
 
-
 REMOVE_BLOCK = re.compile(
     r"\s*(<div[^>]+id=\"mobileMenuTrigger\"[\s\S]*?</div>|"
     r"<nav[^>]+id=\"mobileNavOverlay\"[\s\S]*?</nav>|"
@@ -110,7 +107,6 @@ REMOVE_BLOCK = re.compile(
     r"<div[^>]+class=\"mobile-top-bar[\s\S]*?</div>)",
     re.IGNORECASE
 )
-
 
 def process_file(path: Path, apply: bool) -> tuple[bool, str]:
     html = path.read_text(encoding='utf-8', errors='ignore')
@@ -132,7 +128,6 @@ def process_file(path: Path, apply: bool) -> tuple[bool, str]:
     if apply:
         path.write_text(new_html, encoding='utf-8')
     return True, 'inserted unified mobile nav'
-
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -159,8 +154,6 @@ def main() -> None:
     mode = 'APPLY' if args.apply else 'DRY-RUN'
     print(f'\n[{mode}] scanned={scanned} changed={changed}')
 
-
 if __name__ == '__main__':
     main()
-
 

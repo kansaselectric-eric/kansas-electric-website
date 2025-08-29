@@ -1,29 +1,26 @@
+<!-- page skeleton: unified nav/footer; keep markup lean; comments stay light. -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
-  
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-NX8X8X37');</script>
-  
-  
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
   <title>Suppliers - Kansas Electric</title>
 
   <meta name="description" content="Interested in becoming a supplier for Kansas Electric? Fill out our quick form and partner with a trusted leader in electrical construction.">
 
-  
-  <meta property="og:title" content="Suppliers" />
+<meta property="og:title" content="Suppliers" />
   <meta property="twitter:title" content="Suppliers" />
-  
-  
-  <meta property="og:description" content="Interested in becoming a supplier for Kansas Electric? Fill out our quick form and partner with a trusted leader in electrical construction." />
+
+<meta property="og:description" content="Interested in becoming a supplier for Kansas Electric? Fill out our quick form and partner with a trusted leader in electrical construction." />
   <meta property="twitter:description" content="Interested in becoming a supplier for Kansas Electric? Fill out our quick form and partner with a trusted leader in electrical construction." />
   
   <meta property="og:type" content="website" />
@@ -40,17 +37,12 @@
   <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/img/2025 photos/new logo 2025/Final Files/Button/Vector/Kansas Electric Button [CMYK].svg">
   <link rel="manifest" href="../site.webmanifest">
 
-  
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('Xbp1oaEWxyL7EdVj'); </script>
 
-  
-  
+<style>
 
-  
-  <style>
   .kse-dropdown,
   .kse-mobile-dropdown,
   .kse-mobile-menu {
@@ -365,56 +357,76 @@
       padding-right: 4rem;
     }
   }
-  </style>
+  
+</style>
 </head>
 <body class="font-poppins flex flex-col min-h-screen relative">
 
+  <!-- container: mobile top bar -->
   <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
     <img src="../assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg"
          alt="Kansas Electric" class="h-10 w-auto object-contain mx-auto" loading="lazy">
   </div>
 
+  <!-- container: mobileMenuTrigger -->
   <div class="mobile-menu-trigger" id="mobileMenuTrigger">MENU</div>
 
+  <!-- container: mobileNavBackdrop -->
   <div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop"></div>
 
+  <!-- navigation: mobileNavOverlay -->
   <nav class="mobile-nav-overlay md:hidden" id="mobileNavOverlay">
     <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
       </svg>
     </button>
+    <!-- container: mobile nav content -->
     <div class="mobile-nav-content pb-32">
       <a href="../" class="block w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition text-center">Home</a>
+      <!-- container: relative -->
       <div class="relative z-10 border-t border-gray-200"></div>
+      <!-- div -->
       <div>
         <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('servicesMenu')">
           <span>Services</span>
         </button>
+        <!-- container: servicesMenu -->
         <div id="servicesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
           <a href="../services/divisions/industrial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Industrial Electrical</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Heavy infrastructure & power systems</div>
           </a>
           <a href="../services/divisions/commercial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Commercial Electrical</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Office buildings & retail spaces</div>
           </a>
           <a href="../services/divisions/service-maintenance/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Service & Maintenance</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">24/7 support & preventive care</div>
           </a>
           <a href="../services/divisions/automation-control/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Automation & Control Systems</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Smart systems & process control</div>
           </a>
         </div>
       </div>
+      <!-- container: relative -->
       <div class="relative z-10 border-t border-gray-200"></div>
+      <!-- div -->
       <div>
         <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('industriesMenu')">
           <span>Industries We Serve</span>
         </button>
+        <!-- container: industriesMenu -->
         <div id="industriesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
           <a href="../services/industrial/oil-gas/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Oil & Gas</div><div class="text-xs text-gray-500">Refineries & pipelines</div></a>
           <a href="../services/industrial/wastewater-treatment/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Water and Wastewater</div><div class="text-xs text-gray-500">Treatment facilities</div></a>
@@ -424,26 +436,28 @@
           <a href="../services/industrial/healthcare/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Healthcare Infrastructure</div><div class="text-xs text-gray-500">Critical care facilities</div></a>
         </div>
       </div>
+      <!-- container: relative -->
       <div class="relative z-10 border-t border-gray-200"></div>
       <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../projects/'"><span>Projects</span></button>
+      <!-- container: relative -->
       <div class="relative z-10 border-t border-gray-200"></div>
       <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../about/'"><span>About</span></button>
+      <!-- container: relative -->
       <div class="relative z-10 border-t border-gray-200"></div>
       <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../careers/'"><span>Careers</span></button>
+      <!-- container: px 6 -->
       <div class="px-6 pt-6 pb-10">
         <a href="../request-a-quote/" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition">Let's Engineer Your Next Power Move</a>
       </div>
     </div>
   </nav>
-    
 
-  
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NX8X8X37"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NX8X8X37"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  
 
-  
-  <nav class="kse-nav" role="navigation" aria-label="Main navigation">
+<!-- navigation: kse nav -->
+<nav class="kse-nav" role="navigation" aria-label="Main navigation">
+      <!-- container: kse nav container -->
       <div class="kse-nav-container">
           
           <a href="../" class="kse-nav-logo flex items-center px-4 py-2">
@@ -453,6 +467,7 @@
               <img src="../assets/img/2025 photos/new logo 2025/Final Files/Vector/kse logo desktop.png" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain hidden lg:block" loading="lazy">
           </a>
 
+          <!-- ul/ol: kse nav menu -->
           <ul class="kse-nav-menu" role="menubar">
               
               <li class="kse-nav-item" data-dropdown="services" role="none">
@@ -462,6 +477,7 @@
                           <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                   </svg>
                 </a>
+                  <!-- container: services dropdown -->
                   <div class="kse-dropdown" id="services-dropdown" role="menu" aria-hidden="true">
                       <a href="/services/divisions/industrial/" class="kse-dropdown-link" role="menuitem">
                           <span>Industrial Electrical</span>
@@ -486,21 +502,20 @@
                 </div>
                     </li>
 
-              
-              <li class="kse-nav-item" role="none">
+<li class="kse-nav-item" role="none">
                   <a href="/projects/" class="kse-nav-link" role="menuitem">
                       <span>Projects</span>
                   </a>
               </li>
 
-              
-              <li class="kse-nav-item" data-dropdown="industries" role="none">
+<li class="kse-nav-item" data-dropdown="industries" role="none">
                   <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="industries-dropdown">
                       <span>Industries We Serve</span>
                       <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                           <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                   </svg>
                   </a>
+                  <!-- container: industries dropdown -->
                   <div class="kse-dropdown industries-grid" id="industries-dropdown" role="menu" aria-hidden="true">
                       <a href="/services/industrial/oil-gas/" class="kse-dropdown-link" role="menuitem">
                           <span>Oil & Gas</span>
@@ -529,15 +544,13 @@
                 </div>
                     </li>
 
-              
-              <li class="kse-nav-item" role="none">
+<li class="kse-nav-item" role="none">
                   <a href="/about/" class="kse-nav-link" role="menuitem">
                       <span>About</span>
                   </a>
               </li>
 
-              
-              <li class="kse-nav-item" role="none">
+<li class="kse-nav-item" role="none">
                   <a href="/careers/" class="kse-nav-link" role="menuitem">
                       <span>Careers</span>
                   </a>
@@ -554,19 +567,23 @@
                Let's Engineer Your Next Power Move
             </a>
 
-          
-          <div class="fixed inset-0 z-50 bg-white md:hidden hidden" id="kse-mobile-nav">
+<!-- container: kse mobile nav -->
+<div class="fixed inset-0 z-50 bg-white md:hidden hidden" id="kse-mobile-nav">
+            <!-- container: p 6 -->
             <div class="p-6 flex justify-between items-center border-b">
               <img src="/assets/img/2025 photos/new logo 2025/Final Files/Button/Vector/Kansas Electric Button [CMYK].svg" alt="Kansas Electric" class="h-8">
               <button id="kse-nav-close" class="text-gray-600 text-3xl font-bold">&times;</button>
             </div>
+            <!-- navigation: flex -->
             <nav class="flex flex-col space-y-6 p-6 text-xl font-medium text-gray-800">
               <a href="/" class="hover:text-blue-600">Home</a>
+              <!-- div -->
               <div>
                 <button class="w-full text-left flex justify-between items-center hover:text-blue-600" onclick="toggleDropdown('servicesMenu')">
                   Services
                   <span class="text-gray-500">&#9662;</span>
                 </button>
+                <!-- container: servicesMenu -->
                 <div id="servicesMenu" class="pl-4 mt-2 hidden flex-col space-y-2">
                   <a href="/services/industrial/" class="hover:text-blue-600">Industrial Electrical</a>
                   <a href="/services/commercial/" class="hover:text-blue-600">Commercial Electrical</a>
@@ -575,11 +592,13 @@
                   <a href="/services/divisions/ul-panel-shop/" class="hover:text-blue-600">UL Panel Shop</a>
                 </div>
               </div>
+              <!-- div -->
               <div>
                 <button class="w-full text-left flex justify-between items-center hover:text-blue-600" onclick="toggleDropdown('industriesMenu')">
                   Industries We Serve
                   <span class="text-gray-500">&#9662;</span>
                 </button>
+                <!-- container: industriesMenu -->
                 <div id="industriesMenu" class="pl-4 mt-2 hidden flex-col space-y-2">
                   <a href="/industries/oil-gas/" class="hover:text-blue-600">Oil & Gas</a>
                   <a href="/industries/water/" class="hover:text-blue-600">Water & Wastewater</a>
@@ -594,17 +613,17 @@
               <a href="/suppliers/" class="hover:text-blue-600">Suppliers</a>
             </nav>
 
+<a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-ke-yellow inline-block"><span class="block py-2">Skip to content</span></a>
 
-  <a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-ke-yellow inline-block"><span class="block py-2">Skip to content</span></a>
-
-  
-      </div>
+</div>
   </nav>
 
+  <!-- main: content -->
   <main id="content" class="flex-grow">
-    
-    
-    <section class="relative bg-white py-32 px-6 md:px-12 lg:px-24">
+
+<!-- section: relative -->
+<section class="relative bg-white py-32 px-6 md:px-12 lg:px-24">
+      <!-- container: max w 4xl -->
       <div class="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-duration="800">
         <h1 class="text-4xl font-bold text-gray-800 mb-6">Become a Supplier</h1>
         <p class="text-lg text-gray-600 leading-relaxed mb-8">
@@ -629,22 +648,27 @@
   </main>
 
   <style>
+
     .footer-custom {
       background-color: #00458C;
       background-image: url('/assets/img/noise.png');
       background-blend-mode: overlay;
     }
-  </style>
+  
+</style>
 
+  <!-- footer: footer custom -->
   <footer class="footer-custom text-white py-16 px-6 border-t border-white/10" data-aos="fade-up">
+    <!-- container: grid -->
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
       
+      <!-- container: flex -->
       <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-3" data-aos="fade-up" data-aos-delay="100">
         <p class="text-white text-sm">Built for Power. Engineered for Excellence.</p>
       </div>
-      
-      
-      <div class="flex flex-col items-center justify-center space-y-3" data-aos="fade-up" data-aos-delay="200">
+
+<!-- container: flex -->
+<div class="flex flex-col items-center justify-center space-y-3" data-aos="fade-up" data-aos-delay="200">
         <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Contact</h3>
         <a href="tel:3162834750" class="text-white font-medium hover:text-white transition-colors text-base">
           (316) 283-4750
@@ -653,9 +677,9 @@
           Let's Engineer Your Next Power Move
         </a>
       </div>
-      
-      
-      <div class="flex flex-col items-center md:items-end text-center md:text-right space-y-3" data-aos="fade-up" data-aos-delay="300">
+
+<!-- container: flex -->
+<div class="flex flex-col items-center md:items-end text-center md:text-right space-y-3" data-aos="fade-up" data-aos-delay="300">
         <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Links</h3>
         <a href="https://www.linkedin.com/company/kansas-electric/" class="text-white hover:text-gray-200 transition-colors" aria-label="Kansas Electric LinkedIn profile">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6" alt="Kansas Electric LinkedIn profile">
@@ -667,33 +691,26 @@
         </a>
       </div>
     </div>
-    
-    
-    <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
+
+<!-- container: mt 12 -->
+<div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
       <p class="text-sm text-white max-w-3xl mx-auto leading-relaxed">
         Since 1948, Kansas Electric has powered some of the region's most essential facilities � from hospitals and manufacturers to mission-critical infrastructure. We bring decades of experience, a culture of safety, and future-focused innovation to every electrical project we touch.
       </p>
     </div>
-    
-    
-    <div class="mt-8 text-center text-gray-200 text-sm" data-aos="fade-up" data-aos-delay="500">
+
+<!-- container: mt 8 -->
+<div class="mt-8 text-center text-gray-200 text-sm" data-aos="fade-up" data-aos-delay="500">
       &copy; 2025 Kansas Electric. All rights reserved.
     </div>
   </footer>
 
-  
+<script src="../assets/js/reveal.js" defer></script>
 
-  
-  <script src="../assets/js/reveal.js" defer></script>
-  
-  
-  <div class="fixed bottom-4 left-4 right-4 text-white py-3 rounded-lg text-center font-semibold shadow-md z-50 md:hidden transition" style="background-color: #00458C;">
+<!-- container: fixed -->
+<div class="fixed bottom-4 left-4 right-4 text-white py-3 rounded-lg text-center font-semibold shadow-md z-50 md:hidden transition" style="background-color: #00458C;">
     <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="block w-full h-full text-white">Let's Engineer Your Next Power Move</a>
   </div>
 
-  
-  
 </body>
 </html> 
-
-

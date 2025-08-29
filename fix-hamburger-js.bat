@@ -1,3 +1,4 @@
+:: I keep this tiny batch as a convenience runner.
 @echo off
 echo Fixing mobile hamburger menu JavaScript placement in HTML files...
 powershell -ExecutionPolicy Bypass -File "%~dp0fix-hamburger-js.ps1"

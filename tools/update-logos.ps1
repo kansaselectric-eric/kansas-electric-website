@@ -1,3 +1,4 @@
+# I use this script to automate repetitive tasks; no manual edits needed.
 Param()
 
 $ErrorActionPreference = 'Stop'
@@ -51,5 +52,4 @@ foreach ($f in $files) {
 }
 
 Write-Host ("Updated {0} files." -f $updated)
-
 

@@ -1,3 +1,4 @@
+// I keep this file focused and small; if it grows, I split modules.
 let currentIndex = 0;
 const slides = document.querySelectorAll('.career-carousel picture');
 let interval = setInterval(nextSlide, 5000);

@@ -331,11 +331,6 @@
   }
   
   /* Ticker container */
-  .ticker-container {
-    flex: 1 !important;
-    overflow: hidden !important;
-    white-space: nowrap !important;
-  }
   
   /* ---------- Hero Section Improvements ---------- */
   

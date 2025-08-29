@@ -22,7 +22,6 @@ KSE_JS_BLOCK = re.compile(
     re.IGNORECASE
 )
 
-
 def process_file(path: Path, apply: bool) -> tuple[bool, str]:
     original = path.read_text(encoding='utf-8', errors='ignore')
     html = original
@@ -30,7 +29,6 @@ def process_file(path: Path, apply: bool) -> tuple[bool, str]:
     if n and apply:
         path.write_text(new_html, encoding='utf-8')
     return new_html != html, f'removed {n} inline KSE nav script block(s)' if n else 'no changes'
-
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -57,8 +55,6 @@ def main() -> None:
     mode = 'APPLY' if args.apply else 'DRY-RUN'
     print(f'\n[{mode}] scanned={scanned} changed={changed}')
 
-
 if __name__ == '__main__':
     main()
-
 

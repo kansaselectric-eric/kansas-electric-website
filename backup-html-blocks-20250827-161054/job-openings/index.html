@@ -1,0 +1,1059 @@
+<!-- page skeleton: unified nav/footer; keep markup lean; comments stay light. -->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Job Openings - Kansas Electric</title>
+
+  <meta name="description" content="Kansas Electric is always looking for talented individuals to join our team. See where you can plug in!">
+
+<meta property="og:title" content="Job Openings" />
+  <meta property="twitter:title" content="Job Openings" />
+
+<meta property="og:description" content="Kansas Electric is always looking for talented individuals to join our team. See where you can plug in!" />
+  <meta property="twitter:description" content="Kansas Electric is always looking for talented individuals to join our team. See where you can plug in!" />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kansas Electric" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="../job-openings/" />
+  <meta property="og:image" content="../assets/img/og-kansas-electric-1200x627.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/mobile-nav.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/2025 photos/new logo 2025/Final Files/Button/Vector/Kansas Electric Button [CMYK].svg">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/img/2025 photos/new logo 2025/Final Files/Button/Vector/Kansas Electric Button [CMYK].svg">
+  <link rel="manifest" href="../site.webmanifest">
+  <link rel="stylesheet" href="/projects/stanley-black-decker/mobile-responsive.css">
+  <link rel="stylesheet" href="/projects/stanley-black-decker/mobile-hamburger.css">
+  <link rel="stylesheet" href="/projects/stanley-black-decker/css-conflict-fix.css">
+  <link rel="stylesheet" href="/projects/stanley-black-decker/mobile-nav-overhaul.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('Xbp1oaEWxyL7EdVj'); </script>
+
+<style>
+  .kse-dropdown,
+  .kse-mobile-dropdown,
+  .kse-mobile-menu {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Adding essential navigation styles */
+  .kse-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+    z-index: 1000;
+    transition: all 0.2s ease-in-out;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .kse-nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    height: 80px;
+    position: relative;
+  }
+
+  .kse-nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    z-index: 1001;
+    margin-left: 0;
+  }
+
+  .kse-nav-logo img {
+    height: 40px;
+    width: auto;
+    margin-left: -4.0rem;
+  }
+
+  .kse-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .kse-nav-item {
+    position: relative;
+  }
+
+  .kse-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0.75rem;
+    text-decoration: none;
+    color: #1f2937;
+    font-weight: 500;
+    transition: all 0.2s ease-out;
+  }
+
+  .kse-nav-link:hover {
+    color: #F7941E;
+  }
+
+  .kse-nav-caret {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s;
+  }
+
+  .kse-nav-item[aria-expanded="true"] .kse-nav-caret {
+    transform: rotate(180deg);
+  }
+
+      .kse-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      background-color: white;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      min-width: 12rem;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease-out, visibility 0.2s ease-out, transform 0.2s ease-out;
+    }
+
+      .kse-dropdown.industries-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      min-width: 24rem;
+      max-width: 90vw;
+    }
+
+  .kse-dropdown.active,
+  .kse-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    display: flex;
+    pointer-events: auto;
+  }
+
+  .kse-dropdown.industries-grid.active,
+  .kse-dropdown.industries-grid.show {
+    display: grid;
+  }
+
+  .kse-dropdown-link {
+    display: block;
+    padding: 0.75rem;
+    color: #374151;
+    text-decoration: none;
+    border-radius: 0.375rem;
+    transition: background-color 0.2s;
+  }
+
+  .kse-dropdown-link:hover {
+    background-color: #f3f4f6;
+  }
+
+  .kse-dropdown-link span {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .kse-dropdown-link small {
+    display: block;
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+
+  .kse-nav-cta {
+    display: inline-block;
+    background-color: #00458C;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    margin-right: 0;
+  }
+
+  .kse-nav-cta:hover {
+    background-color: #00386F;
+    box-shadow: 0 4px 12px rgba(0, 86, 210, 0.3);
+  }
+
+  .kse-mobile-toggle {
+    flex-direction: column;
+    gap: 0.25rem;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    margin-right: 0;
+    z-index: 1001;
+  }
+
+  .kse-hamburger-line {
+    width: 1.5rem;
+    height: 2px;
+    background-color: #374151;
+    transition: all 0.3s;
+  }
+
+  .kse-mobile-menu {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+  }
+
+  .kse-mobile-menu.active,
+  .kse-mobile-menu.show {
+    transform: translateX(0);
+  }
+
+  .kse-mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .kse-mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .kse-mobile-nav-item {
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .kse-mobile-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    color: #374151;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .kse-mobile-dropdown {
+    padding-left: 1rem;
+    border-top: 1px solid #f3f4f6;
+    display: none;
+  }
+
+  .kse-mobile-dropdown.active,
+  .kse-mobile-dropdown.show {
+    display: block;
+  }
+
+  .kse-mobile-dropdown-link {
+    display: block;
+    padding: 0.75rem 0;
+    color: #6b7280;
+    text-decoration: none;
+    border-bottom: 1px solid #f9fafb;
+  }
+
+  .kse-mobile-nav-cta {
+    display: block;
+    background-color: #00458C;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .kse-nav-menu,
+    .kse-nav-cta {
+      display: none;
+    }
+    
+    .kse-dropdown.industries-grid {
+      min-width: 95vw;
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .kse-nav-container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .kse-nav-container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+  
+  @media (min-width: 1536px) {
+    .kse-nav-container {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+  </style>
+</head>
+<body class="font-poppins flex flex-col min-h-screen relative">
+
+  <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
+    <img src="../assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg"
+         alt="Kansas Electric" class="h-10 w-auto object-contain mx-auto" loading="lazy">
+  </div>
+
+  <div class="mobile-menu-trigger" id="mobileMenuTrigger">MENU</div>
+
+  <div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop"></div>
+
+  <nav class="mobile-nav-overlay md:hidden" id="mobileNavOverlay">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <div class="mobile-nav-content pb-32">
+      <a href="../" class="block w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition text-center">Home</a>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <div>
+        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('servicesMenu')">
+          <span>Services</span>
+        </button>
+        <div id="servicesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
+          <a href="../services/divisions/industrial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Industrial Electrical</div>
+            <div class="text-xs text-gray-500">Heavy infrastructure & power systems</div>
+          </a>
+          <a href="../services/divisions/commercial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Commercial Electrical</div>
+            <div class="text-xs text-gray-500">Office buildings & retail spaces</div>
+          </a>
+          <a href="../services/divisions/service-maintenance/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Service & Maintenance</div>
+            <div class="text-xs text-gray-500">24/7 support & preventive care</div>
+          </a>
+          <a href="../services/divisions/automation-control/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Automation & Control Systems</div>
+            <div class="text-xs text-gray-500">Smart systems & process control</div>
+          </a>
+        </div>
+      </div>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <div>
+        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('industriesMenu')">
+          <span>Industries We Serve</span>
+        </button>
+        <div id="industriesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
+          <a href="../services/industrial/oil-gas/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Oil & Gas</div><div class="text-xs text-gray-500">Refineries & pipelines</div></a>
+          <a href="../services/industrial/wastewater-treatment/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Water and Wastewater</div><div class="text-xs text-gray-500">Treatment facilities</div></a>
+          <a href="../services/industrial/data-centers/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Data Centers</div><div class="text-xs text-gray-500">Mission critical facilities</div></a>
+          <a href="../services/industrial/advanced-manufacturing/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Manufacturing</div><div class="text-xs text-gray-500">Production facilities</div></a>
+          <a href="../services/industrial/food-beverage/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Food & Beverage</div><div class="text-xs text-gray-500">Processing plants</div></a>
+          <a href="../services/industrial/healthcare/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Healthcare Infrastructure</div><div class="text-xs text-gray-500">Critical care facilities</div></a>
+        </div>
+      </div>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../projects/'"><span>Projects</span></button>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../about/'"><span>About</span></button>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../careers/'"><span>Careers</span></button>
+      <div class="px-6 pt-6 pb-10">
+        <a href="../request-a-quote/" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition">Let's Engineer Your Next Power Move</a>
+      </div>
+    </div>
+  </nav>
+
+<nav class="kse-nav" role="navigation" aria-label="Main navigation">
+      <div class="kse-nav-container">
+          
+          <a href="../" class="kse-nav-logo flex items-center px-4 py-2">
+              <img src="../assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain" loading="lazy">
+          </a>
+
+          <ul class="kse-nav-menu" role="menubar">
+              
+              <li class="kse-nav-item" data-dropdown="services" role="none">
+                  <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="services-dropdown">
+                      <span>Services</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+                  <div class="kse-dropdown" id="services-dropdown" role="menu" aria-hidden="true">
+                      <a href="/services/divisions/industrial/" class="kse-dropdown-link" role="menuitem">
+                          <span>Industrial Electrical</span>
+                          <small>Heavy infrastructure & power systems</small>
+                      </a>
+                      <a href="/services/divisions/commercial/" class="kse-dropdown-link" role="menuitem">
+                          <span>Commercial Electrical</span>
+                          <small>Office buildings & retail spaces</small>
+                      </a>
+                      <a href="/services/divisions/service-maintenance/" class="kse-dropdown-link" role="menuitem">
+                          <span>Service & Maintenance</span>
+                          <small>24/7 support & preventive care</small>
+                      </a>
+                      <a href="/services/divisions/automation-control/" class="kse-dropdown-link" role="menuitem">
+                          <span>Automation & Control Systems</span>
+                          <small>Smart systems & process control</small>
+                </a>
+                </div>
+                    </li>
+
+<li class="kse-nav-item" role="none">
+                  <a href="/projects/" class="kse-nav-link" role="menuitem">
+                      <span>Projects</span>
+                  </a>
+              </li>
+
+<li class="kse-nav-item" data-dropdown="industries" role="none">
+                  <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="industries-dropdown">
+                      <span>Industries We Serve</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                  </a>
+                  <div class="kse-dropdown industries-grid" id="industries-dropdown" role="menu" aria-hidden="true">
+                      <a href="/services/industrial/oil-gas/" class="kse-dropdown-link" role="menuitem">
+                          <span>Oil & Gas</span>
+                          <small>Refineries & pipelines</small>
+                      </a>
+                      <a href="/services/industrial/wastewater-treatment/" class="kse-dropdown-link" role="menuitem">
+                          <span>Water and Wastewater</span>
+                          <small>Treatment facilities</small>
+                      </a>
+                      <a href="/services/industrial/data-centers/" class="kse-dropdown-link" role="menuitem">
+                          <span>Data Centers</span>
+                          <small>Mission critical facilities</small>
+                      </a>
+                      <a href="/services/industrial/advanced-manufacturing/" class="kse-dropdown-link" role="menuitem">
+                          <span>Manufacturing</span>
+                          <small>Production facilities</small>
+                      </a>
+                      <a href="/services/industrial/food-beverage/" class="kse-dropdown-link" role="menuitem">
+                          <span>Food & Beverage</span>
+                          <small>Processing plants</small>
+                      </a>
+                      <a href="/services/industrial/healthcare/" class="kse-dropdown-link" role="menuitem">
+                          <span>Healthcare Infrastructure</span>
+                          <small>Critical care facilities</small>
+                </a>
+                </div>
+                    </li>
+
+<li class="kse-nav-item" role="none">
+                  <a href="/about/" class="kse-nav-link" role="menuitem">
+                      <span>About</span>
+                  </a>
+              </li>
+
+<li class="kse-nav-item" role="none">
+                  <a href="/careers/" class="kse-nav-link" role="menuitem">
+                      <span>Careers</span>
+                  </a>
+              </li>
+          </ul>
+          
+          <a href="https://forms.gle/iJVRGxrcMVZXT6zN6"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="kse-nav-cta hidden md:inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg">
+               Let's Engineer Your Next Power Move
+            </a>
+
+<div class="fixed inset-0 z-50 bg-white md:hidden hidden" id="kse-mobile-nav">
+            <div class="p-6 flex justify-between items-center border-b">
+              <img src="/assets/img/2025 photos/new logo 2025/Final Files/Button/Vector/Kansas Electric Button [CMYK].svg" alt="Kansas Electric" class="h-8">
+              <button id="kse-nav-close" class="text-gray-600 text-3xl font-bold">&times;</button>
+            </div>
+            <nav class="flex flex-col space-y-6 p-6 text-xl font-medium text-gray-800">
+              <a href="/" class="hover:text-blue-600">Home</a>
+              <div>
+                <button class="w-full text-left flex justify-between items-center hover:text-blue-600" onclick="toggleDropdown('servicesMenu')">
+                  Services
+                  <span class="text-gray-500">&#9662;</span>
+                </button>
+                <div id="servicesMenu" class="pl-4 mt-2 hidden flex-col space-y-2">
+                  <a href="/services/industrial/" class="hover:text-blue-600">Industrial Electrical</a>
+                  <a href="/services/commercial/" class="hover:text-blue-600">Commercial Electrical</a>
+                  <a href="/services/service/" class="hover:text-blue-600">Service & Maintenance</a>
+                  <a href="/services/automation/" class="hover:text-blue-600">Automation & Controls</a>
+                </div>
+              </div>
+              <div>
+                <button class="w-full text-left flex justify-between items-center hover:text-blue-600" onclick="toggleDropdown('industriesMenu')">
+                  Industries We Serve
+                  <span class="text-gray-500">&#9662;</span>
+                </button>
+                <div id="industriesMenu" class="pl-4 mt-2 hidden flex-col space-y-2">
+                  <a href="/industries/oil-gas/" class="hover:text-blue-600">Oil & Gas</a>
+                  <a href="/industries/water/" class="hover:text-blue-600">Water & Wastewater</a>
+                  <a href="/industries/data-centers/" class="hover:text-blue-600">Data Centers</a>
+                  <a href="/services/industrial/advanced-manufacturing/" class="hover:text-blue-600">Manufacturing</a>
+                  <a href="/industries/food-beverage/" class="hover:text-blue-600">Food & Beverage</a>
+                  <a href="/services/industrial/healthcare/" class="hover:text-blue-600">Healthcare Infrastructure</a>
+                </div>
+              </div>
+              <a href="/projects/" class="hover:text-blue-600">Projects</a>
+              <a href="/careers/" class="hover:text-blue-600">Careers</a>
+              <a href="/suppliers/" class="hover:text-blue-600">Suppliers</a>
+            </nav>
+
+<a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-ke-yellow inline-block"><span class="block py-2">Skip to content</span></a>
+
+  <nav class="site-header relative z-10">
+
+<div class="bg-ke-blue">
+      <div class="md:w-11/12 mx-auto flex flex-row md:items-center">
+        
+        <div class="ticker-container flex-grow">
+          <div class="ticker-wrapper">
+            <div class="ticker-scroll">
+              <span class="ticker-item">AI assistants like Microsoft's Factory Operations Agent are streamlining manufacturing processes. <a href="https://www.microsoft.com/en-us/industry/blog/manufacturing-and-mobility/2023/11/14/introducing-microsoft-factory-operations-agent-a-new-ai-assistant-for-manufacturing/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">These are the top 5 manufacturing automation trends that are shaping 2025. <a href="https://www.forbes.com/sites/bernardmarr/2023/11/13/the-top-5-manufacturing-trends-in-2024/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">The Department of Energy is funding projects that convert carbon emissions into value-added products. <a href="https://www.energy.gov/fecm/articles/doe-announces-17-million-convert-carbon-emissions-valuable-products" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">AI technologies are projected to nearly double global data center electricity usage by 2030. <a href="https://www.iea.org/reports/the-environmental-footprint-of-artificial-intelligence" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Meta plans a $35 billion data center fund, with Apollo Global in talks to lead the initiative. <a href="https://www.reuters.com/technology/meta-plans-35-billion-data-center-fund-apollo-talks-lead-it-sources-2023-11-14/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">U.S. Army completes new microgrids at Fort Hunter Liggett, Camp Arifjan, and Fort Cavazos, enhancing energy resilience. <a href="https://www.army.mil/article/269387/army_completes_new_microgrids_at_fort_hunter_liggett_camp_arifjan_and_fort_cavazos" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Scientists develop a new optimization model to improve microgrid operation, ensuring stable and efficient energy systems. <a href="https://www.sciencedirect.com/science/article/abs/pii/S0306261923013648" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">The Department of Energy introduces the Community Microgrid Assistance Partnership to bolster energy resilience in remote communities. <a href="https://www.energy.gov/gdo/community-microgrid-assistance-partnership" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Fort Riley's solar installation reaches 16 MW, powering 40% of base housing. <a href="https://www.army.mil/article/269387/army_completes_new_microgrids_at_fort_hunter_liggett_camp_arifjan_and_fort_cavazos" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">The University of Kansas has a new Welcome Center. It's a 58 kW solar microgrid with battery storage. <a href="https://www.ku.edu/news/2023/11/15/ku-welcome-center-earns-leed-gold-certification-sustainability" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Google and Salesforce back carbon capture projects at paper mills and sewage plants to combat emissions. <a href="https://www.cnbc.com/2023/11/14/google-salesforce-back-carbon-capture-at-paper-mills-sewage-plants.html" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Eni is integrating carbon capture with data centers to boost its energy transition strategy. <a href="https://www.reuters.com/business/energy/italys-eni-eyes-carbon-capture-data-centres-energy-transition-push-2023-11-13/" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">The Department of Energy is investing $101 million in new test centers to advance carbon capture technologies. <a href="https://www.energy.gov/articles/doe-announces-101-million-carbon-capture-test-centers" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">PERENfra's Perennial Infrastructure Fund 1 is investing $125 million in core water infrastructure projects in the United States. <a href="https://www.businesswire.com/news/home/20231114060457/en/PERENfra-Announces-Final-Close-of-Perennial-Infrastructure-Fund-I-at-125-Million" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Nashville invests $403 million to enhance the White Creek Wastewater Treatment Plant in a bid to boost capacity and efficiency. <a href="https://www.nashville.gov/departments/water/news/metro-water-services-breaks-ground-white-creek-wastewater-treatment-plant" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Veolia North America unveils major upgrades to improve air and water quality at Richmond's wastewater treatment facility. <a href="https://www.veolianorthamerica.com/news-events/media/press-releases/veolia-north-america-unveils-major-upgrades-richmonds-wastewater" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+              <span class="ticker-item">Los Angeles plans $740 million expansion of the Tillman Water Reclamation Plant to increase wastewater treatment capacity. <a href="https://www.lacitysan.org/san/faces/home/portal/s-lsh-wwd/s-lsh-wwd-cw/s-lsh-wwd-cw-p/s-lsh-wwd-cw-p-twerp" target="_blank" rel="noopener noreferrer" class="text-ke-yellow hover:text-ke-yellow-dark">Learn more here</a></span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex-shrink-0 whitespace-nowrap">
+          <p class="text-white font-semibold flex items-center support-container">
+            <span class="support-label">24/7 Support:</span>
+            <a class="inline-block bg-ke-blue-dark font-semibold py-2 px-4 ml-2 text-white phone-button" href="tel:3162834750">(316) 283-4750</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="md:w-11/12 mx-auto flex lg:space-x-10 justify-between py-6 lg:py-0 px-4 md:px-0">
+      <a href="/" class="md:self-center">
+        <img class="w-auto h-8 md:h-10" src="../assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg" alt="Kansas Electric" width="178" height="40">
+      </a>
+      <a class="block lg:hidden self-center" href="#" data-mobile-nav-toggle>
+        <span class="sr-only">Toggle mobile menu</span>
+        <span class="line block h-1 w-6 mb-1 bg-ke-gray rounded-full"></span>
+        <span class="line block h-1 w-6 mb-1 bg-ke-gray rounded-full"></span>
+        <span class="line block h-1 w-6 bg-ke-gray rounded-full"></span>
+      </a>
+
+</div>
+    </nav>
+    </div>
+  </div>
+          </li>
+          <li class="lg:self-center border-t border-ke-gray-lighter lg:border-none nav-item">
+            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Projects</a>
+            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
+              <div class="submenu-container three-column-menu">
+                <div class="w-1/4 hidden lg:block menu-column first-column">
+                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Our Projects</p>
+                  <p class="text-ke-gray">Explore our portfolio of completed electrical projects.</p>
+                </div>
+                <div class="w-1/4 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
+                  <ul class="second-column-menu">
+                    <li>
+                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="all-projects">All Projects</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="industrial-projects">Industrial Projects</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="commercial-projects">Commercial Projects</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="service-maintenance-projects">Service and Maintenance Projects</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="automation-projects">Automation and Control Systems Projects</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
+                  
+                  <ul class="third-column-content active" id="all-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/stanley-black-decker/">Stanley Black & Decker - Network Upgrades</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/mkc-lyons/">MKC - Lyons</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/health-ministries/">Health Ministries Dental Clinic</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/bethel-college/">Bethel College Solar Grid</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/agco-hesston/">AGCO - Hesston</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/camso-control-panel/">Camso Control Panel</a>
+                    </li>
+                  </ul>
+
+<ul class="third-column-content" id="industrial-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/industrial/project1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/industrial/project2/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/industrial/project3/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/industrial/project4/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/industrial/project5/">To be filled in later..</a>
+                    </li>
+                  </ul>
+
+<ul class="third-column-content" id="commercial-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/commercial/project1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/commercial/project2/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/commercial/project3/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/commercial/project4/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/commercial/project5/">To be filled in later..</a>
+                    </li>
+                  </ul>
+
+<ul class="third-column-content" id="service-maintenance-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/service/project1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/service/project2/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/service/project3/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/service/project4/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/service/project5/">To be filled in later..</a>
+                    </li>
+                  </ul>
+
+<ul class="third-column-content" id="automation-projects">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/automation/project1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/automation/project2/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/automation/project3/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/automation/project4/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/projects/automation/project5/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="lg:self-center border-t border-ke-gray-lighter lg:border-none nav-item">
+            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">About</a>
+            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
+              <div class="submenu-container three-column-menu">
+                <div class="w-1/4 hidden lg:block menu-column first-column">
+                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">About Us</p>
+                  <p class="text-ke-gray">Our job is to keep your lights on and production moving forward.</p>
+                </div>
+                <div class="w-1/4 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
+                  <ul class="second-column-menu">
+                    <li>
+                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="who-we-are">Who We Are</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="company-news">Company News</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
+                  
+                  <ul class="third-column-content active" id="who-we-are">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/about/">Who We Are</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/about/locations/">Locations</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/about/our-team/">Our Team</a>
+                    </li>
+                  </ul>
+
+<ul class="third-column-content" id="company-news">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/company-news/">Company News</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/about/community/">Community Involvement</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="lg:self-center border-t border-b border-ke-gray-lighter lg:border-none nav-item">
+            <a class="pages relative font-semibold text-sm text-ke-blue-dark block lg:inline-block px-4 lg:px-1 py-3 lg:py-6" href="#">Careers</a>
+            <div class="submenu bg-ke-gray-light lg:py-12 relative lg:absolute top-0 left-0 w-full border-b-2 border-ke-blue">
+              <div class="submenu-container three-column-menu">
+                <div class="w-1/4 hidden lg:block menu-column first-column">
+                  <p class="font-semibold md:text-xl leading-tight mb-4 max-w-md text-ke-blue">Careers</p>
+                  <p class="text-ke-gray">We're always looking for talented people to join our team.</p>
+                </div>
+                <div class="w-1/4 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column second-column">
+                  <ul class="second-column-menu">
+                    <li>
+                      <a class="second-column-item active relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="administrative">Administrative</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="project-management">Project Management</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="electricians">Electricians</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="engineering">Engineering</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="estimating">Estimating</a>
+                    </li>
+                    <li>
+                      <a class="second-column-item relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="#" data-target="apprenticeships">Apprenticeships</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="w-1/2 lg:border-l lg:border-t-transparent md:border-t border-ke-gray border-ke-transparent-45 md:pl-8 menu-column third-column">
+                  
+                  <ul class="third-column-content active" id="administrative">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/careers/administrative/position1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/careers/administrative/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+
+<ul class="third-column-content" id="project-management">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/careers/project-management/position1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/careers/project-management/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+
+<ul class="third-column-content" id="electricians">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/careers/electricians/position1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/careers/electricians/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+
+<ul class="third-column-content" id="engineering">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/careers/engineering/position1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/careers/engineering/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+
+<ul class="third-column-content" id="estimating">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/careers/estimating/position1/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/careers/estimating/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+
+<ul class="third-column-content" id="apprenticeships">
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/careers/apprenticeship/">To be filled in later..</a>
+                    </li>
+                    <li>
+                      <a class="relative pl-4 lg:pl-0 lg:mb-3 text-sm inline-block leading-4 lg:leading-10 py-1 lg:leading-normal py-3 lg:py-0 text-ke-gray transition duration-200" href="/careers/apprenticeship/position2/">To be filled in later..</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <ul class="md:flex md:space-x-8 w-full justify-center">
+          <li class="mt-6 pl-4 md:pl-0 md:ml-4 lg:mt-0 md:self-center absolute right-0 lg:right-6">
+            <a class="blue-nav-button rounded-md" href="/contact/request-bid/">POWER UP YOUR PROJECT - LET'S TALK!</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="content" class="flex-grow">
+
+<article class="bg-ke-light-gray">
+
+  <div class="community-bg text-white pt-20 pb-20 md:pt-36 md:pb-36">
+    <h1 class="text-center font-semibold uppercase text-4xl md:text-5xl leading-tight">Job Openings</h1>
+  </div>
+
+  <section class="max-w-screen-2xl md:w-11/12 md:mx-auto py-8 md:py-16">
+
+    <ul class="lg:w-3/5 lg:mx-auto px-4">
+      <li class="shadow-md bg-white md:flex mb-8 rounded overflow-hidden">
+        <div class="md:w-3/4 p-6">
+          <h2 class="text-xl text-ke-blue font-bold"><a class="hover:text-ke-blue-dark transition duration-200 ease-in-out" href="../job-openings/automation-technician/">Automation Technician</a></h2>
+          <p class="text-[#777] text-sm mb-4">Full-time Position | Newton, Kansas</p>
+          <p class="mb-4"><span class="font-bold block">Description:</span> We seek a qualified, experienced individual to join our company as an Automation Technician. As part of our team, you will install, maintain, and replace automation systems. This is a specialized position. Our ideal applicant needs to have considerable experience and education in engineering, troubleshooting, and programming automation systems.</p>
+          <p class="mb-4"><span class="font-bold text-ke-gray">Salary:</span> $28.00 - $36.00 per hour</p>
+          <a class="inline-block text-ke-blue hover:text-ke-blue-dark font-semibold transition duration-200 ease-in-out" href="../job-openings/automation-technician/">Learn More</a>
+        </div>
+        <div class="md:w-1/4 bg-[#f4f4f4] p-6 md:flex md:flex-col md:justify-center md:items-center">
+          <a class="block uppercase text-center px-6 py-4 text-white bg-ke-blue transition duration-200 ease-in-out font-medium hover:bg-ke-blue-dark hover:text-white" href="/careers/apply/">Apply Now</a>
+        </div>
+      </li>
+    </ul>
+
+  </section>
+
+</article>
+
+  </main>
+
+<footer class="bg-ke-gray-dark text-white" style="background-color:#00458C">
+  <div class="md:w-11/12 md:mx-auto md:flex md:justify-between py-12 md:pb-12 md:pt-20 border-b border-ke-gray px-6 md:px-0">
+    <a href=".."><img class="w-auto h-12" src="../assets/img/ke-logo-white.svg" alt="Kansas Electric" width="300" height="60"></a>
+    <ul class="flex space-x-4 self-end mt-12 md:mt-0">
+      <li>
+        <a class="hover:-translate-y-2 focus:-translate-y-2 transition duration-200 ease-in-out block" href="https://www.linkedin.com/company/kansas-electric-inc" target="_blank" rel="noopener"><span class="sr-only">Kansas Electric LinkedIn page</span><img class="social-icon" src="../assets/img/linkedin.svg" alt="Kansas Electric LinkedIn page" title="Kansas Electric LinkedIn page" width="24" height="24"></a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="md:w-11/12 md:mx-auto md:flex md:flex-wrap md:justify-between py-8 md:py-12 px-6 md:px-0">
+    <div class="lg:w-1/4 pb-8 md:pb-0 md:mb-12">
+      <address class="not-italic text-ke-gray-light text-base md:text-sm tracking-wide mb-2">
+        <span class="block text-white uppercase font-semibold">Newton</span>
+        1420 NW 36th St.<br>
+        Newton, KS 67114
+      </address>
+      <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light text-sm transition duration-200 hover:text-ke-gray-lighter mb-6" href="tel:3162834750">(316) 283-4750</a>
+
+      <address class="not-italic text-ke-gray-light text-base md:text-sm tracking-wide mb-2">
+        <span class="block text-white uppercase font-semibold">Emporia</span>
+        817 E 6th Ave<br>
+        Emporia, KS 66801
+      </address>
+      <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light text-sm transition duration-200 hover:text-ke-gray-lighter mb-6" href="tel:3162834750">(316) 283-4750</a>
+    </div>
+    <div class="lg:w-3/4 md:flex md:justify-center">
+      <div class="md:w-2/3 py-6 md:py-0 border-t border-ke-gray md:border-none">
+        <h2 class="mb-2 md:mb-6 uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 py-1 md:leading-normal md:py-0">Divisions</h2>
+        <ul class="text-base md:text-sm">
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="/services/divisions/industrial/">Industrial Electrical Division</a>
+          </li>
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="/services/divisions/commercial/">Commercial Electrical Division</a>
+          </li>
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="/services/divisions/service-maintenance/">Service and Maintenance Division</a>
+          </li>
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="/services/divisions/automation-control/">Automation and Control Systems Division</a>
+          </li>
+        </ul>
+      </div>
+      <div class="md:w-1/3 border-t border-ke-gray md:border-none py-6 md:py-0">
+        <h2 class="mb-2 md:mb-6"><a class="uppercase text-lg md:text-sm text-white font-semibold inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0" href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer">Contact</a></h2>
+        <ul class="text-base md:text-sm">
+          <li class="mb-2">
+            <a class="inline-block leading-4 md:leading-10 py-1 md:leading-normal md:py-0 text-ke-gray-light transition duration-200 hover:translate-x-2 focus:translate-x-2" href="/contact/request-bid/">Request a bid</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="md:w-11/12 md:mx-auto border-t border-ke-gray py-8 px-6 md:px-0 mt-8">
+    <ul class="md:flex md:justify-end md:space-x-8">
+      <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://inductiveautomation.com/"><img class="w-auto h-16" src="../assets/img/Ignition-Logo-LG.png" alt="Ignition by Inductive Automation" title="Ignition by Inductive Automation" width="600" height="314"></a></li>
+      <li class="md:self-center text-ke-gray-light max-w-sm mb-6 md:mb-0 md:text-right"><a href="https://www.rockwellautomation.com/"><img class="w-auto h-12" src="../assets/img/logos/System Integrator Partner Bronze Logo.png" alt="Rockwell Automation System Integrator Bronze Partner" title="Rockwell Automation System Integrator Bronze Partner" width="302" height="88"></a></li>
+    </ul>
+  </div>
+
+  <div class="md:w-11/12 md:mx-auto md:flex md:justify-between md:space-x-6 py-8 border-t border-ke-gray px-6 md:px-0">
+    <div class="text-ke-gray-light text-sm block mb-2 md:mb-0">&copy; 2025 Kansas Electric &nbsp;|&nbsp; <a class="hover:underline" href="../assets/documents/04.01.2022-kansas-electric-terms-and-conditions.pdf">Terms &amp; Conditions</a></div>
+  </div>
+</footer>
+ 
+  <script src="../assets/js/project-posts-footer-links.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Debug functionality for video carousel
+  const debugBtn = document.getElementById('debug-video-btn');
+  if (debugBtn) {
+    // Add keyboard shortcut to show debug button (press 'D' key)
+    document.addEventListener('keydown', function(e) {
+      if (e.key.toLowerCase() === 'd') {
+        debugBtn.style.display = debugBtn.style.display === 'block' ? 'none' : 'block';
+      }
+    });
+    
+    debugBtn.addEventListener('click', function() {
+      const videos = document.querySelectorAll('#video-carousel video');
+      let debugInfo = 'Video Debug Info:\n\n';
+      
+      videos.forEach((video, i) => {
+        const networkState = ['NETWORK_EMPTY', 'NETWORK_IDLE', 'NETWORK_LOADING', 'NETWORK_NO_SOURCE'][video.networkState];
+        const readyState = ['HAVE_NOTHING', 'HAVE_METADATA', 'HAVE_CURRENT_DATA', 'HAVE_FUTURE_DATA', 'HAVE_ENOUGH_DATA'][video.readyState];
+        
+        debugInfo += `Video ${i+1}: ${video.src.split('/').pop()}\n`;
+        debugInfo += `- Network State: ${networkState} (${video.networkState})\n`;
+        debugInfo += `- Ready State: ${readyState} (${video.readyState})\n`;
+        debugInfo += `- Error: ${video.error ? video.error.code : 'None'}\n`;
+        debugInfo += `- Current Time: ${video.currentTime.toFixed(2)}s\n`;
+        debugInfo += `- Duration: ${video.duration.toFixed(2)}s\n`;
+        debugInfo += `- Paused: ${video.paused}\n`;
+        debugInfo += `- Ended: ${video.ended}\n`;
+        debugInfo += `- Class: ${video.className}\n\n`;
+      });
+      
+      alert(debugInfo);
+    });
+  }
+  
+  // Calculate and set header height for submenu positioning
+  function setHeaderHeight() {
+    const header = document.querySelector('.site-header');
+    if (header) {
+      const headerHeight = header.offsetHeight;
+      document.documentElement.style.setProperty('--header-height', `${headerHeight}px`);
+    }
+  }
+  
+  // Set header height initially
+  setHeaderHeight();
+  
+  // Update header height on window resize
+  window.addEventListener('resize', setHeaderHeight);
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tickerContent = document.querySelector('.ticker-scroll');
+  if (tickerContent) {
+    // Clone ticker items for seamless scrolling
+    const originalItems = tickerContent.innerHTML;
+    tickerContent.innerHTML = originalItems + originalItems;
+    
+    // Calculate animation duration based on content width
+    const contentWidth = tickerContent.scrollWidth / 2;
+    const duration = contentWidth / 50; // Adjust speed factor as needed
+    tickerContent.style.animationDuration = duration + 's';
+  }
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const tickerContent = document.querySelector('.ticker-scroll');
+  if (tickerContent) {
+    // Clone ticker items for seamless scrolling
+    const originalItems = tickerContent.innerHTML;
+    tickerContent.innerHTML = originalItems + originalItems;
+    
+    // Calculate animation duration based on content width
+    const contentWidth = tickerContent.scrollWidth / 2;
+    const duration = contentWidth / 50; // Adjust speed factor as needed
+    tickerContent.style.animationDuration = duration + 's';
+  }
+});
+</script>
+
+<script src="../assets/js/reveal.js" defer></script>
+  <script src="../assets/js/navigation-unified.js" defer></script>
+</body>
+</html>
+

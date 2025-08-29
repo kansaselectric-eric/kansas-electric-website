@@ -1,3 +1,4 @@
+# I use this script to automate repetitive tasks; no manual edits needed.
 $ErrorActionPreference = "Stop"
 
 $root = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -30,5 +31,4 @@ foreach ($file in $files) {
 }
 
 Write-Host "Favicons updated in $($files.Count) HTML files." -ForegroundColor Green
-
 

@@ -1,3 +1,4 @@
+# I use this script to automate repetitive tasks; no manual edits needed.
 Param()
 
 $ErrorActionPreference = 'Stop'
@@ -30,5 +31,4 @@ Get-ChildItem -Recurse -File -Filter '*.html' | ForEach-Object {
 }
 
 Write-Host ("CTA color reverts applied to {0} files." -f $updated)
-
 

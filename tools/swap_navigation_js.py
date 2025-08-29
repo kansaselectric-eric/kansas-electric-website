@@ -35,14 +35,12 @@ PATTERNS = [
     r'<script[^>]+projects/[^>]+/division-nav-(?:links|direct|fix)\.js[^>]*></script>\s*',
 ]
 
-
 def rel_from(file_path: Path, target: Path) -> str:
     rel = os.path.relpath(target, file_path.parent)
     rel = rel.replace('\\', '/')
     if not rel.startswith('.') and not rel.startswith('/'):
         rel = './' + rel
     return rel
-
 
 def process_file(path: Path, apply: bool) -> tuple[bool, str]:
     original = path.read_text(encoding='utf-8', errors='ignore')
@@ -74,7 +72,6 @@ def process_file(path: Path, apply: bool) -> tuple[bool, str]:
     changed = html != original
     return changed, '; '.join(summary) if summary else 'no changes'
 
-
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument('--apply', action='store_true')
@@ -100,8 +97,6 @@ def main() -> None:
     mode = 'APPLY' if args.apply else 'DRY-RUN'
     print(f'\n[{mode}] scanned={scanned} changed={changed}')
 
-
 if __name__ == '__main__':
     main()
-
 

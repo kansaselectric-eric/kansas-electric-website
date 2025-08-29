@@ -1,3 +1,4 @@
+:: I keep this tiny batch as a convenience runner.
 @echo off
 echo Running script to remove the news ticker from all HTML files except index.html...
 

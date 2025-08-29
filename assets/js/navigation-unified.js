@@ -1,9 +1,11 @@
-// I unify all navigation behaviors (desktop + mobile) in one place.
-// I detect which nav DOM exists and initialize the matching controller.
+// keep desktop + mobile nav in one place
+// detect the nav variant on the page and boot the right controller
+// wrap this in an IIFE to avoid globals
 (function () {
   'use strict';
 
   // ---------- Utilities ----------
+  // run a callback when DOM is ready
   function onReady(fn) {
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', fn);
@@ -12,6 +14,7 @@
     }
   }
 
+  // debounce calls (helper)
   function debounce(func, wait) {
     var timeout;
     return function () {
@@ -21,6 +24,7 @@
     };
   }
 
+  // throttle calls (helper)
   function throttle(func, limit) {
     var inThrottle;
     return function () {
@@ -33,6 +37,7 @@
   }
 
   // ---------- Redesigned Navigation (from redesigned-navigation.js) ----------
+  // redesigned nav controller
   function RedesignedNavigation() {
     this.activeDropdown = null;
     this.mobileMenuOpen = false;
@@ -44,11 +49,13 @@
     this.handleResize = this.handleResize.bind(this);
   }
 
+  // init after DOM is ready
   RedesignedNavigation.prototype.init = function () {
     var _this = this;
     onReady(function () { _this.setup(); });
   };
 
+  // wire up redesigned nav events
   RedesignedNavigation.prototype.setup = function () {
     this.nav = document.querySelector('.redesigned-nav');
     if (!this.nav) return;
@@ -60,12 +67,14 @@
     this.setActiveNavItem();
   };
 
+  // toggle header styles on scroll (passive listeners)
   RedesignedNavigation.prototype.setupScrollEffects = function () {
     window.addEventListener('scroll', this.handleScroll, { passive: true });
     window.addEventListener('resize', this.handleResize, { passive: true });
     this.handleScroll();
   };
 
+  // flip scrolled state past threshold
   RedesignedNavigation.prototype.handleScroll = function () {
     var currentScrollY = window.scrollY;
     if (currentScrollY > this.scrollThreshold && !this.isScrolled) {
@@ -78,6 +87,7 @@
     this.lastScrollY = currentScrollY;
   };
 
+  // reset state on breakpoint changes
   RedesignedNavigation.prototype.handleResize = function () {
     if (window.innerWidth >= 1024 && this.mobileMenuOpen) {
       this.closeMobileMenu();
@@ -85,6 +95,7 @@
     this.closeAllDropdowns();
   };
 
+  // desktop dropdowns + keyboard
   RedesignedNavigation.prototype.setupDesktopDropdowns = function () {
     var _this = this;
     var dropdownItems = this.nav.querySelectorAll('.redesigned-nav-item[data-dropdown]');
@@ -115,6 +126,7 @@
     });
   };
 
+  // mobile menu + overlay
   RedesignedNavigation.prototype.setupMobileMenu = function () {
     var _this = this;
     var mobileToggle = this.nav.querySelector('.redesigned-mobile-toggle');
@@ -129,6 +141,7 @@
     }
   };
 
+  // close menus on outside click/Escape
   RedesignedNavigation.prototype.setupGlobalListeners = function () {
     var _this = this;
     document.addEventListener('click', function (e) {
@@ -145,6 +158,7 @@
     });
   };
 
+  // keep focus in view while tabbing
   RedesignedNavigation.prototype.setupKeyboardNavigation = function () {
     var focusable = this.nav.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])');
     focusable.forEach(function (el) {
@@ -154,9 +168,11 @@
     });
   };
 
+  // toggle a dropdown
   RedesignedNavigation.prototype.toggleDropdown = function (item) {
     if (item.classList.contains('dropdown-open')) this.closeDropdown(item); else this.openDropdown(item);
   };
+  // open a dropdown and set ARIA
   RedesignedNavigation.prototype.openDropdown = function (item) {
     this.closeAllDropdowns(item);
     var link = item.querySelector('.redesigned-nav-link');
@@ -164,20 +180,24 @@
     if (link) link.setAttribute('aria-expanded', 'true');
     this.activeDropdown = item;
   };
+  // close a dropdown and reset ARIA
   RedesignedNavigation.prototype.closeDropdown = function (item) {
     var link = item.querySelector('.redesigned-nav-link');
     item.classList.remove('dropdown-open');
     if (link) link.setAttribute('aria-expanded', 'false');
     if (this.activeDropdown === item) this.activeDropdown = null;
   };
+  // close all dropdowns except an optional one
   RedesignedNavigation.prototype.closeAllDropdowns = function (exclude) {
     var _this = this;
     var items = this.nav.querySelectorAll('.redesigned-nav-item[data-dropdown]');
     items.forEach(function (i) { if (i !== exclude) _this.closeDropdown(i); });
   };
+  // toggle the mobile menu
   RedesignedNavigation.prototype.toggleMobileMenu = function () {
     if (this.mobileMenuOpen) this.closeMobileMenu(); else this.openMobileMenu();
   };
+  // open the mobile menu and lock scroll
   RedesignedNavigation.prototype.openMobileMenu = function () {
     var mobileToggle = this.nav.querySelector('.redesigned-mobile-toggle');
     var mobileMenu = this.nav.querySelector('.redesigned-mobile-menu');
@@ -192,6 +212,7 @@
       this.mobileMenuOpen = true;
     }
   };
+  // close the mobile menu and restore scroll
   RedesignedNavigation.prototype.closeMobileMenu = function () {
     var mobileToggle = this.nav.querySelector('.redesigned-mobile-toggle');
     var mobileMenu = this.nav.querySelector('.redesigned-mobile-menu');
@@ -206,6 +227,7 @@
       this.mobileMenuOpen = false;
     }
   };
+  // highlight the active nav link
   RedesignedNavigation.prototype.setActiveNavItem = function () {
     var currentPath = window.location.pathname;
     var links = this.nav.querySelectorAll('.redesigned-nav-link, .redesigned-mobile-nav-link');
@@ -219,6 +241,7 @@
   };
 
   // ---------- S+ Tier Navigation (from s-tier-navigation.js) ----------
+  // S-tier (caret) nav controller
   function STierNavigation() {
     this.activeDropdown = null;
     this.isInitialized = false;
@@ -228,10 +251,12 @@
     this.handleKeydown = this.handleKeydown.bind(this);
   }
 
+  // init S-tier after DOM is ready
   STierNavigation.prototype.init = function () {
     var _this = this;
     onReady(function () { _this.setup(); });
   };
+  // bind S-tier elements and handlers
   STierNavigation.prototype.setup = function () {
     this.navigationElement = document.querySelector('.main-navigation');
     if (!this.navigationElement) return;
@@ -256,9 +281,11 @@
     document.addEventListener('keydown', this.handleKeydown);
     this.isInitialized = true;
   };
+  // toggle an S-tier item
   STierNavigation.prototype.toggle = function (navItem) {
     if (navItem.classList.contains('dropdown-open')) this.close(navItem); else { this.closeAll(); this.open(navItem); }
   };
+  // open an S-tier submenu and set ARIA
   STierNavigation.prototype.open = function (navItem) {
     var link = navItem.querySelector('a');
     var submenu = navItem.querySelector('.submenu');
@@ -268,6 +295,7 @@
     submenu.setAttribute('aria-hidden', 'false');
     this.activeDropdown = navItem;
   };
+  // close an S-tier submenu and reset ARIA
   STierNavigation.prototype.close = function (navItem) {
     var link = navItem.querySelector('a');
     var submenu = navItem.querySelector('.submenu');
@@ -277,13 +305,17 @@
     submenu.setAttribute('aria-hidden', 'true');
     if (this.activeDropdown === navItem) this.activeDropdown = null;
   };
+  // close all S-tier submenus
   STierNavigation.prototype.closeAll = function () { var _this = this; this.dropdownItems.forEach(function (i) { if (i.classList.contains('dropdown-open')) _this.close(i); }); };
+  // close S-tier on outside click
   STierNavigation.prototype.handleOutsideClick = function (e) { if (this.activeDropdown && this.navigationElement && !this.navigationElement.contains(e.target)) { this.closeAll(); } };
+  // collapse S-tier on Escape and return focus
   STierNavigation.prototype.handleKeydown = function (e) { if (e.key === 'Escape' && this.activeDropdown) { var link = this.activeDropdown.querySelector('a'); this.closeAll(); if (link) link.focus(); } };
 
   // ---------- Standard Navigation (from assets/js/navigation.js) ----------
+  // standard (legacy) nav
   function initStandardNavigation() {
-    // Mobile menu toggle
+    // wire up the standard mobile toggle
     var mobileToggle = document.querySelector('[data-mobile-nav-toggle]');
     var mainNav = document.querySelector('[data-main-menu]') || document.querySelector('.main-navigation');
     if (mobileToggle && mainNav) {
@@ -302,19 +334,19 @@
       });
     }
 
-    // Fix third column width regression
+    // fix an old width bug in the third column
     Array.prototype.forEach.call(document.querySelectorAll('.third-column'), function (column) {
       if (column.classList.contains('w-1/2')) column.classList.remove('w-1/2');
     });
 
-    // Fallback class if :has is unsupported
+    // add a fallback class if :has() isn't supported
     var hasSupport = true;
     try { document.querySelector(':has(*)'); } catch (e) { hasSupport = false; }
     if (!hasSupport) {
       Array.prototype.forEach.call(document.querySelectorAll('.third-column'), function (column) { column.classList.add('no-has-support'); });
     }
 
-    // Desktop hover behavior with throttling
+    // desktop hover with throttling
     var navItems = document.querySelectorAll('.nav-item');
     if (window.innerWidth >= 1024) {
       Array.prototype.forEach.call(navItems, function (item) {
@@ -352,7 +384,7 @@
         });
       });
     } else {
-      // Mobile: click to toggle submenu
+      // tap-to-toggle on mobile
       Array.prototype.forEach.call(navItems, function (item) {
         var link = item.querySelector('a');
         var submenu = item.querySelector('.submenu');
@@ -371,6 +403,7 @@
       });
     }
 
+    // ensure something is visible in the third column
     function ensureThirdColumnVisible(submenu) {
       if (!submenu) return;
       var thirdColumnContents = submenu.querySelectorAll('.third-column-content');
@@ -403,6 +436,7 @@
       if (!recheck && thirdColumnContents.length > 0) thirdColumnContents[0].classList.add('active');
     }
 
+    // pin submenus under the header to remove the gap
     function setSubmenuPosition() {
       if (window.innerWidth >= 1024) {
         var header = document.querySelector('.site-header');
@@ -439,6 +473,7 @@
   }
 
   // ---------- Mobile fallback hamburger (if no [data-mobile-nav-toggle]) ----------
+  // inject a simple hamburger if the page forgot one
   function setupHamburgerFallback() {
     var hasExplicitToggle = document.querySelector('[data-mobile-nav-toggle]');
     var mainMenu = document.querySelector('[data-main-menu]') || document.querySelector('.main-navigation');
@@ -459,6 +494,7 @@
   }
 
   // ---------- Bootstrap ----------
+  // boot the right controller based on the DOM
   onReady(function () {
     // Prefer redesigned controller when its DOM exists
     if (document.querySelector('.redesigned-nav')) {
@@ -485,12 +521,13 @@
   });
 })();
 
-// I keep KSE navigation logic here to replace page-specific inline scripts
+// KSE nav logic to replace page inline scripts
 function initKseNavigation() {
-  // Click-driven dropdowns for KSE nav
+  // click-driven dropdowns for KSE
   var nav = document.querySelector('.kse-nav');
   if (!nav) return;
 
+  // close all KSE dropdowns and reset inline styles
   function closeAllDropdowns() {
     Array.prototype.forEach.call(nav.querySelectorAll('.kse-dropdown'), function (dropdown) {
       dropdown.classList.remove('active', 'show');
@@ -511,6 +548,7 @@ function initKseNavigation() {
     var link = item.querySelector('.kse-nav-link');
     if (!dropdown || !link) return;
 
+    // toggle this dropdown on click and close others
     link.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
@@ -529,6 +567,7 @@ function initKseNavigation() {
     });
 
     // Desktop hover support (>=1024px)
+    // support hover on desktop
     var enterHandler = function () {
       if (window.innerWidth < 1024) return;
       closeAllDropdowns();
@@ -540,6 +579,7 @@ function initKseNavigation() {
       dropdown.style.pointerEvents = 'auto';
       item.setAttribute('aria-expanded', 'true');
     };
+    // hide dropdown on mouseleave (desktop)
     var leaveHandler = function () {
       if (window.innerWidth < 1024) return;
       dropdown.classList.remove('active', 'show');
@@ -557,13 +597,15 @@ function initKseNavigation() {
     dropdown.addEventListener('click', function (e) { e.stopPropagation(); });
   });
 
+  // close dropdowns on outside clicks
   document.addEventListener('click', function (e) {
     if (!e.target.closest('.kse-nav')) closeAllDropdowns();
   });
+  // close everything on Escape
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeAllDropdowns(); });
 }
 
-// I wire up the small "MENU" trigger to open a simple slide-in overlay
+// wire up the small "MENU" trigger to open a simple slide-in overlay
 function initKseMobileOverlay() {
   var trigger = document.getElementById('kse-nav-toggle') || document.getElementById('mobileMenuTrigger');
   var overlay = document.getElementById('mobileNavOverlay');
@@ -571,11 +613,13 @@ function initKseMobileOverlay() {
   var closeBtn = document.getElementById('mobileNavClose');
   if (!trigger || !overlay || !backdrop) return;
 
+  // open the overlay and lock scroll
   function open() {
     overlay.classList.add('active');
     backdrop.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
+  // close the overlay and restore scroll
   function close() {
     overlay.classList.remove('active');
     backdrop.classList.remove('active');
@@ -587,5 +631,4 @@ function initKseMobileOverlay() {
   if (closeBtn) closeBtn.addEventListener('click', close);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
 }
-
 

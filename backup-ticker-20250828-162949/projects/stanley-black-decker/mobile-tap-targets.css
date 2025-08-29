@@ -1,0 +1,154 @@
+/* Mobile Tap Target Improvements
+ * Enhances button and link tap targets for screens under 768px
+ * Preserves original styling on desktop screens
+ */
+
+@media (max-width: 767px) {
+  /* Improve all button tap targets */
+  button,
+  .button,
+  .btn,
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"],
+  a.btn,
+  a.button {
+    min-height: 48px !important;
+    min-width: 48px !important;
+    padding: 12px 16px !important;
+    margin: 8px 0 !important;
+    line-height: 1.5 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    touch-action: manipulation !important;
+  }
+  
+  /* Group of buttons needs spacing */
+  .btn-group > button,
+  .btn-group > .btn,
+  .button-group > button,
+  .button-group > .button,
+  .actions > button,
+  .actions > .btn,
+  .nav-buttons > button,
+  .nav-buttons > .btn,
+  form button + button,
+  form .btn + .btn {
+    margin: 0 8px 8px 0 !important;
+  }
+  
+  /* Navigation links in menus */
+  nav a,
+  .nav a,
+  .menu a,
+  .navbar a,
+  .navigation a,
+  .main-navigation a,
+  .primary-navigation a,
+  .header-navigation a,
+  .footer-navigation a,
+  ul.menu li a,
+  .menu-item a {
+    min-height: 48px !important;
+    padding: 12px 16px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  /* Links that function as buttons should have button-like tap targets */
+  a[role="button"],
+  a.cta,
+  a.action,
+  a.wp-block-button__link,
+  .wp-block-button__link,
+  a[class*="btn"],
+  a[class*="button"] {
+    min-height: 48px !important;
+    min-width: 48px !important;
+    padding: 12px 16px !important;
+    margin: 8px 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    touch-action: manipulation !important;
+  }
+  
+  /* Inline links need more padding and spacing */
+  p a, 
+  li a, 
+  td a, 
+  th a, 
+  blockquote a,
+  span a,
+  div a {
+    padding: 2px 4px !important;
+    display: inline-block !important;
+  }
+  
+  /* Common utility links and icon buttons */
+  .icon-button,
+  a.icon,
+  button.icon,
+  .social-icon a,
+  .social-link a,
+  a.social,
+  a[class*="icon"],
+  button[class*="icon"] {
+    min-height: 48px !important;
+    min-width: 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  /* Form controls need larger tap targets too */
+  select,
+  input[type="checkbox"],
+  input[type="radio"] {
+    min-height: 24px !important;
+    min-width: 24px !important;
+    margin: 8px !important;
+  }
+  
+  /* Special handling for checkbox and radio labels */
+  label[for] {
+    min-height: 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 8px !important;
+  }
+  
+  /* Dropdown menus need space */
+  .dropdown-menu a,
+  .submenu a,
+  .sub-menu a,
+  .dropdown a {
+    min-height: 48px !important;
+    padding: 12px 16px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  /* Fix for accordion and tab navigation */
+  .accordion-button,
+  .accordion-header button,
+  .tab-button,
+  .nav-tab,
+  .tab a,
+  .tabs a {
+    min-height: 48px !important;
+    padding: 12px 16px !important;
+  }
+  
+  /* Mobile navigation toggle buttons */
+  .navbar-toggle,
+  .nav-toggle,
+  .menu-toggle,
+  .hamburger-toggle,
+  [class*="toggle"] {
+    min-height: 48px !important;
+    min-width: 48px !important;
+    padding: 12px !important;
+  }
+} 

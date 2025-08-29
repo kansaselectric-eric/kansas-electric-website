@@ -1,3 +1,4 @@
+:: I keep this tiny batch as a convenience runner.
 @echo off
 echo Converting absolute paths to relative paths...
 powershell -ExecutionPolicy Bypass -File "%~dp0fix-paths-final.ps1"

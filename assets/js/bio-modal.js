@@ -1,3 +1,4 @@
+// I keep this file focused and small; if it grows, I split modules.
 jQuery(function($) {
 
 	var team = [
@@ -147,8 +148,7 @@ jQuery(function($) {
 		$('#bio-overlay').removeClass('hidden');
 	}
 
-
-	$('a.team-member').on( 'click', function(e) {
+$('a.team-member').on( 'click', function(e) {
 		// stop event from being fired multiple times
 		e.stopImmediatePropagation();
 		e.preventDefault();
@@ -163,7 +163,6 @@ jQuery(function($) {
 		// enable the modal close button
 		closeModal();
 
-
-	});
+});
 
 });

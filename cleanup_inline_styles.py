@@ -1,3 +1,4 @@
+# I wrote this helper so I can maintain pages safely and repeatably.
 import os
 import re
 from pathlib import Path

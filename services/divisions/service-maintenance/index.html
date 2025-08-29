@@ -1,19 +1,17 @@
+<!-- page skeleton: unified nav/footer; keep markup lean; comments stay light. -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
-  
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-NX8X8X37');</script>
-  
-  
-  
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
   <title>Service & Maintenance Division - Kansas Electric</title>
 
@@ -42,9 +40,8 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-  
-  
-  <style>
+<style>
+
     @media (max-width: 767px) {
       .kse-nav-cta {
         display: none !important;
@@ -183,10 +180,11 @@
         display: none !important;
       }
     }
-  </style>
-
   
-  <style>
+</style>
+
+<style>
+
   .kse-dropdown,
   .kse-mobile-dropdown,
   .kse-mobile-menu {
@@ -487,23 +485,24 @@
       padding-right: 4rem;
     }
   }
-  </style>
+  
+</style>
 </head>
 <body class="font-poppins flex flex-col min-h-screen relative">
 
-  
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NX8X8X37"
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NX8X8X37"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  
 
-  
-  <nav class="kse-nav" role="navigation" aria-label="Main navigation">
+<!-- navigation: kse nav -->
+<nav class="kse-nav" role="navigation" aria-label="Main navigation">
+      <!-- container: kse nav container -->
       <div class="kse-nav-container">
           
           <a href="../../../" class="kse-nav-logo flex items-center px-4 py-2">
               <img src="../../../assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain" loading="lazy">
           </a>
 
+          <!-- ul/ol: kse nav menu -->
           <ul class="kse-nav-menu" role="menubar">
               
               <li class="kse-nav-item" data-dropdown="services" role="none">
@@ -513,6 +512,7 @@
                           <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                   </svg>
                 </a>
+                  <!-- container: services dropdown -->
                   <div class="kse-dropdown" id="services-dropdown" role="menu" aria-hidden="true">
                       <a href="/services/divisions/industrial/" class="kse-dropdown-link" role="menuitem">
                           <span>Industrial Electrical</span>
@@ -537,21 +537,20 @@
                 </div>
                     </li>
 
-              
-              <li class="kse-nav-item" role="none">
+<li class="kse-nav-item" role="none">
                   <a href="/projects/" class="kse-nav-link" role="menuitem">
                       <span>Projects</span>
                   </a>
               </li>
 
-              
-              <li class="kse-nav-item" data-dropdown="industries" role="none">
+<li class="kse-nav-item" data-dropdown="industries" role="none">
                   <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="industries-dropdown">
                       <span>Industries We Serve</span>
                       <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                           <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                   </svg>
                   </a>
+                  <!-- container: industries dropdown -->
                   <div class="kse-dropdown industries-grid" id="industries-dropdown" role="menu" aria-hidden="true">
                       <a href="/services/industrial/oil-gas/" class="kse-dropdown-link" role="menuitem">
                           <span>Oil & Gas</span>
@@ -580,15 +579,13 @@
                 </div>
                     </li>
 
-              
-              <li class="kse-nav-item" role="none">
+<li class="kse-nav-item" role="none">
                   <a href="/about/" class="kse-nav-link" role="menuitem">
                       <span>About</span>
                   </a>
               </li>
 
-              
-              <li class="kse-nav-item" role="none">
+<li class="kse-nav-item" role="none">
                   <a href="/careers/" class="kse-nav-link" role="menuitem">
                       <span>Careers</span>
                   </a>
@@ -600,19 +597,23 @@
                Let's Engineer Your Next Power Move
             </a>
 
-          
-          <div class="fixed inset-0 z-50 bg-white md:hidden hidden" id="kse-mobile-nav">
+<!-- container: kse mobile nav -->
+<div class="fixed inset-0 z-50 bg-white md:hidden hidden" id="kse-mobile-nav">
+            <!-- container: p 6 -->
             <div class="p-6 flex justify-between items-center border-b">
               <img src="/assets/img/2025 photos/new logo 2025/Final Files/Button/Vector/Kansas Electric Button [CMYK].svg" alt="Kansas Electric" class="h-8">
               <button id="kse-nav-close" class="text-gray-600 text-3xl font-bold">&times;</button>
             </div>
+            <!-- navigation: flex -->
             <nav class="flex flex-col space-y-6 p-6 text-xl font-medium text-gray-800">
               <a href="/" class="hover:text-blue-600">Home</a>
+              <!-- div -->
               <div>
                 <button class="w-full text-left flex justify-between items-center hover:text-blue-600" onclick="toggleDropdown('servicesMenu')">
                   Services
                   <span class="text-gray-500">&#9662;</span>
                 </button>
+                <!-- container: servicesMenu -->
                 <div id="servicesMenu" class="pl-4 mt-2 hidden flex-col space-y-2">
                   <a href="/services/industrial/" class="hover:text-blue-600">Industrial Electrical</a>
                   <a href="/services/commercial/" class="hover:text-blue-600">Commercial Electrical</a>
@@ -620,11 +621,13 @@
                   <a href="/services/automation/" class="hover:text-blue-600">Automation & Controls</a>
                 </div>
               </div>
+              <!-- div -->
               <div>
                 <button class="w-full text-left flex justify-between items-center hover:text-blue-600" onclick="toggleDropdown('industriesMenu')">
                   Industries We Serve
                   <span class="text-gray-500">&#9662;</span>
                 </button>
+                <!-- container: industriesMenu -->
                 <div id="industriesMenu" class="pl-4 mt-2 hidden flex-col space-y-2">
                   <a href="/industries/oil-gas/" class="hover:text-blue-600">Oil & Gas</a>
                   <a href="/industries/water/" class="hover:text-blue-600">Water & Wastewater</a>
@@ -639,30 +642,32 @@
               <a href="/suppliers/" class="hover:text-blue-600">Suppliers</a>
             </nav>
 
-  
-  <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
+<!-- container: mobile top bar -->
+<div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
     <img src="../../../assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg"
          alt="Kansas Electric"
          class="h-10 w-auto object-contain mx-auto"
          loading="lazy">
   </div>
 
-  
-      </div>
+</div>
   </nav>
 
+  <!-- main: content -->
   <main id="content" class="flex-grow">
+    <!-- container: bg gray 50 -->
     <div class="bg-gray-50 py-0">
+      <!-- article: overflow hidden -->
       <article class="overflow-hidden">
 
-        
-        <section class="relative w-full h-screen bg-cover bg-center flex items-center justify-center overflow-hidden" 
+<section class="relative w-full h-screen bg-cover bg-center flex items-center justify-center overflow-hidden" 
                  style="background-image: url('../../../assets/img/2025 photos/KSE 1.jpg');">
           
+          <!-- container: absolute -->
           <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-          
-          
-          <div class="relative z-10 text-center text-white max-w-4xl mx-auto px-6">
+
+<!-- container: relative -->
+<div class="relative z-10 text-center text-white max-w-4xl mx-auto px-6">
             <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" data-aos="fade-up">
               Responsive. Reliable. Ready 24/7.
             </h1>
@@ -677,55 +682,60 @@
           </div>
         </section>
 
-        
-        <section class="py-24 bg-white border-t border-gray-200">
+<!-- section: py 24 -->
+<section class="py-24 bg-white border-t border-gray-200">
+        <!-- container: w full -->
         <div class="w-full px-6 md:px-10 lg:px-16">
+          <!-- container: text center -->
           <div class="text-center mb-16 max-w-7xl mx-auto">
             <p class="uppercase tracking-widest text-blue-600 text-sm font-medium mb-4" data-aos="fade-up">SERVICE CAPABILITIES</p>
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight" data-aos="fade-up" data-aos-delay="100">
               What We Deliver for Service & Maintenance
             </h2>
+            <!-- container: h 1 -->
             <div class="h-1 w-16 bg-blue-600 mx-auto mb-6" data-aos="fade-up" data-aos-delay="200"></div>
             <p class="text-lg text-gray-600 max-w-4xl mx-auto" data-aos="fade-up" data-aos-delay="300">
               Kansas Electric provides comprehensive electrical service and maintenance solutions ? from emergency response to scheduled maintenance programs.
             </p>
           </div>
           
+          <!-- container: w full -->
           <div class="w-full">
+            <!-- container: grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            
-            
-            <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="fade-right" data-aos-delay="100">
+
+<!-- container: rounded xl -->
+<div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="fade-right" data-aos-delay="100">
               <h3 class="text-lg md:text-xl font-semibold text-slate-900">24/7 Emergency Response</h3>
               <p class="text-sm text-gray-600 mt-2">Immediate response to electrical emergencies with certified technicians available around the clock to minimize downtime and restore operations.</p>
             </div>
-            
-            
-            <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="fade-left" data-aos-delay="100">
+
+<!-- container: rounded xl -->
+<div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="fade-left" data-aos-delay="100">
               <h3 class="text-lg md:text-xl font-semibold text-slate-900">Preventive Maintenance</h3>
               <p class="text-sm text-gray-600 mt-2">Scheduled maintenance programs to identify potential issues before they become costly problems and extend equipment lifespan.</p>
             </div>
-            
-            
-            <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="fade-right" data-aos-delay="200">
+
+<!-- container: rounded xl -->
+<div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="fade-right" data-aos-delay="200">
               <h3 class="text-lg md:text-xl font-semibold text-slate-900">Equipment Retrofits</h3>
               <p class="text-sm text-gray-600 mt-2">Upgrading aging electrical systems with modern components to improve efficiency, safety, and compliance with current codes.</p>
             </div>
-            
-            
-            <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="fade-left" data-aos-delay="200">
+
+<!-- container: rounded xl -->
+<div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="fade-left" data-aos-delay="200">
               <h3 class="text-lg md:text-xl font-semibold text-slate-900">Power Quality Analysis</h3>
               <p class="text-sm text-gray-600 mt-2">Comprehensive electrical system diagnostics to identify power quality issues and optimize system performance for critical operations.</p>
             </div>
-            
-            
-            <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="fade-right" data-aos-delay="300">
+
+<!-- container: rounded xl -->
+<div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="fade-right" data-aos-delay="300">
               <h3 class="text-lg md:text-xl font-semibold text-slate-900">System Testing & Commissioning</h3>
               <p class="text-sm text-gray-600 mt-2">Thorough testing and validation of electrical systems to ensure proper operation, safety compliance, and optimal performance.</p>
             </div>
-            
-            
-            <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="fade-left" data-aos-delay="300">
+
+<!-- container: rounded xl -->
+<div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="fade-left" data-aos-delay="300">
               <h3 class="text-lg md:text-xl font-semibold text-slate-900">Facility Support Services</h3>
               <p class="text-sm text-gray-600 mt-2">Ongoing electrical support including troubleshooting, repairs, and facility modifications to meet changing operational needs.</p>
             </div>
@@ -735,48 +745,59 @@
         </div>
       </section>
 
-      
-      <section class="py-24 bg-gray-50 border-t border-gray-200">
+<!-- section: py 24 -->
+<section class="py-24 bg-gray-50 border-t border-gray-200">
+        <!-- container: w full -->
         <div class="w-full px-6 md:px-10 lg:px-16">
+          <!-- container: text center -->
           <div class="text-center mb-16 max-w-7xl mx-auto">
             <p class="uppercase tracking-widest text-blue-600 text-sm font-medium mb-4" data-aos="fade-up">SECTOR EXPERTISE</p>
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight" data-aos="fade-up" data-aos-delay="100">
               Markets We Serve
             </h2>
+            <!-- container: h 1 -->
             <div class="h-1 w-16 bg-blue-600 mx-auto mb-6" data-aos="fade-up" data-aos-delay="200"></div>
             <p class="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="300">
               Reliable service and maintenance solutions for mission-critical facilities that cannot afford electrical downtime
             </p>
           </div>
           
+          <!-- container: w full -->
           <div class="w-full">
+            <!-- container: grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             
+            <!-- container: rounded xl -->
             <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="100">
               <h3 class="text-lg md:text-xl font-semibold text-slate-900">Manufacturing Facilities</h3>
               <p class="text-sm text-gray-600 mt-2">Preventive maintenance programs for production equipment and electrical systems to minimize costly downtime and ensure continuous operations.</p>
             </div>
             
+            <!-- container: rounded xl -->
             <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="150">
               <h3 class="text-lg md:text-xl font-semibold text-slate-900">Healthcare Systems</h3>
               <p class="text-sm text-gray-600 mt-2">Emergency response and maintenance for life-critical electrical systems in hospitals, clinics, and medical facilities requiring 24/7 reliability.</p>
             </div>
             
+            <!-- container: rounded xl -->
             <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="200">
               <h3 class="text-lg md:text-xl font-semibold text-slate-900">Data Centers</h3>
               <p class="text-sm text-gray-600 mt-2">Mission-critical maintenance and monitoring for data center power infrastructure with guaranteed response times and redundant service capabilities.</p>
             </div>
             
+            <!-- container: rounded xl -->
             <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="250">
               <h3 class="text-lg md:text-xl font-semibold text-slate-900">Educational Institutions</h3>
               <p class="text-sm text-gray-600 mt-2">Scheduled maintenance and emergency services for schools and universities during off-peak hours to minimize disruption to learning environments.</p>
             </div>
             
+            <!-- container: rounded xl -->
             <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="300">
               <h3 class="text-lg md:text-xl font-semibold text-slate-900">Commercial Properties</h3>
               <p class="text-sm text-gray-600 mt-2">Tenant services and building maintenance for office complexes, retail centers, and mixed-use developments requiring flexible service schedules.</p>
             </div>
             
+            <!-- container: rounded xl -->
             <div class="rounded-xl border border-gray-200 bg-white hover:bg-gray-50 shadow-sm hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between" data-aos="zoom-in" data-aos-delay="350">
               <h3 class="text-lg md:text-xl font-semibold text-slate-900">Municipal Infrastructure</h3>
               <p class="text-sm text-gray-600 mt-2">Public safety and infrastructure maintenance for water treatment plants, government facilities, and critical municipal electrical systems.</p>
@@ -787,10 +808,11 @@
         </div>
       </section>
 
-      
-      <section class="w-full h-screen min-h-screen bg-cover bg-center bg-no-repeat relative" 
+<section class="w-full h-screen min-h-screen bg-cover bg-center bg-no-repeat relative" 
                style="background-image: url('../../../assets/img/2025 photos/pulling wire.jpg');">
+        <!-- container: absolute -->
         <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+        <!-- container: relative -->
         <div class="relative z-10 flex flex-col justify-center items-center h-full text-white text-center px-4">
           <h2 class="text-4xl font-bold mb-4" data-aos="fade-up">Built for Uptime. Powered by Experience.</h2>
           <p class="text-lg max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
@@ -799,16 +821,20 @@
         </div>
       </section>
 
-      
-      <section class="py-24 bg-white border-t border-gray-200">
+<!-- section: py 24 -->
+<section class="py-24 bg-white border-t border-gray-200">
+        <!-- container: max w 7xl -->
         <div class="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 md:flex md:items-center md:space-x-12">
+          <!-- container: md:w 1/2 -->
           <div class="md:w-1/2 mb-8 md:mb-0" data-aos="fade-right">
             <img src="../../../assets/img/2025 photos/shop.JPG" alt="Service Maintenance Environment" class="rounded-2xl shadow-lg w-full h-auto object-cover">
           </div>
+          <!-- container: md:w 1/2 -->
           <div class="md:w-1/2" data-aos="fade-left">
             <p class="uppercase tracking-widest text-blue-600 text-sm font-medium mb-4">SERVICE EXPERTISE</p>
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight">Built for Service Success</h2>
             <p class="text-lg text-gray-600 mb-6">Our service teams combine decades of experience with advanced diagnostic tools to keep your electrical systems operating at peak performance, minimizing downtime and maximizing reliability.</p>
+            <!-- ul/ol: list disc -->
             <ul class="list-disc list-inside text-gray-600 space-y-2 mb-6">
               <li>24/7 emergency response capabilities</li>
               <li>Predictive maintenance programs</li>
@@ -823,42 +849,51 @@
         </div>
       </section>
 
-      
-      <section class="py-24 bg-gray-50 border-t border-gray-200">
+<!-- section: py 24 -->
+<section class="py-24 bg-gray-50 border-t border-gray-200">
+        <!-- container: w full -->
         <div class="w-full px-6 md:px-10 lg:px-16">
+          <!-- container: text center -->
           <div class="text-center mb-16 max-w-7xl mx-auto">
             <p class="uppercase tracking-widest text-blue-600 text-sm font-medium mb-4" data-aos="fade-up">PROJECT SHOWCASE</p>
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight" data-aos="fade-up" data-aos-delay="100">
               Service Excellence in Action
             </h2>
+            <!-- container: h 1 -->
             <div class="h-1 w-16 bg-blue-600 mx-auto mb-6" data-aos="fade-up" data-aos-delay="200"></div>
             <p class="text-lg text-gray-600 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="300">
               Real-world service and maintenance programs that demonstrate our commitment to keeping critical systems operational.
             </p>
           </div>
 
+          <!-- container: w full -->
           <div class="w-full">
+            <!-- container: grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             
+            <!-- container: relative -->
             <div class="relative rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-transform duration-300 hover:scale-[1.01] group" data-aos="zoom-in" data-aos-delay="200">
               <img src="../../../assets/img/2025 photos/featured projects cards/Newton Medical Center Switchgear.jpg" alt="Healthcare System Maintenance" class="w-full h-[300px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-300">
+              <!-- container: absolute -->
               <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white text-center p-6 z-10">
                 <h3 class="text-3xl font-bold mb-2">Healthcare System Maintenance</h3>
                 <p class="text-base max-w-2xl">Comprehensive preventive maintenance program for a multi-facility healthcare system ensuring 24/7 reliability for life-critical operations.</p>
               </div>
             </div>
 
-            
-            <div class="relative rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-transform duration-300 hover:scale-[1.01] group" data-aos="zoom-in" data-aos-delay="300">
+<!-- container: relative -->
+<div class="relative rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-transform duration-300 hover:scale-[1.01] group" data-aos="zoom-in" data-aos-delay="300">
               <img src="../../../assets/img/mkclyons.jpg" alt="Grain Storage Facility Maintenance" class="w-full h-[300px] md:h-[400px] object-cover transform hover:scale-105 transition-transform duration-300">
+              <!-- container: absolute -->
               <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white text-center p-6 z-10">
                 <h3 class="text-3xl font-bold mb-2">Grain Storage Facility Maintenance</h3>
                 <p class="text-base max-w-2xl">Specialized electrical maintenance for grain elevators and storage facilities, ensuring safe operations and compliance with agricultural industry standards.</p>
               </div>
             </div>
 
-            
-            <div class="relative rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-transform duration-300 hover:scale-[1.01] group h-[300px] md:h-[400px]" data-aos="zoom-in" data-aos-delay="400" style="background-image: url('../../../assets/img/2025 photos/switchgear 1.jpg'); background-size: cover; background-position: center;">
+<!-- container: relative -->
+<div class="relative rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-transform duration-300 hover:scale-[1.01] group h-[300px] md:h-[400px]" data-aos="zoom-in" data-aos-delay="400" style="background-image: url('../../../assets/img/2025 photos/switchgear 1.jpg'); background-size: cover; background-position: center;">
+              <!-- container: absolute -->
               <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white text-center p-6 z-10">
                 <h3 class="text-3xl font-bold mb-2">NFPA 70B Compliance Testing</h3>
                 <p class="text-base max-w-2xl">Comprehensive electrical maintenance testing and inspection services following NFPA 70B standards to ensure safety, reliability, and code compliance.</p>
@@ -869,35 +904,46 @@
         </div>
       </section>
 
-      
-      <section class="py-24 bg-white border-t border-gray-200">
+<!-- section: py 24 -->
+<section class="py-24 bg-white border-t border-gray-200">
+        <!-- container: w full -->
         <div class="w-full px-6 md:px-10 lg:px-16">
+          <!-- container: text center -->
           <div class="text-center mb-16 max-w-7xl mx-auto">
             <p class="uppercase tracking-widest text-blue-600 text-sm font-medium mb-4" data-aos="fade-up">SERVICE ADVANTAGE</p>
             <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900 mb-6 leading-tight" data-aos="fade-up" data-aos-delay="100">
               Why Kansas Electric
             </h2>
+            <!-- container: h 1 -->
             <div class="h-1 w-16 bg-blue-600 mx-auto mb-6" data-aos="fade-up" data-aos-delay="200"></div>
           </div>
           
+          <!-- container: w full -->
           <div class="w-full">
+            <!-- container: grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
             
+            <!-- container: rounded xl -->
             <div class="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow p-6 flex flex-col justify-between relative overflow-hidden" data-aos="fade-left" data-aos-delay="100">
+              <!-- container: relative -->
               <div class="relative z-10">
                 <h3 class="text-lg md:text-xl font-semibold text-slate-900">24/7 Emergency Response</h3>
                 <p class="text-sm text-gray-600 mt-2">Round-the-clock service availability with guaranteed response times for critical system failures</p>
               </div>
             </div>
             
+            <!-- container: rounded xl -->
             <div class="rounded-xl border border-gray-200 bg-gray-50 shadow-sm hover:shadow-md transition-shadow p-6 flex flex-col justify-between relative overflow-hidden" data-aos="fade-left" data-aos-delay="200">
+              <!-- container: relative -->
               <div class="relative z-10">
                 <h3 class="text-lg md:text-xl font-semibold text-slate-900">Predictive Maintenance</h3>
                 <p class="text-sm text-gray-600 mt-2">Advanced diagnostics and data-driven maintenance strategies to prevent failures before they occur</p>
               </div>
             </div>
             
+            <!-- container: rounded xl -->
             <div class="rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-md transition-shadow p-6 flex flex-col justify-between relative overflow-hidden" data-aos="fade-left" data-aos-delay="300">
+              <!-- container: relative -->
               <div class="relative z-10">
                 <h3 class="text-lg md:text-xl font-semibold text-slate-900">Certified Technicians</h3>
                 <p class="text-sm text-gray-600 mt-2">Highly trained and certified service professionals with expertise across all major electrical systems</p>
@@ -909,20 +955,28 @@
         </div>
       </section>
 
-      
-      <section class="relative py-24 bg-slate-900 overflow-hidden border-t border-gray-200">
+<!-- section: relative -->
+<section class="relative py-24 bg-slate-900 overflow-hidden border-t border-gray-200">
         
+        <!-- container: absolute -->
         <div class="absolute inset-0">
+          <!-- container: absolute -->
           <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ffffff%22 fill-opacity=%220.1%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
           
+          <!-- container: absolute -->
           <div class="absolute top-0 right-0 w-1/3 h-full opacity-5">
+            <!-- container: absolute -->
             <div class="absolute top-0 right-0 w-px h-full bg-white transform rotate-12 origin-top"></div>
+            <!-- container: absolute -->
             <div class="absolute top-0 right-8 w-px h-full bg-white transform rotate-12 origin-top"></div>
+            <!-- container: absolute -->
             <div class="absolute top-0 right-16 w-px h-full bg-white transform rotate-12 origin-top"></div>
           </div>
         </div>
         
+        <!-- container: relative -->
         <div class="relative z-10 max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
+          <!-- container: text center -->
           <div class="text-center text-white max-w-4xl mx-auto">
             <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-gray-900" data-aos="fade-up">
               When Downtime Is Not An Option.
@@ -944,22 +998,27 @@
   </main>
 
   <style>
+
     .footer-custom {
       background-color: #00458C;
       background-image: url('/assets/img/noise.png');
       background-blend-mode: overlay;
     }
-  </style>
+  
+</style>
 
+  <!-- footer: footer custom -->
   <footer class="footer-custom text-white py-16 px-6 border-t border-white/10" data-aos="fade-up">
+    <!-- container: grid -->
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
       
+      <!-- container: flex -->
       <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-3" data-aos="fade-up" data-aos-delay="100">
         <p class="text-white text-sm">Built for Power. Engineered for Excellence.</p>
       </div>
-      
-      
-      <div class="flex flex-col items-center justify-center space-y-3" data-aos="fade-up" data-aos-delay="200">
+
+<!-- container: flex -->
+<div class="flex flex-col items-center justify-center space-y-3" data-aos="fade-up" data-aos-delay="200">
         <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Contact</h3>
         <a href="tel:3162834750" class="text-white font-medium hover:text-white transition-colors text-base">
           (316) 283-4750
@@ -968,9 +1027,9 @@
           Let's Engineer Your Next Power Move
         </a>
       </div>
-      
-      
-      <div class="flex flex-col items-center md:items-end text-center md:text-right space-y-3" data-aos="fade-up" data-aos-delay="300">
+
+<!-- container: flex -->
+<div class="flex flex-col items-center md:items-end text-center md:text-right space-y-3" data-aos="fade-up" data-aos-delay="300">
         <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Links</h3>
         <a href="https://www.linkedin.com/company/kansas-electric/" class="text-white hover:text-gray-200 transition-colors" aria-label="Kansas Electric LinkedIn profile">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6" alt="Kansas Electric LinkedIn profile">
@@ -982,16 +1041,16 @@
         </a>
       </div>
     </div>
-    
-    
-    <div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
+
+<!-- container: mt 12 -->
+<div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
       <p class="text-sm text-white max-w-3xl mx-auto leading-relaxed">
         Since 1948, Kansas Electric has powered some of the region's most essential facilities ? from hospitals and manufacturers to mission-critical infrastructure. We bring decades of experience, a culture of safety, and future-focused innovation to every electrical project we touch.
       </p>
     </div>
-    
-    
-    <div class="mt-8 text-center text-gray-200 text-sm" data-aos="fade-up" data-aos-delay="500">
+
+<!-- container: mt 8 -->
+<div class="mt-8 text-center text-gray-200 text-sm" data-aos="fade-up" data-aos-delay="500">
       &copy; 2025 Kansas Electric. All rights reserved.
       <a href="/assets/documents/04.01.2022-kansas-electric-terms-and-conditions.pdf" 
          target="_blank" 
@@ -1002,112 +1061,143 @@
     </div>
   </footer>
 
-
-
-  
-  <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
+<!-- container: mobile top bar -->
+<div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
     <img src="../../../assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg"
          alt="Kansas Electric"
          class="h-10 w-auto object-contain mx-auto"
          loading="lazy">
   </div>
 
-  
-  <div class="mobile-menu-trigger md:hidden" id="mobileMenuTrigger">
+<!-- container: mobileMenuTrigger -->
+<div class="mobile-menu-trigger md:hidden" id="mobileMenuTrigger">
     MENU ?
   </div>
 
-  
-  <div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop"></div>
+<!-- container: mobileNavBackdrop -->
+<div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop"></div>
 
-  
-  <nav class="mobile-nav-overlay md:hidden" id="mobileNavOverlay">
+<!-- navigation: mobileNavOverlay -->
+<nav class="mobile-nav-overlay md:hidden" id="mobileNavOverlay">
     <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
       </svg>
     </button>
+    <!-- container: mobile nav content -->
     <div class="mobile-nav-content pb-32">
       <a href="../../../" class="block w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition text-center">Home</a>
       
+      <!-- container: relative -->
       <div class="relative z-10 border-t border-gray-200"></div>
       
+      <!-- div -->
       <div>
         <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('servicesMenu')">
           <span>Services</span>
         </button>
+        <!-- container: servicesMenu -->
         <div id="servicesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
           <a href="/services/divisions/industrial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Industrial Electrical</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Heavy infrastructure & power systems</div>
           </a>
           <a href="/services/divisions/commercial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Commercial Electrical</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Office buildings & retail spaces</div>
           </a>
           <a href="/services/divisions/service-maintenance/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Service & Maintenance</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">24/7 support & preventive care</div>
           </a>
           <a href="/services/divisions/automation-control/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Automation & Control Systems</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Smart systems & process control</div>
           </a>
           <a href="/services/divisions/ul-panel-shop/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">UL Panel Shop</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Custom UL 508A certified panels</div>
           </a>
         </div>
       </div>
       
+      <!-- container: relative -->
       <div class="relative z-10 border-t border-gray-200"></div>
       
+      <!-- div -->
       <div>
         <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('industriesMenu')">
           <span>Industries We Serve</span>
         </button>
+        <!-- container: industriesMenu -->
         <div id="industriesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
           <a href="/services/industrial/oil-gas/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Oil & Gas</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Refineries & pipelines</div>
           </a>
           <a href="/services/industrial/wastewater-treatment/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Water and Wastewater</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Treatment facilities</div>
           </a>
           <a href="/services/industrial/data-centers/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Data Centers</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Mission critical facilities</div>
           </a>
           <a href="/services/industrial/advanced-manufacturing/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Manufacturing</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Production facilities</div>
           </a>
           <a href="/services/industrial/food-beverage/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Food & Beverage</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Processing plants</div>
           </a>
           <a href="/services/industrial/healthcare/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <!-- container: text sm -->
             <div class="text-sm font-medium text-gray-900">Healthcare Infrastructure</div>
+            <!-- container: text xs -->
             <div class="text-xs text-gray-500">Critical care facilities</div>
           </a>
         </div>
       </div>
       
+      <!-- container: relative -->
       <div class="relative z-10 border-t border-gray-200"></div>
       
       <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/projects/'">
         <span>Projects</span>
       </button>
+      <!-- container: relative -->
       <div class="relative z-10 border-t border-gray-200"></div>
       <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/about/'">
         <span>About</span>
       </button>
+      <!-- container: relative -->
       <div class="relative z-10 border-t border-gray-200"></div>
       <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='/careers/'">
         <span>Careers</span>
       </button>
       
+      <!-- container: px 6 -->
       <div class="px-6 pt-6 pb-10">
         <a href="../../../request-a-quote/"
            class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition">
@@ -1117,20 +1207,11 @@
     </div>
   </nav>
 
-  
-  <div class="mobile-sticky-cta fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-[999] md:hidden hover:bg-blue-700 transition">
+<!-- container: mobile sticky cta -->
+<div class="mobile-sticky-cta fixed bottom-4 left-4 right-4 bg-blue-600 text-white py-3 rounded-lg text-center font-semibold shadow-md z-[999] md:hidden hover:bg-blue-700 transition">
     <a href="../../../request-a-quote/" class="block w-full">Let's Engineer Your Next Power Move</a>
   </div>
 
-  
-  
-
-  
-  
-  <script src="../../../assets/js/reveal.js" defer></script>
+<script src="../../../assets/js/reveal.js" defer></script>
 </body>
 </html> 
-
-
-
-

@@ -1,3 +1,4 @@
+:: I keep this tiny batch as a convenience runner.
 @echo off
 echo Undoing targeted submenu positioning fix...
 powershell -ExecutionPolicy Bypass -File "%~dp0fix-submenu-undo-targeted.ps1"

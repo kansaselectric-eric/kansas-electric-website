@@ -1,3 +1,4 @@
+// I keep this file focused and small; if it grows, I split modules.
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Fetching project posts...');
   fetch('/assets/js/project-posts.json')

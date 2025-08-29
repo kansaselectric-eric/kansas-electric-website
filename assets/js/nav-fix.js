@@ -167,13 +167,7 @@
     
     // Function to fix ticker and logo positioning
     function fixTickerAndLogo() {
-      const tickerContainers = document.querySelectorAll('.ticker-container, .ticker-wrapper');
-      tickerContainers.forEach(container => {
-        container.style.paddingLeft = '0';
-        container.style.marginLeft = '0';
-      });
-      
-      const headerRow = document.querySelector('.site-header .md\\:w-11\\/12');
+      const headerRow = document.querySelector('.site-header .md\:w-11\/12');
       if (headerRow) {
         headerRow.style.width = '100%';
         headerRow.style.maxWidth = '100%';

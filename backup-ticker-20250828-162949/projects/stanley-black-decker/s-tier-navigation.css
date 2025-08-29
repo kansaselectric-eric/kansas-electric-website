@@ -1,0 +1,389 @@
+/* ===================================================================
+   KANSAS ELECTRIC S+ TIER NAVIGATION SYSTEM
+   ================================================================= */
+
+/* 
+ * S+ Tier Features:
+ * ✅ Click-only dropdown behavior (zero hover triggers)
+ * ✅ Single dropdown open at a time
+ * ✅ Caret rotation on open/close
+ * ✅ Full keyboard accessibility
+ * ✅ Edge-to-edge dropdown positioning
+ * ✅ Clean transitions with no jank
+ * ✅ Mobile responsive
+ * ✅ No flickering or re-renders
+ */
+
+/* ===================================================================
+   CORE NAVIGATION STRUCTURE
+   ================================================================= */
+
+.main-navigation {
+    position: relative;
+    z-index: 100;
+}
+
+.main-navigation .nav-item {
+    position: relative;
+}
+
+/* Navigation item flex container for proper icon alignment */
+.main-navigation .nav-item > a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    text-decoration: none;
+    padding: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.main-navigation .nav-item > a:hover {
+    background-color: rgba(0, 118, 197, 0.1);
+}
+
+.main-navigation .nav-item > a:focus {
+    outline: 2px solid #0076c5;
+    outline-offset: 2px;
+    background-color: rgba(0, 118, 197, 0.1);
+}
+
+/* ===================================================================
+   DROPDOWN CARET ICONS
+   ================================================================= */
+
+.main-navigation .dropdown-caret {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Rotate caret when dropdown is open */
+.main-navigation .nav-item.dropdown-open .dropdown-caret {
+    transform: rotate(180deg);
+}
+
+/* ===================================================================
+   DROPDOWN MENUS - HIDDEN BY DEFAULT
+   ================================================================= */
+
+.main-navigation .submenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    background-color: #f8f9fa;
+    border-top: 1px solid #e9ecef;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    z-index: 1000;
+    
+    /* Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+    
+    /* Smooth transitions */
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+/* Show dropdown when parent has dropdown-open class */
+.main-navigation .nav-item.dropdown-open .submenu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* ===================================================================
+   DROPDOWN CONTENT LAYOUT
+   ================================================================= */
+
+.submenu-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.submenu-container .three-column-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.menu-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-column h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #0076c5;
+}
+
+.menu-column a {
+    display: block;
+    padding: 0.5rem 0;
+    color: #4b5563;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.menu-column a:hover,
+.menu-column a:focus {
+    color: #0076c5;
+    outline: none;
+}
+
+/* ===================================================================
+   PROGRESSIVE CONTENT (THIRD COLUMN)
+   ================================================================= */
+
+.third-column .third-column-content {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.third-column .third-column-content.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Show first content by default if no active content */
+.third-column:not(:has(.third-column-content.active)) .third-column-content:first-child {
+    display: block;
+    opacity: 1;
+}
+
+/* Fallback for browsers without :has() support */
+.third-column.no-has-support .third-column-content:first-child:not(.active) {
+    display: block;
+    opacity: 1;
+}
+
+/* ===================================================================
+   SECOND COLUMN INTERACTIVE ITEMS
+   ================================================================= */
+
+.second-column-item {
+    position: relative;
+    cursor: pointer;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    transition: background-color 0.2s ease;
+}
+
+.second-column-item:hover,
+.second-column-item:focus {
+    background-color: rgba(0, 118, 197, 0.1);
+    outline: none;
+}
+
+.second-column-item::after {
+    content: '';
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 4px solid #6b7280;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    transition: border-left-color 0.2s ease;
+}
+
+.second-column-item:hover::after,
+.second-column-item:focus::after {
+    border-left-color: #0076c5;
+}
+
+/* ===================================================================
+   MOBILE RESPONSIVENESS
+   ================================================================= */
+
+@media (max-width: 1023px) {
+    .main-navigation .submenu {
+        position: static;
+        width: 100%;
+        margin-left: 0;
+        box-shadow: none;
+        border-top: none;
+        border-top: 1px solid #e5e7eb;
+    }
+    
+    .submenu-container .three-column-menu {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .main-navigation .nav-item > a {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 767px) {
+    .main-navigation .dropdown-caret {
+        width: 0.875rem;
+        height: 0.875rem;
+    }
+    
+    .submenu-container {
+        padding: 1rem;
+    }
+    
+    .third-column-content {
+        margin-top: 1rem;
+    }
+}
+
+/* ===================================================================
+   ACCESSIBILITY ENHANCEMENTS
+   ================================================================= */
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .main-navigation .submenu {
+        border: 2px solid currentColor;
+    }
+    
+    .main-navigation .dropdown-caret {
+        stroke: currentColor;
+        stroke-width: 2;
+    }
+    
+    .second-column-item:focus {
+        outline: 2px solid currentColor;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .main-navigation .dropdown-caret,
+    .main-navigation .submenu,
+    .third-column .third-column-content,
+    .second-column-item,
+    .second-column-item::after {
+        transition: none;
+    }
+}
+
+/* Print styles */
+@media print {
+    .main-navigation .submenu {
+        display: none;
+    }
+    
+    .main-navigation .dropdown-caret {
+        display: none;
+    }
+}
+
+/* ===================================================================
+   LAYOUT UTILITIES
+   ================================================================= */
+
+.site-header {
+    position: relative;
+    z-index: 50;
+}
+
+.first-column {
+    min-width: 0;
+}
+
+.second-column {
+    min-width: 0;
+}
+
+.third-column {
+    min-width: 0;
+}
+
+.submenu-container .w-1\/2 {
+    width: 50%;
+}
+
+.submenu-container .third-column.w-1\/2 {
+    width: 50%;
+}
+
+.submenu-container .w-1\/4 {
+    width: 25%;
+}
+
+/* ===================================================================
+   ANTI-HOVER SAFETY MEASURES
+   ================================================================= */
+
+/* 
+ * CRITICAL: These rules ensure NO hover behaviors can trigger dropdowns
+ * This is the foundation of our S+ tier click-only system
+ */
+
+/* Completely disable any hover-triggered dropdown behaviors */
+.main-navigation .nav-item:hover .submenu:not(.dropdown-open),
+.main-navigation li:hover > .submenu:not(.dropdown-open),
+.main-navigation *:hover .submenu:not(.dropdown-open) {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(-10px) !important;
+}
+
+/* Ensure only click-opened dropdowns are visible */
+.main-navigation .submenu:not(.dropdown-open) {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Force proper state management */
+.main-navigation .nav-item:not(.dropdown-open) .submenu {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(-10px) !important;
+}
+
+/* ===================================================================
+   STATE MANAGEMENT CLASSES
+   ================================================================= */
+
+/* Active dropdown state */
+.main-navigation .nav-item.dropdown-open {
+    position: relative;
+}
+
+.main-navigation .nav-item.dropdown-open > a {
+    background-color: rgba(0, 118, 197, 0.1);
+    color: #0076c5;
+}
+
+/* Ensure proper z-index stacking */
+.main-navigation .nav-item.dropdown-open .submenu {
+    z-index: 1000;
+}
+
+/* ===================================================================
+   LOADING STATE
+   ================================================================= */
+
+/* Hide dropdowns until JavaScript initializes */
+.main-navigation:not(.s-tier-initialized) .submenu {
+    display: none !important;
+}
+
+/* Show loading indicator if needed */
+.main-navigation:not(.s-tier-initialized) .dropdown-caret {
+    opacity: 0.5;
+} 

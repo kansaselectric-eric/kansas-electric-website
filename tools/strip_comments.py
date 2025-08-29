@@ -20,11 +20,9 @@ ROOT = Path(__file__).resolve().parents[1]
 # Matches standard HTML comments, excluding IE conditionals
 COMMENT_PATTERN = re.compile(r'<!--(?!\[if|\s*<!)[\s\S]*?-->', re.IGNORECASE)
 
-
 def strip_comments(text: str) -> tuple[str, int]:
     new_text, n = COMMENT_PATTERN.subn('', text)
     return new_text, n
-
 
 def process_file(path: Path, apply: bool) -> tuple[bool, str]:
     original = path.read_text(encoding='utf-8', errors='ignore')
@@ -32,7 +30,6 @@ def process_file(path: Path, apply: bool) -> tuple[bool, str]:
     if n and apply:
         path.write_text(new_text, encoding='utf-8')
     return new_text != original, f'removed {n} comment(s)' if n else 'no changes'
-
 
 def main() -> None:
     parser = argparse.ArgumentParser()
@@ -59,8 +56,6 @@ def main() -> None:
     mode = 'APPLY' if args.apply else 'DRY-RUN'
     print(f'\n[{mode}] scanned={scanned} changed={changed}')
 
-
 if __name__ == '__main__':
     main()
-
 

@@ -1,6 +1,5 @@
-/* Mobile Responsive Improvements
- * This file contains mobile-specific CSS improvements
- * Converting fixed pixel values to relative units for better responsiveness
+/* Mobile-responsive improvements
+ * Mobile-specific tweaks; convert fixed px to relative units for better responsiveness.
  */
 
 /* Mobile devices (phones, 767px and down) */
@@ -73,14 +72,6 @@
   }
   
   /* Ticker improvements */
-  .ticker-container {
-    padding: 0.5rem 0 !important;
-  }
-  
-  .ticker-item {
-    padding: 0 0.9375rem !important; /* Convert 15px to rem */
-    font-size: 0.75rem !important; /* Convert 12px to rem */
-  }
   
   /* Support section styling */
   .support-container {

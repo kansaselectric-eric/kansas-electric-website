@@ -22,14 +22,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 
-
 def rel_from(file_path: Path, target: Path) -> str:
     rel = os.path.relpath(target, file_path.parent)
     rel = rel.replace('\\', '/')
     if not rel.startswith('.') and not rel.startswith('/'):
         rel = './' + rel
     return rel
-
 
 def ensure_mobile_css(html: str, file_path: Path) -> tuple[str, bool]:
     css_href = rel_from(file_path, ROOT / 'assets/css/mobile-nav.css')
@@ -52,7 +50,6 @@ def ensure_mobile_css(html: str, file_path: Path) -> tuple[str, bool]:
 
     return html, False
 
-
 def ensure_reveal_js(html: str, file_path: Path) -> tuple[str, bool]:
     js_src = rel_from(file_path, ROOT / 'assets/js/reveal.js')
     if js_src in html:
@@ -67,7 +64,6 @@ def ensure_reveal_js(html: str, file_path: Path) -> tuple[str, bool]:
 
     # Fallback: end of file
     return html + '\n' + script_tag + '\n', True
-
 
 def remove_aos(html: str) -> tuple[str, int]:
     changes = 0
@@ -91,7 +87,6 @@ def remove_aos(html: str) -> tuple[str, int]:
         html = new_html
 
     return html, changes
-
 
 def process_file(path: Path, apply: bool) -> tuple[bool, str]:
     original = path.read_text(encoding='utf-8', errors='ignore')
@@ -123,7 +118,6 @@ def process_file(path: Path, apply: bool) -> tuple[bool, str]:
 
     return html != original, '; '.join(summary) if summary else 'no changes'
 
-
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument('--apply', action='store_true', help='write changes to disk')
@@ -153,8 +147,6 @@ def main() -> None:
     mode = 'APPLY' if args.apply else 'DRY-RUN'
     print(f'\n[{mode}] scanned={scanned} changed={changed}')
 
-
 if __name__ == '__main__':
     main()
-
 

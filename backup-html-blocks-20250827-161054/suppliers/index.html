@@ -1,0 +1,667 @@
+<!-- page skeleton: unified nav/footer; keep markup lean; comments stay light. -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NX8X8X37');</script>
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <title>Suppliers - Kansas Electric</title>
+
+  <meta name="description" content="Interested in becoming a supplier for Kansas Electric? Fill out our quick form and partner with a trusted leader in electrical construction.">
+
+<meta property="og:title" content="Suppliers" />
+  <meta property="twitter:title" content="Suppliers" />
+
+<meta property="og:description" content="Interested in becoming a supplier for Kansas Electric? Fill out our quick form and partner with a trusted leader in electrical construction." />
+  <meta property="twitter:description" content="Interested in becoming a supplier for Kansas Electric? Fill out our quick form and partner with a trusted leader in electrical construction." />
+  
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kansas Electric" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:url" content="../suppliers/" />
+  <meta property="og:image" content="../assets/img/og-kansas-electric-1200x627.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/mobile-nav.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/2025 photos/new logo 2025/Final Files/Button/Vector/Kansas Electric Button [CMYK].svg">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="../assets/img/2025 photos/new logo 2025/Final Files/Button/Vector/Kansas Electric Button [CMYK].svg">
+  <link rel="manifest" href="../site.webmanifest">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('Xbp1oaEWxyL7EdVj'); </script>
+
+<style>
+  .kse-dropdown,
+  .kse-mobile-dropdown,
+  .kse-mobile-menu {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Adding essential navigation styles */
+  .kse-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+    z-index: 1000;
+    transition: all 0.2s ease-in-out;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  .kse-nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    height: 80px;
+    position: relative;
+  }
+
+  .kse-nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    z-index: 1001;
+    margin-left: 0;
+  }
+
+  .kse-nav-logo img {
+    height: 40px;
+    width: auto;
+    margin-left: -4.0rem;
+  }
+
+  .kse-nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .kse-nav-item {
+    position: relative;
+  }
+
+  .kse-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0.75rem;
+    text-decoration: none;
+    color: #1f2937;
+    font-weight: 500;
+    transition: all 0.2s ease-out;
+  }
+
+  .kse-nav-link:hover {
+    color: #F7941E;
+    border-bottom: 2px solid #F7941E;
+  }
+
+  .kse-nav-caret {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s;
+  }
+
+  .kse-nav-item[aria-expanded="true"] .kse-nav-caret {
+    transform: rotate(180deg);
+  }
+
+      .kse-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      background-color: white;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      min-width: 12rem;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease-out, visibility 0.2s ease-out, transform 0.2s ease-out;
+    }
+
+      .kse-dropdown.industries-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      min-width: 24rem;
+      max-width: 90vw;
+    }
+
+  .kse-dropdown.active,
+  .kse-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+    display: flex;
+    pointer-events: auto;
+  }
+
+  .kse-dropdown.industries-grid.active,
+  .kse-dropdown.industries-grid.show {
+    display: grid;
+  }
+
+  .kse-dropdown-link {
+    display: block;
+    padding: 0.75rem;
+    color: #374151;
+    text-decoration: none;
+    border-radius: 0.375rem;
+    transition: background-color 0.2s;
+  }
+
+  .kse-dropdown-link:hover {
+    background-color: #fef3ed;
+    border-left: 3px solid #F7941E;
+  }
+
+  .kse-dropdown-link span {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+
+  .kse-dropdown-link small {
+    display: block;
+    color: #6b7280;
+    font-size: 0.875rem;
+  }
+
+  .kse-nav-cta {
+    display: inline-block;
+    background-color: #00458C;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+    margin-right: 0;
+  }
+
+  .kse-nav-cta:hover {
+    background-color: #00386F;
+    box-shadow: 0 4px 12px rgba(0, 86, 210, 0.3);
+  }
+
+  .kse-mobile-toggle {
+    flex-direction: column;
+    gap: 0.25rem;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    margin-right: 0;
+    z-index: 1001;
+  }
+
+  .kse-hamburger-line {
+    width: 1.5rem;
+    height: 2px;
+    background-color: #374151;
+    transition: all 0.3s;
+  }
+
+  .kse-mobile-menu {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+    transform: translateX(100%);
+  }
+
+  .kse-mobile-menu.active,
+  .kse-mobile-menu.show {
+    transform: translateX(0);
+  }
+
+  .kse-mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .kse-mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .kse-mobile-nav-item {
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .kse-mobile-nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+    color: #374151;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .kse-mobile-dropdown {
+    padding-left: 1rem;
+    border-top: 1px solid #f3f4f6;
+    display: none;
+  }
+
+  .kse-mobile-dropdown.active,
+  .kse-mobile-dropdown.show {
+    display: block;
+  }
+
+  .kse-mobile-dropdown-link {
+    display: block;
+    padding: 0.75rem 0;
+    color: #6b7280;
+    text-decoration: none;
+    border-bottom: 1px solid #f9fafb;
+  }
+
+  .kse-mobile-nav-cta {
+    display: block;
+    background-color: #00458C;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .kse-nav-menu,
+    .kse-nav-cta {
+      display: none;
+    }
+    .kse-nav-container {
+      justify-content: center;
+    }
+    .kse-nav-logo img {
+      margin-left: 0;
+    }
+    
+    .kse-dropdown.industries-grid {
+      min-width: 95vw;
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .kse-nav-container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    .kse-nav-logo img {
+      height: 48px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .kse-nav-container {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+    .kse-nav-logo img {
+      height: 64px;
+    }
+  }
+  
+  @media (min-width: 1536px) {
+    .kse-nav-container {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+  </style>
+</head>
+<body class="font-poppins flex flex-col min-h-screen relative">
+
+  <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
+    <img src="../assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg"
+         alt="Kansas Electric" class="h-10 w-auto object-contain mx-auto" loading="lazy">
+  </div>
+
+  <div class="mobile-menu-trigger" id="mobileMenuTrigger">MENU</div>
+
+  <div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop"></div>
+
+  <nav class="mobile-nav-overlay md:hidden" id="mobileNavOverlay">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <div class="mobile-nav-content pb-32">
+      <a href="../" class="block w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition text-center">Home</a>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <div>
+        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('servicesMenu')">
+          <span>Services</span>
+        </button>
+        <div id="servicesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
+          <a href="../services/divisions/industrial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Industrial Electrical</div>
+            <div class="text-xs text-gray-500">Heavy infrastructure & power systems</div>
+          </a>
+          <a href="../services/divisions/commercial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Commercial Electrical</div>
+            <div class="text-xs text-gray-500">Office buildings & retail spaces</div>
+          </a>
+          <a href="../services/divisions/service-maintenance/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Service & Maintenance</div>
+            <div class="text-xs text-gray-500">24/7 support & preventive care</div>
+          </a>
+          <a href="../services/divisions/automation-control/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5">
+            <div class="text-sm font-medium text-gray-900">Automation & Control Systems</div>
+            <div class="text-xs text-gray-500">Smart systems & process control</div>
+          </a>
+        </div>
+      </div>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <div>
+        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('industriesMenu')">
+          <span>Industries We Serve</span>
+        </button>
+        <div id="industriesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
+          <a href="../services/industrial/oil-gas/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Oil & Gas</div><div class="text-xs text-gray-500">Refineries & pipelines</div></a>
+          <a href="../services/industrial/wastewater-treatment/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Water and Wastewater</div><div class="text-xs text-gray-500">Treatment facilities</div></a>
+          <a href="../services/industrial/data-centers/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Data Centers</div><div class="text-xs text-gray-500">Mission critical facilities</div></a>
+          <a href="../services/industrial/advanced-manufacturing/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Manufacturing</div><div class="text-xs text-gray-500">Production facilities</div></a>
+          <a href="../services/industrial/food-beverage/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Food & Beverage</div><div class="text-xs text-gray-500">Processing plants</div></a>
+          <a href="../services/industrial/healthcare/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Healthcare Infrastructure</div><div class="text-xs text-gray-500">Critical care facilities</div></a>
+        </div>
+      </div>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../projects/'"><span>Projects</span></button>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../about/'"><span>About</span></button>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../careers/'"><span>Careers</span></button>
+      <div class="px-6 pt-6 pb-10">
+        <a href="../request-a-quote/" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition">Let's Engineer Your Next Power Move</a>
+      </div>
+    </div>
+  </nav>
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NX8X8X37"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="kse-nav" role="navigation" aria-label="Main navigation">
+      <div class="kse-nav-container">
+          
+          <a href="../" class="kse-nav-logo flex items-center px-4 py-2">
+              
+              <img src="../assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain lg:hidden" loading="lazy">
+              
+              <img src="../assets/img/2025 photos/new logo 2025/Final Files/Vector/kse logo desktop.png" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain hidden lg:block" loading="lazy">
+          </a>
+
+          <ul class="kse-nav-menu" role="menubar">
+              
+              <li class="kse-nav-item" data-dropdown="services" role="none">
+                  <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="services-dropdown">
+                      <span>Services</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+                  <div class="kse-dropdown" id="services-dropdown" role="menu" aria-hidden="true">
+                      <a href="/services/divisions/industrial/" class="kse-dropdown-link" role="menuitem">
+                          <span>Industrial Electrical</span>
+                          <small>Heavy infrastructure & power systems</small>
+                      </a>
+                      <a href="/services/divisions/commercial/" class="kse-dropdown-link" role="menuitem">
+                          <span>Commercial Electrical</span>
+                          <small>Office buildings & retail spaces</small>
+                      </a>
+                      <a href="/services/divisions/service-maintenance/" class="kse-dropdown-link" role="menuitem">
+                          <span>Service & Maintenance</span>
+                          <small>24/7 support & preventive care</small>
+                      </a>
+                      <a href="/services/divisions/automation-control/" class="kse-dropdown-link" role="menuitem">
+                          <span>Automation & Control Systems</span>
+                          <small>Smart systems & process control</small>
+                      </a>
+                      <a href="/services/divisions/ul-panel-shop/" class="kse-dropdown-link" role="menuitem">
+                          <span>UL Panel Shop</span>
+                          <small>Custom UL 508A certified panels</small>
+                      </a>
+                </div>
+                    </li>
+
+<li class="kse-nav-item" role="none">
+                  <a href="/projects/" class="kse-nav-link" role="menuitem">
+                      <span>Projects</span>
+                  </a>
+              </li>
+
+<li class="kse-nav-item" data-dropdown="industries" role="none">
+                  <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="industries-dropdown">
+                      <span>Industries We Serve</span>
+                      <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                          <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                  </a>
+                  <div class="kse-dropdown industries-grid" id="industries-dropdown" role="menu" aria-hidden="true">
+                      <a href="/services/industrial/oil-gas/" class="kse-dropdown-link" role="menuitem">
+                          <span>Oil & Gas</span>
+                          <small>Refineries & pipelines</small>
+                      </a>
+                      <a href="/services/industrial/wastewater-treatment/" class="kse-dropdown-link" role="menuitem">
+                          <span>Water and Wastewater</span>
+                          <small>Treatment facilities</small>
+                      </a>
+                      <a href="/services/industrial/data-centers/" class="kse-dropdown-link" role="menuitem">
+                          <span>Data Centers</span>
+                          <small>Mission critical facilities</small>
+                      </a>
+                      <a href="/services/industrial/advanced-manufacturing/" class="kse-dropdown-link" role="menuitem">
+                          <span>Manufacturing</span>
+                          <small>Production facilities</small>
+                      </a>
+                      <a href="/services/industrial/food-beverage/" class="kse-dropdown-link" role="menuitem">
+                          <span>Food & Beverage</span>
+                          <small>Processing plants</small>
+                      </a>
+                      <a href="/services/industrial/healthcare/" class="kse-dropdown-link" role="menuitem">
+                          <span>Healthcare Infrastructure</span>
+                          <small>Critical care facilities</small>
+                </a>
+                </div>
+                    </li>
+
+<li class="kse-nav-item" role="none">
+                  <a href="/about/" class="kse-nav-link" role="menuitem">
+                      <span>About</span>
+                  </a>
+              </li>
+
+<li class="kse-nav-item" role="none">
+                  <a href="/careers/" class="kse-nav-link" role="menuitem">
+                      <span>Careers</span>
+                  </a>
+              </li>
+          </ul>
+          
+          <a href="https://forms.gle/iJVRGxrcMVZXT6zN6"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="kse-nav-cta hidden md:inline-block text-white font-bold px-6 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg"
+             style="background-color: #00458C;"
+             onmouseover="this.style.backgroundColor='#00386F'"
+             onmouseout="this.style.backgroundColor='#00458C'">
+               Let's Engineer Your Next Power Move
+            </a>
+
+<div class="fixed inset-0 z-50 bg-white md:hidden hidden" id="kse-mobile-nav">
+            <div class="p-6 flex justify-between items-center border-b">
+              <img src="/assets/img/2025 photos/new logo 2025/Final Files/Button/Vector/Kansas Electric Button [CMYK].svg" alt="Kansas Electric" class="h-8">
+              <button id="kse-nav-close" class="text-gray-600 text-3xl font-bold">&times;</button>
+            </div>
+            <nav class="flex flex-col space-y-6 p-6 text-xl font-medium text-gray-800">
+              <a href="/" class="hover:text-blue-600">Home</a>
+              <div>
+                <button class="w-full text-left flex justify-between items-center hover:text-blue-600" onclick="toggleDropdown('servicesMenu')">
+                  Services
+                  <span class="text-gray-500">&#9662;</span>
+                </button>
+                <div id="servicesMenu" class="pl-4 mt-2 hidden flex-col space-y-2">
+                  <a href="/services/industrial/" class="hover:text-blue-600">Industrial Electrical</a>
+                  <a href="/services/commercial/" class="hover:text-blue-600">Commercial Electrical</a>
+                  <a href="/services/service/" class="hover:text-blue-600">Service & Maintenance</a>
+                  <a href="/services/automation/" class="hover:text-blue-600">Automation & Controls</a>
+                  <a href="/services/divisions/ul-panel-shop/" class="hover:text-blue-600">UL Panel Shop</a>
+                </div>
+              </div>
+              <div>
+                <button class="w-full text-left flex justify-between items-center hover:text-blue-600" onclick="toggleDropdown('industriesMenu')">
+                  Industries We Serve
+                  <span class="text-gray-500">&#9662;</span>
+                </button>
+                <div id="industriesMenu" class="pl-4 mt-2 hidden flex-col space-y-2">
+                  <a href="/industries/oil-gas/" class="hover:text-blue-600">Oil & Gas</a>
+                  <a href="/industries/water/" class="hover:text-blue-600">Water & Wastewater</a>
+                  <a href="/industries/data-centers/" class="hover:text-blue-600">Data Centers</a>
+                  <a href="/services/industrial/advanced-manufacturing/" class="hover:text-blue-600">Manufacturing</a>
+                  <a href="/industries/food-beverage/" class="hover:text-blue-600">Food & Beverage</a>
+                  <a href="/services/industrial/healthcare/" class="hover:text-blue-600">Healthcare Infrastructure</a>
+                </div>
+              </div>
+              <a href="/projects/" class="hover:text-blue-600">Projects</a>
+              <a href="/careers/" class="hover:text-blue-600">Careers</a>
+              <a href="/suppliers/" class="hover:text-blue-600">Suppliers</a>
+            </nav>
+
+<a href="#content" class="sr-only focus:not-sr-only font-semibold text-center bg-ke-yellow inline-block"><span class="block py-2">Skip to content</span></a>
+
+</div>
+  </nav>
+
+  <main id="content" class="flex-grow">
+
+<section class="relative bg-white py-32 px-6 md:px-12 lg:px-24">
+      <div class="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-duration="800">
+        <h1 class="text-4xl font-bold text-gray-800 mb-6">Become a Supplier</h1>
+        <p class="text-lg text-gray-600 leading-relaxed mb-8">
+          At Kansas Electric, we believe great partnerships power great projects. We're always looking for trusted suppliers and vendors who align with our values of reliability, integrity, and responsiveness.
+        </p>
+        <p class="text-lg text-gray-600 leading-relaxed mb-12">
+          If you're interested in working with us, please fill out our supplier interest form using the link below.
+        </p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSem2TOdlKvgLogvS9K7yXdt1d2vHgNoZShX6zxSQJ42m-uHSA/viewform?usp=header" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           aria-label="Fill out our supplier form"
+           class="inline-block text-white font-semibold px-6 py-3 rounded-xl transition"
+           style="background-color: #00458C;"
+           onmouseover="this.style.backgroundColor='#00386F'"
+           onmouseout="this.style.backgroundColor='#00458C'">
+           Fill Out Our Supplier Form
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <style>
+    .footer-custom {
+      background-color: #00458C;
+      background-image: url('/assets/img/noise.png');
+      background-blend-mode: overlay;
+    }
+  </style>
+
+  <footer class="footer-custom text-white py-16 px-6 border-t border-white/10" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+      
+      <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-3" data-aos="fade-up" data-aos-delay="100">
+        <p class="text-white text-sm">Built for Power. Engineered for Excellence.</p>
+      </div>
+
+<div class="flex flex-col items-center justify-center space-y-3" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Contact</h3>
+        <a href="tel:3162834750" class="text-white font-medium hover:text-white transition-colors text-base">
+          (316) 283-4750
+        </a>
+        <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="inline-block text-white font-medium py-3 px-6 rounded-md transition-colors duration-300 text-center transition-transform duration-300 ease-in-out hover:scale-105" style="background-color: #00458C; filter: drop-shadow(0 0 6px rgba(255,255,255,0.1));" onmouseover="this.style.backgroundColor='#00386F'" onmouseout="this.style.backgroundColor='#00458C'">
+          Let's Engineer Your Next Power Move
+        </a>
+      </div>
+
+<div class="flex flex-col items-center md:items-end text-center md:text-right space-y-3" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Links</h3>
+        <a href="https://www.linkedin.com/company/kansas-electric/" class="text-white hover:text-gray-200 transition-colors" aria-label="Kansas Electric LinkedIn profile">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6" alt="Kansas Electric LinkedIn profile">
+            <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
+          </svg>
+        </a>
+        <a href="../suppliers/" class="text-sm text-white hover:text-white hover:underline transition-colors">
+          Interested in becoming a supplier?
+        </a>
+      </div>
+    </div>
+
+<div class="mt-12 text-center" data-aos="fade-up" data-aos-delay="400">
+      <p class="text-sm text-white max-w-3xl mx-auto leading-relaxed">
+        Since 1948, Kansas Electric has powered some of the region's most essential facilities � from hospitals and manufacturers to mission-critical infrastructure. We bring decades of experience, a culture of safety, and future-focused innovation to every electrical project we touch.
+      </p>
+    </div>
+
+<div class="mt-8 text-center text-gray-200 text-sm" data-aos="fade-up" data-aos-delay="500">
+      &copy; 2025 Kansas Electric. All rights reserved.
+    </div>
+  </footer>
+
+<script src="../assets/js/reveal.js" defer></script>
+
+<div class="fixed bottom-4 left-4 right-4 text-white py-3 rounded-lg text-center font-semibold shadow-md z-50 md:hidden transition" style="background-color: #00458C;">
+    <a href="https://forms.gle/iJVRGxrcMVZXT6zN6" target="_blank" rel="noopener noreferrer" class="block w-full h-full text-white">Let's Engineer Your Next Power Move</a>
+  </div>
+
+</body>
+</html> 
+
