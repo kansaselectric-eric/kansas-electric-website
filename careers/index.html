@@ -360,7 +360,7 @@
   </div>
 
 <!-- container: mobileMenuTrigger -->
-<div class="mobile-menu-trigger" id="mobileMenuTrigger">
+<div class="mobile-menu-trigger" id="mobileMenuTrigger" role="button" tabindex="0" aria-controls="mobileNavOverlay" aria-expanded="false" aria-label="Open mobile menu">
     MENU
   </div>
 
@@ -618,10 +618,16 @@
 <!-- section: relative -->
 <section class="relative h-screen overflow-hidden flex items-center justify-center">
       
-      <video autoplay muted loop playsinline preload="metadata" poster="/assets/img/2025 photos/fallback.jpg" class="absolute inset-0 w-full h-full object-cover z-0" style="z-index: 0; backface-visibility:hidden; transform:translateZ(0);">
+      <video id="careers-hero-video" autoplay muted loop playsinline preload="metadata" poster="/assets/img/2025 photos/fallback.jpg" class="absolute inset-0 w-full h-full object-cover z-0" style="z-index: 0; backface-visibility:hidden; transform:translateZ(0);" aria-hidden="true" tabindex="-1">
         <source src="/assets/img/2025 photos/careers video.mp4" type="video/mp4">
         Your browser does not support the video tag.
       </video>
+      <!-- container: absolute video controls for accessibility -->
+      <div class="absolute top-4 right-4 z-30">
+        <button id="careers-video-toggle" type="button" aria-pressed="false" aria-controls="careers-hero-video" class="text-sm px-3 py-2 rounded-md bg-white/70 text-gray-900 hover:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600">
+          Pause background video
+        </button>
+      </div>
 
 <!-- container: absolute -->
 <div class="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat z-0" style="background-image: url('/assets/img/careers-bg-fallback.jpg');"></div>
@@ -716,32 +722,34 @@
 <!-- container: flex wrap -->
 <div class="flex flex-wrap gap-4 justify-center items-center mb-8">
           <!-- container: relative -->
-          <div class="relative w-full md:w-auto">
-            <select id="divisionFilter" class="appearance-none pr-8 pl-4 py-2 border border-gray-300 rounded-md text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <div class="relative w-full md:w-auto">
+            <label for="divisionFilter" class="sr-only">Filter by division</label>
+            <select id="divisionFilter" aria-label="Filter by division" class="appearance-none pr-8 pl-4 py-2 border border-gray-300 rounded-md text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
               <option value="all">All Divisions</option>
             </select>
             <!-- container: pointer events none -->
-            <div class="pointer-events-none absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+            <div class="pointer-events-none absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500" aria-hidden="true">
               ▼
             </div>
           </div>
           <!-- container: relative -->
           <div class="relative w-full md:w-auto">
-            <select id="locationFilter" class="appearance-none pr-8 pl-4 py-2 border border-gray-300 rounded-md text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <label for="locationFilter" class="sr-only">Filter by location</label>
+            <select id="locationFilter" aria-label="Filter by location" class="appearance-none pr-8 pl-4 py-2 border border-gray-300 rounded-md text-sm text-gray-700 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
               <option value="all">All Locations</option>
             </select>
             <!-- container: pointer events none -->
-            <div class="pointer-events-none absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+            <div class="pointer-events-none absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500" aria-hidden="true">
               ▼
             </div>
           </div>
-          <button id="clearFilters" class="text-sm underline text-blue-600 hover:text-blue-800 transition">
+          <button id="clearFilters" type="button" aria-label="Clear all filters" class="text-sm underline text-blue-600 hover:text-blue-800 transition">
             Clear Filters
           </button>
         </div>
 
 <!-- container: jobsContainer -->
-<div id="jobsContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div id="jobsContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" role="status" aria-live="polite">
           
         </div>
       </div>
@@ -975,6 +983,26 @@
             disable: 'mobile'
           });
         }
+
+      // Accessible pause/play for hero video
+      const heroVideo = document.getElementById('careers-hero-video');
+      const toggleBtn = document.getElementById('careers-video-toggle');
+      if (heroVideo && toggleBtn) {
+        function setPausedUI(paused) {
+          toggleBtn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+          toggleBtn.textContent = paused ? 'Play background video' : 'Pause background video';
+        }
+        toggleBtn.addEventListener('click', () => {
+          if (heroVideo.paused) {
+            heroVideo.play().catch(() => {});
+            setPausedUI(false);
+          } else {
+            heroVideo.pause();
+            setPausedUI(true);
+          }
+        });
+        setPausedUI(heroVideo.paused);
+      }
       });
     </script>
 
@@ -1481,7 +1509,7 @@
 <div class="flex flex-col items-center md:items-end text-center md:text-right space-y-3" data-aos="fade-up" data-aos-delay="300">
         <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Links</h3>
         <a href="https://www.linkedin.com/company/kansas-electric/" class="text-white hover:text-gray-200 transition-colors" aria-label="Kansas Electric LinkedIn profile">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6" alt="Kansas Electric LinkedIn profile">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6" aria-hidden="true" focusable="false">
             <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
           </svg>
         </a>
@@ -1506,6 +1534,9 @@
          rel="noopener noreferrer" 
          class="block mt-2 text-white hover:text-gray-200 text-sm underline transition-colors">
         Terms and Conditions
+      </a>
+      <a href="../accessibility/" class="block mt-2 text-white hover:text-gray-200 text-sm underline transition-colors">
+        Accessibility Statement
       </a>
     </div>
   </footer>

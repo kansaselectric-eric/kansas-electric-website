@@ -549,7 +549,7 @@
   </div>
 
 <!-- container: mobileMenuTrigger -->
-<div class="mobile-menu-trigger md:hidden" id="mobileMenuTrigger">
+<div class="mobile-menu-trigger md:hidden" id="mobileMenuTrigger" role="button" tabindex="0" aria-controls="mobileNavOverlay" aria-expanded="false" aria-label="Open mobile menu">
     MENU
   </div>
 
@@ -816,9 +816,15 @@
 <!-- section: video section -->
 <section id="video-section" class="relative w-full h-screen sm:h-auto sm:min-h-[calc(100vh-80px)] md:min-h-[500px] lg:h-screen lg:min-h-screen overflow-hidden bg-black">
     
-    <video id="bg-video" muted loop playsinline preload="none" poster="/assets/img/2025 photos/fallback.jpg" class="absolute inset-0 w-full h-full object-cover z-0" style="transform: translateZ(0); backface-visibility: hidden; will-change: transform">
+    <video id="bg-video" muted loop playsinline preload="none" poster="/assets/img/2025 photos/fallback.jpg" class="absolute inset-0 w-full h-full object-cover z-0" style="transform: translateZ(0); backface-visibility: hidden; will-change: transform" aria-hidden="true" tabindex="-1">
       
     </video>
+    <!-- container: absolute video controls for accessibility -->
+    <div class="absolute top-4 right-4 z-30">
+      <button id="video-toggle" type="button" aria-pressed="false" aria-controls="bg-video" class="text-sm px-3 py-2 rounded-md bg-white/70 text-gray-900 hover:bg-white focus:outline-none focus:ring-2 focus:ring-blue-600">
+        Pause background video
+      </button>
+    </div>
 
 <div 
       class="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat z-0"
@@ -899,7 +905,7 @@
             <p class="text-slate-600 text-sm text-left mb-3 mt-3">Custom power solutions for industrial facilities, grain terminals, refineries, and production environments.</p>
             <span class="text-sm text-blue-600 font-medium mt-4 inline-flex items-center gap-1">
               <span>Learn more</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="m9 18 6-6-6-6"></path>
               </svg>
             </span>
@@ -914,7 +920,7 @@
             <p class="text-slate-600 text-sm text-left mb-3 mt-3">Comprehensive electrical systems for hospitals, schools, corporate campuses, and commercial developments.</p>
             <span class="text-sm text-blue-600 font-medium mt-4 inline-flex items-center gap-1">
               <span>Learn more</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="m9 18 6-6-6-6"></path>
               </svg>
             </span>
@@ -929,7 +935,7 @@
             <p class="text-slate-600 text-sm text-left mb-3 mt-3">Around-the-clock emergency response, predictive maintenance, and comprehensive facility support services.</p>
             <span class="text-sm text-blue-600 font-medium mt-4 inline-flex items-center gap-1">
               <span>Learn more</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="m9 18 6-6-6-6"></path>
               </svg>
             </span>
@@ -944,7 +950,7 @@
             <p class="text-slate-600 text-sm text-left mb-3 mt-3">Advanced PLC programming, SCADA integration, and intelligent building automation systems.</p>
             <span class="text-sm text-blue-600 font-medium mt-4 inline-flex items-center gap-1">
               <span>Learn more</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="m9 18 6-6-6-6"></path>
               </svg>
             </span>
@@ -1058,7 +1064,7 @@
             <p class="text-slate-600 text-sm text-left mb-3 mt-3">Reliable electrical systems for hospitals and critical care facilities.</p>
             <span class="text-sm text-blue-600 font-medium mt-4 inline-flex items-center gap-1">
               <span>Learn more</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="m9 18 6-6-6-6"></path>
               </svg>
             </span>
@@ -1073,7 +1079,7 @@
             <p class="text-slate-600 text-sm text-left mb-3 mt-3">Specialized power systems for processing and manufacturing plants.</p>
             <span class="text-sm text-blue-600 font-medium mt-4 inline-flex items-center gap-1">
               <span>Learn more</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="m9 18 6-6-6-6"></path>
               </svg>
             </span>
@@ -1088,7 +1094,7 @@
             <p class="text-slate-600 text-sm text-left mb-3 mt-3">Advanced automation and power distribution for production facilities.</p>
             <span class="text-sm text-blue-600 font-medium mt-4 inline-flex items-center gap-1">
               <span>Learn more</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="m9 18 6-6-6-6"></path>
               </svg>
             </span>
@@ -1103,7 +1109,7 @@
             <p class="text-slate-600 text-sm text-left mb-3 mt-3">Hazardous location expertise and pipeline control systems.</p>
             <span class="text-sm text-blue-600 font-medium mt-4 inline-flex items-center gap-1">
               <span>Learn more</span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
                 <path d="m9 18 6-6-6-6"></path>
               </svg>
             </span>
@@ -1236,9 +1242,9 @@
 <!-- container: absolute -->
 <div class="absolute inset-0 z-10 flex flex-col justify-end p-2 sm:p-3 md:p-6 text-white mt-[-1.25rem] md:mt-0">
             <!-- container: text sm -->
-            <div class="text-sm font-bold tracking-wider uppercase mb-1" style="text-shadow: 0 1px 3px rgba(0,0,0,0.85);">Water Infrastructure</div>
-            <h2 class="text-xl md:text-2xl font-bold leading-tight mb-2" style="text-shadow: 0 2px 4px rgba(0,0,0,0.85);">Cedar Creek Expansion</h2>
-            <p class="text-sm mb-1" style="text-shadow: 0 1px 2px rgba(0,0,0,0.85);">25 MGD Treatment Plant • 40,000 sq. ft. • Olathe, Kansas</p>
+            <div class="text-sm font-bold tracking-wider uppercase mb-1" style="text-shadow: 0 1px 3px rgba(0,0,0,0.85);">Healthcare Facilities</div>
+            <h2 class="text-xl md:text-2xl font-bold leading-tight mb-2" style="text-shadow: 0 2px 4px rgba(0,0,0,0.85);">Newton Medical Center</h2>
+            <p class="text-sm mb-1" style="text-shadow: 0 1px 2px rgba(0,0,0,0.85);">600 • 40,000 sq. ft. • Olathe, Kansas</p>
             <p class="text-sm" style="text-shadow: 0 1px 2px rgba(0,0,0,0.85);">Complete electrical systems for a 25 MGD wastewater treatment plant, including power distribution and SCADA integration.</p>
           </div>
         </div>
@@ -1340,7 +1346,7 @@
 <div class="flex flex-col items-center space-y-3" data-aos="fade-up" data-aos-delay="300">
         <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Links</h3>
         <a href="https://www.linkedin.com/company/kansas-electric/" class="text-white hover:text-gray-200 transition-colors" aria-label="Kansas Electric LinkedIn profile">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6" alt="Kansas Electric LinkedIn profile">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6" aria-hidden="true" focusable="false">
             <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path>
           </svg>
         </a>
@@ -1366,6 +1372,9 @@
          class="block mt-2 text-white hover:text-gray-200 text-sm underline transition-colors">
         Terms and Conditions
       </a>
+      <a href="/accessibility/" class="block mt-2 text-white hover:text-gray-200 text-sm underline transition-colors">
+        Accessibility Statement
+      </a>
     </div>
   </footer>
 
@@ -1390,6 +1399,26 @@
       video.play().catch(() => {
         window.addEventListener('click', () => video.play(), { once: true });
       });
+
+      // Accessible pause/play control
+      const toggleBtn = document.getElementById('video-toggle');
+      if (toggleBtn) {
+        function setPausedUI(paused) {
+          toggleBtn.setAttribute('aria-pressed', paused ? 'true' : 'false');
+          toggleBtn.textContent = paused ? 'Play background video' : 'Pause background video';
+        }
+        toggleBtn.addEventListener('click', () => {
+          if (video.paused) {
+            video.play().catch(() => {});
+            setPausedUI(false);
+          } else {
+            video.pause();
+            setPausedUI(true);
+          }
+        });
+        // Initialize button state
+        setPausedUI(video.paused);
+      }
     });
 
     // Free memory on page exit

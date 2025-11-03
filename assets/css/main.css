@@ -4317,3 +4317,41 @@ nav.kse-nav { position: sticky; top: 0; z-index: 1000; }
     min-height: 100%;
   }
 }
+
+/* =============================
+   Accessibility Enhancements
+   (WCAG 2.2 AA helpers)
+   These do not change visuals except when focused by keyboard
+   ============================= */
+
+/* Visible focus indicators for keyboard users */
+:focus-visible {
+  outline: 3px solid #FF7A00;
+  outline-offset: 3px;
+}
+
+/* Skip link utility (use with <a class="skip-link sr-only">) */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  background: #FFEBCC;
+  color: #000;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  z-index: 10000;
+}
+
+/* Hide decorative SVGs from AT when flagged */
+svg[aria-hidden="true"] {
+  pointer-events: none;
+}
