@@ -1,0 +1,504 @@
+<!-- page skeleton: unified nav/footer; keep markup lean; comments stay light. -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NX8X8X37');</script>
+
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <title>Entry-Level Control Panel Builder | Careers at Kansas Electric</title>
+  <meta name="description" content="Join Kansas Electric as an Entry-Level Control Panel Builder in Newton, KS. Learn to assemble, wire, and test UL 508A control panels while building your automation career.">
+
+  <meta property="og:title" content="Entry-Level Control Panel Builder" />
+  <meta property="twitter:title" content="Entry-Level Control Panel Builder" />
+  <meta property="og:description" content="Learn to build UL 508A control panels and grow in industrial automation with Kansas Electric." />
+  <meta property="twitter:description" content="Learn to build UL 508A control panels and grow in industrial automation with Kansas Electric." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Kansas Electric" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="../../assets/img/og-kansas-electric-1200x627.jpg" />
+
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/mobile-nav.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/2025%20photos/new%20logo%202025/Final%20Files/Button/Vector/Kansas%20Electric%20Button%20%5BCMYK%5D.svg">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <script> (function(ss,ex){ window.ldfdr=window.ldfdr||function(){(ldfdr._q=ldfdr._q||[]).push([].slice.call(arguments));}; (function(d,s){ fs=d.getElementsByTagName(s)[0]; function ce(src){ var cs=d.createElement(s); cs.src=src; cs.async=1; fs.parentNode.insertBefore(cs,fs); }; ce('https://sc.lfeeder.com/lftracker_v1_'+ss+(ex?'_'+ex:'')+'.js'); })(document,'script'); })('Xbp1oaEWxyL7EdVj'); </script>
+
+  <style>
+    .kse-dropdown,
+    .kse-mobile-dropdown,
+    .kse-mobile-menu {
+      display: none;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .kse-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+      z-index: 1000;
+      transition: all 0.2s ease-in-out;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .kse-nav-container {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 2rem;
+      padding-right: 2rem;
+      height: 80px;
+      position: relative;
+    }
+
+    .kse-nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      z-index: 1001;
+      margin-left: 0;
+    }
+
+    .kse-nav-logo img {
+      height: 40px;
+      width: auto;
+      margin-left: -4.0rem;
+    }
+
+    .kse-nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+      justify-content: center;
+      flex: 1;
+    }
+
+    .kse-nav-item { position: relative; }
+
+    .kse-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 0.75rem;
+      text-decoration: none;
+      color: #1f2937;
+      font-weight: 500;
+      transition: all 0.2s ease-out;
+    }
+
+    .kse-nav-link:hover { color: #F7941E; }
+
+    .kse-nav-caret { width: 16px; height: 16px; transition: transform 0.2s; }
+    .kse-nav-item[aria-expanded="true"] .kse-nav-caret { transform: rotate(180deg); }
+
+    .kse-dropdown {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-10px);
+      background-color: white;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      min-width: 12rem;
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease-out, visibility 0.2s ease-out, transform 0.2s ease-out;
+    }
+
+    .kse-dropdown.industries-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      min-width: 24rem;
+      max-width: 90vw;
+    }
+
+    .kse-dropdown.active,
+    .kse-dropdown.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+      display: flex;
+      pointer-events: auto;
+    }
+
+    .kse-dropdown.industries-grid.active,
+    .kse-dropdown.industries-grid.show { display: grid; }
+
+    .kse-dropdown-link {
+      display: block;
+      padding: 0.75rem;
+      color: #374151;
+      text-decoration: none;
+      border-radius: 0.375rem;
+      transition: background-color 0.2s;
+    }
+
+    .kse-dropdown-link:hover { background-color: #f3f4f6; }
+    .kse-dropdown-link span { display: block; font-weight: 500; margin-bottom: 0.25rem; }
+    .kse-dropdown-link small { display: block; color: #6b7280; font-size: 0.875rem; }
+
+    .kse-nav-cta {
+      display: inline-block;
+      background-color: #00458C;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s ease-in-out;
+      margin-right: 0;
+    }
+
+    .kse-nav-cta:hover { background-color: #00386F; box-shadow: 0 4px 12px rgba(0, 86, 210, 0.3); }
+
+    @media (max-width: 768px) {
+      .kse-nav-menu, .kse-nav-cta { display: none; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": "Entry-Level Control Panel Builder",
+    "description": "Assist building, wiring, and testing UL 508A control panels; learn industrial automation alongside experienced engineers.",
+    "datePosted": "2025-11-03",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Kansas Electric",
+      "sameAs": "https://www.kansaselectric.com",
+      "logo": "https://www.kansaselectric.com/assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": { "@type": "PostalAddress", "addressLocality": "Newton", "addressRegion": "KS", "addressCountry": "US" }
+    },
+    "directApply": true
+  }
+  </script>
+</head>
+<body class="font-poppins flex flex-col min-h-screen relative bg-white">
+
+  <a href="#content" class="sr-only skip-link focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-yellow-400 text-black px-4 py-2 rounded-md z-50">Skip to main content</a>
+
+  <!-- container: mobile top bar -->
+  <div class="mobile-top-bar md:hidden flex justify-center items-center h-20 bg-white border-b border-gray-200 shadow-sm">
+    <img src="../../assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg"
+         alt="Kansas Electric" class="h-10 w-auto object-contain mx-auto" loading="lazy">
+  </div>
+
+  <div class="mobile-menu-trigger" id="mobileMenuTrigger" role="button" tabindex="0" aria-controls="mobileNavOverlay" aria-expanded="false" aria-label="Open mobile menu">MENU</div>
+  <div class="mobile-nav-backdrop md:hidden" id="mobileNavBackdrop"></div>
+  <nav class="mobile-nav-overlay md:hidden" id="mobileNavOverlay">
+    <button class="mobile-nav-close" id="mobileNavClose" aria-label="Close mobile menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <div class="mobile-nav-content pb-32">
+      <a href="../../" class="block w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition text-center">Home</a>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <div>
+        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('servicesMenu')">
+          <span>Services</span>
+        </button>
+        <div id="servicesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
+          <a href="../../services/divisions/industrial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Industrial Electrical</div><div class="text-xs text-gray-500">Heavy infrastructure & power systems</div></a>
+          <a href="../../services/divisions/commercial/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Commercial Electrical</div><div class="text-xs text-gray-500">Office buildings & retail spaces</div></a>
+          <a href="../../services/divisions/service-maintenance/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Service & Maintenance</div><div class="text-xs text-gray-500">24/7 support & preventive care</div></a>
+          <a href="../../services/divisions/automation-control/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Automation & Control Systems</div><div class="text-xs text-gray-500">Smart systems & process control</div></a>
+        </div>
+      </div>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <div>
+        <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="toggleMobileDropdown('industriesMenu')">
+          <span>Industries We Serve</span>
+        </button>
+        <div id="industriesMenu" class="hidden flex flex-col space-y-1 pt-1 pb-1 bg-white shadow-md rounded-md border border-gray-100 mx-4 my-2">
+          <a href="../../services/industrial/oil-gas/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Oil & Gas</div><div class="text-xs text-gray-500">Refineries & pipelines</div></a>
+          <a href="../../services/industrial/wastewater-treatment/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Water and Wastewater</div><div class="text-xs text-gray-500">Treatment facilities</div></a>
+          <a href="../../services/industrial/data-centers/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Data Centers</div><div class="text-xs text-gray-500">Mission critical facilities</div></a>
+          <a href="../../services/industrial/advanced-manufacturing/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Manufacturing</div><div class="text-xs text-gray-500">Production facilities</div></a>
+          <a href="../../services/industrial/food-beverage/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Food & Beverage</div><div class="text-xs text-gray-500">Processing plants</div></a>
+          <a href="../../services/industrial/healthcare/" class="block w-full px-6 py-2 text-left border-b border-gray-100 hover:bg-gray-50 flex flex-col gap-0.5"><div class="text-sm font-medium text-gray-900">Healthcare Infrastructure</div><div class="text-xs text-gray-500">Critical care facilities</div></a>
+        </div>
+      </div>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../../projects/'"><span>Projects</span></button>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../../about/'"><span>About</span></button>
+      <div class="relative z-10 border-t border-gray-200"></div>
+      <button class="flex justify-between items-center w-full px-6 py-3 font-semibold text-gray-700 uppercase tracking-wider text-sm hover:bg-gray-50 transition" onclick="window.location.href='../../careers/'"><span>Careers</span></button>
+      <div class="px-6 pt-6 pb-10">
+        <a href="../../request-a-quote/" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-md transition">Let's Engineer Your Next Power Move</a>
+      </div>
+    </div>
+  </nav>
+
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NX8X8X37"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <!-- navigation: kse nav -->
+  <nav class="kse-nav" role="navigation" aria-label="Main navigation">
+    <div class="kse-nav-container">
+      <a href="../../" class="kse-nav-logo flex items-center px-4 py-2">
+        <img src="../../assets/img/2025 photos/new logo 2025/Final Files/Vector/Kansas Electric [CMYK].svg" alt="Kansas Electric - Homepage" class="h-12 sm:h-10 object-contain" loading="lazy">
+      </a>
+      <ul class="kse-nav-menu" role="menubar">
+        <li class="kse-nav-item" data-dropdown="services" role="none">
+          <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="services-dropdown">
+            <span>Services</span>
+            <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+          </a>
+          <div class="kse-dropdown" id="services-dropdown" role="menu" aria-hidden="true">
+            <a href="../../services/divisions/industrial/" class="kse-dropdown-link" role="menuitem"><span>Industrial Electrical</span><small>Heavy infrastructure & power systems</small></a>
+            <a href="../../services/divisions/commercial/" class="kse-dropdown-link" role="menuitem"><span>Commercial Electrical</span><small>Office buildings & retail spaces</small></a>
+            <a href="../../services/divisions/service-maintenance/" class="kse-dropdown-link" role="menuitem"><span>Service & Maintenance</span><small>24/7 support & preventive care</small></a>
+            <a href="../../services/divisions/automation-control/" class="kse-dropdown-link" role="menuitem"><span>Automation & Control Systems</span><small>Smart systems & process control</small></a>
+            <a href="../../services/divisions/ul-panel-shop/" class="kse-dropdown-link" role="menuitem"><span>UL Panel Shop</span><small>Custom UL 508A certified panels</small></a>
+          </div>
+        </li>
+        <li class="kse-nav-item" role="none"><a href="../../projects/" class="kse-nav-link" role="menuitem"><span>Projects</span></a></li>
+        <li class="kse-nav-item" data-dropdown="industries" role="none">
+          <a href="#" class="kse-nav-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="industries-dropdown">
+            <span>Industries We Serve</span>
+            <svg class="kse-nav-caret" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
+          </a>
+          <div class="kse-dropdown industries-grid" id="industries-dropdown" role="menu" aria-hidden="true">
+            <a href="../../services/industrial/oil-gas/" class="kse-dropdown-link" role="menuitem"><span>Oil & Gas</span><small>Refineries & pipelines</small></a>
+            <a href="../../services/industrial/wastewater-treatment/" class="kse-dropdown-link" role="menuitem"><span>Water and Wastewater</span><small>Treatment facilities</small></a>
+            <a href="../../services/industrial/data-centers/" class="kse-dropdown-link" role="menuitem"><span>Data Centers</span><small>Mission critical facilities</small></a>
+            <a href="../../services/industrial/advanced-manufacturing/" class="kse-dropdown-link" role="menuitem"><span>Manufacturing</span><small>Production facilities</small></a>
+            <a href="../../services/industrial/food-beverage/" class="kse-dropdown-link" role="menuitem"><span>Food & Beverage</span><small>Processing plants</small></a>
+            <a href="../../services/industrial/healthcare/" class="kse-dropdown-link" role="menuitem"><span>Healthcare Infrastructure</span><small>Critical care facilities</small></a>
+          </div>
+        </li>
+        <li class="kse-nav-item" role="none"><a href="../../about/" class="kse-nav-link" role="menuitem"><span>About</span></a></li>
+        <li class="kse-nav-item" role="none"><a href="../" class="kse-nav-link" role="menuitem"><span>Careers</span></a></li>
+      </ul>
+      <a href="https://forms.gle/yhE3qB33LhvvVzt37" target="_blank" rel="noopener noreferrer" class="kse-nav-cta hidden md:inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg text-lg transition-colors duration-300 shadow-lg">Let's Engineer Your Next Power Move</a>
+    </div>
+  </nav>
+
+  <main id="content" class="flex-grow">
+    <section class="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white py-32 overflow-hidden">
+      <div class="absolute inset-0 opacity-10"><div class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/5 to-transparent"></div><div class="absolute -top-40 -right-40 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div><div class="absolute -bottom-40 -left-40 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div></div>
+      <div class="relative max-w-7xl mx-auto px-6">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="text-left" data-aos="fade-right">
+            <div class="inline-flex items-center bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-full text-sm font-semibold mb-8 border border-white/20">
+              <div class="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></div>
+              Now Hiring - Automation Division
+            </div>
+            <h1 class="text-6xl lg:text-7xl font-bold mb-6 leading-tight">Entry-Level <span class="block text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-white">Control Panel Builder</span></h1>
+            <p class="text-2xl text-blue-100 mb-8 leading-relaxed font-light">Learn to assemble, wire, and test UL 508A control panels.<br/><span class="text-white font-medium">Build skills. Build panels. Build your career.</span></p>
+            <div class="flex flex-wrap gap-4 mb-10">
+              <div class="bg-white/15 backdrop-blur-sm px-6 py-3 rounded-xl border border-white/20"><div class="text-sm text-blue-200 font-medium">Location</div><div class="text-white font-bold">Newton</div></div>
+              <div class="bg-white/15 backdrop-blur-sm px-6 py-3 rounded-xl border border-white/20"><div class="text-sm text-blue-200 font-medium">Compensation</div><div class="text-white font-bold">Competitive + Overtime</div></div>
+            </div>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="https://forms.gle/yhE3qB33LhvvVzt37" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center justify-center bg-white text-blue-700 font-bold px-8 py-4 rounded-2xl text-lg transition-all duration-300 shadow-2xl hover:shadow-3xl hover:bg-blue-50 transform hover:scale-105 hover:-translate-y-1">Apply for This Position<svg class="ml-3 w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+              <a href="#position-details" class="inline-flex items-center justify-center bg-transparent text-white font-semibold px-8 py-4 rounded-2xl text-lg border-2 border-white/30 hover:border-white/60 hover:bg-white/10 transition-all duration-300">Learn More</a>
+            </div>
+          </div>
+          <div class="relative" data-aos="fade-left" data-aos-delay="200">
+            <div class="space-y-6">
+              <div class="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20 transform rotate-2 hover:rotate-0 transition-transform duration-300"><div class="text-3xl font-bold text-white mb-2">UL 508A</div><div class="text-blue-200">Panel Building Standards</div></div>
+              <div class="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20 transform -rotate-2 hover:rotate-0 transition-transform duration-300 ml-8"><div class="text-3xl font-bold text-white mb-2">Hands-On</div><div class="text-blue-200">Training & Mentorship</div></div>
+              <div class="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20 transform rotate-1 hover:rotate-0 transition-transform duration-300"><div class="text-3xl font-bold text-white mb-2">Grow With</div><div class="text-blue-200">Automation Engineers</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- container: relative -->
+    <div class="relative -mt-20 z-10">
+      <svg class="w-full h-20 text-gray-50" fill="currentColor" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+      </svg>
+    </div>
+
+    <section id="position-details" class="py-24 bg-gray-50">
+      <div class="max-w-6xl mx-auto px-6 space-y-20">
+        <div class="bg-white rounded-3xl p-10 shadow-xl border border-gray-100" data-aos="fade-up">
+          <div class="text-center mb-8">
+            <h2 class="text-4xl font-bold text-gray-900 tracking-tight">Position Overview</h2>
+          </div>
+          <p class="text-xl text-gray-700 leading-relaxed font-light">We are seeking a motivated Entry-Level Control Panel Builder to join our growing automation team. You will learn to assemble, wire, and test UL 508A control panels that support industrial automation applications, working alongside experienced panel builders and automation engineers.</p>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="100">
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4 tracking-tight">Key Responsibilities</h2>
+            <p class="text-xl text-gray-600 font-light">Hands-on panel assembly and testing</p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-gradient-to-br from-blue-600 to-blue-700 p-8 rounded-2xl text-white shadow-xl h-48 flex flex-col justify-center">
+              <h3 class="font-bold text-white mb-2 text-xl">Panel Assembly</h3>
+              <p class="text-blue-100 leading-relaxed">Assist building UL 508A-certified control panels</p>
+            </div>
+            <div class="bg-gradient-to-br from-blue-600 to-blue-700 p-8 rounded-2xl text-white shadow-xl h-48 flex flex-col justify-center">
+              <h3 class="font-bold text-white mb-2 text-xl">Wiring & Termination</h3>
+              <p class="text-blue-100 leading-relaxed">Route, label, crimp, and terminate per UL and company standards</p>
+            </div>
+            <div class="bg-gradient-to-br from-blue-600 to-blue-700 p-8 rounded-2xl text-white shadow-xl h-48 flex flex-col justify-center">
+              <h3 class="font-bold text-white mb-2 text-xl">Testing & QA</h3>
+              <p class="text-blue-100 leading-relaxed">Support quality checks and functional testing of completed panels</p>
+            </div>
+            <div class="bg-gradient-to-br from-blue-600 to-blue-700 p-8 rounded-2xl text-white shadow-xl h-48 flex flex-col justify-center">
+              <h3 class="font-bold text-white mb-2 text-xl">Documentation</h3>
+              <p class="text-blue-100 leading-relaxed">Maintain accurate work documentation; collaborate to meet schedule and quality goals</p>
+            </div>
+          </div>
+          <div class="bg-white rounded-2xl p-8 mt-8 shadow border border-gray-100">
+            <ul class="list-disc list-inside space-y-2 text-gray-700">
+              <li>Read and interpret electrical schematics, wiring diagrams, and layout drawings</li>
+              <li>Mount components: breakers, relays, terminal blocks, VFDs, PLCs, power supplies</li>
+              <li>Participate in ongoing training in electrical assembly, controls, and automation technologies</li>
+              <li>Maintain automation department inventory processes and assist with automation projects</li>
+              <li>Keep work areas organized, safe, and compliant with safety standards</li>
+            </ul>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="200">
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4 tracking-tight">Qualifications</h2>
+            <p class="text-xl text-gray-600 font-light">Required and preferred credentials</p>
+          </div>
+          <div class="grid md:grid-cols-2 gap-12">
+            <div class="bg-white rounded-2xl p-10 shadow-xl border border-gray-100">
+              <h3 class="text-2xl font-bold text-blue-600 mb-6">Required</h3>
+              <ul class="list-disc list-inside space-y-3 text-gray-700">
+                <li>High school diploma or equivalent (technical or vocational coursework preferred)</li>
+                <li>Basic understanding of electrical components and wiring</li>
+                <li>Ability to read simple diagrams or willingness to learn</li>
+                <li>Strong attention to detail and commitment to quality</li>
+                <li>Reliable, punctual, and able to follow safety procedures</li>
+              </ul>
+            </div>
+            <div class="bg-white rounded-2xl p-10 shadow-xl border border-gray-100">
+              <h3 class="text-2xl font-bold text-blue-600 mb-6">Preferred</h3>
+              <ul class="list-disc list-inside space-y-3 text-gray-700">
+                <li>0–2 years’ experience in a panel shop, electrical assembly, or industrial wiring</li>
+                <li>Familiarity with UL 508A and NFPA 70 (NEC)</li>
+                <li>Experience using hand tools, wire strippers, drills, and measuring instruments</li>
+                <li>Technical school certificate or associate degree in Industrial Automation, Electrical Technology, or Mechatronics</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="300">
+          <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4 tracking-tight">Compensation & Benefits</h2>
+            <p class="text-xl text-gray-600 font-light">Competitive package with growth opportunities</p>
+          </div>
+          <div class="bg-white rounded-3xl p-12 shadow-xl border border-gray-100">
+            <div class="grid md:grid-cols-2 gap-12">
+              <div>
+                <h3 class="text-3xl font-bold mb-8 text-gray-900">Compensation</h3>
+                <ul class="space-y-3 text-gray-700 list-disc list-inside">
+                  <li>Competitive hourly pay with overtime opportunities</li>
+                </ul>
+              </div>
+              <div>
+                <h3 class="text-3xl font-bold mb-8 text-gray-900">Benefits</h3>
+                <ul class="space-y-3 text-gray-700 list-disc list-inside">
+                  <li>Full benefits package (health, dental, retirement, PTO)</li>
+                  <li>On-the-job training with UL 508A panel builders and automation engineers</li>
+                  <li>A collaborative, safety-first work environment focused on professional growth</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div data-aos="fade-up" data-aos-delay="400">
+          <div class="bg-gradient-to-r from-blue-600 to-blue-700 rounded-3xl p-16 text-center text-white shadow-2xl">
+            <div class="max-w-3xl mx-auto">
+              <h3 class="text-5xl font-bold mb-6 tracking-tight">Ready to Start Your Automation Career?</h3>
+              <p class="text-2xl text-blue-100 mb-12 font-light">Join Kansas Electric and learn hands-on as you help build the panels that power American industry.</p>
+              <a href="https://forms.gle/yhE3qB33LhvvVzt37" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-white text-blue-600 font-bold px-12 py-6 rounded-2xl text-2xl transition-all duration-300 shadow-2xl hover:shadow-3xl hover:bg-gray-50 transform hover:scale-105 hover:-translate-y-1">Apply Now<svg class="ml-4 w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-custom text-white py-16 px-6 border-t border-white/10 bg-blue-600">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div class="flex flex-col items-center md:items-start text-center md:text-left space-y-3">
+        <p class="text-white text-sm">Built for Power. Engineered for Excellence.</p>
+      </div>
+      <div class="flex flex-col items-center justify-center space-y-3">
+        <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Contact</h3>
+        <a href="tel:3162834750" class="text-white font-medium hover:text-white transition-colors text-base">(316) 283-4750</a>
+        <a href="https://forms.gle/yhE3qB33LhvvVzt37" target="_blank" rel="noopener noreferrer" class="text-white font-medium hover:text-gray-200 transition-colors">Let's Engineer Your Next Power Move</a>
+      </div>
+      <div class="flex flex-col items-center md:items-end text-center md:text-right space-y-3">
+        <h3 class="text-sm font-bold uppercase tracking-wide mb-3 text-white">Links</h3>
+        <a href="https://www.linkedin.com/company/kansas-electric/" class="text-white hover:text-gray-200 transition-colors" aria-label="Kansas Electric LinkedIn profile">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" class="w-6 h-6" aria-hidden="true" focusable="false"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"></path></svg>
+        </a>
+      </div>
+    </div>
+    <div class="mt-12 text-center">
+      <p class="text-sm text-white max-w-3xl mx-auto leading-relaxed">Since 1948, Kansas Electric has powered some of the region's most essential facilities - from hospitals and manufacturers to mission-critical infrastructure.</p>
+    </div>
+    <div class="mt-8 text-center text-gray-200 text-sm">
+      &copy; 2025 Kansas Electric. All rights reserved.
+      <a href="../../assets/documents/04.01.2022-kansas-electric-terms-and-conditions.pdf" target="_blank" rel="noopener noreferrer" class="block mt-2 text-white hover:text-gray-200 text-sm underline transition-colors">Terms and Conditions</a>
+      <a href="../../accessibility/" class="block mt-2 text-white hover:text-gray-200 text-sm underline transition-colors">Accessibility Statement</a>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      function isMobile() { return window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); }
+      if (isMobile()) {
+        const aosElements = document.querySelectorAll('[data-aos]');
+        aosElements.forEach(element => {
+          element.removeAttribute('data-aos');
+          element.removeAttribute('data-aos-delay');
+          element.removeAttribute('data-aos-duration');
+          element.removeAttribute('data-aos-offset');
+        });
+      }
+      if (typeof AOS !== 'undefined') {
+        AOS.init({ duration: 800, once: true, offset: 100, disable: 'mobile' });
+      }
+    });
+  </script>
+  <script src="../../assets/js/reveal.js" defer></script>
+</body>
+</html>
+
+
