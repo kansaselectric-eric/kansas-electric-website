@@ -825,7 +825,7 @@
         fetch('../careers/jobs.json')
           .then(response => response.json())
           .then(data => {
-            allJobs = data.jobs;
+            allJobs = data.jobs.filter(job => !job.hidden);
             populateFilters(allJobs);
             renderJobs(allJobs);
           })

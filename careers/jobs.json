@@ -39,7 +39,8 @@
       "division": "Automation",
       "summary": "Assist building, wiring, and testing UL 508A control panels while learning industrial automation in a safety-first team.",
       "slug": "entry-level-control-panel-builder",
-      "applyLink": "https://forms.gle/yhE3qB33LhvvVzt37"
+      "applyLink": "https://forms.gle/yhE3qB33LhvvVzt37",
+      "hidden": true
     }
   ]
 } 
