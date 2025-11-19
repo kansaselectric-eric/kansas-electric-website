@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.kansaselectric.com/</loc></url>
+  <url><loc>https://www.kansaselectric.com/about/</loc></url>
+  <url><loc>https://www.kansaselectric.com/careers/</loc></url>
+  <url><loc>https://www.kansaselectric.com/projects/</loc></url>
+  <url><loc>https://www.kansaselectric.com/request-a-quote/</loc></url>
+  <url><loc>https://www.kansaselectric.com/suppliers/</loc></url>
+  <url><loc>https://www.kansaselectric.com/accessibility/</loc></url>
+
+  <!-- Services -->
+  <url><loc>https://www.kansaselectric.com/services/systems-integration/</loc></url>
+  <url><loc>https://www.kansaselectric.com/services/divisions/industrial/</loc></url>
+  <url><loc>https://www.kansaselectric.com/services/divisions/commercial/</loc></url>
+  <url><loc>https://www.kansaselectric.com/services/divisions/service-maintenance/</loc></url>
+  <url><loc>https://www.kansaselectric.com/services/divisions/automation-control/</loc></url>
+  <url><loc>https://www.kansaselectric.com/services/divisions/ul-panel-shop/</loc></url>
+  <url><loc>https://www.kansaselectric.com/request-a-ul-panel-quote/</loc></url>
+
+  <!-- Industries -->
+  <url><loc>https://www.kansaselectric.com/services/industrial/advanced-manufacturing/</loc></url>
+  <url><loc>https://www.kansaselectric.com/services/industrial/food-beverage/</loc></url>
+  <url><loc>https://www.kansaselectric.com/services/industrial/wastewater-treatment/</loc></url>
+  <url><loc>https://www.kansaselectric.com/services/industrial/oil-gas/</loc></url>
+  <url><loc>https://www.kansaselectric.com/services/industrial/data-centers/</loc></url>
+  <url><loc>https://www.kansaselectric.com/services/industrial/healthcare/</loc></url>
+</urlset>
+
